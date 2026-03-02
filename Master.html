@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aaron Suarez — Systems VA / EA / Ops & CRM Builder</title>
+  <meta name="description" content="Aaron Suarez — Systems-minded VA/EA and Ops + CRM builder. I turn chaos into workflows, docs, and automation that teams can actually run." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --panel:#f7f7fb;
+      --panel2:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --shadow: 0 12px 30px rgba(0,0,0,.10);
+      --accent:#2563eb;
+      --accent2:#16a34a;
+      --danger:#dc2626;
+      --code:#0f172a;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --radius: 14px;
+      --radius2: 18px;
+      --tile: 86px;
+      --tileIcon: 42px;
+      --maxW: 980px;
+    }
+    html.dark{
+      --bg:#0b1220;
+      --panel:#0f1a2e;
+      --panel2:#0b1220;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#1f2a44;
+      --shadow: 0 16px 36px rgba(0,0,0,.40);
+      --accent:#60a5fa;
+      --accent2:#34d399;
+      --danger:#f87171;
+      --code:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1100px 600px at 50% 20%, rgba(37,99,235,.12), transparent 60%),
+                  radial-gradient(900px 500px at 80% 75%, rgba(22,163,74,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      overflow-x:hidden;
+      user-select:none;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .topbar{
+      position:fixed; left:0; top:0; width:100%;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px;
+      z-index:10;
+      pointer-events:none;
+    }
+    .topbar .left, .topbar .right{display:flex; gap:10px; pointer-events:auto}
+    .btn{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.65));
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+      cursor:pointer;
+      display:inline-flex; align-items:center; gap:8px;
+      transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+      font-weight:600;
+      user-select:none;
+    }
+    html.dark .btn{
+      background: linear-gradient(180deg, rgba(15,26,46,.95), rgba(15,26,46,.7));
+      box-shadow: 0 10px 20px rgba(0,0,0,.30);
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow: 0 10px 22px rgba(0,0,0,.12)}
+    .btn:active{transform:translateY(1px) scale(.99)}
+    .pill{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.5);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+    html.dark .pill{background:rgba(15,26,46,.5)}
+    .wrap{
+      max-width:var(--maxW);
+      margin:0 auto;
+      padding:110px 18px 90px;
+      position:relative;
+      z-index:1;
+    }
+    .hero{
+      text-align:center;
+      padding:24px 14px 8px;
+    }
+    .hero h1{
+      margin:0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .hero .sub{
+      margin:10px auto 0;
+      max-width:780px;
+      font-size: clamp(14px, 2vw, 18px);
+      color:var(--muted);
+      line-height:1.5;
+      user-select:text;
+    }
+    .hero .tagline{
+      display:inline-flex; flex-wrap:wrap; justify-content:center;
+      gap:8px; margin-top:16px;
+    }
+    .chip{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.65);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--text);
+      box-shadow: 0 10px 18px rgba(0,0,0,.06);
+      user-select:none;
+    }
+    html.dark .chip{background: rgba(15,26,46,.65)}
+    .desktop{
+      margin:22px auto 0;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.35));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:18px 16px 20px;
+      position:relative;
+      overflow:hidden;
+    }
+    html.dark .desktop{
+      background: linear-gradient(180deg, rgba(15,26,46,.75), rgba(15,26,46,.45));
+    }
+    .iconGrid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:14px;
+      justify-items:center;
+      padding:10px 8px;
+    }
+    @media (max-width:760px){
+      .iconGrid{grid-template-columns: repeat(3, minmax(0, 1fr));}
+    }
+    @media (max-width:520px){
+      .iconGrid{grid-template-columns: repeat(2, minmax(0, 1fr));}
+    }
+    .tile{
+      width:100%;
+      max-width:180px;
+      border:1px solid transparent;
+      background:transparent;
+      cursor:pointer;
+      border-radius:14px;
+      padding:10px 8px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .tile:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.35);
+      border-color: var(--border);
+    }
+    html.dark .tile:hover{background: rgba(11,18,32,.35)}
+    .tile:active{transform: translateY(1px) scale(.99)}
+    .icon{
+      width:var(--tile);
+      height:var(--tile);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(180deg, rgba(37,99,235,.14), rgba(37,99,235,.06));
+      border:1px solid var(--border);
+      box-shadow: 0 12px 18px rgba(0,0,0,.06);
+      margin:0 auto;
+      position:relative;
+      overflow:hidden;
+    }
+    html.dark .icon{
+      background: linear-gradient(180deg, rgba(96,165,250,.12), rgba(96,165,250,.06));
+    }
+    .icon .glyph{
+      font-size:var(--tileIcon);
+      line-height:1;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,.10));
+    }
+    .tile .label{
+      margin-top:8px;
+      font-family:var(--mono);
+      font-weight:700;
+      font-size:13px;
+      text-align:center;
+      color:var(--muted);
+    }
+    .footerDock{
+      position:fixed;
+      bottom:12px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.70);
+      box-shadow: var(--shadow);
+      z-index:5;
+      backdrop-filter: blur(8px);
+      pointer-events:auto;
+    }
+    html.dark .footerDock{background: rgba(15,26,46,.75)}
+    .dockBtn{
+      border:1px solid var(--border);
+      background: transparent;
+      color:var(--text);
+      width:44px; height:44px;
+      border-radius:14px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition: transform .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .dockBtn:hover{transform: translateY(-2px); background: rgba(255,255,255,.35)}
+    html.dark .dockBtn:hover{background: rgba(11,18,32,.35)}
+    .dockBtn:active{transform: translateY(1px) scale(.99)}
+    .dockBtn span{font-size:20px}
+    .copyright{
+      position:fixed;
+      bottom:64px;
+      left:50%;
+      transform:translateX(-50%);
+      color:var(--muted);
+      font-size:12px;
+      font-family:var(--mono);
+      z-index:4;
+      user-select:none;
+      opacity:.85;
+      text-align:center;
+      padding:0 12px;
+    }
+
+    /* Modal */
+    .modalOverlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:100;
+      padding:18px;
+    }
+    .modalOverlay.open{display:flex;}
+    .modal{
+      width:min(980px, 100%);
+      max-height: 86vh;
+      border:1px solid var(--border);
+      background: var(--panel2);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transform: translateY(12px);
+      opacity:0;
+      transition: transform .18s ease, opacity .18s ease;
+      user-select:text;
+    }
+    .modalOverlay.open .modal{transform: translateY(0); opacity:1;}
+    .modalHeader{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 14px;
+      background: var(--panel);
+      border-bottom:1px solid var(--border);
+      position:sticky; top:0;
+      z-index:2;
+    }
+    .modalTitle{
+      font-family:var(--mono);
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .modalClose{
+      border:1px solid var(--border);
+      background: transparent;
+      color:var(--text);
+      width:40px; height:40px;
+      border-radius:14px;
+      cursor:pointer;
+      display:grid; place-items:center;
+      transition: transform .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .modalClose:hover{transform: translateY(-1px); background: rgba(255,255,255,.35)}
+    html.dark .modalClose:hover{background: rgba(11,18,32,.35)}
+    .modalBody{
+      padding:16px 16px 22px;
+      overflow:auto;
+      max-height: calc(86vh - 54px);
+    }
+    .section{
+      margin-bottom:14px;
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.55));
+    }
+    html.dark .section{background: linear-gradient(180deg, rgba(15,26,46,.55), rgba(15,26,46,.35))}
+    .section h3{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:-.01em;
+    }
+    .muted{color:var(--muted)}
+    .kicker{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:780px){.grid2{grid-template-columns:1fr}}
+    ul{margin:8px 0 0 18px; padding:0}
+    li{margin:6px 0}
+    .badgeRow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .badge{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.60);
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+      font-family:var(--mono);
+      color:var(--text);
+    }
+    html.dark .badge{background: rgba(11,18,32,.35)}
+    .role{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      margin:0 0 8px;
+      flex-wrap:wrap;
+    }
+    .role .where{
+      font-weight:800;
+    }
+    .role .when{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .callout{
+      border-left:4px solid var(--accent);
+      padding:10px 12px;
+      background: rgba(37,99,235,.08);
+      border-radius:12px;
+      margin-top:10px;
+    }
+    html.dark .callout{background: rgba(96,165,250,.12)}
+    .small{font-size:13px; line-height:1.5}
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .cta{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.7);
+      border-radius:14px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:700;
+      display:inline-flex; align-items:center; gap:8px;
+      transition: transform .15s ease, background .15s ease;
+    }
+    html.dark .cta{background: rgba(15,26,46,.65)}
+    .cta:hover{transform: translateY(-1px); background: rgba(255,255,255,.85)}
+    html.dark .cta:hover{background: rgba(15,26,46,.85)}
+    .cta:active{transform: translateY(1px) scale(.99)}
+    .mono{font-family:var(--mono)}
+    .hr{height:1px; background:var(--border); margin:12px 0}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="left">
+      <button class="btn" id="btnDark" title="Toggle dark mode">
+        <span>🌓</span><span class="mono">dark</span>
+      </button>
+      <button class="btn" id="btnSfx" title="Toggle click sound effects">
+        <span id="sfxIcon">🔊</span><span class="mono">sfx</span>
+      </button>
+    </div>
+    <div class="right">
+      <div class="pill">Valencia City, PH • Remote-friendly • Systems-first</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <h1>hi — i’m <span style="color:var(--accent)">Aaron</span>.</h1>
+      <div class="sub">
+        I’m a <b>Systems VA / EA</b> who turns founder chaos into <b>workflows, documentation, automation, and clean operations</b>.
+        I don’t just “do tasks” — I build the system that makes tasks easier for everyone.
+      </div>
+      <div class="tagline">
+        <div class="chip">Ops + CRM architecture</div>
+        <div class="chip">Documentation & SOPs</div>
+        <div class="chip">Automation logic</div>
+        <div class="chip">Stakeholder wrangling</div>
+        <div class="chip">Calm in chaos</div>
+      </div>
+    </div>
+
+    <div class="desktop" aria-label="Desktop">
+      <div class="iconGrid">
+        <button class="tile" data-modal="about">
+          <div class="icon"><div class="glyph">👤</div></div>
+          <div class="label">about</div>
+        </button>
+        <button class="tile" data-modal="experience">
+          <div class="icon"><div class="glyph">🧭</div></div>
+          <div class="label">experience</div>
+        </button>
+        <button class="tile" data-modal="projects">
+          <div class="icon"><div class="glyph">🧱</div></div>
+          <div class="label">systems</div>
+        </button>
+        <button class="tile" data-modal="skills">
+          <div class="icon"><div class="glyph">🛠️</div></div>
+          <div class="label">skills</div>
+        </button>
+        <button class="tile" data-modal="toolkit">
+          <div class="icon"><div class="glyph">🧰</div></div>
+          <div class="label">toolkit</div>
+        </button>
+        <button class="tile" data-modal="testimonials">
+          <div class="icon"><div class="glyph">💬</div></div>
+          <div class="label">proof</div>
+        </button>
+        <button class="tile" data-modal="contact">
+          <div class="icon"><div class="glyph">📨</div></div>
+          <div class="label">contact</div>
+        </button>
+        <button class="tile" data-modal="downloads">
+          <div class="icon"><div class="glyph">⬇️</div></div>
+          <div class="label">downloads</div>
+        </button>
+      </div>
+
+      <div class="callout small" style="margin:10px 8px 0; user-select:text;">
+        <b>Positioning note:</b> This site frames you as the person a founder hires when they want execution <i>and</i> structure —
+        scheduling, ops coordination, CRM/automation, documentation, and “make it make sense” communication.
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">© <span id="yr"></span> Aaron Suarez • built for clarity, not vibes alone</div>
+
+  <div class="footerDock" aria-label="Quick links">
+    <button class="dockBtn" id="dockEmail" title="Email"><span>✉️</span></button>
+    <button class="dockBtn" id="dockLinkedIn" title="LinkedIn"><span>in</span></button>
+    <button class="dockBtn" id="dockWebsite" title="Website"><span>🌐</span></button>
+    <button class="dockBtn" id="dockCopy" title="Copy contact"><span>📋</span></button>
+  </div>
+
+  <!-- Modal overlay -->
+  <div class="modalOverlay" id="overlay" role="dialog" aria-modal="true" aria-label="Modal">
+    <div class="modal">
+      <div class="modalHeader">
+        <div class="modalTitle" id="modalTitle">window</div>
+        <button class="modalClose" id="modalClose" title="Close">⨯</button>
+      </div>
+      <div class="modalBody" id="modalBody"></div>
+    </div>
+  </div>
+
+  <audio id="clickSound" preload="auto">
+    <!-- tiny inline click sound alternative: leave empty (silent) if you want -->
+  </audio>
+
+  <script>
+    // ====== Personal data ======
+    const PROFILE = {
+      name: "Aaron Suarez",
+      location: "Valencia City, PH",
+      phones: ["+63-977-081-3009", "+63-991-477-5300"],
+      emails: ["suarezaaronroy@gmail.com", "asmultitaskcollective@gmail.com"],
+      linkedin: "https://linkedin.com/in/suarez-aaronroy",
+      website: "https://asmultitask.wordpress.com"
+    };
+
+    // Refined summary (VA/EA positioning) built from resume
+    const SUMMARY = [
+      "Systems-minded VA/EA and operations builder with 8+ years across support operations, documentation, and workflow design.",
+      "I translate vague goals into concrete steps: calendars, comms, SOPs, CRM hygiene, automation logic, and escalation paths.",
+      "Strength: I reduce mental load. You get clarity, fewer repeated mistakes, and a team that can actually follow the process."
+    ];
+
+    const HIGHLIGHTS = [
+      { title: "Estimator Form Automation (98% compliance)", detail: "Built SMS + webform fallback logic so non-CRM users still submit appointment data; escalations trigger if missing." },
+      { title: "CRM & Workflow Rebuild (ADGG)", detail: "Migrated Tradify → Business Pilot; redesigned lead handling, folder/status flows, and quote tracking logic." },
+      { title: "Risk & Ops Stabilization (Square Block)", detail: "Helped establish risk handling procedures; prevented recurring payment losses by addressing root causes and institutionalizing proactive management." },
+      { title: "Training Library & Delegation System", detail: "Created handover SOPs, tracking sheets, and role guides enabling clean delegation without losing quality or tone." },
+      { title: "Dashboards & Accountability", detail: "Looker Studio dashboards + scorecards; weekly reporting packs and escalation workflows." }
+    ];
+
+    const EXPERIENCE = [
+      {
+        where: "AllayPay (US) — Operations Specialist (Remote, Full-Time)",
+        when: "Oct 2025 – Present",
+        bullets: [
+          "Reverse-engineered undocumented workflows across 10+ processors; mapped decision paths and edge cases into actionable steps.",
+          "Handled complex operational cases (funding delays, profile updates, routing issues, terminal/programming failures) with incomplete instructions.",
+          "Acted as the internal “logic interpreter” translating messy guidance into step-by-step actions that support teams can execute.",
+          "Identified root causes behind recurring escalations and corrected legacy inaccuracies to reduce repeat errors."
+        ],
+        note: "Refined positioning: emphasize cross-team coordination, case ownership, and process clarity (not niche jargon)."
+      },
+      {
+        where: "Orange Rentals (UK) — Marketing Lead (Remote, Part-Time)",
+        when: "May 2025 – Sep 2025",
+        bullets: [
+          "Built a full-stack acquisition engine: content + campaign execution + CRM workflows + tracking/analytics.",
+          "Integrated automation workflows, UTM tracking, and reporting dashboards to improve funnel performance.",
+          "Worked directly with founder; converted strategy into weekly deliverables and measurable outputs."
+        ]
+      },
+      {
+        where: "Express Sunrooms of San Antonio (US) — Technical Lead | CRM & Automation Architect | Executive Assistant (Remote, Part-Time)",
+        when: "Mar 2025 – Sep 2025",
+        bullets: [
+          "EA support to owner: decision support, calendar coordination, and cross-team communications.",
+          "Designed company-wide CRM deployment with deep data tracking from lead → install → closeout.",
+          "Built estimator-side workflows with SMS fallback; improved data capture compliance to 98%+.",
+          "Authored CRM blueprint: naming conventions, permissions, campaign logic, and integrated calendars."
+        ]
+      },
+      {
+        where: "ADGG Ltd. (UK) — Operations Admin | CRM Migration Specialist | Executive Assistant (Remote)",
+        when: "Nov 2024 – May 2025",
+        bullets: [
+          "Direct EA support to CEO: calendar, scheduling, comms, and prep of key docs/reports.",
+          "Migrated CRM platforms; standardized project flows, quoting logic, and operational templates.",
+          "Built SOP library and training guides; supported rebrand + early marketing execution."
+        ]
+      }
+    ];
+
+    const SKILLS = {
+      "Founder Support (VA/EA Core)": [
+        "Inbox + comms triage (clarity, tone, follow-ups)",
+        "Calendar coordination + prep notes",
+        "Project/task systems (ClickUp/Notion/Sheets)",
+        "Documentation & SOPs that humans actually follow",
+        "Escalation paths + decision trees",
+        "Stakeholder alignment (merchant/agent/vendor/processor style coordination)"
+      ],
+      "Systems & Automation": [
+        "CRM architecture (GoHighLevel, Salesforce, Business Pilot, Tradify, Keap)",
+        "Workflow automation logic (Zapier, Pabbly, CRM workflows)",
+        "Data hygiene: tagging, statuses, naming conventions, audit cycles",
+        "Dashboards & KPI reporting (Looker Studio, GA4 + Sheets)"
+      ],
+      "Support Ops Under Pressure": [
+        "Root-cause analysis (find the real failure point)",
+        "Crisis navigation: stabilize first, then fix properly",
+        "Training/onboarding: translate technical to non-technical",
+        "QA thinking: prevent repeats with guardrails"
+      ]
+    };
+
+    const TOOLKIT = {
+      "CRMs": ["GoHighLevel", "Salesforce", "Business Pilot", "Tradify", "Keap"],
+      "Automation": ["Zapier", "Pabbly Connect", "GHL Workflows"],
+      "Docs & Ops": ["Google Docs/Sheets", "ClickUp", "Notion", "Loom"],
+      "Support": ["Zendesk", "RingCentral", "SAP Commerce (exposure)"],
+      "Creative (when needed)": ["Canva", "WordPress", "Meta Ads Manager", "CapCut", "DaVinci Resolve"],
+      "Certifications": [
+        "Go High Level Training (2025)",
+        "Meta Digital Marketing Associate (2025)",
+        "Certified Real Estate VA (2024)",
+        "Certified Social Media Marketing (2024)",
+        "Zendesk & Solidus 2.1 Training (2024)",
+        "Business Pilot & Tradify Training (2024)",
+        "Infusionsoft by Keap (2019)"
+      ]
+    };
+
+    const TESTIMONIALS = [
+      "“You have such an out-of-the-box approach and a rare combination of technical prowess balanced with a kind and thoughtful presence.” — Amber L., Owner",
+      "“Incredibly self-sufficient & trustworthy. I always feel at ease knowing that as long as he’s around the new staff is in good hands.” — Edilbert, Manager",
+      "“He takes ownership of issues, treating them as his own… uncovering effective solutions others miss.” — Sales Agent",
+      "“He’s the go-to person for non-technical staff who need clear answers.” — Joan P.",
+      "“Aaron consistently demonstrated initiative, ownership, and a deep understanding of process logic and systems thinking… invaluable asset.” — Ashley Mackenzie"
+    ];
+
+    // ====== Modal templates ======
+    const templates = {
+      about: () => `
+        <div class="section">
+          <h3>Who I am</h3>
+          <div class="muted small">Remote-first • systems-minded • founder support with technical depth</div>
+          <div class="hr"></div>
+          <div class="small">
+            <p><b>${PROFILE.name}</b> — ${PROFILE.location}</p>
+            <p>${SUMMARY.map(s => `• ${s}`).join("<br/>")}</p>
+          </div>
+          <div class="badgeRow">
+            <span class="badge">VA / EA + Ops</span>
+            <span class="badge">CRM + Automation</span>
+            <span class="badge">Docs + Training</span>
+            <span class="badge">Calm execution</span>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="section">
+            <h3>What you get when you hire me</h3>
+            <ul class="small">
+              <li><b>Reduced mental load</b> — I capture decisions, clarify priorities, and keep the thread alive.</li>
+              <li><b>Repeatable operations</b> — SOPs, checklists, and “if/then” handling so work stops breaking.</li>
+              <li><b>Better systems</b> — your CRM and workflows become easier to use, not scarier.</li>
+              <li><b>Ownership</b> — I don’t wait for perfect instructions; I build the missing structure.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Best-fit roles</h3>
+            <ul class="small">
+              <li>Executive Assistant (ops-heavy)</li>
+              <li>Operations / Systems VA</li>
+              <li>CRM + Automations Support Lead</li>
+              <li>Founder’s right-hand for process + execution</li>
+            </ul>
+            <div class="callout small">
+              <b>My sweet spot:</b> early-stage teams who need structure without hiring five people.
+            </div>
+          </div>
+        </div>
+      `,
+      experience: () => `
+        <div class="section">
+          <h3>Experience</h3>
+          <div class="muted small">Selected roles reframed for VA/EA + systems impact</div>
+        </div>
+        ${EXPERIENCE.map(r => `
+          <div class="section">
+            <div class="role">
+              <div class="where">${r.where}</div>
+              <div class="when">${r.when}</div>
+            </div>
+            <ul class="small">${r.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+            ${r.note ? `<div class="kicker">Note: ${r.note}</div>` : ``}
+          </div>
+        `).join("")}
+      `,
+      projects: () => `
+        <div class="section">
+          <h3>Systems I build (high-signal highlights)</h3>
+          <div class="muted small">These are examples of how I turn “we should” into “it runs.”</div>
+        </div>
+        ${HIGHLIGHTS.map(h => `
+          <div class="section">
+            <h3>${h.title}</h3>
+            <div class="small">${h.detail}</div>
+            <div class="badgeRow">
+              <span class="badge">workflow design</span>
+              <span class="badge">fallback logic</span>
+              <span class="badge">documentation</span>
+              <span class="badge">operations</span>
+            </div>
+          </div>
+        `).join("")}
+        <div class="section">
+          <h3>AS Multi-Task Collective (ASMC)</h3>
+          <div class="small">
+            Co-founded a training + systems consultancy that upskills beginners into CRM/automation support roles,
+            backed by SOP libraries, templates, and mentorship frameworks.
+          </div>
+          <div class="callout small">
+            <b>Why it matters:</b> I’m not just a doer — I’m a builder who can teach and scale the work.
+          </div>
+        </div>
+      `,
+      skills: () => `
+        <div class="section">
+          <h3>Skills (organized by what founders actually care about)</h3>
+          <div class="muted small">Tools change. Systems thinking doesn’t.</div>
+        </div>
+        ${Object.entries(SKILLS).map(([k, items]) => `
+          <div class="section">
+            <h3>${k}</h3>
+            <ul class="small">${items.map(i => `<li>${i}</li>`).join("")}</ul>
+          </div>
+        `).join("")}
+      `,
+      toolkit: () => `
+        <div class="section">
+          <h3>Toolkit</h3>
+          <div class="muted small">Platforms, tools, and certifications</div>
+        </div>
+        <div class="grid2">
+          ${Object.entries(TOOLKIT).filter(([k]) => k !== "Certifications").map(([k, items]) => `
+            <div class="section">
+              <h3>${k}</h3>
+              <div class="badgeRow">
+                ${items.map(x => `<span class="badge">${x}</span>`).join("")}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+        <div class="section">
+          <h3>Certifications</h3>
+          <ul class="small">${TOOLKIT.Certifications.map(c => `<li>${c}</li>`).join("")}</ul>
+        </div>
+      `,
+      testimonials: () => `
+        <div class="section">
+          <h3>Proof / Testimonials</h3>
+          <div class="muted small">Character + competence. References available.</div>
+        </div>
+        ${TESTIMONIALS.map(t => `
+          <div class="section">
+            <div class="small">“${escapeHtml(t.replace(/^“|”$/g,""))}”</div>
+          </div>
+        `).join("")}
+      `,
+      contact: () => `
+        <div class="section">
+          <h3>Contact</h3>
+          <div class="small">
+            <div><b>Email:</b> ${PROFILE.emails.map(e => `<a href="mailto:${e}">${e}</a>`).join(" • ")}</div>
+            <div><b>Phone:</b> ${PROFILE.phones.join(" • ")}</div>
+            <div><b>LinkedIn:</b> <a href="${PROFILE.linkedin}" target="_blank" rel="noopener">${PROFILE.linkedin}</a></div>
+            <div><b>Website:</b> <a href="${PROFILE.website}" target="_blank" rel="noopener">${PROFILE.website}</a></div>
+          </div>
+
+          <div class="callout small">
+            <b>Best first message:</b> “Here’s what I’m building, here’s what’s messy, and here’s what I need off my plate.”
+          </div>
+
+          <div class="ctaRow">
+            <button class="cta" onclick="window.location.href='mailto:${PROFILE.emails[0]}?subject='+encodeURIComponent('VA/EA + Systems Support — Quick Intro')">
+              ✉️ Email me
+            </button>
+            <button class="cta" onclick="window.open('${PROFILE.linkedin}','_blank')">
+              🔗 LinkedIn
+            </button>
+            <button class="cta" onclick="copyText('${PROFILE.emails[0]}')">
+              📋 Copy email
+            </button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>What I can take over immediately (examples)</h3>
+          <ul class="small">
+            <li>Inbox triage + follow-ups + “keep the thread alive” coordination</li>
+            <li>Calendar management + meeting prep + action item tracking</li>
+            <li>Documentation: SOPs, checklists, onboarding pages</li>
+            <li>CRM cleanup: pipeline stages, tags, naming conventions, lead routing rules</li>
+            <li>Automation: simple workflows that prevent human error</li>
+            <li>Reporting: weekly metrics pack, dashboards, and QA loops</li>
+          </ul>
+        </div>
+      `,
+      downloads: () => `
+        <div class="section">
+          <h3>Downloads</h3>
+          <div class="small muted">This is where you’ll link your PDF resume, portfolio case studies, and SOP samples.</div>
+          <div class="hr"></div>
+          <div class="small">
+            <ul>
+              <li><b>Resume (PDF):</b> <span class="muted">Add your hosted link here</span></li>
+              <li><b>Case Study — CRM Rebuild:</b> <span class="muted">Add link</span></li>
+              <li><b>SOP Samples:</b> <span class="muted">Add link</span></li>
+              <li><b>Automation Snapshot/Blueprint:</b> <span class="muted">Add link</span></li>
+            </ul>
+          </div>
+
+          <div class="callout small">
+            <b>Pro tip:</b> Keep downloads short and high-signal. Founders skim. Give them proof fast.
+          </div>
+        </div>
+      `
+    };
+
+    // ====== Modal system ======
+    const overlay = document.getElementById("overlay");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+    const modalClose = document.getElementById("modalClose");
+
+    let sfxOn = true;
+
+    function openModal(key){
+      if(!templates[key]) return;
+      modalTitle.textContent = key;
+      modalBody.innerHTML = templates[key]();
+      overlay.classList.add("open");
+      playClick();
+    }
+    function closeModal(){
+      overlay.classList.remove("open");
+      playClick();
+    }
+
+    // Close when clicking outside modal
+    overlay.addEventListener("click", (e) => {
+      if(e.target === overlay) closeModal();
+    });
+    modalClose.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && overlay.classList.contains("open")) closeModal();
+    });
+
+    document.querySelectorAll("[data-modal]").forEach(btn => {
+      btn.addEventListener("click", () => openModal(btn.dataset.modal));
+    });
+
+    // ====== Dark mode ======
+    const btnDark = document.getElementById("btnDark");
+    const savedTheme = localStorage.getItem("theme");
+    if(savedTheme === "dark") document.documentElement.classList.add("dark");
+
+    btnDark.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
+      playClick();
+    });
+
+    // ====== SFX toggle ======
+    const btnSfx = document.getElementById("btnSfx");
+    const sfxIcon = document.getElementById("sfxIcon");
+    const savedSfx = localStorage.getItem("sfx");
+    if(savedSfx === "off"){ sfxOn = false; sfxIcon.textContent = "🔇"; }
+
+    btnSfx.addEventListener("click", () => {
+      sfxOn = !sfxOn;
+      localStorage.setItem("sfx", sfxOn ? "on" : "off");
+      sfxIcon.textContent = sfxOn ? "🔊" : "🔇";
+      playClick();
+    });
+
+    // Simple click sound via WebAudio (no external files)
+    function playClick(){
+      if(!sfxOn) return;
+      try{
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = "square";
+        o.frequency.value = 620;
+        g.gain.value = 0.02;
+        o.connect(g); g.connect(ctx.destination);
+        o.start();
+        o.stop(ctx.currentTime + 0.03);
+        setTimeout(() => ctx.close(), 60);
+      }catch(_){}
+    }
+
+    // ====== Dock buttons ======
+    document.getElementById("dockEmail").addEventListener("click", () => {
+      window.location.href = `mailto:${PROFILE.emails[0]}?subject=` + encodeURIComponent("VA/EA + Systems Support — Quick Intro");
+      playClick();
+    });
+    document.getElementById("dockLinkedIn").addEventListener("click", () => {
+      window.open(PROFILE.linkedin, "_blank");
+      playClick();
+    });
+    document.getElementById("dockWebsite").addEventListener("click", () => {
+      window.open(PROFILE.website, "_blank");
+      playClick();
+    });
+    document.getElementById("dockCopy").addEventListener("click", () => {
+      const blob = `${PROFILE.name}\n${PROFILE.location}\n${PROFILE.emails.join(" • ")}\n${PROFILE.phones.join(" • ")}\n${PROFILE.linkedin}\n${PROFILE.website}`;
+      copyText(blob);
+      toast("Copied contact block ✅");
+      playClick();
+    });
+
+    // ====== Utils ======
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    function copyText(txt){
+      navigator.clipboard.writeText(txt).then(() => toast("Copied ✅")).catch(()=> toast("Copy failed (browser blocked)"));
+    }
+
+    function escapeHtml(str){
+      return str.replace(/[&<>"']/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+    }
+
+    // tiny toast
+    let toastTimer = null;
+    function toast(msg){
+      let el = document.getElementById("toast");
+      if(!el){
+        el = document.createElement("div");
+        el.id = "toast";
+        el.style.position = "fixed";
+        el.style.left = "50%";
+        el.style.bottom = "120px";
+        el.style.transform = "translateX(-50%)";
+        el.style.padding = "10px 12px";
+        el.style.borderRadius = "14px";
+        el.style.border = "1px solid var(--border)";
+        el.style.background = "rgba(255,255,255,.80)";
+        el.style.backdropFilter = "blur(8px)";
+        el.style.boxShadow = "var(--shadow)";
+        el.style.fontFamily = "var(--mono)";
+        el.style.fontSize = "12px";
+        el.style.color = "var(--text)";
+        el.style.zIndex = "200";
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = "1";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { el.style.opacity = "0"; }, 1400);
+    }
+  </script>
+</body>
+</html>
