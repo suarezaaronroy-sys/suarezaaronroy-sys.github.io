@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aaron Suarez · floating windows (fixed)</title>
+  <title>Aaron Suarez · Systems Support for Founders</title>
+  <meta name="description" content="I help founders and growing teams turn messy operations into clear workflows, documentation, CRM structure, and automation." />
   <style>
     * {
       margin: 0;
@@ -24,6 +25,15 @@
       --shadow: 0 20px 32px -12px rgba(0,35,60,0.3);
       --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+      /* 8-bit mode variables */
+      --pixel-bg: #1a332b;
+      --pixel-surface: #2d4a3c;
+      --pixel-card: #3c5e4a;
+      --pixel-text: #b3ffb3;
+      --pixel-border: #7fb285;
+      --pixel-blue: #7ff0ff;
+      --pixel-green: #a3ff9a;
     }
 
     .dark {
@@ -39,17 +49,85 @@
       --shadow: 0 24px 44px -16px #010413;
     }
 
+    .pixel-mode {
+      --bg: var(--pixel-bg);
+      --surface: var(--pixel-surface);
+      --card: var(--pixel-card);
+      --text: var(--pixel-text);
+      --text-light: #ccffcc;
+      --muted: #99cc99;
+      --border: var(--pixel-border);
+      --blue: var(--pixel-blue);
+      --green: var(--pixel-green);
+      --shadow: 8px 8px 0px #0f241e;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    .pixel-mode body,
+    body.pixel-mode {
+      font-family: 'Press Start 2P', var(--font-mono), monospace;
+    }
+
+    .pixel-mode .btn,
+    .pixel-mode .location-pill,
+    .pixel-mode .tag,
+    .pixel-mode .tile,
+    .pixel-mode .window,
+    .pixel-mode .footer-dock,
+    .pixel-mode .dock-item {
+      box-shadow: 4px 4px 0px #0f241e;
+      border-width: 2px;
+      image-rendering: pixelated;
+    }
+
+    .pixel-mode .icon-circle {
+      box-shadow: 4px 4px 0px #0f241e;
+      border-width: 3px;
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
       min-height: 100vh;
       padding: 1rem 1.2rem 6rem;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, color 0.2s, font-family 0.2s;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* top bar */
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      transition: border-bottom 0.1s;
+    }
+
+    a:hover {
+      border-bottom: 1px solid var(--blue);
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .inline-note {
+      margin-top: 1rem;
+      text-align: center;
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
     .top-row {
       display: flex;
       justify-content: space-between;
@@ -59,7 +137,10 @@
       margin-bottom: 2.5rem;
     }
 
-    .action-group { display: flex; gap: 0.6rem; }
+    .action-group {
+      display: flex;
+      gap: 0.6rem;
+    }
 
     .btn {
       background: var(--card);
@@ -78,7 +159,10 @@
       font-family: var(--font-mono);
     }
 
-    .btn:hover { transform: translateY(-2px); border-color: var(--blue); }
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+    }
 
     .location-pill {
       background: var(--card);
@@ -88,49 +172,126 @@
       font-size: 0.85rem;
       font-family: var(--font-mono);
       color: var(--text-light);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
     }
 
-    /* hero & tiles */
-    .hero { text-align: center; margin: 1rem 0 2rem; }
-    .hero h1 { font-size: clamp(2.6rem, 7vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; }
-    .hero h1 span { color: var(--blue); border-bottom: 2px dashed var(--green); }
-    .hero-description {
-      max-width: 780px; margin: 1.4rem auto; background: var(--card);
-      border: 1px solid var(--border); border-radius: 42px; padding: 1.2rem 2rem;
-      font-size: 1.2rem; color: var(--text-light); box-shadow: var(--shadow);
+    .hero {
+      text-align: center;
+      margin: 1rem 0 2rem;
     }
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin: 1.8rem 0; }
-    .tag { background: var(--card); border: 1px solid var(--border); padding: 0.5rem 1.3rem; border-radius: 40px; font-size: 0.9rem; }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+      border-bottom: 2px dashed var(--green);
+      padding-bottom: 2px;
+    }
+
+    .hero-description {
+      max-width: 860px;
+      margin: 1.4rem auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 42px;
+      padding: 1.2rem 2rem;
+      font-size: 1.15rem;
+      color: var(--text-light);
+      box-shadow: var(--shadow);
+      line-height: 1.55;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin: 1.8rem 0;
+    }
+
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.3rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      transition: 0.1s;
+    }
+
+    .tag:hover {
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
 
     .desktop-panel {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 40px;
-      padding: 2rem 1.5rem; box-shadow: var(--shadow); margin: 2rem 0 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow);
+      margin: 2rem 0 2rem;
     }
 
     .icon-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 1.4rem; justify-items: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 1.4rem;
+      justify-items: center;
     }
 
     .tile {
-      background: transparent; border: none; cursor: pointer; border-radius: 28px;
-      padding: 0.6rem 0.4rem; transition: 0.15s; color: inherit; max-width: 130px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      border-radius: 28px;
+      padding: 0.6rem 0.4rem;
+      transition: 0.15s;
+      color: inherit;
+      max-width: 130px;
     }
-    .tile:hover { background: var(--card); transform: translateY(-5px); }
-    .icon-circle {
-      width: 90px; height: 90px; background: var(--card); border: 2px solid var(--border);
-      border-radius: 30px; display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; margin: 0 auto 0.6rem; box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-    .tile-label { font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; color: var(--muted); }
 
-    /* floating windows (fixed implementation) */
+    .tile:hover {
+      background: var(--card);
+      transform: translateY(-5px);
+    }
+
+    .icon-circle {
+      width: 90px;
+      height: 90px;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin: 0 auto 0.6rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .tile:hover .icon-circle {
+      border-color: var(--blue);
+      transform: scale(1.02);
+    }
+
+    .tile-label {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.2;
+    }
+
     #window-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       z-index: 1000;
     }
@@ -142,15 +303,16 @@
       border: 1px solid var(--border);
       border-radius: 24px;
       box-shadow: var(--shadow), 0 20px 40px rgba(0,0,0,0.25);
-      min-width: 300px;
-      min-height: 200px;
-      width: 480px;
+      min-width: 320px;
+      min-height: 220px;
+      width: 540px;
       display: flex;
       flex-direction: column;
       resize: both;
       overflow: hidden;
       backdrop-filter: blur(4px);
-      transition: box-shadow 0.1s;
+      transition: box-shadow 0.1s, opacity 0.15s;
+      z-index: 1001;
     }
 
     .window-header {
@@ -160,12 +322,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      cursor: move;
+      cursor: grab;
       border-radius: 24px 24px 0 0;
       font-family: var(--font-mono);
       font-weight: 600;
       color: var(--blue);
       user-select: none;
+    }
+
+    .window-header:active {
+      cursor: grabbing;
     }
 
     .window-controls {
@@ -192,6 +358,7 @@
     .win-btn:hover {
       background: var(--bg);
       border-color: var(--blue);
+      transform: scale(1.05);
     }
 
     .window-body {
@@ -199,51 +366,265 @@
       overflow-y: auto;
       background: var(--surface);
       border-radius: 0 0 24px 24px;
-      max-height: 70vh;
+      max-height: 72vh;
       color: var(--text-light);
       font-size: 0.95rem;
       user-select: text;
       flex: 1;
+      line-height: 1.55;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) var(--surface);
     }
 
-    /* window content styling */
+    .window-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .window-body::-webkit-scrollbar-track {
+      background: var(--surface);
+      border-radius: 0 0 24px 0;
+    }
+
+    .window-body::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
     .window-body .section {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 14px 16px;
       margin-bottom: 12px;
+      transition: box-shadow 0.1s;
     }
-    .window-body h3 { font-size: 1.1rem; color: var(--blue); margin-bottom: 6px; }
-    .badge-row { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0; }
-    .badge { background: var(--bg); border: 1px solid var(--border); padding: 4px 12px; border-radius: 30px; font-size: 0.75rem; }
-    .callout { background: var(--bg); border-left: 4px solid var(--green); padding: 10px 12px; border-radius: 14px; margin: 8px 0; }
 
-    /* dock and footer */
+    .window-body .section:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .window-body h3 {
+      font-size: 1.08rem;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .badge {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      transition: 0.1s;
+    }
+
+    .badge:hover {
+      border-color: var(--blue);
+    }
+
+    .callout {
+      background: var(--bg);
+      border-left: 4px solid var(--green);
+      padding: 10px 12px;
+      border-radius: 14px;
+      margin: 8px 0;
+      font-style: normal;
+    }
+
+    .result-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: 8px;
+    }
+
+    @keyframes windowAppear {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .window-new {
+      animation: windowAppear 0.2s ease-out;
+    }
+
     .footer-dock {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 0.7rem; background: var(--card); border: 1px solid var(--border);
-      padding: 0.7rem 1.4rem; border-radius: 80px; backdrop-filter: blur(10px);
-      z-index: 2000; box-shadow: var(--shadow);
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.7rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.7rem 1.4rem;
+      border-radius: 80px;
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      box-shadow: var(--shadow);
     }
+
     .dock-item {
-      width: 48px; height: 48px; border-radius: 30px; border: 1px solid var(--border);
-      background: var(--surface); color: var(--text); font-size: 1.5rem;
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.15s;
     }
-    .dock-item:hover { background: var(--bg); border-color: var(--blue); }
+
+    .dock-item:hover {
+      background: var(--bg);
+      border-color: var(--blue);
+      transform: translateY(-3px);
+    }
+
     .copyright {
-      position: fixed; bottom: 85px; left: 50%; transform: translateX(-50%);
-      font-size: 0.75rem; font-family: var(--font-mono); color: var(--muted);
-      background: var(--card); padding: 0.2rem 1rem; border-radius: 40px;
-      border: 1px solid var(--border); z-index: 1999;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      background: transparent;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      border: none;
+      z-index: 1999;
+      opacity: 0.7;
+      text-align: center;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: opacity 0.2s;
     }
-    #toast { position: fixed; left: 50%; bottom: 140px; transform: translateX(-50%);
-      background: var(--card); border: 1px solid var(--border); padding: 0.6rem 1.5rem;
-      border-radius: 60px; font-family: var(--font-mono); z-index: 3000;
-      transition: opacity 0.2s; opacity: 0; pointer-events: none;
+
+    .copyright:hover {
+      opacity: 1;
+    }
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 140px;
+      transform: translateX(-50%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      font-family: var(--font-mono);
+      z-index: 3000;
+      transition: opacity 0.2s;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+
+    #gameCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 500;
+      display: none;
+    }
+
+    .pixel-mode #gameCanvas {
+      display: block;
+    }
+
+    #gameScore {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-family: 'Press Start 2P', var(--font-mono), monospace;
+      font-size: 1rem;
+      color: var(--text);
+      z-index: 2500;
+      box-shadow: var(--shadow);
+      display: none;
+      image-rendering: pixelated;
+    }
+
+    .pixel-mode #gameScore {
+      display: block;
+      box-shadow: 4px 4px 0px #0f241e;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 0.8rem 0.8rem 5rem;
+      }
+
+      .window {
+        width: 92% !important;
+        left: 4% !important;
+        min-width: 280px;
+      }
+
+      .footer-dock {
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+        bottom: 30px;
+      }
+
+      .dock-item {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .copyright {
+        white-space: normal;
+        width: 90%;
+        bottom: 5px;
+        font-size: 0.6rem;
+        line-height: 1.4;
+      }
+
+      .hero-description {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+      }
+
+      .icon-circle {
+        width: 75px;
+        height: 75px;
+        font-size: 2.5rem;
+      }
+
+      .tile-label {
+        font-size: 0.7rem;
+      }
+
+      #gameScore {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div style="max-width:1200px; margin:0 auto;">
@@ -252,124 +633,558 @@
         <button class="btn" id="darkToggle">🌓 <span>dark</span></button>
         <button class="btn" id="sfxToggle">🔊 <span>sfx</span></button>
       </div>
-      <div class="location-pill">📍 Valencia City, PH · remote · systems-first</div>
+      <div class="location-pill">📍 Valencia City, PH · remote-first · systems support</div>
     </div>
 
     <div class="hero">
       <h1>hi — i’m <span>Aaron</span>.</h1>
       <div class="hero-description">
-        <b>Systems VA/EA & Ops architect</b> — turn founder chaos into workflows, docs, automation.
+        <b>Systems support for founders and growing teams.</b><br />
+        I turn messy operations into <b>clear workflows, documentation, CRM structure, and automation</b> so work keeps moving without everything flowing back to you.
       </div>
       <div class="tag-cloud">
-        <span class="tag">CRM architecture</span><span class="tag">SOPs & training</span>
-        <span class="tag">automation logic</span><span class="tag">calm under chaos</span>
+        <span class="tag">founder support</span>
+        <span class="tag">ops cleanup</span>
+        <span class="tag">CRM systems</span>
+        <span class="tag">documentation</span>
+        <span class="tag">workflow automation</span>
+        <span class="tag">handoff clarity</span>
       </div>
     </div>
 
     <div class="desktop-panel">
       <div class="icon-grid">
         <button class="tile" data-window="about"><div class="icon-circle">👤</div><div class="tile-label">about</div></button>
-        <button class="tile" data-window="experience"><div class="icon-circle">🧭</div><div class="tile-label">exp</div></button>
+        <button class="tile" data-window="experience"><div class="icon-circle">🧭</div><div class="tile-label">selected work</div></button>
         <button class="tile" data-window="projects"><div class="icon-circle">🧱</div><div class="tile-label">systems</div></button>
-        <button class="tile" data-window="skills"><div class="icon-circle">🛠️</div><div class="tile-label">skills</div></button>
+        <button class="tile" data-window="skills"><div class="icon-circle">🛠️</div><div class="tile-label">capabilities</div></button>
         <button class="tile" data-window="toolkit"><div class="icon-circle">🧰</div><div class="tile-label">toolkit</div></button>
         <button class="tile" data-window="testimonials"><div class="icon-circle">💬</div><div class="tile-label">proof</div></button>
         <button class="tile" data-window="contact"><div class="icon-circle">📨</div><div class="tile-label">contact</div></button>
-        <button class="tile" data-window="downloads"><div class="icon-circle">⬇️</div><div class="tile-label">downloads</div></button>
+        <button class="tile" data-window="downloads"><div class="icon-circle">⬇️</div><div class="tile-label">resources</div></button>
       </div>
-      <div style="margin-top: 1.5rem; text-align: center; opacity:0.8;">✨ click a tile — windows are draggable, resizable, min/max/close</div>
+      <div class="inline-note">
+        Open a window to see how I reduce operational drag and make work easier to run.
+      </div>
     </div>
   </div>
 
   <div class="footer-dock">
-    <button class="dock-item" id="dockEmail">✉️</button>
-    <button class="dock-item" id="dockLinkedIn">🔗</button>
-    <button class="dock-item" id="dockWebsite">🌐</button>
-    <button class="dock-item" id="dockCopy">📋</button>
+    <button class="dock-item" id="dockEmail" title="Email">✉️</button>
+    <button class="dock-item" id="dockLinkedIn" title="LinkedIn">🔗</button>
+    <button class="dock-item" id="dockWebsite" title="Website / Writing">🌐</button>
+    <button class="dock-item" id="dockCopy" title="Copy email">📋</button>
   </div>
-  <div class="copyright">© <span id="yr"></span> Aaron Suarez — floating windows (fixed)</div>
+
+  <div class="copyright">© <span id="yr"></span> Aaron Suarez · systems support for founders</div>
 
   <div id="window-container"></div>
   <div id="toast">copied</div>
 
+  <canvas id="gameCanvas"></canvas>
+  <div id="gameScore">🎮 0</div>
+
   <script>
     (function() {
-      // ---------- PROFILE DATA ----------
       const PROFILE = {
         name: "Aaron Suarez",
         location: "Valencia City, PH",
         phones: ["+63-977-081-3009", "+63-991-477-5300"],
         emails: ["suarezaaronroy@gmail.com", "asmultitaskcollective@gmail.com"],
         linkedin: "https://linkedin.com/in/suarez-aaronroy",
-        website: "https://asmultitask.wordpress.com"
+        website: "https://asmultitask.wordpress.com",
+        resumeLink: "https://asmultitask.wordpress.com",
+        caseStudyLink: "https://asmultitask.wordpress.com",
+        sopSampleLink: "https://asmultitask.wordpress.com",
+        notesLink: "https://asmultitask.wordpress.com"
       };
-      const SUMMARY = ["Systems-minded VA/EA + operations builder with 8+ years across support, documentation, and workflow design.","I translate vague goals into concrete steps: calendars, comms, SOPs, CRM hygiene, automation.","Strength: I reduce mental load. You get clarity, fewer repeated mistakes."];
-      const HIGHLIGHTS = [
-        { title: "Estimator Form Automation (98% compliance)", detail: "Built SMS + webform fallback logic; escalations trigger if missing." },
-        { title: "CRM & Workflow Rebuild (ADGG)", detail: "Migrated Tradify → Business Pilot; redesigned lead handling." },
-        { title: "Risk & Ops Stabilization", detail: "Established risk procedures; prevented recurring payment losses." },
-        { title: "Training Library & Delegation", detail: "Handover SOPs, tracking sheets, role guides." },
-        { title: "Dashboards & Accountability", detail: "Looker Studio dashboards + weekly reporting packs." }
-      ];
-      const EXPERIENCE = [
-        { where: "AllayPay (US) — Operations Specialist", when: "Oct 2025 – Present", bullets: ["Reverse-engineered undocumented workflows across 10+ processors.","Handled complex operational cases.","Internal 'logic interpreter'.","Root-cause analysis to reduce repeat errors."] },
-        { where: "Orange Rentals (UK) — Marketing Lead", when: "May 2025 – Sep 2025", bullets: ["Built full-stack acquisition engine.","Integrated automation, dashboards.","Worked directly with founder."] },
-        { where: "Express Sunrooms (US) — Tech Lead | CRM & EA", when: "Mar 2025 – Sep 2025", bullets: ["EA support to owner: calendar, comms.","Company-wide CRM deployment.","Estimator-side SMS fallback; 98% data capture."] },
-        { where: "ADGG Ltd. (UK) — Ops Admin | EA", when: "Nov 2024 – May 2025", bullets: ["Direct EA support to CEO: calendar, scheduling.","Migrated CRM platforms.","SOP library, training guides."] }
-      ];
-      const SKILLS = {
-        "Founder Support": ["Inbox + comms triage","Calendar coordination","Project systems (ClickUp/Notion)","SOPs","Escalation paths"],
-        "Systems & Automation": ["CRM architecture (GHL, SF, BP)","Workflow automation","Data hygiene","Dashboards"],
-        "Support Ops": ["Root-cause analysis","Crisis navigation","Training translation","QA thinking"]
-      };
-      const TOOLKIT = {
-        "CRMs": ["GoHighLevel","Salesforce","Business Pilot","Keap"],
-        "Automation": ["Zapier","Pabbly","GHL Workflows"],
-        "Docs": ["Google Docs","ClickUp","Notion","Loom"],
-        "Certifications": ["GHL Training 2025","Meta Digital Associate 2025","Certified RE VA 2024","Infusionsoft by Keap 2019"]
-      };
-      const TESTIMONIALS = [
-        "“Out-of-the-box approach, technical prowess, kind presence.” — Amber L.",
-        "“Incredibly self-sufficient & trustworthy.” — Edilbert",
-        "“Takes ownership, uncovers solutions others miss.” — Sales Agent",
-        "“Go-to person for non-technical staff.” — Joan P.",
-        "“Initiative, ownership, process logic, systems thinking.” — Ashley M."
+
+      const SUMMARY = [
+        "I help founders and growing teams turn fragmented operations into systems people can actually use.",
+        "That usually means clarifying workflows, tightening CRM structure, documenting how work should move, and adding automation where it removes friction instead of adding more of it.",
+        "My best work happens when a business is growing faster than its internal structure and someone needs to bring order without slowing momentum."
       ];
 
-      // ---------- TEMPLATES ----------
+      const OUTCOMES = [
+        "Less founder bottlenecking",
+        "Clearer ownership and handoffs",
+        "Cleaner CRM logic and follow-through",
+        "Less dependence on memory and improvisation",
+        "Documentation and workflows that hold up under growth"
+      ];
+
+      const HIGHLIGHTS = [
+        {
+          title: "HelpJuice Knowledge System Architecture",
+          problem: "A payments operations environment was relying too heavily on undocumented workflows, senior operator memory, and fragmented case handling logic.",
+          system: "Designed and structured a centralized HelpJuice knowledge system aligned to real CRM case logic, including taxonomy, workflow mapping, SOP decision trees, and knowledge governance for edge-case updates.",
+          result: "Reduced dependence on tribal knowledge, improved operational consistency, and created a scalable documentation backbone for Risk, ACH, Descriptor, Deployment, and Billing cases."
+        },
+        {
+          title: "Estimator Workflow Automation",
+          problem: "Field-side appointment data was at risk of being lost or delayed because estimators did not always have direct CRM access.",
+          system: "Engineered SMS-linked fallback forms, escalation paths for missing submissions, and direct sync logic into CRM records.",
+          result: "Reached roughly 98% data capture compliance and created a more reliable handoff between field staff and office operations."
+        },
+        {
+          title: "Risk Workflow Establishment",
+          problem: "Payment anomalies and batching issues were creating repeated operational risk and unnecessary financial exposure.",
+          system: "Helped establish formalized risk-handling procedures, escalation logic, and monitoring processes for recurring problem patterns.",
+          result: "Prevented recurring financial losses that had been reaching into the tens of thousands per month."
+        },
+        {
+          title: "High-Complexity Workflow Reconstruction",
+          problem: "Support teams were operating inside messy, high-volume environments with undocumented processor logic and inconsistent ticket handling.",
+          system: "Reverse-engineered workflows across 10+ processors and translated fragmented guidance into structured escalation paths, CRM resolution logic, and standardized procedures.",
+          result: "Improved ticket handling consistency, reduced repeat escalations, and made operational complexity easier to execute under pressure."
+        },
+        {
+          title: "CRM Infrastructure for Service Operations",
+          problem: "A growing service business needed better visibility, handoffs, and execution discipline across marketing, sales, and operations.",
+          system: "Built a GoHighLevel architecture tracking 150+ operational data fields, plus reporting systems, naming conventions, permissions logic, and escalation structures.",
+          result: "Created stronger cross-department visibility and more dependable process flow from lead handling through execution."
+        }
+      ];
+
+      const EXPERIENCE = [
+        {
+          where: "Operations specialist, CRM logic, and knowledge systems architecture",
+          context: "Worked inside a high-volume payments operations environment where recurring escalations, fragmented guidance, and undocumented workflows created operational drag.",
+          bullets: [
+            "Architected a centralized knowledge system aligned with CRM case logic and real operational case types.",
+            "Reverse-engineered workflows across 10+ processors and converted fragmented guidance into structured procedures.",
+            "Built escalation logic for risk, ACH issues, descriptors, funding, and deployment scenarios.",
+            "Stabilized recurring operational failures by identifying root causes inside legacy workflows."
+          ]
+        },
+        {
+          where: "CRM architecture and executive support for service operations",
+          context: "Supported leadership while designing internal systems to improve operational visibility, reporting discipline, and field-to-office handoffs.",
+          bullets: [
+            "Built GoHighLevel infrastructure tracking 150+ operational data points.",
+            "Designed estimator-side automation to improve field data capture and reduce missed reporting.",
+            "Created cross-department escalation structures and reporting systems.",
+            "Coordinated execution between leadership, sales teams, and field staff."
+          ]
+        },
+        {
+          where: "Operations administration and CRM migration support",
+          context: "Supported a CEO during platform migration and operational restructuring by rebuilding process flow, documentation, and job management logic.",
+          bullets: [
+            "Migrated CRM infrastructure from Tradify to Business Pilot.",
+            "Rebuilt quoting systems, project workflows, and job folder structures.",
+            "Authored SOP libraries covering operations, compliance, and staff training.",
+            "Supported procurement, scheduling, and client communication as part of day-to-day execution."
+          ]
+        },
+        {
+          where: "Payments support leadership and risk operations",
+          context: "Worked in merchant-facing payments operations environments requiring technical troubleshooting, staff guidance, and risk-aware process improvement.",
+          bullets: [
+            "Configured merchant accounts, POS systems, and surcharge programs across varied client needs.",
+            "Co-developed internal risk handling procedures and operational improvement initiatives.",
+            "Delivered staff and merchant training programs tied to execution quality.",
+            "Helped reduce payment risk by identifying recurring failure patterns and operational weak points."
+          ]
+        }
+      ];
+
+      const META_SKILLS = [
+        "Systems thinking",
+        "Operational judgment",
+        "Adaptability across teams and tools",
+        "Problem anticipation",
+        "Stakeholder alignment",
+        "Calm under pressure"
+      ];
+
+      const SKILLS = {
+        "Founder Support & Operational Relief": [
+          "Inbox and communication triage",
+          "Calendar coordination and follow-through",
+          "Turning vague requests into structured execution",
+          "Reducing founder mental load through systemized support"
+        ],
+        "Systems Architecture & Automation": [
+          "CRM architecture and pipeline design",
+          "Workflow automation and fallback logic",
+          "Operational mapping, escalation paths, and resolution logic",
+          "Connecting documentation, CRM, and process execution into one system"
+        ],
+        "Knowledge Systems & Documentation": [
+          "SOP frameworks and operational playbooks",
+          "Decision trees and searchable knowledge base structure",
+          "Knowledge governance for evolving edge cases",
+          "Reducing reliance on tribal knowledge"
+        ],
+        "Operational Troubleshooting": [
+          "Root-cause analysis",
+          "Diagnosing workflow failures across tools and teams",
+          "Bridging technical and non-technical execution",
+          "Building systems that remain usable under pressure"
+        ]
+      };
+
+      const TOOLKIT = {
+        "CRM & Ops Platforms": [
+          "GoHighLevel",
+          "Salesforce",
+          "Business Pilot",
+          "Tradify",
+          "Keap"
+        ],
+        "Automation": [
+          "Zapier",
+          "Pabbly Connect",
+          "GHL Workflows"
+        ],
+        "Documentation & Coordination": [
+          "Google Docs",
+          "Google Sheets",
+          "ClickUp",
+          "Notion",
+          "HelpJuice",
+          "Loom"
+        ],
+        "Support & Reporting": [
+          "Zendesk",
+          "RingCentral",
+          "Looker Studio",
+          "GA4"
+        ],
+        "Selected Certifications": [
+          "GoHighLevel Training – 2025",
+          "Meta Digital Marketing Associate – 2025",
+          "Certified Real Estate VA – 2024",
+          "Certified Social Media Marketing – 2024",
+          "Zendesk Support Training – 2024",
+          "Business Pilot & Tradify Training – 2024",
+          "Infusionsoft by Keap Training – 2019",
+          "PAX Payment Systems – 2019"
+        ]
+      };
+
+      const TESTIMONIALS = [
+        "“You have an out-of-the-box approach and a rare combination of technical depth with a thoughtful, grounded presence.” — Business Owner",
+        "“Incredibly self-sufficient and trustworthy. I feel at ease knowing operations are in good hands.” — Team Lead",
+        "“He takes ownership of issues and uncovers solutions other people miss.” — Sales / Operations Partner",
+        "“He’s the go-to person when non-technical staff need things explained clearly.” — Colleague",
+        "“Aaron consistently demonstrated initiative, ownership, and a deep understanding of process logic and systems thinking. His ability to turn vague business goals into actionable workflows made him an invaluable asset.” — Ashley Mackenzie, Alan Dobbie Glass and Glazing Ltd."
+      ];
+
+      const WINDOW_TITLES = {
+        about: "About",
+        experience: "Selected Work",
+        projects: "Systems",
+        skills: "Capabilities",
+        toolkit: "Toolkit",
+        testimonials: "Proof",
+        contact: "Contact",
+        downloads: "Resources"
+      };
+
       function getTemplate(name) {
         const T = {
-          about: () => `<div class="section"><h3>Who I am</h3><div class="badge-row"><span class="badge">VA/EA</span><span class="badge">Ops</span><span class="badge">CRM</span></div><div class="callout">${SUMMARY.map(s=>'• '+s).join('<br>')}</div></div><div class="section"><h3>What you get</h3><ul><li>Reduced mental load</li><li>Repeatable operations</li><li>Better systems</li><li>Ownership</li></ul></div>`,
-          experience: () => `<div class="section"><h3>Experience</h3></div>${EXPERIENCE.map(e=>`<div class="section"><div><b>${e.where}</b> <span class="muted">${e.when}</span></div><ul>${e.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>`).join('')}`,
-          projects: () => `<div class="section"><h3>Systems I build</h3></div>${HIGHLIGHTS.map(h=>`<div class="section"><b>${h.title}</b><p>${h.detail}</p></div>`).join('')}`,
-          skills: () => `<div class="section"><h3>Skills</h3></div>${Object.entries(SKILLS).map(([k,v])=>`<div class="section"><h3>${k}</h3><ul>${v.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}`,
-          toolkit: () => `<div class="section"><h3>Toolkit & certs</h3></div>${Object.entries(TOOLKIT).map(([k,v])=>`<div class="section"><h3>${k}</h3><div class="badge-row">${v.map(i=>`<span class="badge">${i}</span>`).join('')}</div></div>`).join('')}`,
-          testimonials: () => `<div class="section"><h3>Proof</h3></div>${TESTIMONIALS.map(t=>`<div class="section">${t}</div>`).join('')}`,
-          contact: () => `<div class="section"><h3>Contact</h3><p>📧 ${PROFILE.emails[0]}<br>📞 ${PROFILE.phones[0]}<br>🔗 <a href="${PROFILE.linkedin}" target="_blank">LinkedIn</a></p><div class="callout">best message: “what's messy, what you need off your plate”</div></div>`,
-          downloads: () => `<div class="section"><h3>Downloads</h3><p>Resume PDF (link)<br>SOP samples (link)<br>Case study (link)</p></div>`
+          about: () => `
+            <div class="section">
+              <h3>Who I help</h3>
+              <div class="badge-row">
+                <span class="badge">founders</span>
+                <span class="badge">small teams</span>
+                <span class="badge">service businesses</span>
+                <span class="badge">ops-heavy environments</span>
+              </div>
+              <div class="callout">
+                If work keeps slipping through the cracks, people depend too much on memory, or too much still routes back to you, that’s usually where I help.
+              </div>
+            </div>
+
+            <div class="section">
+              <h3>What I do</h3>
+              <p>${SUMMARY.join(" ")}</p>
+            </div>
+
+            <div class="section">
+              <h3>How I work</h3>
+              <div class="badge-row">
+                ${META_SKILLS.map(s => `<span class="badge">${s}</span>`).join("")}
+              </div>
+              <p class="muted">Think of me as an operations-minded support partner: part systems builder, part workflow translator, part pressure-release valve.</p>
+            </div>
+
+            <div class="section">
+              <h3>What changes when I’m involved</h3>
+              <ul>
+                ${OUTCOMES.map(item => `<li>${item}</li>`).join("")}
+              </ul>
+            </div>
+          `,
+
+          experience: () => `
+            <div class="section">
+              <h3>Selected work</h3>
+              <p class="muted">A cross-section of the operational environments I’ve worked in and the kinds of system problems I help solve.</p>
+            </div>
+
+            ${EXPERIENCE.map(e => `
+              <div class="section">
+                <h3>${e.where}</h3>
+                <p>${e.context}</p>
+                <ul>
+                  ${e.bullets.map(b => `<li>${b}</li>`).join("")}
+                </ul>
+              </div>
+            `).join("")}
+          `,
+
+          projects: () => `
+            <div class="section">
+              <h3>Proof through systems</h3>
+              <p class="muted">Not just tasks completed — systems designed to reduce confusion, improve execution, and hold up under scale.</p>
+            </div>
+
+            ${HIGHLIGHTS.map(h => `
+              <div class="section">
+                <h3>${h.title}</h3>
+                <p><b>Problem:</b> ${h.problem}</p>
+                <p><b>System built:</b> ${h.system}</p>
+                <div class="result-box"><b>Business effect:</b> ${h.result}</div>
+              </div>
+            `).join("")}
+          `,
+
+          skills: () => `
+            <div class="section">
+              <h3>Core capabilities</h3>
+              <p class="muted">The mix of executive support, systems design, workflow engineering, and operational stabilization.</p>
+            </div>
+
+            ${Object.entries(SKILLS).map(([k, v]) => `
+              <div class="section">
+                <h3>${k}</h3>
+                <ul>
+                  ${v.map(i => `<li>${i}</li>`).join("")}
+                </ul>
+              </div>
+            `).join("")}
+          `,
+
+          toolkit: () => `
+            <div class="section">
+              <h3>Toolkit</h3>
+              <p class="muted">Platforms I’ve used to support documentation, CRM execution, reporting, automation, and process consistency.</p>
+            </div>
+
+            ${Object.entries(TOOLKIT).map(([k, v]) => `
+              <div class="section">
+                <h3>${k}</h3>
+                <div class="badge-row">
+                  ${v.map(i => `<span class="badge">${i}</span>`).join("")}
+                </div>
+              </div>
+            `).join("")}
+          `,
+
+          testimonials: () => `
+            <div class="section">
+              <h3>What people say</h3>
+              <p class="muted">A few signals from people who’ve trusted me with systems, support, and execution.</p>
+            </div>
+            ${TESTIMONIALS.map(t => `<div class="section">${t}</div>`).join("")}
+          `,
+
+          contact: () => `
+            <div class="section">
+              <h3>Let’s talk</h3>
+              <p><b>Email:</b> <a href="mailto:${PROFILE.emails[0]}">${PROFILE.emails[0]}</a></p>
+              <p><b>Phone:</b> ${PROFILE.phones[0]}</p>
+              <p><b>LinkedIn:</b> <a href="${PROFILE.linkedin}" target="_blank" rel="noopener">View profile</a></p>
+              <p><b>Writing / Notes:</b> <a href="${PROFILE.website}" target="_blank" rel="noopener">Visit archive</a></p>
+            </div>
+            <div class="section">
+              <h3>Best first message</h3>
+              <div class="callout">
+                Tell me what feels messy, where execution is getting stuck, and what you want off your plate first.
+              </div>
+            </div>
+          `,
+
+          downloads: () => `
+            <div class="section">
+              <h3>Resources</h3>
+              <p class="muted">A few entry points if you want the deeper proof layer.</p>
+            </div>
+
+            <div class="section">
+              <h3>Resume</h3>
+              <p>For the formal version of my background, systems work, and tool stack, you can review my resume here.</p>
+              <p><a href="${PROFILE.resumeLink}" target="_blank" rel="noopener">Open resume</a></p>
+            </div>
+
+            <div class="section">
+              <h3>Writing / Notes</h3>
+              <p>If you want to see how I think about operations, systems, leadership, and scale, start with the writing archive.</p>
+              <p><a href="${PROFILE.notesLink}" target="_blank" rel="noopener">Read notes and articles</a></p>
+            </div>
+
+            <div class="section">
+              <h3>Case studies & samples</h3>
+              <p>Selected materials are available here, including process writeups, systems snapshots, and documentation samples where confidentiality allows.</p>
+              <p><a href="${PROFILE.caseStudyLink}" target="_blank" rel="noopener">Case studies</a> · <a href="${PROFILE.sopSampleLink}" target="_blank" rel="noopener">Documentation samples</a></p>
+              <div class="callout">
+                Much of this work lives inside client operations, so public examples are curated to show thinking, structure, and execution quality without exposing internal data.
+              </div>
+            </div>
+          `
         };
-        return (T[name] || (()=>'<div class="section">content</div>'))();
+
+        return (T[name] || (() => `<div class="section">Content coming soon.</div>`))();
       }
 
-      // ---------- WINDOW MANAGEMENT (fully fixed) ----------
       const container = document.getElementById('window-container');
+      const canvas = document.getElementById('gameCanvas');
+      const ctx = canvas.getContext('2d');
+      const scoreDisplay = document.getElementById('gameScore');
+      const root = document.documentElement;
+      const darkBtn = document.getElementById('darkToggle');
+      const sfxBtn = document.getElementById('sfxToggle');
+      const copyrightEl = document.querySelector('.copyright');
+
       let windows = [];
       let zIndexCounter = 1000;
       let sfxOn = true;
 
-      function playClick() { if (!sfxOn) return; try { let ctx = new AudioContext(), o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = 680; g.gain.value = 0.02; o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.04); setTimeout(()=>ctx.close(),100); } catch (e) {} }
+      let gameActive = false;
+      let gameAnimation;
+      let mouseX = 0;
+      let mouseY = 0;
+      let score = 0;
+      let bullets = [];
+      let blocks = [];
+
+      let konamiIndex = 0;
+      const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+
+      if (localStorage.getItem('sfx') === 'off') {
+        sfxOn = false;
+        sfxBtn.innerHTML = '🔇 <span>sfx</span>';
+      }
+
+      if (localStorage.getItem('theme') === 'dark') {
+        root.classList.add('dark');
+      }
+
+      function playClick() {
+        if (!sfxOn) return;
+        try {
+          let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          let o = audioCtx.createOscillator();
+          let g = audioCtx.createGain();
+          o.type = 'sine';
+          o.frequency.value = 680;
+          g.gain.value = 0.02;
+          o.connect(g).connect(audioCtx.destination);
+          o.start();
+          o.stop(audioCtx.currentTime + 0.04);
+          setTimeout(() => audioCtx.close(), 100);
+        } catch (e) {}
+      }
+
+      function playPew() {
+        if (!sfxOn) return;
+        try {
+          let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          let o = audioCtx.createOscillator();
+          let g = audioCtx.createGain();
+          o.type = 'square';
+          o.frequency.value = 880;
+          g.gain.value = 0.02;
+          o.connect(g).connect(audioCtx.destination);
+          o.start();
+          o.stop(audioCtx.currentTime + 0.08);
+          setTimeout(() => audioCtx.close(), 100);
+        } catch (e) {}
+      }
+
+      function playHit() {
+        if (!sfxOn) return;
+        try {
+          let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          let o = audioCtx.createOscillator();
+          let g = audioCtx.createGain();
+          o.type = 'sawtooth';
+          o.frequency.value = 220;
+          g.gain.value = 0.02;
+          o.connect(g).connect(audioCtx.destination);
+          o.start();
+          o.stop(audioCtx.currentTime + 0.1);
+          setTimeout(() => audioCtx.close(), 100);
+        } catch (e) {}
+      }
+
+      function playSecretSound() {
+        if (!sfxOn) return;
+        try {
+          let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          let o = audioCtx.createOscillator();
+          let g = audioCtx.createGain();
+          o.type = 'sine';
+          o.frequency.value = 440;
+          g.gain.value = 0.02;
+          o.connect(g).connect(audioCtx.destination);
+          o.start();
+          o.stop(audioCtx.currentTime + 0.15);
+
+          setTimeout(() => {
+            let o2 = audioCtx.createOscillator();
+            let g2 = audioCtx.createGain();
+            o2.type = 'sine';
+            o2.frequency.value = 880;
+            g2.gain.value = 0.02;
+            o2.connect(g2).connect(audioCtx.destination);
+            o2.start();
+            o2.stop(audioCtx.currentTime + 0.15);
+          }, 150);
+
+          setTimeout(() => audioCtx.close(), 500);
+        } catch (e) {}
+      }
+
+      function copyText(t) {
+        navigator.clipboard.writeText(t).catch(() => {
+          const textarea = document.createElement('textarea');
+          textarea.value = t;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+        });
+      }
+
+      function toast(m) {
+        let t = document.getElementById('toast');
+        t.style.opacity = '1';
+        t.innerText = m;
+        setTimeout(() => t.style.opacity = '0', 1500);
+      }
 
       function createWindow(type, title) {
         playClick();
+
         const win = document.createElement('div');
-        win.className = 'window';
-        win.style.left = (40 + (windows.length * 25) % 250) + 'px';
-        win.style.top = (70 + (windows.length * 20) % 160) + 'px';
-        win.style.width = '500px';
+        win.className = 'window window-new';
+        win.dataset.windowType = type;
+
+        const maxLeft = Math.min(40 + (windows.length * 25) % 250, window.innerWidth - 380);
+        const maxTop = Math.min(70 + (windows.length * 20) % 160, window.innerHeight - 320);
+
+        win.style.left = maxLeft + 'px';
+        win.style.top = maxTop + 'px';
+        win.style.width = '540px';
         win.style.height = 'auto';
         win.style.zIndex = ++zIndexCounter;
+        win.style.opacity = '1';
 
-        // header
         const header = document.createElement('div');
         header.className = 'window-header';
         header.innerHTML = `<span>📌 ${title}</span><div class="window-controls">
@@ -378,7 +1193,6 @@
           <button class="win-btn" data-action="close">⨯</button>
         </div>`;
 
-        // body
         const body = document.createElement('div');
         body.className = 'window-body';
         body.innerHTML = getTemplate(type);
@@ -387,16 +1201,25 @@
         win.appendChild(body);
         container.appendChild(win);
 
-        // make window draggable (only via header)
+        setTimeout(() => {
+          win.classList.remove('window-new');
+        }, 200);
+
         let isDragging = false;
         let startX, startY, startLeft, startTop;
 
         const onMouseMove = (e) => {
           if (!isDragging) return;
-          const dx = e.clientX - startX;
-          const dy = e.clientY - startY;
-          win.style.left = (startLeft + dx) + 'px';
-          win.style.top = (startTop + dy) + 'px';
+          e.preventDefault();
+
+          let newLeft = startLeft + (e.clientX - startX);
+          let newTop = startTop + (e.clientY - startY);
+
+          newLeft = Math.max(20, Math.min(newLeft, window.innerWidth - win.offsetWidth - 20));
+          newTop = Math.max(20, Math.min(newTop, window.innerHeight - win.offsetHeight - 20));
+
+          win.style.left = newLeft + 'px';
+          win.style.top = newTop + 'px';
         };
 
         const onMouseUp = () => {
@@ -406,7 +1229,7 @@
         };
 
         header.addEventListener('mousedown', (e) => {
-          if (e.target.closest('.win-btn')) return; // ignore if button clicked
+          if (e.target.closest('.win-btn')) return;
           e.preventDefault();
           isDragging = true;
           startX = e.clientX;
@@ -418,15 +1241,17 @@
           window.addEventListener('mouseup', onMouseUp);
         });
 
-        // buttons functionality
         const closeBtn = win.querySelector('[data-action="close"]');
         const minBtn = win.querySelector('[data-action="min"]');
         const maxBtn = win.querySelector('[data-action="max"]');
 
         closeBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          win.remove();
-          windows = windows.filter(w => w !== win);
+          win.style.opacity = '0';
+          setTimeout(() => {
+            win.remove();
+            windows = windows.filter(w => w !== win);
+          }, 150);
           playClick();
         });
 
@@ -443,7 +1268,7 @@
         maxBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           if (win.classList.contains('maximized')) {
-            win.style.width = '500px';
+            win.style.width = '540px';
             win.style.height = 'auto';
             win.style.top = '70px';
             win.style.left = '100px';
@@ -459,40 +1284,256 @@
         });
 
         windows.push(win);
+        return win;
       }
 
-      // tile listeners
       document.querySelectorAll('[data-window]').forEach(tile => {
         tile.addEventListener('click', () => {
           const type = tile.dataset.window;
-          let title = type.charAt(0).toUpperCase() + type.slice(1);
-          createWindow(type, title);
+          let title = WINDOW_TITLES[type] || (type.charAt(0).toUpperCase() + type.slice(1));
+          const existingWindow = windows.find(w => w.dataset.windowType === type);
+
+          if (existingWindow) {
+            existingWindow.style.transition = 'opacity 0.15s';
+            existingWindow.style.opacity = '0';
+
+            setTimeout(() => {
+              existingWindow.remove();
+              windows = windows.filter(w => w !== existingWindow);
+
+              const newWin = createWindow(type, title);
+              if (newWin) {
+                newWin.style.opacity = '0';
+                newWin.style.transition = 'opacity 0.2s';
+                setTimeout(() => {
+                  newWin.style.opacity = '1';
+                }, 50);
+              }
+            }, 150);
+          } else {
+            createWindow(type, title);
+          }
+          playClick();
         });
       });
 
-      // dark mode, sfx, dock
-      const darkBtn = document.getElementById('darkToggle');
-      const sfxBtn = document.getElementById('sfxToggle');
-      const root = document.documentElement;
-      if (localStorage.getItem('theme') === 'dark') root.classList.add('dark');
-      darkBtn.addEventListener('click', () => { root.classList.toggle('dark'); localStorage.setItem('theme', root.classList.contains('dark')?'dark':'light'); playClick(); });
-      if (localStorage.getItem('sfx') === 'off') { sfxOn = false; sfxBtn.innerHTML = '🔇 <span>sfx</span>'; }
-      sfxBtn.addEventListener('click', () => { sfxOn = !sfxOn; localStorage.setItem('sfx', sfxOn?'on':'off'); sfxBtn.innerHTML = sfxOn ? '🔊 <span>sfx</span>' : '🔇 <span>sfx</span>'; playClick(); });
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
 
-      document.getElementById('dockEmail').addEventListener('click', ()=> { window.location.href = `mailto:${PROFILE.emails[0]}`; playClick(); });
-      document.getElementById('dockLinkedIn').addEventListener('click', ()=> { window.open(PROFILE.linkedin,'_blank'); playClick(); });
-      document.getElementById('dockWebsite').addEventListener('click', ()=> { window.open(PROFILE.website,'_blank'); playClick(); });
-      document.getElementById('dockCopy').addEventListener('click', ()=> { copyText(PROFILE.emails[0]); toast('📧 copied'); playClick(); });
+      document.addEventListener('click', (e) => {
+        if (gameActive && !e.target.closest('.btn, .tile, .dock-item, .win-btn, .window')) {
+          bullets.push({
+            x: mouseX,
+            y: mouseY - 30,
+            vy: -8
+          });
+          playPew();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.keyCode === konamiCode[konamiIndex]) {
+          konamiIndex++;
+          if (konamiIndex === konamiCode.length) {
+            toggleGameMode();
+            playSecretSound();
+            toast('🎮 KONAMI!');
+            konamiIndex = 0;
+          }
+        } else {
+          konamiIndex = 0;
+        }
+      });
+
+      function updateGame() {
+        if (!gameActive) return;
+
+        bullets = bullets.filter(b => b.y > -20);
+        bullets.forEach(b => {
+          b.y += b.vy;
+        });
+
+        if (Math.random() < 0.02) {
+          blocks.push({
+            x: Math.random() * (window.innerWidth - 40),
+            y: -30,
+            width: 40,
+            height: 40,
+            vy: 2 + Math.random() * 3,
+            type: Math.floor(Math.random() * 3)
+          });
+        }
+
+        blocks = blocks.filter(b => b.y < window.innerHeight + 50);
+        blocks.forEach(b => {
+          b.y += b.vy;
+        });
+
+        const remainingBullets = [];
+        const remainingBlocks = [];
+        let hitBlocks = new Set();
+
+        bullets.forEach((b) => {
+          let bulletHit = false;
+
+          blocks.forEach((block, idx) => {
+            if (!bulletHit &&
+                !hitBlocks.has(idx) &&
+                b.x > block.x - 10 && b.x < block.x + block.width + 10 &&
+                b.y > block.y - 10 && b.y < block.y + block.height + 10) {
+              bulletHit = true;
+              hitBlocks.add(idx);
+              score += 10;
+              scoreDisplay.innerHTML = `🎮 ${score}`;
+              playHit();
+            }
+          });
+
+          if (!bulletHit) remainingBullets.push(b);
+        });
+
+        blocks.forEach((block, idx) => {
+          if (!hitBlocks.has(idx)) remainingBlocks.push(block);
+        });
+
+        bullets = remainingBullets;
+        blocks = remainingBlocks;
+      }
+
+      function drawGame() {
+        if (!gameActive) return;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.shadowColor = '#0f241e';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 4;
+        ctx.shadowOffsetY = 4;
+
+        ctx.fillStyle = '#7ff0ff';
+        ctx.fillRect(mouseX - 20, mouseY - 20, 40, 20);
+        ctx.fillStyle = '#ff7ff0';
+        ctx.fillRect(mouseX - 5, mouseY - 30, 10, 15);
+        ctx.fillStyle = '#ffb37f';
+        ctx.fillRect(mouseX + 15, mouseY - 15, 10, 10);
+
+        ctx.fillStyle = '#ffff7f';
+        bullets.forEach(b => {
+          ctx.fillRect(b.x - 2, b.y - 5, 4, 10);
+        });
+
+        blocks.forEach(b => {
+          const colors = ['#ff7f7f', '#7fff7f', '#7f7fff'];
+          ctx.fillStyle = colors[b.type % 3];
+          ctx.fillRect(b.x, b.y, b.width, b.height);
+          ctx.strokeStyle = '#000';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(b.x, b.y, b.width, b.height);
+        });
+
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+      }
+
+      function gameLoop() {
+        if (!gameActive) return;
+        updateGame();
+        drawGame();
+        gameAnimation = requestAnimationFrame(gameLoop);
+      }
+
+      function toggleGameMode() {
+        gameActive = !gameActive;
+
+        if (gameActive) {
+          root.classList.add('pixel-mode');
+          score = 0;
+          scoreDisplay.innerHTML = '🎮 0';
+          bullets = [];
+          blocks = [];
+          gameLoop();
+          toast('🎮 8-bit mode unlocked');
+        } else {
+          root.classList.remove('pixel-mode');
+          cancelAnimationFrame(gameAnimation);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          toast('8-bit mode off');
+        }
+        playClick();
+      }
+
+      darkBtn.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+        playClick();
+      });
+
+      sfxBtn.addEventListener('click', () => {
+        sfxOn = !sfxOn;
+        localStorage.setItem('sfx', sfxOn ? 'on' : 'off');
+        sfxBtn.innerHTML = sfxOn ? '🔊 <span>sfx</span>' : '🔇 <span>sfx</span>';
+        playClick();
+      });
+
+      copyrightEl.addEventListener('dblclick', toggleGameMode);
+
+      document.getElementById('dockEmail').addEventListener('click', () => {
+        window.location.href = `mailto:${PROFILE.emails[0]}`;
+        playClick();
+      });
+
+      document.getElementById('dockLinkedIn').addEventListener('click', () => {
+        window.open(PROFILE.linkedin, '_blank', 'noopener');
+        playClick();
+      });
+
+      document.getElementById('dockWebsite').addEventListener('click', () => {
+        window.open(PROFILE.website, '_blank', 'noopener');
+        playClick();
+      });
+
+      document.getElementById('dockCopy').addEventListener('click', () => {
+        copyText(PROFILE.emails[0]);
+        toast('📧 copied');
+        playClick();
+      });
+
       document.getElementById('yr').innerText = new Date().getFullYear();
 
-      function copyText(t) { navigator.clipboard.writeText(t); }
-      function toast(m) { let t = document.getElementById('toast'); t.style.opacity='1'; t.innerText=m; setTimeout(()=>t.style.opacity='0',1500); }
-
-      // bring window to front when clicked
       container.addEventListener('mousedown', (e) => {
         const win = e.target.closest('.window');
-        if (win) win.style.zIndex = ++zIndexCounter;
+        if (win) {
+          win.style.zIndex = ++zIndexCounter;
+        }
       }, true);
+
+      window.addEventListener('resize', () => {
+        windows.forEach(win => {
+          const left = parseInt(win.style.left) || 20;
+          const top = parseInt(win.style.top) || 20;
+          const width = win.offsetWidth;
+          const height = win.offsetHeight;
+
+          if (left + width > window.innerWidth - 20) {
+            win.style.left = (window.innerWidth - width - 20) + 'px';
+          }
+          if (top + height > window.innerHeight - 20) {
+            win.style.top = (window.innerHeight - height - 20) + 'px';
+          }
+          if (left < 20) win.style.left = '20px';
+          if (top < 20) win.style.top = '20px';
+        });
+
+        if (gameActive) {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+      });
     })();
   </script>
 </body>
