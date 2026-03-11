@@ -85,7 +85,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
     }
 
-    /* Page load animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -107,7 +106,6 @@
       image-rendering: pixelated;
     }
 
-    /* ── CENTERED CONTAINER ── */
     .topbar, .shell {
       max-width: 820px;
       margin-left: auto;
@@ -116,7 +114,6 @@
       padding-right: 2rem;
     }
 
-    /* ── TOP BAR ── */
     .topbar {
       padding-top: 1.4rem;
       padding-bottom: 0;
@@ -163,7 +160,6 @@
       gap: 0.7rem;
     }
 
-    /* ── SHELL ── */
     .shell {
       display: flex;
       flex-direction: column;
@@ -172,7 +168,6 @@
       align-items: center;
     }
 
-    /* ── HERO ── */
     .hero {
       padding: 0.2rem 0 0;
       width: 100%;
@@ -293,7 +288,6 @@
     }
     .tag:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); background: var(--blue-light); }
 
-    /* ── NAV STRIP ── */
     .nav-strip-wrap {
       animation: fadeUp 0.5s 0.28s ease both;
       width: 100%;
@@ -320,7 +314,6 @@
       .nav-strip { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* Nav icon buttons - match the reference grid style */
     .nav-chip {
       display: flex;
       flex-direction: column;
@@ -367,9 +360,7 @@
       box-shadow: var(--shadow);
     }
 
-    .nav-chip-featured {
-      color: var(--green);
-    }
+    .nav-chip-featured { color: var(--green); }
     .nav-chip-featured .nav-chip-icon {
       background: var(--green-light);
       border-color: rgba(26,128,104,0.25);
@@ -379,28 +370,7 @@
       border-color: rgba(26,128,104,0.2);
       color: var(--green);
     }
-    .nav-chip-featured:hover .nav-chip-icon {
-      border-color: var(--green);
-    }
-
-    .nav-chip-divider {
-      width: 1px;
-      height: 60px;
-      background: var(--border);
-      margin: 0 0.2rem;
-      align-self: center;
-      flex-shrink: 0;
-    }
-
-    .rail-hint {
-      margin-top: 0.7rem;
-      font-size: 0.67rem;
-      font-family: var(--font-mono);
-      color: var(--muted);
-      opacity: 0.6;
-      line-height: 1.5;
-      text-align: center;
-    }
+    .nav-chip-featured:hover .nav-chip-icon { border-color: var(--green); }
 
     /* ── WINDOWS ── */
     #window-container {
@@ -482,7 +452,7 @@
       padding: 16px;
       overflow-y: auto;
       flex: 1;
-      min-height: 0; /* critical: lets flex children shrink below content size on resize */
+      min-height: 0;
       font-size: 0.9rem;
       line-height: 1.6;
       color: var(--text-light);
@@ -504,7 +474,6 @@
     .w-section h3 { font-size: 0.95rem; color: var(--blue); margin-bottom: 6px; font-weight: 600; }
     .w-section p { margin-bottom: 0.5rem; }
     .w-section p:last-child { margin-bottom: 0; }
-
     .w-section ul { padding-left: 1.1rem; }
     .w-section li { margin-bottom: 0.35rem; }
 
@@ -539,7 +508,9 @@
     }
     .badge:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* ── NOTEBOOK WINDOW ── */
+    /* ══════════════════════════════════════════════
+       NOTEBOOK WINDOW — FULL REDESIGN
+    ══════════════════════════════════════════════ */
 
 
     .notebook-window .window-header {
@@ -551,34 +522,81 @@
     .notebook-window .window-body {
       padding: 0;
       display: flex;
+      flex-direction: column;
       flex: 1;
-      height: 0; /* forces flex child to fill without overflowing */
-      max-height: none;
+      height: 0;
       background: var(--nb-paper);
       overflow: hidden;
     }
 
+    /* ── Search bar ── */
+    .nb-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid rgba(122,106,79,0.3);
+      background: rgba(210,195,170,0.25);
+      flex-shrink: 0;
+    }
+
+    .nb-search-bar input {
+      flex: 1;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(122,106,79,0.4);
+      border-radius: 20px;
+      padding: 0.35rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--nb-ink);
+      outline: none;
+      transition: all 0.15s;
+    }
+    .nb-search-bar input:focus {
+      background: white;
+      border-color: var(--nb-border);
+      box-shadow: 0 0 0 2px rgba(122,106,79,0.15);
+    }
+    .nb-search-bar input::placeholder { color: #a08060; }
+
+    .nb-search-count {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #8a7a60;
+      white-space: nowrap;
+    }
+
+    /* ── Main layout ── */
+    .nb-main {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .nb-sidebar {
-      width: 220px;
+      width: 240px;
       flex-shrink: 0;
       border-right: 2px solid var(--nb-border);
       overflow-y: auto;
-      padding: 1rem;
+      padding: 0.85rem;
       background: rgba(210,195,170,0.3);
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     .nb-cat-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-bottom: 0.9rem;
     }
 
     .nb-cat {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-family: var(--font-mono);
-      padding: 2px 8px;
+      padding: 2px 7px;
       border: 1px solid var(--nb-border);
       border-radius: 20px;
       cursor: pointer;
@@ -588,90 +606,508 @@
     }
     .nb-cat.active, .nb-cat:hover { background: var(--nb-border); color: #faf7f0; }
 
+    .nb-list { display: flex; flex-direction: column; gap: 3px; }
+
     .nb-entry {
-      padding: 0.6rem 0.5rem;
+      padding: 0.55rem 0.6rem;
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.1s;
       border-left: 3px solid transparent;
-      margin-bottom: 4px;
     }
     .nb-entry:hover { background: rgba(120,100,70,0.12); border-left-color: var(--nb-border); }
-    .nb-entry.active { background: rgba(120,100,70,0.18); border-left-color: var(--nb-ink); }
+    .nb-entry.active { background: rgba(120,100,70,0.2); border-left-color: var(--nb-ink); }
 
     .nb-entry-title {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--nb-ink);
-      margin-bottom: 2px;
+      margin-bottom: 3px;
       line-height: 1.3;
       font-family: 'DM Serif Display', serif;
     }
+
     .nb-entry-meta {
-      font-size: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.6rem;
       font-family: var(--font-mono);
       color: #8a7a60;
     }
 
+    .nb-entry-cat-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Article content area ── */
     .nb-content {
       flex: 1;
       min-height: 0;
       height: 100%;
       overflow-y: auto;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
       background-image: radial-gradient(circle, var(--nb-dot) 1px, transparent 1px);
       background-size: 22px 22px;
       scrollbar-width: thin;
       scrollbar-color: #c8b898 transparent;
+      position: relative;
     }
 
-    .nb-article h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      color: var(--nb-ink);
-      margin-bottom: 0.2rem;
-      line-height: 1.2;
+    /* ── Scroll progress bar ── */
+    .nb-scroll-progress {
+      position: sticky;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--nb-border);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.05s linear;
+      z-index: 10;
+      flex-shrink: 0;
+      border-radius: 0 2px 2px 0;
     }
-    .nb-article .nb-byline {
+
+    .nb-empty {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #a08060;
       font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: #8a7a60;
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 2px dashed #c8b898;
+      font-size: 0.75rem;
+      gap: 0.5rem;
+      padding: 2rem;
+      text-align: center;
     }
-    .nb-article p {
-      font-size: 0.88rem;
+    .nb-empty-icon { font-size: 2rem; opacity: 0.4; }
+
+    /* ══════════════════════════════════════════════
+       ARTICLE RENDERER — FULL REWRITE
+    ══════════════════════════════════════════════ */
+
+    .nb-article-wrap {
+      padding: 2rem 2.2rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .nba-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 2px dashed rgba(122,106,79,0.4);
+    }
+
+    .nba-category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+      border: 1px solid;
+    }
+
+    .nba-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
       color: var(--nb-ink);
-      line-height: 1.75;
-      margin-bottom: 1rem;
-      font-family: 'DM Sans', sans-serif;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
     }
-    .nb-article h3 {
+
+    .nba-meta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nba-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #8a7a60;
+    }
+
+    .nba-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #8a7a60;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(122,106,79,0.35);
+      padding: 2px 9px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.12s;
+      margin-left: auto;
+    }
+    .nba-share-btn:hover {
+      background: white;
+      border-color: var(--nb-border);
+      color: var(--nb-ink);
+    }
+
+    /* Article body */
+    .nba-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--nb-ink);
+      flex: 1;
+    }
+
+    .nba-body p {
+      margin-bottom: 1.1rem;
+    }
+
+    .nba-body h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--nb-ink);
+      margin: 1.8rem 0 0.6rem;
+      line-height: 1.2;
+      border-bottom: 1px solid rgba(122,106,79,0.25);
+      padding-bottom: 0.3rem;
+    }
+
+    .nba-body h3 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
       color: var(--nb-ink);
-      margin: 1.2rem 0 0.5rem;
+      margin: 1.4rem 0 0.5rem;
     }
-    .nb-article blockquote {
-      border-left: 3px solid var(--nb-border);
-      padding: 0.5rem 1rem;
-      margin: 0.8rem 0;
-      font-style: italic;
-      color: #5a4a35;
-      font-size: 0.88rem;
-    }
-    .nb-article strong { font-weight: 600; color: #1a1208; }
 
-    .nb-empty {
+    .nba-body strong { font-weight: 700; color: #1a0e08; }
+
+    .nba-body em { font-style: italic; }
+
+    .nba-body hr {
+      border: none;
+      border-top: 2px dashed rgba(122,106,79,0.35);
+      margin: 1.8rem 0;
+    }
+
+    /* Blockquote */
+    .nba-body blockquote {
+      border-left: 4px solid var(--nb-border);
+      background: rgba(122,106,79,0.08);
+      padding: 0.8rem 1.1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #4a3a28;
+      font-size: 0.9rem;
+    }
+
+    /* Lists */
+    .nba-body ul, .nba-body ol {
+      padding-left: 1.4rem;
+      margin: 0.5rem 0 1rem;
+    }
+    .nba-body li {
+      margin-bottom: 0.4rem;
+      line-height: 1.65;
+    }
+    .nba-body ul li::marker { color: var(--nb-border); }
+
+    /* Callout boxes */
+    .nba-callout {
+      border-left: 4px solid var(--green);
+      background: rgba(26,128,104,0.08);
+      padding: 0.85rem 1.1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      color: #1a3d32;
+    }
+
+    .nba-callout-blue {
+      border-left-color: #1060a0;
+      background: rgba(16,96,160,0.07);
+      color: #0d2040;
+    }
+
+    .nba-callout-amber {
+      border-left-color: #b07820;
+      background: rgba(176,120,32,0.08);
+      color: #3d2800;
+    }
+
+    /* Tables */
+    .nba-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(122,106,79,0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.85rem;
+    }
+    .nba-body th {
+      background: rgba(122,106,79,0.15);
+      color: var(--nb-ink);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+    }
+    .nba-body td {
+      padding: 0.65rem 0.9rem;
+      border-bottom: 1px solid rgba(122,106,79,0.15);
+      vertical-align: top;
+    }
+    .nba-body tr:last-child td { border-bottom: none; }
+    .nba-body tr:hover td { background: rgba(122,106,79,0.04); }
+
+    /* Code */
+    .nba-body code {
+      font-family: var(--font-mono);
+      font-size: 0.82em;
+      background: rgba(122,106,79,0.1);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #4a2e10;
+    }
+
+    /* Diagrams */
+    .nba-diagram {
+      margin: 1.5rem 0;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(122,106,79,0.25);
+      border-radius: 16px;
+      padding: 1.2rem;
+    }
+
+    .nba-diagram-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8a7a60;
+      margin-bottom: 0.9rem;
+    }
+
+    .nba-flow {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      color: #a08060;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nba-flow-node {
+      background: white;
+      border: 1.5px solid rgba(122,106,79,0.35);
+      border-radius: 12px;
+      padding: 0.7rem 0.9rem;
+      text-align: center;
+      min-width: 110px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .nba-flow-node strong {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 2px;
+    }
+    .nba-flow-node small {
+      font-size: 0.7rem;
+      color: #8a7a60;
       font-family: var(--font-mono);
+    }
+    .nba-flow-node.blue { background: #e8f3ff; border-color: #a9c8e6; }
+    .nba-flow-node.amber { background: #fff3de; border-color: #e8cf95; }
+    .nba-flow-node.green { background: #e5f7ef; border-color: #b9e0d0; }
+    .nba-flow-node.red { background: #fde8e8; border-color: #e4bcbc; }
+
+    .nba-flow-arrow { font-size: 1.2rem; color: #a08060; }
+
+    /* Arch compare */
+    .nba-arch {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    .nba-arch-col {
+      flex: 1;
+      min-width: 220px;
+      border-radius: 14px;
+      padding: 1rem;
+      border: 1.5px solid;
+    }
+    .nba-arch-col.before { background: #fbe6e6; border-color: #efc0c0; }
+    .nba-arch-col.after  { background: #e5f7ef; border-color: #b9e0d0; }
+    .nba-arch-col h4 {
+      font-size: 0.85rem;
+      margin-bottom: 0.7rem;
+      text-align: center;
+      border-bottom: 1px dashed rgba(0,0,0,0.1);
+      padding-bottom: 0.4rem;
+    }
+    .nba-arch-step {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 7px;
+      padding: 0.45rem 0.7rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.82rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    /* KB architecture diagram */
+    .nba-kb-arch {
+      margin: 1.5rem 0;
+      padding: 1.1rem;
+      border: 1px solid rgba(122,106,79,0.25);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.5);
+    }
+    .nba-kb-stack { display: flex; flex-direction: column; gap: 0.6rem; }
+    .nba-kb-row { display: grid; grid-template-columns: 160px 1fr; gap: 0.7rem; align-items: stretch; }
+    .nba-kb-layer {
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+      border: 1.5px solid rgba(122,106,79,0.3);
+    }
+    .nba-kb-layer strong { display: block; font-size: 0.82rem; }
+    .nba-kb-layer span { display: block; font-size: 0.72rem; color: #6a5a45; margin-top: 2px; }
+    .nba-kb-layer.intake   { background: #e9f3ff; border-color: #a9c8e6; }
+    .nba-kb-layer.classify { background: #fff3de; border-color: #e8cf95; }
+    .nba-kb-layer.resolve  { background: #e5f7ef; border-color: #b9e0d0; }
+    .nba-kb-layer.escalate { background: #fde8e8; border-color: #e4bcbc; }
+    .nba-kb-detail {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(122,106,79,0.2);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+    }
+    .nba-kb-detail strong { font-size: 0.82rem; display: block; margin-bottom: 3px; }
+    .nba-kb-detail p { margin: 0; font-size: 0.8rem; color: #4a3a28; }
+    .nba-kb-arrow { text-align: center; font-size: 1rem; color: #a08060; }
+    .nba-kb-footer {
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px dashed rgba(122,106,79,0.3);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+    .nba-kb-note {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(122,106,79,0.2);
+      border-radius: 10px;
+      padding: 0.65rem 0.7rem;
+      font-size: 0.75rem;
+    }
+    .nba-kb-note strong { display: block; margin-bottom: 2px; font-size: 0.75rem; }
+    .nba-kb-note span { color: #5a4a35; }
+
+    /* ── Prev / Next nav ── */
+    .nba-nav {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.8rem;
+      padding-top: 1.2rem;
+      border-top: 2px dashed rgba(122,106,79,0.3);
+    }
+
+    .nba-nav-btn {
+      flex: 1;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(122,106,79,0.3);
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      cursor: pointer;
+      transition: all 0.12s;
+      text-align: left;
+      font-family: var(--font-sans);
+    }
+    .nba-nav-btn:hover {
+      background: white;
+      border-color: var(--nb-border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+    .nba-nav-btn.next { text-align: right; }
+    .nba-nav-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8a7a60;
+      margin-bottom: 3px;
+    }
+    .nba-nav-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.82rem;
+      color: var(--nb-ink);
+      line-height: 1.3;
+    }
+
+    /* ── Related articles ── */
+    .nba-related {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(122,106,79,0.25);
+    }
+    .nba-related-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8a7a60;
+      margin-bottom: 0.7rem;
+    }
+    .nba-related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+    .nba-related-item {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(122,106,79,0.25);
+      border-radius: 9px;
+      padding: 0.6rem 0.75rem;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .nba-related-item:hover {
+      background: white;
+      border-color: var(--nb-border);
+      transform: translateY(-1px);
+    }
+    .nba-related-title {
+      font-family: 'DM Serif Display', serif;
       font-size: 0.78rem;
-      font-style: italic;
+      color: var(--nb-ink);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+    .nba-related-meta {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: #8a7a60;
     }
 
     /* ── DOCK ── */
@@ -754,7 +1190,6 @@
     }
     .copyright:hover { opacity: 0.9; }
 
-    /* ── TOAST ── */
     #toast {
       position: fixed;
       left: 50%;
@@ -773,7 +1208,6 @@
       white-space: nowrap;
     }
 
-    /* ── GAME ── */
     #gameCanvas {
       position: fixed;
       inset: 0;
@@ -800,22 +1234,32 @@
     }
     .pixel-mode #gameScore { display: block; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .topbar, .shell { padding-left: 1rem; padding-right: 1rem; }
       .window { width: 93vw !important; left: 3.5vw !important; }
       .notebook-window { width: 93vw !important; }
-      .notebook-window .window-body { flex-direction: column; }
-      .nb-sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--nb-border); max-height: 40%; }
-      .nb-content { padding: 1.2rem; }
+      .nb-main { flex-direction: column; }
+      .nb-sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--nb-border); max-height: 200px; }
+      .nba-related-grid { grid-template-columns: 1fr; }
+      .nba-kb-row { grid-template-columns: 1fr; }
+      .nba-kb-footer { grid-template-columns: 1fr; }
       .dock { padding: 0.45rem 0.8rem; gap: 0.3rem; bottom: 24px; }
       .dock-btn { width: 38px; height: 38px; font-size: 1.1rem; }
+    }
+
+    /* No-results state */
+    .nb-no-results {
+      padding: 1rem 0.5rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #a08060;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="btn-group">
       <button class="btn" id="darkToggle">🌓 dark</button>
@@ -824,10 +1268,8 @@
     <div class="pill">📍 Valencia City, PH · remote-first · systems support</div>
   </div>
 
-  <!-- SHELL -->
   <div class="shell">
 
-    <!-- HERO -->
     <div class="hero">
       <h1>hi — i'm <em>Aaron</em>.</h1>
       <div class="hero-desc">
@@ -849,7 +1291,6 @@
       </div>
     </div>
 
-    <!-- NAV STRIP -->
     <div class="nav-strip-wrap">
       <nav class="nav-strip" aria-label="Site navigation">
         <button class="nav-chip" data-window="about"><span class="nav-chip-icon">👤</span>About</button>
@@ -862,16 +1303,13 @@
         <button class="nav-chip nav-chip-featured" id="notebookBtn"><span class="nav-chip-icon">📔</span>Notes</button>
         <button class="nav-chip" data-window="downloads"><span class="nav-chip-icon">⬇️</span>Resources</button>
       </nav>
-      <p class="rail-hint">Open a window to see how I reduce operational drag and make work easier to run.</p>
+      <p class="rail-hint" style="margin-top:0.7rem;font-size:0.67rem;font-family:var(--font-mono);color:var(--muted);opacity:0.6;line-height:1.5;text-align:center;">Open a window to see how I reduce operational drag and make work easier to run.</p>
     </div>
 
   </div>
 
-  <!-- WINDOW LAYER -->
   <div id="window-container"></div>
-
   <div class="copyright" id="copyrightEl">© <span id="yr"></span> Aaron Suarez · systems support for founders</div>
-
   <div id="toast"></div>
   <canvas id="gameCanvas"></canvas>
   <div id="gameScore">🎮 0</div>
@@ -880,7 +1318,6 @@
 (function () {
   'use strict';
 
-  /* ── DATA ── */
   const P = {
     email:    'suarezaaronroy@gmail.com',
     phones:   ['+63-977-081-3009', '+63-991-477-5300'],
@@ -888,6 +1325,30 @@
     website:  'https://suarezaaronroy-sys.github.io',
   };
 
+  /* ── CATEGORY CONFIG ── */
+  const CAT_CONFIG = {
+    'systems':         { color: '#1060a0', bg: '#deedf8', label: '⚙️ Systems' },
+    'operations':      { color: '#1a8068', bg: '#ddf0ea', label: '🔧 Operations' },
+    'crm':             { color: '#7040c0', bg: '#ede8f8', label: '📊 CRM' },
+    'founder-notes':   { color: '#a05010', bg: '#faebd4', label: '🚀 Founder Notes' },
+    'field-notes':     { color: '#408060', bg: '#e0f0e8', label: '📋 Field Notes' },
+    'technical-notes': { color: '#205090', bg: '#dce8f5', label: '🔬 Technical' },
+  };
+
+  function catStyle(cat) {
+    return CAT_CONFIG[cat] || { color: '#5a738a', bg: '#eef1f6', label: cat };
+  }
+
+  function readingTime(text) {
+    const words = text.trim().split(/\s+/).length;
+    return Math.max(1, Math.round(words / 200));
+  }
+
+  function wordCount(text) {
+    return text.trim().split(/\s+/).length;
+  }
+
+  /* ── DATA ── */
   const OUTCOMES = [
     'Processes that run without you in the room — not because everyone\'s perfect, but because the system holds them accountable',
     'CRM that acts as a command system: every record tells the next person exactly where things stand and what to do',
@@ -899,136 +1360,34 @@
   ];
 
   const META_SKILLS = [
-    'Pattern recognition across broken systems',
-    'Translating chaos into repeatable structure',
-    'Building for scale, not just the immediate fix',
-    'Operational truth-telling — naming what\'s actually wrong',
+    'Pattern recognition across broken systems','Translating chaos into repeatable structure',
+    'Building for scale, not just the immediate fix','Operational truth-telling — naming what\'s actually wrong',
     'Moving between strategic thinking and ground-level execution',
     'Absorbing ambiguity — turning "we need to be more organized" into something that actually runs',
-    'Iteration as default — systems get versioned, not defended',
-    'Calm inside complexity — slower to escalate, faster to resolve',
+    'Iteration as default — systems get versioned, not defended','Calm inside complexity — slower to escalate, faster to resolve',
   ];
 
   const HIGHLIGHTS = [
-    {
-      title: 'Knowledge System Architecture — Payments Operations',
-      problem: 'A fast-scaling payments ISO was operating entirely on tribal knowledge. Processor workflows, risk procedures, and case-handling logic lived in email threads, Slack messages, and senior staff memory. Every edge case required someone senior to unblock it.',
-      system: 'Owned the full architecture of a centralized knowledge platform as a CRM-integrated operational brain. Designed taxonomy around real case types — Risk, Descriptor, Deployment, Billing, Funding. Mapped CRM workflows directly to SOPs. Reverse-engineered undocumented logic from 10+ processors and converted it into searchable decision trees and resolution paths.',
-      result: 'Transformed the knowledge base from a documentation tool into institutional memory. Frontline agents could resolve complex cases without senior dependency. The company stopped losing operational knowledge every time someone left or was unavailable.',
-    },
-    {
-      title: 'Risk Department Establishment — Square Block',
-      problem: 'Recurring batching errors and payment anomalies were creating financial exposure that no one was formally tracking or preventing. Losses were reaching tens of thousands of dollars per month.',
-      system: 'Informally absorbed the risk function, then formalized it. Built monitoring processes, escalation logic, and proactive issue management procedures. Identified the root patterns behind recurring losses and institutionalized the response.',
-      result: 'Stopped the recurring losses. Turned a reactive firefighting posture into a structured risk-handling operation with defined ownership and procedures.',
-    },
-    {
-      title: 'Estimator Workflow Automation — Service Operations',
-      problem: 'Field estimators didn\'t have direct CRM access, so appointment data was being lost or delayed between field visits and office records — creating downstream errors in quoting, scheduling, and job tracking.',
-      system: 'Built an SMS-triggered fallback system where estimators receive a webform before and after each appointment. Escalation logic fires automatically if submissions are missed. Data syncs directly into CRM records.',
-      result: '98% data capture compliance. The handoff between field and office became reliable without requiring anyone to manually chase submissions.',
-    },
-    {
-      title: 'CRM & Operations Rebuild — Alan Dobbie Glass and Glazing',
-      problem: 'A growing service business was running on a CRM platform that had outgrown its usefulness. Job folders, quote tracking, status flows, and lead handling were inconsistent and difficult to scale.',
-      system: 'Migrated the entire CRM infrastructure from Tradify to Business Pilot. Redesigned lead handling logic, custom job folder structure, status flows, and quote-tracking workflows. Authored SOP libraries covering operations, compliance, and staff onboarding.',
-      result: 'Faster quoting, cleaner data, and a job management structure that held up as the business grew. Ashley Mackenzie later noted that the systems thinking and execution quality made Aaron an invaluable asset.',
-    },
-    {
-      title: 'GHL Operations Infrastructure — AS Multi-Task Collective',
-      problem: 'Client businesses were using GoHighLevel as a basic contact database, leaving the platform\'s automation and operations potential almost entirely unused.',
-      system: 'Built full GHL architectures tracking 150+ operational data fields. Designed pipeline logic, workflow automation, appointment systems, fallback triggers, SMS/email sequences, Looker Studio dashboards, and team accountability structures — all tuned to each client\'s actual operational reality.',
-      result: 'Clients shifted from manual, memory-dependent operations to systems-driven execution. Reduced missed handoffs, improved lead-to-job conversion tracking, and gave leadership visibility they previously didn\'t have.',
-    },
+    { title: 'Knowledge System Architecture — Payments Operations', problem: 'A fast-scaling payments ISO was operating entirely on tribal knowledge. Processor workflows, risk procedures, and case-handling logic lived in email threads, Slack messages, and senior staff memory. Every edge case required someone senior to unblock it.', system: 'Owned the full architecture of a centralized knowledge platform as a CRM-integrated operational brain. Designed taxonomy around real case types — Risk, Descriptor, Deployment, Billing, Funding. Mapped CRM workflows directly to SOPs. Reverse-engineered undocumented logic from 10+ processors and converted it into searchable decision trees and resolution paths.', result: 'Transformed the knowledge base from a documentation tool into institutional memory. Frontline agents could resolve complex cases without senior dependency. The company stopped losing operational knowledge every time someone left or was unavailable.' },
+    { title: 'Risk Department Establishment — Square Block', problem: 'Recurring batching errors and payment anomalies were creating financial exposure that no one was formally tracking or preventing. Losses were reaching tens of thousands of dollars per month.', system: 'Informally absorbed the risk function, then formalized it. Built monitoring processes, escalation logic, and proactive issue management procedures. Identified the root patterns behind recurring losses and institutionalized the response.', result: 'Stopped the recurring losses. Turned a reactive firefighting posture into a structured risk-handling operation with defined ownership and procedures.' },
+    { title: 'Estimator Workflow Automation — Service Operations', problem: 'Field estimators didn\'t have direct CRM access, so appointment data was being lost or delayed between field visits and office records — creating downstream errors in quoting, scheduling, and job tracking.', system: 'Built an SMS-triggered fallback system where estimators receive a webform before and after each appointment. Escalation logic fires automatically if submissions are missed. Data syncs directly into CRM records.', result: '98% data capture compliance. The handoff between field and office became reliable without requiring anyone to manually chase submissions.' },
+    { title: 'CRM & Operations Rebuild — Alan Dobbie Glass and Glazing', problem: 'A growing service business was running on a CRM platform that had outgrown its usefulness. Job folders, quote tracking, status flows, and lead handling were inconsistent and difficult to scale.', system: 'Migrated the entire CRM infrastructure from Tradify to Business Pilot. Redesigned lead handling logic, custom job folder structure, status flows, and quote-tracking workflows. Authored SOP libraries covering operations, compliance, and staff onboarding.', result: 'Faster quoting, cleaner data, and a job management structure that held up as the business grew. Ashley Mackenzie later noted that the systems thinking and execution quality made Aaron an invaluable asset.' },
+    { title: 'GHL Operations Infrastructure — AS Multi-Task Collective', problem: 'Client businesses were using GoHighLevel as a basic contact database, leaving the platform\'s automation and operations potential almost entirely unused.', system: 'Built full GHL architectures tracking 150+ operational data fields. Designed pipeline logic, workflow automation, appointment systems, fallback triggers, SMS/email sequences, Looker Studio dashboards, and team accountability structures — all tuned to each client\'s actual operational reality.', result: 'Clients shifted from manual, memory-dependent operations to systems-driven execution. Reduced missed handoffs, improved lead-to-job conversion tracking, and gave leadership visibility they previously didn\'t have.' },
   ];
 
   const EXPERIENCE = [
-    {
-      where: 'Operations Specialist · CRM & Knowledge Systems Architect — Payments ISO (US, Remote)',
-      context: 'High-volume, high-complexity payments operations environment. Joined as the company was scaling faster than its internal structure could support — and left it significantly more organized than I found it.',
-      bullets: [
-        'Architected a CRM-integrated knowledge system from scratch, encoding tribal knowledge into structured SOPs, decision trees, and processor-specific resolution logic.',
-        'Reverse-engineered undocumented workflows across 10+ processors — standardizing descriptor routing, ACH handling, surcharge rules, and underwriting dependencies.',
-        'Acted as the technical translator between leadership intent and operational execution — turning abstract directives into repeatable CRM workflows.',
-        'Elevated CRM from a ticket inbox into a command system for payments operations, risk control, and merchant lifecycle management.',
-        'Reduced dependency on senior staff by institutionalizing knowledge into systems rather than people.',
-      ],
-    },
-    {
-      where: 'Operations & CRM Specialist · Executive Support — Alan Dobbie Glass and Glazing (UK, Remote)',
-      context: 'Supported a CEO through full CRM migration and operational restructuring while also managing day-to-day client operations.',
-      bullets: [
-        'Migrated CRM infrastructure from Tradify to Business Pilot — rebuilt quoting systems, job folder logic, and lead status flows from scratch.',
-        'Designed estimator-side SMS automation achieving 98% field data capture compliance.',
-        'Authored SOP libraries covering operations, compliance, staff onboarding, and client communication.',
-        'Built cross-department reporting and escalation structures to improve leadership visibility.',
-        'Managed client-facing communications, appointment confirmations, and supplier coordination in parallel with systems work.',
-      ],
-    },
-    {
-      where: 'Payments Operations · Risk & Support Leadership — Square Block / ISO Environments',
-      context: 'Ground-level payments operations — the layer where financial systems break in the real world. Where most architects never go.',
-      bullets: [
-        'Informally ran, then formally established, risk-handling procedures that stopped recurring losses reaching tens of thousands per month.',
-        'Identified root causes behind batching errors, funding failures, and ACH rejects — and built institutional responses instead of per-case reactions.',
-        'Configured merchant accounts, POS systems, and surcharge/cash discount programs across varied client profiles.',
-        'Delivered staff and merchant training tied to execution quality and compliance outcomes.',
-        'Built the operational pattern recognition that now informs every system I design.',
-      ],
-    },
-    {
-      where: 'Co-Founder · Systems Lead — AS Multi-Task Collective',
-      context: 'Systems-focused incubator and digital service group. Built to train junior VAs and specialists while also taking on client CRM, automation, and documentation work.',
-      bullets: [
-        'Designed GHL-based operating systems for SMB clients — pipelines, automation logic, dashboards, and team accountability structures.',
-        'Built training programs, SOPs, and handover frameworks for junior operators entering CRM and automation roles.',
-        'Managed client delivery across CRM setup, workflow design, reporting systems, and operational documentation.',
-        'Developed the consulting and productized service model currently in active expansion.',
-      ],
-    },
+    { where: 'Operations Specialist · CRM & Knowledge Systems Architect — Payments ISO (US, Remote)', context: 'High-volume, high-complexity payments operations environment.', bullets: ['Architected a CRM-integrated knowledge system from scratch, encoding tribal knowledge into structured SOPs, decision trees, and processor-specific resolution logic.','Reverse-engineered undocumented workflows across 10+ processors — standardizing descriptor routing, ACH handling, surcharge rules, and underwriting dependencies.','Acted as the technical translator between leadership intent and operational execution.','Elevated CRM from a ticket inbox into a command system for payments operations, risk control, and merchant lifecycle management.','Reduced dependency on senior staff by institutionalizing knowledge into systems rather than people.'] },
+    { where: 'Operations & CRM Specialist · Executive Support — Alan Dobbie Glass and Glazing (UK, Remote)', context: 'Supported a CEO through full CRM migration and operational restructuring.', bullets: ['Migrated CRM infrastructure from Tradify to Business Pilot — rebuilt quoting systems, job folder logic, and lead status flows from scratch.','Designed estimator-side SMS automation achieving 98% field data capture compliance.','Authored SOP libraries covering operations, compliance, staff onboarding, and client communication.','Built cross-department reporting and escalation structures to improve leadership visibility.','Managed client-facing communications, appointment confirmations, and supplier coordination.'] },
+    { where: 'Payments Operations · Risk & Support Leadership — Square Block / ISO Environments', context: 'Ground-level payments operations — where financial systems break in the real world.', bullets: ['Informally ran, then formally established, risk-handling procedures that stopped recurring losses reaching tens of thousands per month.','Identified root causes behind batching errors, funding failures, and ACH rejects — and built institutional responses.','Configured merchant accounts, POS systems, and surcharge/cash discount programs across varied client profiles.','Delivered staff and merchant training tied to execution quality and compliance outcomes.','Built the operational pattern recognition that now informs every system I design.'] },
+    { where: 'Co-Founder · Systems Lead — AS Multi-Task Collective', context: 'Systems-focused incubator and digital service group.', bullets: ['Designed GHL-based operating systems for SMB clients — pipelines, automation logic, dashboards, and team accountability structures.','Built training programs, SOPs, and handover frameworks for junior operators entering CRM and automation roles.','Managed client delivery across CRM setup, workflow design, reporting systems, and operational documentation.','Developed the consulting and productized service model currently in active expansion.'] },
   ];
 
   const SKILLS = {
-    'Founder & Executive Support': [
-      'Translating vague direction into structured, executable action',
-      'Reducing founder mental load by owning the operational layer end-to-end',
-      'Turning "we need to be more organized" into a system that actually runs',
-      'Being the person who watches for drag — not waits to be told what to fix',
-      'Covering ground that would otherwise require three separate hires',
-      'Managing up cleanly — keeping leadership informed without creating more work for them',
-    ],
-    'CRM Architecture': [
-      'Pipeline design that reflects how work actually moves, not how it was supposed to',
-      'Field logic, stage definitions, and status structures that enforce consistency',
-      'Case routing, escalation triggers, and automation built on stable process logic',
-      'GoHighLevel, Salesforce, Business Pilot, Tradify, Keap — platform-agnostic, structure-first',
-      'CRM as command system: every record tells the next person what happened and what to do',
-      'Adoption-first design — built for the user doing the daily work, not just the manager pulling reports',
-    ],
-    'Systems Architecture': [
-      'Knowledge base taxonomy, SOP frameworks, and decision tree design',
-      'Workflow automation — fallback logic, multi-step triggers, escalation paths, data sync',
-      'Converting tribal knowledge into institutional infrastructure',
-      'Onboarding systems that get people productive without front-loading everything',
-      'Handoff logic that maintains continuity without requiring a conversation',
-      'Building for the version after next, not just the current problem',
-    ],
-    'Operational Design': [
-      'Diagnosing why operations break — not just fixing the visible symptom',
-      'Bridging leadership intent and frontline execution reality',
-      'Process documentation that teams actually use, not just compliance artifacts',
-      'Identifying recurring failure patterns before they compound into crises',
-      'QA instinct: detecting when something is off before it becomes a formal incident',
-      'Structural cleanup of operations that have outgrown their original design',
-    ],
-    'Troubleshooting & Stabilization': [
-      'Root-cause analysis across tools, teams, and interconnected workflows',
-      'Walking into broken operations and leaving them measurably better',
-      'Deadlock-breaking — the issues other people escalate, I resolve',
-      'Absorbing operational complexity so founders and managers don\'t have to carry it',
-      'Calm under pressure — slower to escalate, faster to resolve',
-      'Rebuilding trust in systems that teams have stopped using because they stopped working',
-    ],
+    'Founder & Executive Support': ['Translating vague direction into structured, executable action','Reducing founder mental load by owning the operational layer end-to-end','Turning "we need to be more organized" into a system that actually runs','Being the person who watches for drag — not waits to be told what to fix','Covering ground that would otherwise require three separate hires','Managing up cleanly — keeping leadership informed without creating more work for them'],
+    'CRM Architecture': ['Pipeline design that reflects how work actually moves, not how it was supposed to','Field logic, stage definitions, and status structures that enforce consistency','Case routing, escalation triggers, and automation built on stable process logic','GoHighLevel, Salesforce, Business Pilot, Tradify, Keap — platform-agnostic, structure-first','CRM as command system: every record tells the next person what happened and what to do','Adoption-first design — built for the user doing the daily work, not just the manager pulling reports'],
+    'Systems Architecture': ['Knowledge base taxonomy, SOP frameworks, and decision tree design','Workflow automation — fallback logic, multi-step triggers, escalation paths, data sync','Converting tribal knowledge into institutional infrastructure','Onboarding systems that get people productive without front-loading everything','Handoff logic that maintains continuity without requiring a conversation','Building for the version after next, not just the current problem'],
+    'Operational Design': ['Diagnosing why operations break — not just fixing the visible symptom','Bridging leadership intent and frontline execution reality','Process documentation that teams actually use, not just compliance artifacts','Identifying recurring failure patterns before they compound into crises','QA instinct: detecting when something is off before it becomes a formal incident','Structural cleanup of operations that have outgrown their original design'],
+    'Troubleshooting & Stabilization': ['Root-cause analysis across tools, teams, and interconnected workflows','Walking into broken operations and leaving them measurably better','Deadlock-breaking — the issues other people escalate, I resolve','Absorbing operational complexity so founders and managers don\'t have to carry it','Calm under pressure — slower to escalate, faster to resolve','Rebuilding trust in systems that teams have stopped using because they stopped working'],
   };
 
   const TOOLKIT = {
@@ -1038,228 +1397,260 @@
     'Reporting & Visibility': ['Looker Studio','GA4','Google Data Studio','Custom GHL Dashboards'],
     'Communication & Support': ['Zendesk','RingCentral','Slack','Gmail / Google Workspace','Intercom'],
     'Field & Technical': ['PAX / Clover / Verifone terminal configuration','POS system setup & troubleshooting','Remote diagnostics & endpoint setup'],
-    'Certifications': [
-      'GoHighLevel Certification – 2025',
-      'Meta Digital Marketing Associate – 2025',
-      'Zendesk Support Training – 2024',
-      'Business Pilot & Tradify Training – 2024',
-      'Infusionsoft by Keap Training – 2019',
-    ],
+    'Certifications': ['GoHighLevel Certification – 2025','Meta Digital Marketing Associate – 2025','Zendesk Support Training – 2024','Business Pilot & Tradify Training – 2024','Infusionsoft by Keap Training – 2019'],
   };
 
   const TESTIMONIALS = [
-    {
-      quote: 'Aaron consistently demonstrated initiative, ownership, and a deep understanding of process logic and systems thinking. His ability to turn vague business goals into actionable workflows made him an invaluable asset during our rebrand and internal restructuring. Beyond the technical skills, he brought strong communication, reliability, and a calm approach to problem-solving — even when faced with shifting priorities and limited resources. He helped onboard junior staff and documented SOPs across admin, fuel cards, insurance, and tone-of-voice guidelines. I confidently recommend Aaron to any organization looking for a highly adaptable, technically competent, and systems-minded professional who doesn\'t just complete tasks — but builds infrastructure others can grow into.',
-      from: 'Ashley Mackenzie · Director, Alan Dobbie Glass and Glazing Ltd.',
-    },
-    {
-      quote: 'Aaron is incredibly self-sufficient and trustworthy. I always feel at ease knowing that as long as he\'s around, I don\'t have to worry about the new staff.',
-      from: 'Edilbert Bagor · Manager, Square Block',
-    },
-    {
-      quote: 'Aaron is the go-to person for any technical questions among our non-technical staff. I consistently encourage them to seek his guidance because he actively makes an effort to provide clear answers. His dedication to helping others and preventing mistakes has been invaluable to our team.',
-      from: 'Joan Pandan · Non-Tech Team Lead, Square Block',
-    },
-    {
-      quote: 'Aaron consistently goes above and beyond in assisting our merchants. Multiple merchants have expressed their gratitude for his dedication to finding resolutions. He takes ownership of challenging situations, viewing problems as his own rather than deflecting them. This proactive approach enables him to uncover effective solutions that others may overlook.',
-      from: 'Sales Agent · Direct Payment Services',
-    },
-    {
-      quote: 'You have an out-of-the-box approach and a rare combination of technical depth with a thoughtful, grounded presence. I recommend him wholeheartedly.',
-      from: 'Rachel Yam · The Freedom Geek',
-    },
-    {
-      quote: 'Not sure I\'ve worked with someone who can move that fluidly between strategic thinking and rolling up their sleeves. He leaves things better than he found them — structurally, not just functionally.',
-      from: 'Operations Partner · Remote Client',
-    },
+    { quote: 'Aaron consistently demonstrated initiative, ownership, and a deep understanding of process logic and systems thinking. His ability to turn vague business goals into actionable workflows made him an invaluable asset during our rebrand and internal restructuring. Beyond the technical skills, he brought strong communication, reliability, and a calm approach to problem-solving — even when faced with shifting priorities and limited resources. He helped onboard junior staff and documented SOPs across admin, fuel cards, insurance, and tone-of-voice guidelines. I confidently recommend Aaron to any organization looking for a highly adaptable, technically competent, and systems-minded professional who doesn\'t just complete tasks — but builds infrastructure others can grow into.', from: 'Ashley Mackenzie · Director, Alan Dobbie Glass and Glazing Ltd.' },
+    { quote: 'Aaron is incredibly self-sufficient and trustworthy. I always feel at ease knowing that as long as he\'s around, I don\'t have to worry about the new staff.', from: 'Edilbert Bagor · Manager, Square Block' },
+    { quote: 'Aaron is the go-to person for any technical questions among our non-technical staff. I consistently encourage them to seek his guidance because he actively makes an effort to provide clear answers. His dedication to helping others and preventing mistakes has been invaluable to our team.', from: 'Joan Pandan · Non-Tech Team Lead, Square Block' },
+    { quote: 'Aaron consistently goes above and beyond in assisting our merchants. Multiple merchants have expressed their gratitude for his dedication to finding resolutions. He takes ownership of challenging situations, viewing problems as his own rather than deflecting them.', from: 'Sales Agent · Direct Payment Services' },
+    { quote: 'You have an out-of-the-box approach and a rare combination of technical depth with a thoughtful, grounded presence. I recommend him wholeheartedly.', from: 'Rachel Yam · The Freedom Geek' },
+    { quote: 'Not sure I\'ve worked with someone who can move that fluidly between strategic thinking and rolling up their sleeves. He leaves things better than he found them — structurally, not just functionally.', from: 'Operations Partner · Remote Client' },
   ];
 
-  /* ──────────────────────────────────────────────────────────────────
-     NOTES / ARTICLES
-     ──────────────────────────────────────────────────────────────────
-     HOW TO ADD A NEW ARTICLE:
-     1. Copy one of the blocks below (from the opening { to the closing },)
-     2. Paste it at the TOP of the array (newest first)
-     3. Fill in: title, date, category, body
-
-     CATEGORIES (use exactly as written):
-       'systems'        → systems design, automation, ops architecture
-       'operations'     → team ops, process, execution
-       'crm'            → CRM logic, platform thinking
-       'founder-notes'  → advice for founders, working with founders
-       'field-notes'    → observations, patterns, things I've seen
-
-     BODY FORMATTING:
-       Plain paragraph   → just write the text, blank line between paragraphs
-       Section heading   → **Heading Text** on its own line (no other text on that line)
-       Bold inline       → **bold words** inside a sentence
-       Blockquote        → > Your quote text (start the line with > )
-
-     EXAMPLE BLOCK TO COPY:
-     ─────────────────────────────────
-     {
-       title: 'Your Article Title Here',
-       date: 'Mar 2026',
-       category: 'systems',
-       body: `Opening paragraph — no heading needed here.
-
-     **First Section Heading**
-
-     Section body text goes here. Keep paragraphs short.
-     Blank lines between paragraphs.
-
-     **Second Section Heading**
-
-     More body text.`,
-     },
-     ─────────────────────────────────
-  ── ↓ ADD NEW ARTICLES AT THE TOP OF THIS ARRAY ↓ ────────────── */
+  /* ════════════════════════════════════════════════════════════════
+     📚 NOTES DATA — ENHANCED WITH VISUAL ELEMENTS
+     ════════════════════════════════════════════════════════════════ */
   const NOTES = [
-
-    /* ── ARTICLE 1 ──────────────────────────────────────────────── */
     {
       title: 'Stop Training People. Start Building Systems That Set Them Free.',
-      date: 'Mar 2026',
+      date: 'Mar 2026', 
       category: 'systems',
       body: `Learning is hard. Not because people aren't smart — but because we keep making it harder than it needs to be.
 
-I've spent years inside operations, CRM rollouts, and support environments — the kind of work where the gap between "what we trained on" and "what actually happens on Monday morning" is painfully obvious. And across every environment, every team, every company size, I kept watching the same thing unfold.
+> 💡 *"The gap between 'what we trained on' and 'what actually happens on Monday morning' tells you everything about your system."*
+
+I've spent years inside operations, CRM rollouts, and support environments. Across every environment, every team, every company size, I kept watching the same thing unfold.
 
 Something breaks down. Leadership responds by adding more training. More walkthroughs. More SOPs. More meetings going over the process again.
 
 It rarely fixed the actual problem.
 
-**The Thing That Kept Bothering Me**
+---
 
-Here's what I couldn't shake: capable people were constantly getting stuck on simple things. Not because they didn't understand the work. Because the environment around the work gave them nowhere to turn except up.
+## 🔍 The Thing That Kept Bothering Me
 
-Every edge case, every exception, every "here's how we actually handle that" lived in someone's head — usually a senior person, usually someone already stretched thin. So the default became: I need my supervisor to unblock this.
+Here's what I couldn't shake: **capable people were constantly getting stuck on simple things.**
 
-This wasn't a learning failure. It was a systems failure. We were asking people to navigate without a compass and then blaming them for getting lost.
+Not because they didn't understand the work. Because the environment around the work gave them nowhere to turn except up.
 
-**What Over-Training Actually Creates**
+Every edge case, every exception, every "here's how we actually handle that" lived in someone's head — usually a senior person, usually someone already stretched thin. So the default became:
 
-When we over-train, we don't build confidence — we build dependency. Team members hesitate before decisions because they've been conditioned to wait for confirmation. They've learned that acting independently can get you in trouble if you get it wrong. So they wait. They escalate. They ask the same questions again.
+> "I need my supervisor to unblock this."
 
-Think about handing someone a map of every back road in a city versus handing them a compass and teaching them to navigate. One creates someone who can follow instructions. The other creates someone who can get anywhere — including places you never mapped.
+This wasn't a learning failure. It was a **systems failure.** We were asking people to navigate without a compass and then blaming them for getting lost.
 
-**What Actually Works**
+---
+
+## ⚠️ What Over-Training Actually Creates
+
+When we over-train, we don't build confidence — we build dependency.
+
+| Training Approach | Outcome |
+|------------------|---------|
+| Endless documentation | "I'll just ask Sarah" |
+| Complex SOPs | "Where do I even start?" |
+| More meetings | "I'll wait for confirmation" |
+| **Systems that guide** | **Autonomous execution** |
+
+Team members hesitate before decisions because they've been conditioned to wait for confirmation. They've learned that acting independently can get you in trouble if you get it wrong.
+
+So they wait. They escalate. They ask the same questions again.
+
+Think about handing someone a map of every back road in a city versus handing them a compass and teaching them to navigate.
+
+| Map | Compass |
+|-----|---------|
+| Follow instructions | Get anywhere |
+| Brittle | Adaptable |
+| Depends on accuracy | Depends on skill |
+
+One creates someone who can follow instructions. The other creates someone who can get anywhere — including places you never mapped.
+
+---
+
+## ✅ What Actually Works
 
 The teams I've watched operate at the highest level didn't solve this by training harder. They built better systems around the work itself:
 
-Shorter, sharper onboarding. New people get the essentials — enough to start moving, not every edge case front-loaded into week one.
+- **Shorter, sharper onboarding.** New people get the essentials — enough to start moving, not every edge case front-loaded into week one.
+- **Systems as guides, not gatekeepers.** Documentation and decision trees that surface answers instead of routing everything back up the chain.
+- **Frameworks over permission.** Teach people how to reason through a situation. Someone who understands **why** a process exists can handle cases you never explicitly trained for.
+- **Autonomy built in from day one.** Not earned after years of tenure.
 
-Systems as guides, not gatekeepers. Documentation and decision trees that surface answers instead of routing everything back up the chain.
+---
 
-Frameworks over permission. Teach people how to reason through a situation. Someone who understands why a process exists can handle cases you never explicitly trained for.
+## 🎯 The Question Worth Asking
 
-Autonomy built in from day one. Not earned after years of tenure.
+Look at your training and onboarding right now. Ask yourself:
 
-**The Question Worth Asking**
+> Is this building **navigators** — or creating **dependency**?
 
-Look at your training and onboarding right now. Ask yourself: is this building navigators — or creating dependency?
+If people keep coming back with questions you've already answered before, it's probably not their memory.
 
-If people keep coming back with questions you've already answered before, it's probably not their memory. It's the system — and systems can be redesigned.
+It's the **system** — and systems can be redesigned.
 
-Build the guide rails. Shorten the deep dives. Hand people a compass instead of a map. Then step back and watch what they do with it.`,
+Build the guide rails. Shorten the deep dives. Hand people a compass instead of a map.
+
+Then step back and watch what they do with it.`,
     },
 
-    /* ── ARTICLE 2 ──────────────────────────────────────────────── */
     {
       title: 'Why Knowledge Lives in People\'s Heads (and How to Move It Out)',
-      date: 'Feb 2026',
+      date: 'Feb 2026', 
       category: 'operations',
-      body: `Every growing team has the same invisible bottleneck: knowledge that lives in specific people's heads.
+      body: `Every growing team has the same invisible bottleneck: **knowledge that lives in specific people's heads.**
 
 Not documented anywhere. Not transferable. Just... there, in the person who's been around longest, or the one who happens to have figured it out. Until they're unavailable. Or they leave.
 
-I've seen this pattern create chaos in multiple environments. The symptom looks different each time — slow escalations, repeated mistakes, inconsistent execution — but the root cause is almost always the same. No one built a system to capture how the work actually gets done.
+> ⚠️ **Warning Sign:** If your team slows down when one person is out sick, you're running on tribal knowledge.
 
-**The Cost Nobody Calculates**
+I've seen this pattern create chaos in multiple environments. The symptom looks different each time — slow escalations, repeated mistakes, inconsistent execution — but the root cause is almost always the same:
 
-Organizations spend significant time calculating the cost of hiring and onboarding. Almost none of them calculate the cost of re-explaining the same thing 40 times a year. Or the cost of a senior person being unavailable for two days. Or the cost of a new hire making a decision based on outdated guidance because the most current version lives in someone's memory.
+📌 **No one built a system to capture how the work actually gets done.**
+
+---
+
+## 💰 The Cost Nobody Calculates
+
+Organizations spend significant time calculating the cost of hiring and onboarding. Almost none of them calculate the cost of **re-explaining the same thing 40 times a year.**
+
+| Hidden Cost | Impact |
+|-------------|--------|
+| Senior person unavailable | Work stalls |
+| New hire makes wrong decision | Quality suffers |
+| Tribal knowledge leaves | Continuity breaks |
 
 Tribal knowledge isn't free. It just looks free until it isn't.
 
-**Where to Start**
+---
 
-The goal isn't a massive documentation project. It's a structured way of capturing and organizing what actually matters. Start with:
+## 🧭 Where to Start
 
-The decisions people make most often. These should become decision trees, not explanations.
+The goal isn't a massive documentation project. It's a structured way of capturing and organizing what actually matters.
 
-The edge cases that always cause escalation. These need their own clear handling logic.
+| Priority | Action |
+|----------|--------|
+| **High** | The decisions people make most often → become **decision trees** |
+| **Medium** | Edge cases that always cause escalation → **clear handling logic** |
+| **Low** | Everything else → capture as reference |
 
-The context that's currently locked in one person. Ask them to narrate their thinking on video. Transcribe it. Turn it into a reference.
+**Pro Tip:** Ask the person with the knowledge to narrate their thinking on video. Transcribe it. Turn it into a reference.
 
-The system doesn't have to be perfect to be useful. It just has to be accessible when someone needs it.`,
+The system doesn't have to be perfect to be useful. It just has to be **accessible when someone needs it.**`,
     },
 
-    /* ── ARTICLE 3 ──────────────────────────────────────────────── */
     {
       title: 'CRM Isn\'t Just a Database. It\'s an Operating System.',
-      date: 'Jan 2026',
+      date: 'Jan 2026', 
       category: 'crm',
-      body: `Most teams use their CRM as a filing cabinet. They put records in. They pull records out. They report on what's there.
+      body: `Most teams use their CRM as a filing cabinet. 📁
 
-That's not what a CRM is for.
+They put records in. They pull records out. They report on what's there.
 
-A well-architected CRM is an operating system for how your team works. It tells people what to do next, tracks what's been done, surfaces what's slipping, and makes accountability visible without someone having to chase it.
+That's **not** what a CRM is for.
 
-**What a Filing Cabinet CRM Looks Like**
+A well-architected CRM is an **operating system** for how your team works. It tells people what to do next, tracks what's been done, surfaces what's slipping, and makes accountability visible without someone having to chase it.
 
-Contacts with no clear stage. No pipeline logic that reflects how deals actually move. Status fields that mean different things to different people. Notes that are written for the person who wrote them, not for the next person who reads them. Reports that tell you what happened but not why or what to do about it.
+---
 
-**What an Operating System CRM Looks Like**
+## 🗄️ What a Filing Cabinet CRM Looks Like
 
-Every record has a clear status that maps to a real state of the work. Stages trigger tasks, reminders, or automations at the right moment. Fields are named and used consistently across the team. Whoever picks up a record can understand exactly where it is and what needs to happen. The data is trustworthy because the structure enforces consistency.
+| Symptom | Reality |
+|---------|---------|
+| Contacts with no clear stage | No pipeline logic |
+| Status fields mean different things | Inconsistent execution |
+| Notes written for the writer | Not useful to next person |
+| Reports show what happened | Not why or what to do |
 
-**The Gap**
+---
 
-Getting from filing cabinet to operating system requires someone to make decisions about how your team actually works and then encode those decisions into the CRM. That's not a software configuration problem. It's a workflow design problem that happens to be solved with software.
+## 🖥️ What an Operating System CRM Looks Like
+
+| Feature | Benefit |
+|---------|---------|
+| Every record has clear status | Maps to real state of work |
+| Stages trigger tasks | Right action at right moment |
+| Consistent field usage | Trustworthy data |
+| Next steps are visible | Anyone can pick it up |
+
+---
+
+## 🔄 The Gap
+
+Getting from filing cabinet to operating system requires someone to make decisions about how your team actually works and then **encode those decisions into the CRM.**
+
+That's not a software configuration problem. It's a **workflow design problem** that happens to be solved with software.
 
 Most teams skip this step. They install the platform, set up some fields, and wonder why adoption is low and data is messy.
 
-The structure has to come first.`,
+📌 **The structure has to come first.**`,
     },
 
-    /* ── ARTICLE 4 ──────────────────────────────────────────────── */
     {
       title: 'What Founders Actually Need From an Ops Person',
-      date: 'Dec 2025',
+      date: 'Dec 2025', 
       category: 'founder-notes',
       body: `I've worked with founders at different stages, and the needs are surprisingly consistent regardless of company size.
 
-Not a task executor. Anyone can execute tasks. What founders need is someone who can look at a vague direction and figure out what it actually means to implement it.
+**Not a task executor.** Anyone can execute tasks. What founders need is someone who can look at a vague direction and figure out what it actually means to implement it.
 
-"We need to be more organized" is not a task. Turning that into a system — figuring out where the friction is, what needs to be documented, what should be automated, what needs a human decision point — that's the actual work.
+> 🎯 "We need to be more organized" is not a task.
 
-**The Real Value**
+Turning that into a system — figuring out where the friction is, what needs to be documented, what should be automated, what needs a human decision point — **that's the actual work.**
 
-The founder's job is to think at the level of strategy, relationship, and product. Every hour they spend routing an operational question, explaining a process for the third time, or re-doing something because it wasn't clear — that's an hour they're not doing the thing only they can do.
+---
 
-An ops person who understands this doesn't wait to be told what to do. They're watching for the drag. They're asking: where is this slowing down? What's not captured? What would happen if I wasn't here?
+## 💎 The Real Value
 
-**What to Look For**
+| Founder's Role | Ops Person's Role |
+|----------------|-------------------|
+| Strategy | Translate strategy to execution |
+| Relationships | Build operational infrastructure |
+| Product | Remove operational drag |
+| Vision | Make vision executable |
+
+The founder's job is to think at the level of strategy, relationship, and product. Every hour they spend routing an operational question, explaining a process for the third time, or re-doing something because it wasn't clear — **that's an hour they're not doing the thing only they can do.**
+
+An ops person who understands this doesn't wait to be told what to do. They're watching for the drag. They're asking:
+
+📌 Where is this slowing down?  
+📌 What's not captured?  
+📌 What would happen if I wasn't here?
+
+---
+
+## 🔍 What to Look For
 
 When you're evaluating someone for an ops role, don't just ask what they've done. Ask how they think about the work they've done.
 
-Can they explain why a process was built a certain way? Can they identify what would break it? Can they describe the downstream effect of a change they made?
+| Question | What It Reveals |
+|----------|-----------------|
+| Why was this process built this way? | Understanding of tradeoffs |
+| What would break it? | Systems thinking |
+| Downstream effects of a change? | Causal reasoning |
 
-Process thinking is the actual skill. The tools are just how it gets applied.`,
+**Process thinking is the actual skill.** The tools are just how it gets applied.`,
     },
 
-    /* ── ARTICLE 5 ──────────────────────────────────────────────── */
     {
       title: 'The Escalation Tax: What It\'s Costing You Every Day',
-      date: 'Mar 2026',
+      date: 'Mar 2026', 
       category: 'operations',
       body: `There's a cost every team pays that almost no one measures. Not in their dashboards. Not in their reports. Not in any budget line.
 
-It shows up as a senior person constantly interrupted. As a team member who can't make a decision without checking first. As a founder who's still answering the same operational questions they were answering six months ago.
+It shows up as:
 
-I call it the escalation tax.
+- A senior person constantly interrupted
+- A team member who can't decide without checking first
+- A founder still answering the same questions from six months ago
 
-**What It Looks Like**
+I call it the **escalation tax.**
+
+---
+
+## 🔄 What It Looks Like
 
 Someone hits a situation they haven't encountered before. Nothing in the documentation covers it — because there isn't much documentation. So they do the rational thing: they ask.
 
@@ -1267,607 +1658,1596 @@ The ask goes up the chain. The person at the top figures it out, gives an answer
 
 Multiply that by every edge case your team encounters. Multiply that by every week of the year.
 
-**The Hidden Multiplier**
+---
 
-What most managers don't account for is the switching cost. Every time someone interrupts a senior person, that person doesn't just spend five minutes answering. They spend five minutes re-entering the context of whatever they were doing. Research on cognitive switching suggests this cost can be 15-20 minutes per interruption.
+## 📊 The Hidden Multiplier
 
-An operation with ten escalations per day isn't losing fifty minutes. It might be losing three or four hours of focused, senior work — every single day.
+What most managers don't account for is the **switching cost.**
 
-**How to Cut It**
+Every time someone interrupts a senior person, that person doesn't just spend five minutes answering. They spend five minutes **re-entering the context** of whatever they were doing.
 
-The fix isn't telling people to stop asking. The fix is building the infrastructure that removes the need to ask.
+| Interruptions/Day | Time Lost (5 min) | With Switching Cost (20 min) |
+|-------------------|-------------------|------------------------------|
+| 5 | 25 minutes | 1.5 hours |
+| 10 | 50 minutes | 3+ hours |
+| 20 | 1.5 hours | 6+ hours |
 
-Decision trees for the top twenty most common edge cases. A knowledge base that's actually searchable and current. Clear ownership so people know who handles what without guessing. Escalation paths that are documented, not improvised.
+An operation with ten escalations per day isn't losing fifty minutes. It might be losing **three or four hours of focused, senior work** — every single day.
 
-The goal is that by the time something reaches a senior person, it should genuinely require their judgment — not their memory.`,
+---
+
+## ✂️ How to Cut It
+
+The fix isn't telling people to stop asking. The fix is **building the infrastructure that removes the need to ask.**
+
+| Solution | Impact |
+|----------|--------|
+| Decision trees for top 20 edge cases | 80% of questions answered |
+| Searchable, current knowledge base | Self-service resolution |
+| Clear ownership documented | No guessing who handles what |
+| Documented escalation paths | Structured exceptions |
+
+🎯 **The goal:** By the time something reaches a senior person, it should genuinely require their judgment — not their memory.`,
     },
 
-    /* ── ARTICLE 6 ──────────────────────────────────────────────── */
     {
       title: 'Handoffs Are Where Work Goes to Die',
-      date: 'Feb 2026',
+      date: 'Feb 2026', 
       category: 'operations',
-      body: `Most operational failures don't happen inside a task. They happen between tasks.
+      body: `Most operational failures don't happen inside a task. They happen **between tasks.**
 
-The work is finished on one end. It moves to the next person. Something gets lost in the gap — context, status, an edge case that was handled but never communicated. The next person either starts from scratch, makes a wrong assumption, or pauses the whole thing to ask.
+The work is finished on one end. It moves to the next person. Something gets lost in the gap — context, status, an edge case that was handled but never communicated.
 
-Handoffs are where work goes to die.
+The next person either:
 
-**Why This Happens**
+- Starts from scratch
+- Makes a wrong assumption
+- Pauses the whole thing to ask
 
-The person passing the work knows everything about it. They lived it. All the context is in their head. So they hand over the artifact — the file, the record, the update — without handing over the thinking that shaped it.
+**Handoffs are where work goes to die.**
+
+---
+
+## 🧠 Why This Happens
+
+The person passing the work knows everything about it. They lived it. All the context is in their head.
+
+So they hand over the artifact — the file, the record, the update — **without handing over the thinking that shaped it.**
 
 The receiving person gets the output but not the reasoning. They're left to reconstruct context that the first person never wrote down because it seemed obvious at the time.
 
-**The Standard Is Low**
+---
 
-Most handoffs are just: "Done. Passing to you." That's not a handoff. That's a hand-grenade with the pin pulled.
+## 📉 The Standard Is Low
 
-A useful handoff answers three questions without the receiver having to ask: What is this? Where does it stand? What does the next person need to know before they touch it?
+Most handoffs are just:
 
-**Building Handoff Discipline**
+> "Done. Passing to you."
+
+That's not a handoff. That's a **hand-grenade with the pin pulled.**
+
+A useful handoff answers three questions without the receiver having to ask:
+
+| Question | What It Prevents |
+|----------|------------------|
+| What is this? | Context loss |
+| Where does it stand? | Status confusion |
+| What does next person need to know? | Missing edge cases |
+
+---
+
+## 🏗️ Building Handoff Discipline
 
 This doesn't require a complicated system. It requires a cultural norm backed by a simple template.
 
-Status at transfer. Key decisions already made. Open items with clear ownership. Any context that isn't obvious from the artifact itself.
+| Element | Example |
+|---------|---------|
+| Status at transfer | "Quote sent, awaiting client response" |
+| Key decisions made | "Offered 10% discount for annual commitment" |
+| Open items with ownership | "Legal review pending (Sarah owns)" |
+| Non-obvious context | "Client mentioned competitor pricing" |
 
-Once this becomes standard, something shifts in the team. Work stops stalling. Follow-up questions drop. The people receiving work can actually start working instead of reconstructing what happened before them.
+Once this becomes standard, something shifts in the team:
 
-That's the goal: continuity without a conversation.`,
+✅ Work stops stalling  
+✅ Follow-up questions drop  
+✅ Receivers can actually start working  
+
+🎯 **The goal:** Continuity without a conversation.`,
     },
 
-    /* ── ARTICLE 7 ──────────────────────────────────────────────── */
     {
       title: 'Why Your Onboarding Is Failing (It\'s Not the Material)',
-      date: 'Feb 2026',
+      date: 'Feb 2026', 
       category: 'operations',
-      body: `Every time I've walked into an organization with an onboarding problem, the instinct is the same: we need better materials. More videos. A cleaner deck. Updated SOPs.
+      body: `Every time I've walked into an organization with an onboarding problem, the instinct is the same:
+
+> "We need better materials. More videos. A cleaner deck. Updated SOPs."
 
 The materials are rarely the problem.
 
-**The Real Bottleneck**
+---
 
-Onboarding fails at the moment of first application. The new hire sits through the training, understands the concepts, passes the quiz. Then they hit their first real situation on the floor and realize the training didn't actually prepare them for this. Because this is messier. This has context the training didn't cover.
+## 🧱 The Real Bottleneck
+
+Onboarding fails at the **moment of first application.**
+
+The new hire sits through the training, understands the concepts, passes the quiz. Then they hit their first real situation on the floor and realize the training didn't actually prepare them for this.
+
+Because **this** is messier. **This** has context the training didn't cover.
 
 So they freeze. Or they guess. Or they escalate.
 
-And the senior person who has to catch them thinks: we need to do more training.
+And the senior person who has to catch them thinks: "We need to do more training."
 
-**What Onboarding Is Actually For**
+---
 
-Onboarding isn't supposed to transfer all knowledge. It's supposed to transfer enough to start moving, plus a clear map of where to find the rest.
+## 🎯 What Onboarding Is Actually For
 
-The goal in week one isn't mastery. It's orientation. Who do I ask for what? Where do I look when I'm stuck? What are the five things I need to get right before everything else?
+Onboarding isn't supposed to transfer **all** knowledge. It's supposed to transfer **enough to start moving**, plus a clear map of where to find the rest.
+
+| Week | Goal |
+|------|------|
+| 1 | Orientation — who, where, what's essential |
+| 2-4 | Real work, supervised, structured debriefs |
+| Ongoing | Documentation that grows with actual questions |
 
 Heavy, front-loaded onboarding feels thorough. It's actually a disservice — you're dumping information on someone before they have the context to absorb it.
 
-**A Better Structure**
+---
 
-Week one: essentials only, plus who and where.
-Week two through four: real work, supervised, with structured debriefs.
-Ongoing: documentation that grows with the questions that actually come up.
+## ✅ A Better Structure
 
-The best onboarding I've built wasn't a training program. It was a system that caught people when they stumbled and helped them recover fast without always needing a supervisor to do it.`,
+The best onboarding I've built wasn't a training program. It was a system that caught people when they stumbled and helped them recover fast without always needing a supervisor to do it.
+
+| Element | Purpose |
+|---------|---------|
+| Essentials only | Don't overload week one |
+| Clear who/where | Map of who to ask for what |
+| Supervised work | Real tasks with safety net |
+| Structured debriefs | Learn from first attempts |
+| Living documentation | Grows with actual questions |
+
+**The system teaches, not just the training.**`,
     },
 
-    /* ── ARTICLE 8 ──────────────────────────────────────────────── */
     {
       title: 'The Difference Between a Process and a System',
-      date: 'Jan 2026',
+      date: 'Jan 2026', 
       category: 'systems',
-      body: `People use these words interchangeably. They're not the same thing — and the distinction matters if you're trying to build something that actually scales.
+      body: `People use these words interchangeably. They're **not the same thing** — and the distinction matters if you're trying to build something that actually scales.
 
-A process is a sequence of steps. A system is an environment where the process happens reliably, even when you're not watching.
+| Concept | Definition |
+|---------|------------|
+| **Process** | A sequence of steps |
+| **System** | An environment where the process happens reliably, even when you're not watching |
 
-**A Process Without a System**
+---
 
-You write an SOP. You train the team on it. Everyone nods. For a few weeks, things run the way you designed them. Then someone leaves. Or a new person joins. Or the workload spikes. And the process quietly degrades — steps get skipped, shortcuts become the default, the SOP sits in a folder no one opens.
+## 📋 A Process Without a System
 
-The process existed. The system didn't.
+You write an SOP. You train the team on it. Everyone nods.
 
-**What Makes It a System**
+For a few weeks, things run the way you designed them. Then someone leaves. Or a new person joins. Or the workload spikes.
 
-A system has built-in accountability. It has checkpoints that catch deviation before it compounds. It has a structure that makes the right behavior easier than the wrong behavior.
+And the process quietly degrades:
 
-A process tells people what to do. A system makes it harder to do it wrong.
+- Steps get skipped
+- Shortcuts become the default
+- The SOP sits in a folder no one opens
 
-**The Practical Test**
+The process existed. The **system** didn't.
 
-Here's a simple check: if you removed yourself from the operation for two weeks with no warning, what would break?
+---
 
-If the answer is "a lot," you have processes but not systems. The knowledge, judgment, and coordination are still sitting in your head instead of being encoded into the environment itself.
+## ⚙️ What Makes It a System
 
-**Where to Start**
+| Process | System |
+|---------|--------|
+| Tells people what to do | Makes it harder to do it wrong |
+| Depends on memory | Built-in accountability |
+| Requires enforcement | Self-correcting |
+| Breaks under pressure | Adapts to conditions |
 
-Pick the one thing that breaks most often. Not the thing that breaks most dramatically — the thing that breaks most often. That's where the system is weakest, and that's where building will have the most immediate impact.
+A system has built-in accountability. It has checkpoints that catch deviation before it compounds. It has a structure that makes the **right behavior easier than the wrong behavior.**
+
+---
+
+## 🔍 The Practical Test
+
+Here's a simple check:
+
+> If you removed yourself from the operation for two weeks with no warning, **what would break?**
+
+| If answer is... | Then you have... |
+|-----------------|------------------|
+| "A lot" | Processes but not systems |
+| "Not much" | Systems in place |
+
+The knowledge, judgment, and coordination are still sitting in your head instead of being encoded into the environment itself.
+
+---
+
+## 🎯 Where to Start
+
+Pick the **one thing that breaks most often.** Not the thing that breaks most dramatically — the thing that breaks most often.
+
+That's where the system is weakest, and that's where building will have the most immediate impact.
 
 Start there. Build it until it runs without you. Then move to the next one.`,
     },
 
-    /* ── ARTICLE 9 ──────────────────────────────────────────────── */
     {
       title: 'Documentation Is Not Bureaucracy',
-      date: 'Jan 2026',
+      date: 'Jan 2026', 
       category: 'systems',
       body: `There's a bias in fast-moving teams against documentation. It feels slow. It feels like something big companies do when they've run out of good ideas. It feels like bureaucracy.
 
 It isn't.
 
-**What Bad Documentation Looks Like**
+---
 
-Bad documentation is lengthy, generic, and written for compliance rather than use. It covers every possible scenario in exhaustive detail. It lives in a folder that no one knows how to navigate. It's updated annually if everyone remembers.
+## 📕 What Bad Documentation Looks Like
+
+| Characteristic | Result |
+|----------------|--------|
+| Lengthy, generic | No one reads it |
+| Written for compliance | Not for use |
+| Covers every scenario | Impossible to navigate |
+| Updated annually | Always outdated |
+| Lives in hidden folder | No one can find it |
 
 That's not what I'm talking about.
 
-**What Good Documentation Actually Is**
+---
 
-Good documentation is a short, specific answer to a question someone will actually ask. It lives where they'll look for it. It's written by someone who does the work, not a documentation specialist who doesn't.
+## 📗 What Good Documentation Actually Is
 
-The best SOP I ever built was one page. It covered the five decisions people got wrong most often, explained the logic behind each one, and answered the three questions that kept coming up in Slack.
+Good documentation is a **short, specific answer to a question someone will actually ask.**
 
-Team adoption was immediate. Not because I told people to use it. Because it was actually useful.
+| Quality | Example |
+|---------|---------|
+| Lives where they'll look | In the tool, not a folder |
+| Written by someone who does the work | Practical, not theoretical |
+| Answers real questions | Based on Slack history |
+| One page | Actually usable |
 
-**The Real Cost of Not Documenting**
+The best SOP I ever built was **one page.** It covered the five decisions people got wrong most often, explained the logic behind each one, and answered the three questions that kept coming up in Slack.
 
-Every time a senior person answers a question that's been answered before, that's documentation debt being paid in the most expensive currency: senior time.
+Team adoption was immediate. Not because I told people to use it. Because it was **actually useful.**
 
-Every time a new hire makes a mistake that an existing team member would not have made, that's documentation debt paid in quality.
+---
 
-Every time someone leaves and takes knowledge with them, that's documentation debt paid in continuity.
+## 💰 The Real Cost of Not Documenting
+
+| Situation | Cost |
+|-----------|------|
+| Senior person answers same question again | Senior time |
+| New hire makes preventable mistake | Quality |
+| Someone leaves, knowledge leaves with them | Continuity |
+
+📌 **Every time a senior person answers a question that's been answered before, that's documentation debt being paid in the most expensive currency.**
 
 Write it down. Write it briefly. Put it where people will find it.`,
     },
 
-    /* ── ARTICLE 10 ──────────────────────────────────────────────── */
     {
       title: 'When to Automate and When Not To',
-      date: 'Dec 2025',
+      date: 'Dec 2025', 
       category: 'systems',
       body: `Automation is one of the most useful tools in operations. It's also one of the most commonly misapplied.
 
-The mistake isn't automating the wrong things — it's automating before the process is stable. You end up encoding broken logic into a machine that runs it at scale.
+The mistake isn't automating the wrong things — it's **automating before the process is stable.**
 
-**The Rule I Follow**
+You end up encoding broken logic into a machine that runs it at scale.
 
-Don't automate a process you haven't done manually enough times to understand its edge cases.
+---
+
+## 📏 The Rule I Follow
+
+> Don't automate a process you haven't done manually enough times to understand its edge cases.
 
 If you can't describe exactly what should happen in the five most common exception scenarios, you're not ready to automate. Build the automation and those exceptions will find you fast — usually at the worst possible time.
 
-**What's Worth Automating**
+---
 
-High-frequency, low-judgment tasks. Anything that happens more than ten times a day on a predictable trigger. Notifications that are currently happening via manual Slack message. Status updates that someone has to remember to send. Follow-up sequences that follow a clear rule.
+## ✅ What's Worth Automating
+
+| Category | Examples |
+|----------|----------|
+| High-frequency | Happens >10x/day |
+| Low-judgment | Clear rules, no decisions |
+| Predictable triggers | Form submitted, date reached |
+| Follow-up sequences | Reminders, notifications |
 
 These are good automation candidates because the logic is stable, the trigger is clear, and a machine can handle them without judgment.
 
-**What's Not Worth Automating**
+---
 
-Anything that requires reading context. Anything where the right answer genuinely depends on unstated factors. Anything that's currently done badly and needs to be redesigned, not just accelerated.
+## ❌ What's Not Worth Automating
 
-Automating a bad process makes it a fast bad process. That's not an improvement.
+| Category | Why |
+|----------|-----|
+| Requires reading context | Machines can't infer |
+| Depends on unstated factors | Edge cases undefined |
+| Currently done badly | Automating mess = faster mess |
 
-**The Sequencing**
+Automating a bad process makes it a **fast bad process.** That's not an improvement.
 
-Map it. Run it manually. Document the edge cases. Stabilize the logic. Then automate. In that order.`,
+---
+
+## 🧩 The Sequencing
+
+| Step | Action |
+|------|--------|
+| 1 | Map it |
+| 2 | Run it manually |
+| 3 | Document edge cases |
+| 4 | Stabilize the logic |
+| 5 | Then automate |
+
+**In that order.**`,
     },
 
-    /* ── ARTICLE 11 ──────────────────────────────────────────────── */
     {
       title: 'Meetings That Should Be Documents',
-      date: 'Dec 2025',
+      date: 'Dec 2025', 
       category: 'founder-notes',
       body: `Most organizations have too many meetings. Not because people love sitting in calls — but because they haven't built the alternative.
 
-A meeting is a synchronous, time-bounded exchange of information. It's expensive, it's interruptive, and its output disappears the moment the call ends unless someone captures it.
+| Format | Cost |
+|--------|------|
+| Meeting | Synchronous, interruptive, ephemeral |
+| Document | Asynchronous, scalable, referenceable |
 
-A document is asynchronous. It can be read at any time. It can be referenced again. It scales.
+---
 
-**The Three Types of Meetings That Should Be Documents**
+## 📄 The Three Types of Meetings That Should Be Documents
 
-Status updates. If you're gathering people to report what they're working on, a shared doc or dashboard does this better, faster, and without scheduling friction.
+**1. Status updates**
 
-Information broadcasts. If the goal is to share context that everyone needs but doesn't require their real-time input, write it down and let people read it on their own time.
+If you're gathering people to report what they're working on, a shared doc or dashboard does this better, faster, and without scheduling friction.
 
-Decisions that only need one person's input. If the decision-maker can read a brief, decide, and reply — that's not a meeting. That's an email waiting for a subject line.
+**2. Information broadcasts**
 
-**What Meetings Are Actually For**
+If the goal is to share context that everyone needs but doesn't require their real-time input, write it down and let people read it on their own time.
 
-Real-time collaboration on complex problems. Alignment conversations where body language and nuance matter. Relationship building that's genuinely better in live conversation.
+**3. Decisions that only need one person's input**
 
-Those things have no good async substitute. Most status updates do.
+If the decision-maker can read a brief, decide, and reply — that's not a meeting. That's an email waiting for a subject line.
 
-**The Shift**
+---
 
-Start writing meeting agendas a day in advance. You'll find that half the items on the agenda resolve before the meeting happens. The people who needed to know things can read the doc. The decisions that needed to be made get made async.
+## 🎯 What Meetings Are Actually For
 
-What's left is usually worth meeting for.`,
+| Purpose | Best Format |
+|---------|-------------|
+| Real-time collaboration on complex problems | Meeting |
+| Alignment conversations | Meeting |
+| Relationship building | Meeting |
+| Status updates | Document |
+| Information sharing | Document |
+| Simple decisions | Document |
+
+---
+
+## 🔄 The Shift
+
+Start writing meeting agendas a day in advance. You'll find that half the items on the agenda resolve before the meeting happens.
+
+The people who needed to know things can read the doc. The decisions that needed to be made get made async.
+
+**What's left is usually worth meeting for.**`,
     },
 
-    /* ── ARTICLE 12 ──────────────────────────────────────────────── */
     {
       title: 'The Ops Person as Translator',
-      date: 'Nov 2025',
+      date: 'Nov 2025', 
       category: 'founder-notes',
-      body: `The most underrated skill in operations isn't process design or systems thinking. It's translation.
+      body: `The most underrated skill in operations isn't process design or systems thinking. It's **translation.**
 
 Specifically: translating between what leadership intends and what the team actually needs to execute.
 
-**Where This Gap Lives**
+---
+
+## 🌉 Where This Gap Lives
+
+| Level | Communicates In |
+|-------|-----------------|
+| Leadership | Outcomes |
+| Team | Symptoms |
+| **Ops person** | **Specifications** |
 
 Leadership communicates in outcomes. "We need to improve response time." "We need cleaner data." "We need better handoffs."
 
-These are real, valid problems. But they're not actionable in the form they're stated. A team member can't execute on "improve response time" the same way they can execute on "all inbound requests get an acknowledgment within two hours, logged in the CRM, with a follow-up task set for 24 hours if unresolved."
+These are real, valid problems. But they're **not actionable** in the form they're stated.
+
+A team member can't execute on "improve response time" the same way they can execute on:
+
+> "All inbound requests get an acknowledgment within two hours, logged in the CRM, with a follow-up task set for 24 hours if unresolved."
 
 The translation work — from intent to specification — is where ops earns its keep.
 
-**The Other Direction**
+---
 
-Translation also runs the other way. Teams communicate in symptoms. "Things keep falling through the cracks." "We don't know who owns this." "The process is confusing."
+## 🔄 The Other Direction
+
+Translation also runs the other way. Teams communicate in symptoms:
+
+- "Things keep falling through the cracks."
+- "We don't know who owns this."
+- "The process is confusing."
 
 These are signals, not solutions. The ops role is to hear the symptom, diagnose the actual problem, translate that back to leadership as a systems gap, and propose a concrete fix.
 
-**Why This Matters**
+---
 
-Without this translation layer, organizations get one of two failure modes. Leadership keeps setting direction that never actually changes execution. Or the team keeps pointing at problems that leadership doesn't have enough context to fix.
+## 💡 Why This Matters
+
+Without this translation layer, organizations get one of two failure modes:
+
+| Failure Mode | Result |
+|--------------|--------|
+| Leadership keeps setting direction | Never changes execution |
+| Team keeps pointing at problems | Leadership lacks context to fix |
 
 The ops person who can move fluently between both worlds — holding the language of strategy and the language of daily execution simultaneously — is worth far more than their title suggests.`,
     },
 
-    /* ── ARTICLE 13 ──────────────────────────────────────────────── */
     {
       title: 'Delegation Debt: Why Your Team Can\'t Work Without You',
-      date: 'Nov 2025',
+      date: 'Nov 2025', 
       category: 'founder-notes',
       body: `Delegation debt is what accumulates when a founder or manager holds onto decisions they should have handed off long ago.
 
-It doesn't happen out of malice. It happens because handing something off properly takes more time upfront than just doing it yourself. So you do it yourself. And again. And again. Until it's a pattern, and the team has quietly learned that certain things always route back to you.
+It doesn't happen out of malice. It happens because handing something off properly takes more time upfront than just doing it yourself.
 
-**The Symptoms**
+So you do it yourself. And again. And again. Until it's a pattern, and the team has quietly learned that certain things always route back to you.
 
-You're the person who always gets pulled in when X happens. The team waits for your approval on things that feel routine. New people learn quickly that the path of least resistance is to ask you rather than figure it out.
+---
 
-The team isn't incapable. They've been trained, unintentionally, to depend on you.
+## ⚠️ The Symptoms
 
-**The Cost**
+| Symptom | What It Means |
+|---------|---------------|
+| You're always pulled in when X happens | You own it, not the team |
+| Team waits for approval on routine things | No clear boundaries |
+| New people ask you instead of figuring out | Path of least resistance |
 
-Beyond your own bandwidth, delegation debt stunts the team. People who could be building judgment aren't — because the opportunities to exercise judgment keep getting routed away from them. They don't grow. They stay in execution mode while the thinking stays with you.
+The team isn't incapable. They've been **trained, unintentionally, to depend on you.**
 
-**How to Actually Delegate**
+---
 
-Delegation isn't assigning a task. It's transferring ownership of a decision domain.
+## 💰 The Cost
 
-The handoff includes: what outcome you own, the boundaries of your authority, where to escalate if genuinely stuck, and the feedback loop that keeps me informed without requiring my approval.
+Beyond your own bandwidth, delegation debt stunts the team. People who could be building judgment aren't — because the opportunities to exercise judgment keep getting routed away from them.
 
-Done right, delegation doesn't create risk. It distributes capability. The goal is a team that can cover ground you'd otherwise have to cover yourself — because the systems and the judgment are both in place.`,
+They don't grow. They stay in execution mode while the thinking stays with you.
+
+---
+
+## ✅ How to Actually Delegate
+
+Delegation isn't assigning a task. It's **transferring ownership of a decision domain.**
+
+| Element | Description |
+|---------|-------------|
+| What outcome you own | Clear scope |
+| Boundaries of your authority | When you can decide |
+| Where to escalate if stuck | Safety valve |
+| Feedback loop | Keeps me informed without approval |
+
+Done right, delegation doesn't create risk. It distributes capability.
+
+🎯 **The goal:** A team that can cover ground you'd otherwise have to cover yourself — because the systems and the judgment are both in place.`,
     },
 
-    /* ── ARTICLE 14 ──────────────────────────────────────────────── */
     {
       title: 'What "We\'ll Figure It Out" Actually Costs',
-      date: 'Oct 2025',
+      date: 'Oct 2025', 
       category: 'operations',
       body: `"We'll figure it out" is the most expensive phrase in operations.
 
-It sounds like flexibility. It sounds like trust in the team. What it actually does is defer a decision until the cost of that decision has compounded.
+It sounds like flexibility. It sounds like trust in the team. What it actually does is **defer a decision until the cost of that decision has compounded.**
 
-**The Pattern**
+---
 
-A new process launches. Some edge cases aren't covered. Someone asks how to handle a specific scenario. The answer: "Use your judgment for now, we'll figure it out as we go."
+## 🔄 The Pattern
 
-Two months later, five different people have handled that scenario five different ways. None of them are wrong, exactly. But now you have inconsistency baked into the operation, and untangling it is harder than designing it would have been upfront.
+| Stage | What Happens |
+|-------|--------------|
+| Launch | New process, some edge cases uncovered |
+| Question | Someone asks how to handle specific scenario |
+| Answer | "Use your judgment for now, we'll figure it out" |
+| Two months later | Five different people, five different ways |
 
-**The Real Problem**
+None of them are wrong, exactly. But now you have inconsistency baked into the operation, and untangling it is harder than designing it would have been upfront.
 
-"We'll figure it out" isn't inherently bad for genuinely novel situations. The problem is when it becomes the default for situations that aren't novel — that are predictable, common, and worth the hour it would take to define.
+---
 
-Most edge cases in an established operation aren't surprises. They're just undocumented. Someone chose not to make the decision yet, and the cost got deferred.
+## ⚖️ The Real Problem
 
-**The Discipline**
+"We'll figure it out" isn't inherently bad for genuinely novel situations. The problem is when it becomes the **default** for situations that aren't novel — that are predictable, common, and worth the hour it would take to define.
 
-When something happens twice, it deserves a decision. When a question gets asked three times, it deserves documentation.
+Most edge cases in an established operation aren't surprises. They're just **undocumented.**
 
-That's the bar. Not every scenario. Not an airtight process from day one. Just: if it's recurring, it's worth codifying.
+Someone chose not to make the decision yet, and the cost got deferred.
+
+---
+
+## 📏 The Discipline
+
+| Rule | When |
+|------|------|
+| Something happens twice | Deserves a decision |
+| Question asked three times | Deserves documentation |
+
+That's the bar. Not every scenario. Not an airtight process from day one. Just:
+
+> If it's recurring, it's worth codifying.
 
 Stop figuring it out in real time. Start building the logic once and deploying it consistently.`,
     },
 
-    /* ── ARTICLE 15 ──────────────────────────────────────────────── */
     {
       title: 'CRM Adoption Isn\'t a Training Problem',
-      date: 'Oct 2025',
+      date: 'Oct 2025', 
       category: 'crm',
       body: `The most common complaint I hear about CRMs: the team isn't using it properly. The solution that gets tried: more training.
 
-It doesn't work. Because CRM adoption isn't a training problem. It's a design problem.
+It doesn't work. Because CRM adoption isn't a training problem. It's a **design problem.**
 
-**Why People Don't Use CRMs**
+---
 
-People avoid their CRM when it adds friction without adding value. When updating a record feels like doing paperwork on top of actual work. When the fields don't match how they think about the work. When the stages don't reflect how deals actually move.
+## 🚫 Why People Don't Use CRMs
+
+People avoid their CRM when it adds friction without adding value:
+
+| Problem | Result |
+|---------|--------|
+| Updating record feels like paperwork | No value add |
+| Fields don't match how they think | Mismatched mental model |
+| Stages don't reflect reality | Not trusted |
 
 In these cases, the CRM is genuinely worse than whatever they were doing before. Blaming adoption on behavior is easier than admitting the system was designed for the person who built it, not the person using it.
 
-**Design for the User, Not the Manager**
+---
 
-Most CRM configurations are built for reporting and visibility — which is a management need. The sales rep or account manager using the system daily has a different need: clarity on what to do next.
+## 👤 Design for the User, Not the Manager
 
-A well-designed CRM tells users something useful every time they open a record. Whose turn is it to act? What was the last outcome? What's the next step? If those answers aren't immediately visible, the system is working against adoption.
+Most CRM configurations are built for reporting and visibility — which is a **management need.**
 
-**The Redesign Checklist**
+The sales rep or account manager using the system daily has a different need: **clarity on what to do next.**
 
-Fewer fields, not more. Every field should have a clear use case — if you can't explain why it exists, remove it.
+A well-designed CRM tells users something useful every time they open a record:
 
-Stage labels that describe reality. "Proposal Sent" is better than "Stage 3."
+- Whose turn is it to act?
+- What was the last outcome?
+- What's the next step?
 
-Built-in next steps. When a deal moves to a stage, what automatically happens next?
+If those answers aren't immediately visible, the system is working against adoption.
 
-Data that serves the user first. If the team gets value from it, the management data follows naturally.`,
+---
+
+## ✅ The Redesign Checklist
+
+| Item | Why |
+|------|-----|
+| Fewer fields, not more | If you can't explain why it exists, remove it |
+| Stage labels that describe reality | "Proposal Sent" > "Stage 3" |
+| Built-in next steps | When a deal moves to a stage, what automatically happens next? |
+| Data that serves the user first | If the team gets value, management data follows naturally |
+
+**Design for the user, and the data will follow.**`,
     },
 
-    /* ── ARTICLE 16 ──────────────────────────────────────────────── */
     {
       title: 'The Quiet Failure Mode: Organized Chaos',
-      date: 'Sep 2025',
+      date: 'Sep 2025', 
       category: 'operations',
-      body: `The most dangerous operational state isn't obvious dysfunction. It's organized chaos — the condition where things look structured from a distance but are actually held together by specific people working heroically behind the scenes.
+      body: `The most dangerous operational state isn't obvious dysfunction. It's **organized chaos** — the condition where things look structured from a distance but are actually held together by specific people working heroically behind the scenes.
 
 It feels fine. The work is getting done. Numbers look okay. Leadership is satisfied.
 
 Right up until the person holding it together burns out, leaves, or goes on vacation.
 
-**How to Spot It**
+---
 
-Ask yourself: what would happen if your best operator was unavailable for two weeks?
+## 🔍 How to Spot It
 
-If the honest answer involves things slipping, decisions waiting, or other team members genuinely lost — you're in organized chaos. The system is running on people, not on structure.
+Ask yourself:
 
-**Why It Persists**
+> What would happen if your best operator was unavailable for two weeks?
+
+| If answer is... | Then you have... |
+|-----------------|------------------|
+| Things slip, decisions wait, team is lost | Organized chaos |
+| Work continues normally | Real structure |
+
+The system is running on people, not on structure.
+
+---
+
+## 🤔 Why It Persists
 
 Because the people holding it together are usually too good at their jobs to let it visibly fail. They absorb the dysfunction. They cover the gaps. They make it work through sheer force of competence and availability.
 
-This is often praised as dedication. It should actually be a red flag.
+This is often praised as dedication. It should actually be a **red flag.**
 
-**The Fix**
+---
 
-Stop optimizing for heroism. Start building infrastructure that makes heroism unnecessary.
+## 🛠️ The Fix
+
+| Stop Optimizing For | Start Building |
+|---------------------|----------------|
+| Heroism | Infrastructure that makes heroism unnecessary |
+| Individual brilliance | Systems that encode knowledge |
+| Firefighting | Structural holes closed |
 
 The goal isn't to remove great people from the equation — it's to make sure their greatness is applied to judgment and strategy, not to plugging structural holes that a well-designed system would close on its own.
 
 Document what they know. Codify their decision logic. Build the scaffolding around the work so the work doesn't depend on any one person staying upright.`,
     },
 
-    /* ── ARTICLE 17 ──────────────────────────────────────────────── */
     {
       title: 'How to Audit an Operation You Just Inherited',
-      date: 'Sep 2025',
+      date: 'Sep 2025', 
       category: 'field-notes',
       body: `Walking into an existing operation as an ops hire — or as someone brought in to clean things up — is one of the more interesting challenges in this work.
 
-You're handed a set of tools, a team, some documentation (maybe), and a vague mandate to "make things run better." The temptation is to immediately start fixing what looks broken. That's almost always a mistake.
+You're handed a set of tools, a team, some documentation (maybe), and a vague mandate to "make things run better." The temptation is to immediately start fixing what looks broken.
 
-**First: Listen Before You Touch Anything**
+That's almost always a mistake.
 
-In the first week, the job is observation. Watch how work actually flows — not how it's supposed to flow. Sit with the people doing the daily work and ask them to walk you through their day. Ask where they feel the most friction. Ask what they're spending time on that they don't think they should be.
+---
+
+## 👂 First: Listen Before You Touch Anything
+
+| Week | Focus |
+|------|-------|
+| 1 | Observation only |
+| 2 | Conversations with the team |
+| 3 | Map what you've learned |
+| 4 | Start proposing changes |
+
+Watch how work actually flows — not how it's supposed to flow. Sit with the people doing the daily work and ask them to walk you through their day.
+
+| Question | What It Reveals |
+|----------|-----------------|
+| Where do you feel the most friction? | Pain points |
+| What are you spending time on that you shouldn't be? | Waste |
+| Walk me through your day | Actual flow |
 
 Most of the useful information lives in these conversations. The documentation will tell you the theory. The team will tell you the reality.
 
-**The Three Questions That Matter**
+---
 
-After the first week, you should have working answers to: Where is work stalling most consistently? What decisions keep getting made by people who shouldn't have to make them? What knowledge is currently locked in specific people's heads?
+## 🔑 The Three Questions That Matter
 
-These three gaps — flow, delegation, and knowledge — account for the majority of operational drag in most organizations.
+After the first week, you should have working answers to:
 
-**Before You Build, Understand What Exists**
+| Question | Gap |
+|----------|-----|
+| Where is work stalling most consistently? | Flow |
+| What decisions keep getting made by people who shouldn't have to make them? | Delegation |
+| What knowledge is currently locked in specific people's heads? | Knowledge |
 
-The worst thing you can do in a new operation is build something parallel to something that already exists. Audit the existing systems before proposing new ones. Ask why things were built the way they were — sometimes there's institutional context that isn't obvious.
+These three gaps account for the majority of operational drag in most organizations.
 
-Then make decisions about what to keep, what to redesign, and what to retire. In that order.`,
+---
+
+## 🏗️ Before You Build, Understand What Exists
+
+The worst thing you can do in a new operation is build something parallel to something that already exists.
+
+Audit the existing systems before proposing new ones. Ask why things were built the way they were — sometimes there's institutional context that isn't obvious.
+
+Then make decisions about what to keep, what to redesign, and what to retire.
+
+**In that order.**`,
     },
 
-    /* ── ARTICLE 18 ──────────────────────────────────────────────── */
     {
       title: 'The Problem With "Just Use Common Sense"',
-      date: 'Aug 2025',
+      date: 'Aug 2025', 
       category: 'operations',
       body: `"Just use common sense" is a management instruction that sounds reasonable and produces inconsistent results.
 
-Common sense is individual. It's shaped by each person's background, experience, and mental models. What's obvious to someone who's been in an industry for ten years is not obvious to someone three months in. And even among experienced people, common sense regularly produces five different answers to the same question.
+Common sense is individual. It's shaped by each person's background, experience, and mental models. What's obvious to someone who's been in an industry for ten years is **not obvious** to someone three months in.
 
-**What the Instruction Actually Communicates**
+And even among experienced people, common sense regularly produces five different answers to the same question.
 
-When a manager says "use common sense," they're usually saying one of two things. Either they don't have a clear answer themselves and are delegating the ambiguity downward. Or they do have an answer but haven't bothered to articulate it because it seems obvious to them.
+---
+
+## 📢 What the Instruction Actually Communicates
+
+When a manager says "use common sense," they're usually saying one of two things:
+
+| Meaning | Problem |
+|---------|---------|
+| They don't have a clear answer themselves | Delegating ambiguity downward |
+| They do have an answer but haven't articulated it | Assuming it's obvious |
 
 Neither of these is useful to the person who needs to act.
 
-**The Real Standard**
+---
+
+## 📏 The Real Standard
+
+| Standard | Definition |
+|----------|------------|
+| Common sense | Individual, variable |
+| Consistency | Same situation, same handling |
 
 Consistency is the standard that matters in operations. Not common sense. Consistency means the same situation gets handled the same way regardless of who's handling it or what day it is.
 
 You can't build consistency on common sense. You build it on decisions that have been made explicit, documented, and communicated.
 
-**The Reframe**
+---
 
-Instead of "use common sense," try: "Here's the logic we use in this situation." Then write it down.
+## 🔄 The Reframe
+
+Instead of "use common sense," try:
+
+> "Here's the logic we use in this situation."
+
+Then write it down.
 
 The first time you write it, it takes longer than saying "use common sense." The tenth time that situation comes up and is handled correctly without anyone asking, you'll see why the upfront investment was worth it.`,
     },
 
-    /* ── ARTICLE 19 ──────────────────────────────────────────────── */
     {
       title: 'Tribal Knowledge Is a Single Point of Failure',
-      date: 'Aug 2025',
+      date: 'Aug 2025', 
       category: 'systems',
-      body: `In systems design, a single point of failure is any component whose failure causes the entire system to stop working. Good engineers design around them — not because failure is inevitable, but because the consequences are too severe to accept as a risk.
+      body: `In systems design, a **single point of failure** is any component whose failure causes the entire system to stop working. Good engineers design around them — not because failure is inevitable, but because the consequences are too severe to accept as a risk.
 
-Most organizations have single points of failure built into their operations and they don't call them that. They call them "key people."
+Most organizations have single points of failure built into their operations and they don't call them that.
 
-**The Knowledge Problem**
+They call them **"key people."**
 
-The person who knows how the payment reconciliation actually works. The one who has the context for all the long-standing client relationships. The team member who handles the edge cases everyone else escalates to.
+---
 
-These people are valuable. They're also risks — not because of anything they've done, but because of how the organization has structured its dependency on them.
+## 🧠 The Knowledge Problem
 
-**What Usually Triggers the Reckoning**
+| Person | What They Hold |
+|--------|----------------|
+| The one who knows payment reconciliation | Critical process |
+| The one with client context | Relationship history |
+| The one who handles edge cases | Tribal knowledge |
+
+These people are valuable. They're also **risks** — not because of anything they've done, but because of how the organization has structured its dependency on them.
+
+---
+
+## ⚠️ What Usually Triggers the Reckoning
 
 A resignation. A medical leave. A promotion that takes the person out of day-to-day operations. Suddenly the knowledge gap is visible, and the scramble begins.
 
 Organizations in this situation spend significant time trying to recreate what someone knew, reverse-engineering processes from case history, and rebuilding documentation from scratch — often imperfectly, under time pressure.
 
-**The Redundancy Strategy**
+---
 
-Single points of failure get addressed by building redundancy. In operations, redundancy means: more than one person who understands how the critical processes work, explicit documentation that doesn't require the holder to be present, and systems that encode the logic rather than depending on the memory.
+## 🔁 The Redundancy Strategy
+
+Single points of failure get addressed by building redundancy. In operations, redundancy means:
+
+| Strategy | Implementation |
+|----------|----------------|
+| Multiple people | More than one person understands critical processes |
+| Documentation | Explicit docs that don't require the holder to be present |
+| Encoded logic | Systems that capture the logic rather than depending on memory |
 
 None of this requires removing the key person. It requires building around them so their absence doesn't take the operation down with them.`,
     },
 
-    /* ── ARTICLE 20 ──────────────────────────────────────────────── */
     {
       title: 'What I\'ve Learned From Cleaning Up Other People\'s Systems',
-      date: 'Jul 2025',
+      date: 'Jul 2025', 
       category: 'field-notes',
       body: `A significant part of my work over the years has been coming in after something was built — a CRM, a workflow, an onboarding system, an SOP library — and making it actually usable.
 
-Not because the people who built it were incompetent. Usually, they weren't. But they built for the problem they had when they built it, and the operation had grown past that.
+Not because the people who built it were incompetent. Usually, they weren't. But they built for the problem they had **when they built it**, and the operation had grown past that.
 
-**What I See Most Often**
+---
 
-Systems built for the founder's mental model, not the team's. The original builder understood the logic implicitly and designed the system to match their thinking. Everyone who came after has had to learn how the builder thinks before they can use the system effectively.
+## 🔍 What I See Most Often
 
-Documentation that tells you what to do but not why. When the why is missing, people can't handle exceptions. They can only follow instructions — until the instructions don't cover their situation, and then they're stuck.
+**Systems built for the founder's mental model, not the team's.**
 
-Automation built on top of unstable logic. Workflows that run reliably under normal conditions but cascade weirdly when anything deviates. Usually because the edge cases were never mapped before the automation was built.
+The original builder understood the logic implicitly and designed the system to match their thinking. Everyone who came after has had to learn how the builder thinks before they can use the system effectively.
 
-**The Lesson I Keep Re-Learning**
+**Documentation that tells you what to do but not why.**
 
-Systems should be designed to outlast the people who designed them. That means the logic has to be visible — not just to you, but to whoever reads it cold in twelve months.
+When the why is missing, people can't handle exceptions. They can only follow instructions — until the instructions don't cover their situation, and then they're stuck.
 
-Before I build anything now, I ask: if I weren't here, could someone understand this? Could they maintain it? Could they improve it?
+**Automation built on top of unstable logic.**
+
+Workflows that run reliably under normal conditions but cascade weirdly when anything deviates. Usually because the edge cases were never mapped before the automation was built.
+
+---
+
+## 💡 The Lesson I Keep Re-Learning
+
+Systems should be designed to **outlast the people who designed them.**
+
+That means the logic has to be visible — not just to you, but to whoever reads it cold in twelve months.
+
+Before I build anything now, I ask:
+
+> If I weren't here, could someone understand this? Could they maintain it? Could they improve it?
 
 If the answer is no, it's not done yet.`,
     },
 
-  /* ── ↑ END OF ARTICLES ARRAY ↑ ─────────────────────────────── */
+    {
+      title: 'How to Design a Workflow Automation That Actually Works',
+      date: 'Mar 2026', 
+      category: 'technical-notes',
+      body: `Most workflow automations fail because they are built around tools instead of process logic. This guide walks through a practical framework for designing automation that is resilient, maintainable, and grounded in how work actually moves.
+
+---
+
+## 🚫 The Problem
+
+Most people build automations backward. They find a cool integration and then force their process to fit the tool. The automation exists, so the workflow bends around it.
+
+The result is usually the same: a fragile system that breaks constantly. When one piece fails, everything fails.
+
+> ⚠️ **Automations do not fix broken processes. They just make broken processes run faster.**
+
+If your workflow is messy, automation will not clean it up. It will just create mess faster.
+
+---
+
+## 🧠 The Mental Model
+
+Think of automation like plumbing. You do not start by buying pipes. You start by understanding where the water needs to go. Where is the source? Where are the destinations? What happens if something gets blocked?
+
+| Component | What it does | Example |
+|-----------|--------------|---------|
+| **Trigger** | Starts the flow | Form submission, schedule, webhook |
+| **Filter** | Routes the flow | Only if priority = urgent |
+| **Action** | Defines what happens next | Create record, send email, update sheet |
+
+**The right order:**
+
+1. Map the manual process first
+2. Identify the bottlenecks
+3. Design the automation backward from the desired end result
+4. Add filters as guardrails
+
+---
+
+## 📋 When to Automate
+
+- **Is the task recurring?** No → do it manually. Yes → consider automation.
+- **Does it require human judgment?** Yes → keep a human in the loop. No → full automation may be safe.
+- **How complex is the workflow?** 2–3 steps → single automation. 4+ steps → break into smaller modules.
+- **Who will maintain it?** Nobody → don't build it yet.
+
+> 🔑 **If nobody owns an automation, it will eventually break.**
+
+---
+
+## 🏗️ Build in Layers, Not Monoliths
+
+In several operations environments I worked in, the same issue kept showing up: a single automation would receive a form submission, validate the data, update the CRM, send a client email, create an internal task, log the event to a spreadsheet, generate an invoice, and schedule follow-up reminders.
+
+If any step failed, the entire system failed.
+
+The fix was breaking the workflow into layers:
+
+| Layer | Responsibility |
+|-------|----------------|
+| **Layer 1** | Form → validate → queue |
+| **Layer 2** | Queue → update CRM → log |
+| **Layer 3** | Daily batch → invoices → summaries |
+| **Layer 4** | Follow-up scheduler → reminders |
+
+📌 **In a layered system, one failure affects one layer — not the entire workflow.**
+
+---
+
+## ⚠️ The Common Gotchas
+
+| Problem | Fix |
+|---------|-----|
+| **Silent Failure** — automations fail quietly | Add failure alerts, health checks, logs |
+| **Data Drift** — APIs and forms change over time | Review critical automations quarterly |
+| **One More Step Trap** — automations grow endlessly | Ask: "Should this be separate?" |
+| **Human Bypass** — people work around the system | Fix the design, not the people |
+
+---
+
+## 🎯 The Bottom Line
+
+Automation is not about eliminating human work. It is about eliminating repetitive work so humans can focus on what they are actually good at: **judgment, creativity, and relationships.**
+
+Build in layers. Build in monitoring. Build in failure recovery. And always start with the manual process before touching a single tool.`,
+    },
+
+    {
+      title: 'How to Build a Knowledge Base People Actually Use',
+      date: 'Mar 2026', 
+      category: 'technical-notes',
+      body: `A knowledge base is not valuable because it exists. It is valuable because, at the exact moment someone is stuck, it helps them move.
+
+That sounds obvious. Weirdly, most teams still build documentation like archive storage instead of operational support.
+
+---
+
+## 🚫 What Most Teams Get Wrong
+
+Most teams think documentation quality is about completeness. It usually is not.
+
+The real issue is **retrieval under pressure.** When someone is in the middle of work, they are not calmly exploring the wisdom garden of institutional knowledge. They are trying to answer a live question fast enough to avoid delay, mistake, or escalation.
+
+So the actual standard is not:
+
+- Is this documented somewhere?
+- Did we write enough?
+- Did we cover everything?
+
+The actual standard is:
+
+| Question | Why It Matters |
+|----------|----------------|
+| Can the right person find it fast? | Speed |
+| Can they understand it without translation? | Clarity |
+| Can they act on it without guessing? | Confidence |
+| Can they tell when to escalate? | Safety |
+
+> 🔑 **If your team keeps asking experienced people instead of using the KB, the problem is usually design, not discipline.**
+
+---
+
+## 📊 The Job of the Knowledge Base
+
+| Reduce | Improve |
+|--------|---------|
+| Hesitation | Speed to clarity |
+| Repeat questions | Confidence in action |
+| Inconsistent handling | Consistency across staff |
+| Dependency on specific people | Transfer of institutional memory |
+
+---
+
+## 🏷️ The Taxonomy Problem
+
+A weak knowledge base uses vague categories like: General, Support, Admin, Operations, Miscellaneous.
+
+A stronger knowledge base uses categories that mirror how work actually breaks:
+
+- Funding
+- Billing
+- Risk
+- Descriptor
+- Deployment
+- Underwriting
+- Terminal / POS
+- CRM Process
+- Escalations
+
+📌 **Good taxonomy follows operational friction, not org chart politeness.**
+
+---
+
+## ⚡ What a Useful Article Must Answer Fast
+
+A strong article should answer these early:
+
+1. What is this for?
+2. When should I use it?
+3. What is the first thing I check?
+4. What mistake happens most often here?
+5. When does this leave my lane?
+
+If the first visible section cannot answer those, the article is probably too slow.
+
+---
+
+## 🔁 Why Teams Stop Trusting the KB
+
+Trust usually breaks because of one of these:
+
+- Outdated guidance
+- Conflicting articles
+- Weak search language
+- Vague article titles
+- **Senior staff bypassing the system**
+
+That last one is brutal. If senior people keep answering repeat questions in chat instead of reinforcing the documented path, the team learns the real rule quickly:
+
+> "The real answer probably isn't in the knowledge base."
+
+Once that happens, the KB turns into a museum.
+
+---
+
+## 🎯 The Bottom Line
+
+A strong knowledge base is not clerical work. It is **operational architecture.**
+
+It lowers escalation volume. It speeds onboarding. It protects institutional memory. It reduces dependence on specific people. It improves handling consistency.
+
+Do not write articles just to prove the company has documentation. Write them so the next person can move without needing rescue.`,
+    },
   ];
+  /* ══════════════════════════════════════════════════
+     ARTICLE PARSER — ROBUST MARKDOWN-LIKE RENDERER
+  ══════════════════════════════════════════════════ */
+
+  function parseArticle(body) {
+    // Normalize line endings
+    const text = body.replace(/\r\n/g, '\n').trim();
+    const lines = text.split('\n');
+    const chunks = [];
+    let i = 0;
+
+    while (i < lines.length) {
+      const line = lines[i];
+
+      // Blank line — skip
+      if (!line.trim()) { i++; continue; }
+
+      // HR
+      if (/^-{3,}$/.test(line.trim())) {
+        chunks.push({ type: 'hr' });
+        i++;
+        continue;
+      }
+
+      // H2 (## or **Text** on its own line)
+      if (/^##\s/.test(line)) {
+        chunks.push({ type: 'h2', text: line.replace(/^##\s+/, '').trim() });
+        i++;
+        continue;
+      }
+      if (/^\*\*[^*]+\*\*$/.test(line.trim()) && !line.includes(' — ') && !line.startsWith('-')) {
+        chunks.push({ type: 'h2', text: line.trim().replace(/\*\*/g, '') });
+        i++;
+        continue;
+      }
+
+      // H3 (### or **Text:** pattern)
+      if (/^###\s/.test(line)) {
+        chunks.push({ type: 'h3', text: line.replace(/^###\s+/, '').trim() });
+        i++;
+        continue;
+      }
+
+      // Blockquote
+      if (/^>\s/.test(line)) {
+        const bqLines = [];
+        while (i < lines.length && /^>\s/.test(lines[i])) {
+          bqLines.push(lines[i].replace(/^>\s?/, ''));
+          i++;
+        }
+        chunks.push({ type: 'blockquote', text: bqLines.join(' ') });
+        continue;
+      }
+
+      // Unordered list (- or • or *)
+      if (/^[\-\•\*]\s/.test(line.trim())) {
+        const items = [];
+        while (i < lines.length && /^[\-\•\*]\s/.test(lines[i].trim())) {
+          items.push(lines[i].trim().replace(/^[\-\•\*]\s/, ''));
+          i++;
+        }
+        chunks.push({ type: 'ul', items });
+        continue;
+      }
+
+      // Ordered list
+      if (/^\d+\.\s/.test(line.trim())) {
+        const items = [];
+        while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
+          items.push(lines[i].trim().replace(/^\d+\.\s/, ''));
+          i++;
+        }
+        chunks.push({ type: 'ol', items });
+        continue;
+      }
+
+      // Table (| col | col |)
+      if (/^\|/.test(line.trim())) {
+        const tableLines = [];
+        while (i < lines.length && /^\|/.test(lines[i].trim())) {
+          tableLines.push(lines[i]);
+          i++;
+        }
+        chunks.push({ type: 'table', lines: tableLines });
+        continue;
+      }
+            // Diagram markers
+      if (line.trim() === '[DIAGRAM:trigger-flow]') {
+        chunks.push({ type: 'diagram-trigger-flow' });
+        i++;
+        continue;
+      }
+
+      if (line.trim() === '[DIAGRAM:monolithic]') {
+        chunks.push({ type: 'diagram-monolithic' });
+        i++;
+        continue;
+      }
+
+      if (line.trim() === '[DIAGRAM:kb-architecture]') {
+        chunks.push({ type: 'diagram-kb-architecture' });
+        i++;
+        continue;
+      }
+
+      // Paragraph — collect consecutive non-special lines
+      const paraLines = [];
+      while (i < lines.length) {
+        const l = lines[i];
+        if (!l.trim()) break;
+        if (/^(##|###|>\s|[\-\•\*]\s|\d+\.\s|\||-{3,})/.test(l.trim())) break;
+        if (/^\*\*[^*]+\*\*$/.test(l.trim()) && !l.includes(' — ')) break;
+        paraLines.push(l);
+        i++;
+      }
+      if (paraLines.length) {
+        chunks.push({ type: 'p', text: paraLines.join(' ') });
+      }
+    }
+
+    return chunks;
+  }
+
+  function inlineFormat(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>');
+  }
+
+  function renderTable(lines) {
+    const rows = lines.filter(l => !/^\|[\s\-:|]+\|/.test(l.trim()) || l.includes('|--') === false);
+    const dataRows = lines.filter(l => !/^\|[\s\-:]+\|/.test(l.trim().replace(/[^|\-: ]/g, '')));
+    
+    let html = '<table>';
+    let isFirst = true;
+    for (const line of lines) {
+      // Skip separator rows like |---|---|
+      if (/^\|[\s\-:|]+\|$/.test(line.trim())) continue;
+      const cells = line.split('|').filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+      if (cells.length === 0) continue;
+      if (isFirst) {
+        html += '<thead><tr>' + cells.map(c => `<th>${inlineFormat(c.trim())}</th>`).join('') + '</tr></thead><tbody>';
+        isFirst = false;
+      } else {
+        html += '<tr>' + cells.map(c => `<td>${inlineFormat(c.trim())}</td>`).join('') + '</tr>';
+      }
+    }
+    html += '</tbody></table>';
+    return html;
+  }
+
+   function chunksToHTML(chunks) {
+    return chunks.map(c => {
+      switch (c.type) {
+        case 'hr':
+          return '<hr>';
+        case 'h2':
+          return `<h2>${inlineFormat(c.text)}</h2>`;
+        case 'h3':
+          return `<h3>${inlineFormat(c.text)}</h3>`;
+        case 'blockquote':
+          return `<blockquote>${inlineFormat(c.text)}</blockquote>`;
+        case 'ul':
+          return '<ul>' + c.items.map(item => `<li>${inlineFormat(item)}</li>`).join('') + '</ul>';
+        case 'ol':
+          return '<ol>' + c.items.map(item => `<li>${inlineFormat(item)}</li>`).join('') + '</ol>';
+        case 'table':
+          return renderTable(c.lines);
+        case 'diagram-trigger-flow':
+          return renderTriggerFlowDiagram();
+        case 'diagram-monolithic':
+          return renderMonolithicDiagram();
+        case 'diagram-kb-architecture':
+          return renderKBArchitectureDiagram();
+        case 'p':
+          return `<p>${inlineFormat(c.text)}</p>`;
+        default:
+          return '';
+      }
+    }).join('\n');
+  }
+    // Diagram renderers
+  function renderTriggerFlowDiagram() {
+    return `<div class="nba-diagram">
+      <div class="nba-diagram-label">Trigger → Filter → Action</div>
+      <div class="nba-flow">
+        <div class="nba-flow-node blue">
+          <strong>Trigger</strong>
+          <small>Form, schedule, webhook</small>
+        </div>
+        <div class="nba-flow-arrow">→ only if valid →</div>
+        <div class="nba-flow-node amber">
+          <strong>Filter</strong>
+          <small>Conditions, routing</small>
+        </div>
+        <div class="nba-flow-arrow">↓</div>
+        <div class="nba-flow-node green">
+          <strong>Action</strong>
+          <small>Create, update, send</small>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderMonolithicDiagram() {
+    return `<div class="nba-arch">
+      <div class="nba-arch-col before">
+        <h4>🔴 Before: Monolithic</h4>
+        <div class="nba-arch-step">📥 Form submission</div>
+        <div class="nba-arch-step">🔍 Validate data</div>
+        <div class="nba-arch-step">📊 Update CRM</div>
+        <div class="nba-arch-step">✉️ Send email</div>
+        <div class="nba-arch-step">💰 Create invoice</div>
+        <div class="nba-arch-step">📝 Log to sheet</div>
+        <div class="nba-arch-step">⏰ Schedule follow-up</div>
+      </div>
+      <div class="nba-arch-col after">
+        <h4>✅ After: Layered</h4>
+        <div class="nba-arch-step"><strong>Layer 1:</strong> 📥 Form → validate → queue</div>
+        <div class="nba-arch-step"><strong>Layer 2:</strong> 📦 Queue → update CRM → log</div>
+        <div class="nba-arch-step"><strong>Layer 3:</strong> 📅 Daily batch → invoices → summaries</div>
+        <div class="nba-arch-step"><strong>Layer 4:</strong> ⏰ Follow-up scheduler → reminders</div>
+      </div>
+    </div>`;
+  }
+
+  function renderKBArchitectureDiagram() {
+    return `<div class="nba-kb-arch">
+      <div class="nba-diagram-label">Knowledge Base Architecture</div>
+      <div class="nba-kb-stack">
+        <div class="nba-kb-row">
+          <div class="nba-kb-layer intake">
+            <strong>Intake Layer</strong>
+            <span>Form submissions, emails, tickets</span>
+          </div>
+          <div class="nba-kb-detail">
+            <strong>Central Intake</strong>
+            <p>All incoming requests normalized here</p>
+          </div>
+        </div>
+        <div class="nba-kb-arrow">↓</div>
+        <div class="nba-kb-row">
+          <div class="nba-kb-layer classify">
+            <strong>Classification</strong>
+            <span>Category, priority, routing</span>
+          </div>
+          <div class="nba-kb-detail">
+            <strong>Smart Router</strong>
+            <p>Directs to right team based on rules</p>
+          </div>
+        </div>
+        <div class="nba-kb-arrow">↓</div>
+        <div class="nba-kb-row">
+          <div class="nba-kb-layer resolve">
+            <strong>Resolution</strong>
+            <span>SOPs, decision trees, scripts</span>
+          </div>
+          <div class="nba-kb-detail">
+            <strong>Knowledge Base</strong>
+            <p>Searchable articles and workflows</p>
+          </div>
+        </div>
+        <div class="nba-kb-arrow">↓</div>
+        <div class="nba-kb-row">
+          <div class="nba-kb-layer escalate">
+            <strong>Escalation</strong>
+            <span>Complex cases, exceptions</span>
+          </div>
+          <div class="nba-kb-detail">
+            <strong>Expert Path</strong>
+            <p>Routes to senior staff with context</p>
+          </div>
+        </div>
+      </div>
+      <div class="nba-kb-footer">
+        <div class="nba-kb-note"><strong>Analytics</strong><span>Usage metrics</span></div>
+        <div class="nba-kb-note"><strong>Feedback</strong><span>Article ratings</span></div>
+        <div class="nba-kb-note"><strong>Updates</strong><span>Version control</span></div>
+      </div>
+    </div>`;
+  }
+
+  /* ══════════════════════════════════════════════════
+     NOTEBOOK BUILDER
+  ══════════════════════════════════════════════════ */
+
+  const NB_CATS = ['all', 'systems', 'operations', 'crm', 'founder-notes', 'field-notes', 'technical-notes'];
+  let nbActiveCat = 'all';
+  let nbActiveIdx = null;
+  let nbSearchQuery = '';
+
+  function getFilteredNotes() {
+    return NOTES.filter((n, idx) => {
+      const matchesCat = nbActiveCat === 'all' || n.category === nbActiveCat;
+      const q = nbSearchQuery.toLowerCase();
+      const matchesSearch = !q || n.title.toLowerCase().includes(q) || n.body.toLowerCase().includes(q) || n.category.includes(q);
+      return matchesCat && matchesSearch;
+    });
+  }
+
+  function renderNbList() {
+    const filtered = getFilteredNotes();
+    if (!filtered.length) {
+      return '<div class="nb-no-results">No notes found</div>';
+    }
+    return filtered.map(n => {
+      const idx = NOTES.indexOf(n);
+      const cs = catStyle(n.category);
+      const rt = readingTime(n.body);
+      return `<div class="nb-entry${nbActiveIdx === idx ? ' active' : ''}" data-idx="${idx}">
+        <div class="nb-entry-title">${n.title}</div>
+        <div class="nb-entry-meta">
+          <span class="nb-entry-cat-dot" style="background:${cs.color}"></span>
+          <span>${n.date}</span>
+          <span>·</span>
+          <span>${rt} min</span>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function buildNotebook() {
+    const total = NOTES.length;
+    return `
+      <div class="nb-search-bar">
+        <input type="text" class="nb-search-input" placeholder="Search notes…" value="${nbSearchQuery}" />
+        <span class="nb-search-count">${total} notes</span>
+      </div>
+      <div class="nb-main">
+        <div class="nb-sidebar">
+          <div class="nb-cat-tabs">
+            ${NB_CATS.map(c => `<button class="nb-cat${c === nbActiveCat ? ' active' : ''}" data-cat="${c}">${c === 'all' ? 'all' : c.replace('-', ' ')}</button>`).join('')}
+          </div>
+          <div class="nb-list">${renderNbList()}</div>
+        </div>
+        <div class="nb-content" id="nb-content-area">
+          <div class="nb-scroll-progress" id="nb-scroll-bar"></div>
+          <div class="nb-empty">
+            <div class="nb-empty-icon">📔</div>
+            <div>Select a note to read</div>
+            <div style="opacity:0.6;font-size:0.62rem;margin-top:0.25rem">${total} notes across ${NB_CATS.length - 1} categories</div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderNbArticle(idx) {
+    const n = NOTES[idx];
+    const cs = catStyle(n.category);
+    const rt = readingTime(n.body);
+    const wc = wordCount(n.body);
+    const chunks = parseArticle(n.body);
+    const bodyHTML = chunksToHTML(chunks);
+
+    // Prev / Next (within current filter)
+    const filtered = getFilteredNotes();
+    const filteredIdx = filtered.findIndex(fn => NOTES.indexOf(fn) === idx);
+    const prevNote = filteredIdx > 0 ? filtered[filteredIdx - 1] : null;
+    const nextNote = filteredIdx < filtered.length - 1 ? filtered[filteredIdx + 1] : null;
+    const prevIdx = prevNote ? NOTES.indexOf(prevNote) : null;
+    const nextIdx = nextNote ? NOTES.indexOf(nextNote) : null;
+
+    // Related (same category, different article, up to 2)
+    const related = NOTES
+      .map((rn, ri) => ({ note: rn, idx: ri }))
+      .filter(({ note, idx: ri }) => note.category === n.category && ri !== idx)
+      .slice(0, 2);
+
+    return `
+      <div class="nb-scroll-progress" id="nb-scroll-bar"></div>
+      <div class="nb-article-wrap">
+        <div class="nba-header">
+          <div class="nba-category-pill" style="color:${cs.color};background:${cs.bg};border-color:${cs.color}33">${cs.label}</div>
+          <div class="nba-title">${n.title}</div>
+          <div class="nba-meta-row">
+            <span class="nba-meta-item">📅 ${n.date}</span>
+            <span class="nba-meta-item">⏱ ${rt} min read</span>
+            <span class="nba-meta-item">✍️ ${wc} words</span>
+            <button class="nba-share-btn" data-copy-title="${n.title.replace(/"/g, '&quot;')}">🔗 Copy link</button>
+          </div>
+        </div>
+
+        <div class="nba-body">${bodyHTML}</div>
+
+        ${prevNote || nextNote ? `
+        <div class="nba-nav">
+          ${prevNote ? `<button class="nba-nav-btn prev" data-nav-idx="${prevIdx}">
+            <div class="nba-nav-label">← Previous</div>
+            <div class="nba-nav-title">${prevNote.title}</div>
+          </button>` : '<div style="flex:1"></div>'}
+          ${nextNote ? `<button class="nba-nav-btn next" data-nav-idx="${nextIdx}">
+            <div class="nba-nav-label">Next →</div>
+            <div class="nba-nav-title">${nextNote.title}</div>
+          </button>` : '<div style="flex:1"></div>'}
+        </div>` : ''}
+
+        ${related.length ? `
+        <div class="nba-related">
+          <div class="nba-related-label">Related in ${n.category.replace('-', ' ')}</div>
+          <div class="nba-related-grid">
+            ${related.map(({ note: rn, idx: ri }) => `
+              <div class="nba-related-item" data-nav-idx="${ri}">
+                <div class="nba-related-title">${rn.title}</div>
+                <div class="nba-related-meta">${rn.date} · ${readingTime(rn.body)} min</div>
+              </div>`).join('')}
+          </div>
+        </div>` : ''}
+      </div>`;
+  }
+
+  /* ══════════════════════════════════════════════════
+     NOTEBOOK EVENTS (delegated)
+  ══════════════════════════════════════════════════ */
+
+  function updateSidebarList(nbWin) {
+    const listEl = nbWin.querySelector('.nb-list');
+    if (listEl) listEl.innerHTML = renderNbList();
+    const countEl = nbWin.querySelector('.nb-search-count');
+    if (countEl) countEl.textContent = getFilteredNotes().length + ' notes';
+  }
+
+  function openArticleInNotebook(nbWin, idx) {
+    nbActiveIdx = idx;
+    updateSidebarList(nbWin);
+    const contentArea = nbWin.querySelector('.nb-content');
+    if (contentArea) {
+      contentArea.innerHTML = renderNbArticle(idx);
+      contentArea.scrollTop = 0;
+      // Scroll progress
+      const progressBar = contentArea.querySelector('#nb-scroll-bar');
+      if (progressBar) {
+        contentArea.addEventListener('scroll', function onScroll() {
+          const max = contentArea.scrollHeight - contentArea.clientHeight;
+          const pct = max > 0 ? contentArea.scrollTop / max : 0;
+          progressBar.style.transform = `scaleX(${pct})`;
+        }, { passive: true });
+      }
+    }
+  }
+
+  const windowContainer = document.getElementById('window-container');
+
+  windowContainer.addEventListener('click', e => {
+    const nbWin = e.target.closest('.notebook-window');
+    if (!nbWin) return;
+
+    // Category tabs
+    const catBtn = e.target.closest('.nb-cat');
+    if (catBtn) {
+      nbActiveCat = catBtn.dataset.cat;
+      nbWin.querySelectorAll('.nb-cat').forEach(el => el.classList.toggle('active', el.dataset.cat === nbActiveCat));
+      updateSidebarList(nbWin);
+      sfx('click');
+      return;
+    }
+
+    // Entry click
+    const entry = e.target.closest('.nb-entry');
+    if (entry) {
+      openArticleInNotebook(nbWin, +entry.dataset.idx);
+      sfx('click');
+      return;
+    }
+
+    // Prev/Next/Related nav
+    const navBtn = e.target.closest('[data-nav-idx]');
+    if (navBtn) {
+      openArticleInNotebook(nbWin, +navBtn.dataset.navIdx);
+      sfx('click');
+      return;
+    }
+
+    // Copy link button
+    const shareBtn = e.target.closest('.nba-share-btn');
+    if (shareBtn) {
+      const url = window.location.href.split('#')[0] + '#note-' + nbActiveIdx;
+      navigator.clipboard.writeText(url).then(() => {
+        toast('🔗 Link copied to clipboard!');
+      }).catch(() => {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = url;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        toast('🔗 Link copied!');
+      });
+      sfx('copy');
+      return;
+    }
+  });
+
+  // Search input (input event, delegated via capture)
+  windowContainer.addEventListener('input', e => {
+    if (!e.target.classList.contains('nb-search-input')) return;
+    nbSearchQuery = e.target.value;
+    const nbWin = e.target.closest('.notebook-window');
+    if (nbWin) updateSidebarList(nbWin);
+  });
+
+  /* ══════════════════════════════════════════════════
+     WINDOW MANAGER
+  ══════════════════════════════════════════════════ */
 
   const WINDOW_TITLES = {
-    about: '👤 About',
-    experience: '🧭 Selected Work',
-    projects: '🧱 Systems',
-    skills: '🛠️ Capabilities',
-    toolkit: '🧰 Toolkit',
-    testimonials: '💬 Signals',
-    contact: '📨 Contact',
-    downloads: '⬇️ Resources',
+    about: '👤 About', experience: '🧭 Selected Work', projects: '🧱 Systems',
+    skills: '🛠️ Capabilities', toolkit: '🧰 Toolkit', testimonials: '💬 Signals',
+    contact: '📨 Contact', downloads: '⬇️ Resources',
   };
 
-  /* ── TEMPLATES ── */
   const T = {
     about: () => `
-      <div class="w-section">
-        <h3>Who I help</h3>
-        <div class="badge-row">
-          ${['founders','growing teams','service businesses','remote-first ops','CRM-heavy environments','teams scaling faster than their structure'].map(s=>`<span class="badge">${s}</span>`).join('')}
-        </div>
+      <div class="w-section"><h3>Who I help</h3>
+        <div class="badge-row">${['founders','growing teams','service businesses','remote-first ops','CRM-heavy environments','teams scaling faster than their structure'].map(s=>`<span class="badge">${s}</span>`).join('')}</div>
         <div class="callout">If work keeps routing back to you, knowledge lives in people's heads, or the business has outgrown its internal structure — that's the problem I'm built for.</div>
       </div>
-      <div class="w-section">
-        <h3>What I actually am</h3>
+      <div class="w-section"><h3>What I actually am</h3>
         <p>I'm not a specialist who goes deep in one lane. I'm the person you hire <em>before</em> you can afford to hire specialists — someone who covers the operational ground that would otherwise take three separate hires.</p>
-        <p>CRM architecture. Workflow automation. Documentation systems. Operational cleanup. Founder support. The connective tissue between vision and execution. I hold all of it together while you're still figuring out what you need.</p>
-        <p>My background runs from payments operations (high-stakes, zero-margin-for-error environments) to CRM builds for growing service businesses to knowledge infrastructure for scaling teams. What those environments share: they all had more complexity than their systems were built for, and someone had to build the infrastructure that made them workable.</p>
+        <p>CRM architecture. Workflow automation. Documentation systems. Operational cleanup. Founder support. The connective tissue between vision and execution.</p>
         <p>My best work happens when a business is growing faster than its internal structure and needs to bring order without slowing momentum.</p>
       </div>
-      <div class="w-section">
-        <h3>How I work</h3>
+      <div class="w-section"><h3>How I work</h3>
         <div class="badge-row">${META_SKILLS.map(s=>`<span class="badge">${s}</span>`).join('')}</div>
-        <p style="margin-top:8px;font-size:0.85rem;color:var(--muted)">Give me a problem, not a task list. I find the root cause, build around it, and leave something that holds up when I'm not in the room.</p>
       </div>
-      <div class="w-section">
-        <h3>What changes</h3>
-        <ul>${OUTCOMES.map(o=>`<li>${o}</li>`).join('')}</ul>
-      </div>
-      <div class="w-section">
-        <h3>A few things worth knowing</h3>
-        <p style="font-size:0.88rem;color:var(--text-light);line-height:1.65">Based in Valencia City, Philippines · Remote-first · Available for async-heavy engagements across time zones. I've worked with clients in the UK, US, and AU without the timezone being a problem — structured communication and good documentation make geography irrelevant.</p>
-      </div>`,
-
+      <div class="w-section"><h3>What changes</h3><ul>${OUTCOMES.map(o=>`<li>${o}</li>`).join('')}</ul></div>
+      <div class="w-section"><h3>Location</h3><p style="font-size:0.88rem;color:var(--text-light)">Based in Valencia City, Philippines · Remote-first · Available for async-heavy engagements across time zones.</p></div>`,
     experience: () => `
-      <div class="w-section"><h3>Selected Work</h3><p style="font-size:0.82rem;color:var(--muted)">A cross-section of operational environments and the kinds of system problems I solve. Each one left better than I found it.</p></div>
-      ${EXPERIENCE.map(e=>`<div class="w-section"><h3>${e.where}</h3><p style="font-size:0.88rem;color:var(--muted);font-style:italic;margin-bottom:8px;">${e.context}</p><ul>${e.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>`).join('')}
-      <div class="w-section"><div class="callout">Earlier background: Computer technician and hardware support (pre-remote career). Chemistry undergrad at Central Mindanao University. The pattern recognition and diagnostic instinct from both shows up in how I approach systems work.</div></div>`,
-
+      <div class="w-section"><h3>Selected Work</h3><p style="font-size:0.82rem;color:var(--muted)">Each one left better than I found it.</p></div>
+      ${EXPERIENCE.map(e=>`<div class="w-section"><h3>${e.where}</h3><p style="font-size:0.88rem;color:var(--muted);font-style:italic;margin-bottom:8px">${e.context}</p><ul>${e.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>`).join('')}`,
     projects: () => `
-      <div class="w-section"><h3>Systems, Not Just Tasks</h3><p style="font-size:0.82rem;color:var(--muted)">Proof through structure: each of these was a broken or missing operational system. Here's what was built and what changed.</p></div>
-      ${HIGHLIGHTS.map(h=>`<div class="w-section"><h3>${h.title}</h3><p style="font-size:0.82rem;color:var(--muted);margin-bottom:8px;">Problem</p><p>${h.problem}</p><p style="font-size:0.82rem;color:var(--muted);margin:10px 0 8px;">What was built</p><p>${h.system}</p><div class="result-box"><strong>Result:</strong> ${h.result}</div></div>`).join('')}
-      <div class="w-section"><div class="callout">More case studies and work samples available on request — most of this work lives inside client operations and can't be shared publicly without review.</div></div>`,
-
+      <div class="w-section"><h3>Systems, Not Just Tasks</h3><p style="font-size:0.82rem;color:var(--muted)">Proof through structure.</p></div>
+      ${HIGHLIGHTS.map(h=>`<div class="w-section"><h3>${h.title}</h3><p style="font-size:0.82rem;color:var(--muted);margin-bottom:8px">Problem</p><p>${h.problem}</p><p style="font-size:0.82rem;color:var(--muted);margin:10px 0 8px">What was built</p><p>${h.system}</p><div class="result-box"><strong>Result:</strong> ${h.result}</div></div>`).join('')}`,
     skills: () => `
-      <div class="w-section"><h3>Core Capabilities</h3><p style="font-size:0.82rem;color:var(--muted)">I don't do one thing well. I do a specific cluster of things well — and together they cover the operational ground most early-stage businesses need covered.</p></div>
-      ${Object.entries(SKILLS).map(([k,v])=>`<div class="w-section"><h3>${k}</h3><ul>${v.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}
-      <div class="w-section"><div class="callout">The skill that ties all of this together: pattern recognition across broken systems. Most operational problems aren't unique — they're the same failure modes in different clothes. I've seen enough of them that I can usually name the root cause before the diagnostic is done.</div></div>`,
-
+      <div class="w-section"><h3>Core Capabilities</h3></div>
+      ${Object.entries(SKILLS).map(([k,v])=>`<div class="w-section"><h3>${k}</h3><ul>${v.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}`,
     toolkit: () => `
-      <div class="w-section"><h3>Toolkit</h3><p style="font-size:0.82rem;color:var(--muted)">Platform-agnostic, structure-first. The tools are how the work gets done — the thinking comes before the tool selection.</p></div>
-      ${Object.entries(TOOLKIT).map(([k,v])=>`<div class="w-section"><h3>${k}</h3><div class="badge-row">${v.map(i=>`<span class="badge">${i}</span>`).join('')}</div></div>`).join('')}
-      <div class="w-section"><div class="callout">If you're using something not on this list — that's fine. Most tools in this space share the same underlying logic. I've picked up new platforms in days when the process thinking is already solid.</div></div>`,
-
+      <div class="w-section"><h3>Toolkit</h3><p style="font-size:0.82rem;color:var(--muted)">Platform-agnostic, structure-first.</p></div>
+      ${Object.entries(TOOLKIT).map(([k,v])=>`<div class="w-section"><h3>${k}</h3><div class="badge-row">${v.map(i=>`<span class="badge">${i}</span>`).join('')}</div></div>`).join('')}`,
     testimonials: () => `
-      <div class="w-section"><h3>Signals</h3><p style="font-size:0.82rem;color:var(--muted)">What people who've worked with me — across payments ops, CRM builds, service businesses, and team management — have said directly.</p></div>
-      ${TESTIMONIALS.map(t=>`<div class="w-section"><p style="font-style:italic;line-height:1.65;margin-bottom:10px;color:var(--text-light)">"${t.quote}"</p><p style="font-size:0.72rem;font-family:var(--font-mono);color:var(--muted);letter-spacing:0.03em">— ${t.from}</p></div>`).join('')}
-      <div class="w-section"><div class="callout">References available on request. Ashley Mackenzie (Alan Dobbie Glass and Glazing) and Edilbert Bagor (Square Block) have both agreed to speak directly with interested parties.</div></div>`,
-
+      <div class="w-section"><h3>Signals</h3></div>
+      ${TESTIMONIALS.map(t=>`<div class="w-section"><p style="font-style:italic;line-height:1.65;margin-bottom:10px">"${t.quote}"</p><p style="font-size:0.72rem;font-family:var(--font-mono);color:var(--muted)">— ${t.from}</p></div>`).join('')}`,
     contact: () => `
-      <div class="w-section">
-        <h3>Let's Talk</h3>
+      <div class="w-section"><h3>Let's Talk</h3>
         <p><strong>Email:</strong> <a href="mailto:${P.email}">${P.email}</a></p>
         <p><strong>Phone:</strong> ${P.phones[0]}</p>
         <p><strong>LinkedIn:</strong> <a href="${P.linkedin}" target="_blank" rel="noopener">linkedin.com/in/suarez-aaronroy →</a></p>
       </div>
-      <div class="w-section">
-        <h3>Best First Message</h3>
+      <div class="w-section"><h3>Best First Message</h3>
         <div class="callout">Tell me what feels messy, where execution is getting stuck, and what you want off your plate first.</div>
       </div>`,
-
     downloads: () => `
-      <div class="w-section"><h3>Resources</h3><p style="font-size:0.82rem;color:var(--muted)">Entry points if you want the deeper proof layer.</p></div>
-      <div class="w-section">
-        <h3>Resume</h3>
-        <p>The formal version of my background, systems work, and tool stack. Reach out and I'll send it directly.</p>
-        <p><a href="mailto:${P.email}">Request via email →</a></p>
-      </div>
-      <div class="w-section">
-        <h3>Notes & Writing</h3>
-        <p>How I think about operations, systems, leadership, and scale — available in the <strong>Notes · Blog · Logs</strong> window above.</p>
-      </div>
-      <div class="w-section">
-        <h3>Case Studies & Work Samples</h3>
-        <p>Selected process writeups, systems snapshots, and documentation samples where confidentiality allows. Available on request.</p>
-        <p><a href="mailto:${P.email}">Request via email →</a> · <a href="${P.linkedin}" target="_blank" rel="noopener">Connect on LinkedIn →</a></p>
-        <div class="callout">Most of this work lives inside client operations. Public examples are curated to show thinking, structure, and execution quality without exposing internal data.</div>
-      </div>`,
+      <div class="w-section"><h3>Resources</h3></div>
+      <div class="w-section"><h3>Resume</h3><p>The formal version of my background. Reach out and I'll send it directly.</p><p><a href="mailto:${P.email}">Request via email →</a></p></div>
+      <div class="w-section"><h3>Case Studies & Work Samples</h3><p>Selected process writeups and documentation samples where confidentiality allows.</p><p><a href="mailto:${P.email}">Request via email →</a> · <a href="${P.linkedin}" target="_blank" rel="noopener">Connect on LinkedIn →</a></p></div>`,
   };
 
-  /* ── WINDOW MANAGER ── */
-  const container = document.getElementById('window-container');
   let windows = [];
   let zTop = 1000;
-
-  // Shared drag state — one set of listeners for all windows
   let dragState = null;
+
   document.addEventListener('mousemove', e => {
     if (!dragState) return;
     const { win, ox, oy, sl, st } = dragState;
-    const nl = sl + e.clientX - ox;
-    const nt = st + e.clientY - oy;
-    win.style.left = Math.max(0, Math.min(nl, window.innerWidth  - win.offsetWidth))  + 'px';
-    win.style.top  = Math.max(0, Math.min(nt, window.innerHeight - win.offsetHeight)) + 'px';
+    win.style.left = Math.max(0, Math.min(sl + e.clientX - ox, window.innerWidth  - win.offsetWidth))  + 'px';
+    win.style.top  = Math.max(0, Math.min(st + e.clientY - oy, window.innerHeight - win.offsetHeight)) + 'px';
   });
   document.addEventListener('mouseup', () => { dragState = null; });
   document.addEventListener('touchmove', e => {
     if (!dragState) return;
     const t = e.touches[0];
-    const nl = dragState.sl + t.clientX - dragState.ox;
-    const nt = dragState.st + t.clientY - dragState.oy;
-    dragState.win.style.left = Math.max(0, Math.min(nl, window.innerWidth  - dragState.win.offsetWidth))  + 'px';
-    dragState.win.style.top  = Math.max(0, Math.min(nt, window.innerHeight - dragState.win.offsetHeight)) + 'px';
+    dragState.win.style.left = Math.max(0, Math.min(dragState.sl + t.clientX - dragState.ox, window.innerWidth  - dragState.win.offsetWidth))  + 'px';
+    dragState.win.style.top  = Math.max(0, Math.min(dragState.st + t.clientY - dragState.oy, window.innerHeight - dragState.win.offsetHeight)) + 'px';
   }, { passive: true });
   document.addEventListener('touchend', () => { dragState = null; });
 
@@ -1875,7 +3255,6 @@ If the answer is no, it's not done yet.`,
     const existing = windows.find(w => w.dataset.type === type);
     if (existing) {
       existing.style.zIndex = ++zTop;
-      // Subtle scale pulse instead of opacity flash
       existing.style.transition = 'transform 0.12s';
       existing.style.transform = 'scale(1.015)';
       setTimeout(() => { existing.style.transform = ''; }, 120);
@@ -1885,30 +3264,28 @@ If the answer is no, it's not done yet.`,
     const win = document.createElement('div');
     win.className = 'window window-new';
     win.dataset.type = type;
-    win.setAttribute('role', 'dialog');
-    win.setAttribute('aria-labelledby', `wt-${type}`);
-
     const offset = windows.length;
-    const left = Math.min(60 + offset * 28, window.innerWidth - 580);
-    const top  = Math.min(60 + offset * 24, window.innerHeight - 380);
-    win.style.left = Math.max(10, left) + 'px';
-    win.style.top  = Math.max(10, top)  + 'px';
+    win.style.left = Math.max(10, Math.min(60 + offset * 28, window.innerWidth - 580)) + 'px';
+    win.style.top  = Math.max(10, Math.min(60 + offset * 24, window.innerHeight - 380)) + 'px';
     win.style.zIndex = ++zTop;
 
-    if (type === 'notebook') win.classList.add('notebook-window');
+    if (type === 'notebook') {
+      win.classList.add('notebook-window');
+      win.style.width = '820px';
+      win.style.height = '72vh';
+    }
 
     win.innerHTML = `
       <div class="window-header">
-        <span class="win-title" id="wt-${type}">${title}</span>
+        <span class="win-title">${title}</span>
         <div class="win-controls">
-          <button class="wc close" aria-label="Close window"></button>
-          <button class="wc min"   aria-label="Minimise window"></button>
-          <button class="wc max"   aria-label="Maximise window"></button>
+          <button class="wc close" aria-label="Close"></button>
+          <button class="wc min" aria-label="Minimise"></button>
+          <button class="wc max" aria-label="Maximise"></button>
         </div>
       </div>
       <div class="window-body">${type === 'notebook' ? buildNotebook() : (T[type] ? T[type]() : '<div class="w-section"><p>Coming soon.</p></div>')}</div>`;
 
-    // Drag — per-header listeners that feed shared drag state
     const header = win.querySelector('.window-header');
     header.addEventListener('mousedown', e => {
       if (e.target.closest('.wc')) return;
@@ -1923,12 +3300,9 @@ If the answer is no, it's not done yet.`,
       win.style.zIndex = ++zTop;
     }, { passive: true });
 
-    // Controls
     win.querySelector('.wc.close').addEventListener('click', () => {
-      win.style.opacity = '0';
-      win.style.transform = 'scale(0.95)';
-      win.style.transition = 'opacity 0.15s, transform 0.15s';
-      setTimeout(() => { win.remove(); windows = windows.filter(w=>w!==win); }, 150);
+      win.style.opacity = '0'; win.style.transform = 'scale(0.95)'; win.style.transition = 'opacity 0.15s, transform 0.15s';
+      setTimeout(() => { win.remove(); windows = windows.filter(w => w !== win); }, 150);
       sfx('close');
     });
     win.querySelector('.wc.min').addEventListener('click', () => {
@@ -1938,105 +3312,25 @@ If the answer is no, it's not done yet.`,
     });
     win.querySelector('.wc.max').addEventListener('click', () => {
       if (win.classList.contains('maxi')) {
-        // Restore stored position values
-        win.style.left   = win._prev.left;
-        win.style.top    = win._prev.top;
-        win.style.width  = win._prev.width;
-        win.style.height = win._prev.height;
+        Object.assign(win.style, win._prev);
         win.classList.remove('maxi');
       } else {
-        // Store specific position values — not the full cssText blob
         win._prev = { left: win.style.left, top: win.style.top, width: win.style.width, height: win.style.height };
-        win.style.left = '2vw'; win.style.top = '2vh';
-        win.style.width = '96vw'; win.style.height = '94vh';
+        Object.assign(win.style, { left: '2vw', top: '2vh', width: '96vw', height: '94vh' });
         win.classList.add('maxi');
       }
       sfx('click');
     });
 
     win.addEventListener('mousedown', () => { win.style.zIndex = ++zTop; }, true);
-
-    container.appendChild(win);
+    windowContainer.appendChild(win);
     windows.push(win);
     setTimeout(() => win.classList.remove('window-new'), 300);
     sfx('open');
   }
 
-  /* ── NOTEBOOK ── */
-  const NB_CATS = ['all', 'systems', 'operations', 'crm', 'founder-notes', 'field-notes'];
-  let nbActiveCat = 'all';
-  let nbActiveIdx = null;
-
-  function buildNotebook() {
-    return `
-      <div class="nb-sidebar">
-        <div class="nb-cat-tabs">
-          ${NB_CATS.map(c=>`<button class="nb-cat${c==='all'?' active':''}" data-cat="${c}">${c}</button>`).join('')}
-        </div>
-        <div class="nb-list">
-          ${renderNbList()}
-        </div>
-      </div>
-      <div class="nb-content">
-        <div class="nb-empty">← select a note to read</div>
-      </div>`;
-  }
-
-  function renderNbList(cat='all') {
-    return NOTES
-      .filter(n => cat === 'all' || n.category === cat)
-      .map((n, i) => {
-        const realIdx = NOTES.indexOf(n);
-        return `<div class="nb-entry${nbActiveIdx===realIdx?' active':''}" data-idx="${realIdx}">
-          <div class="nb-entry-title">${n.title}</div>
-          <div class="nb-entry-meta">${n.date} · ${n.category}</div>
-        </div>`;
-      }).join('');
-  }
-
-  function renderNbArticle(idx) {
-    const n = NOTES[idx];
-    const html = n.body
-      .split('\n\n')
-      .map(para => {
-        if (para.startsWith('**') && para.endsWith('**')) {
-          return `<h3>${para.replace(/\*\*/g,'')}</h3>`;
-        }
-        return `<p>${para.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</p>`;
-      }).join('');
-    return `<div class="nb-article"><h2>${n.title}</h2><div class="nb-byline">📅 ${n.date} · 🏷 ${n.category}</div>${html}</div>`;
-  }
-
-  container.addEventListener('click', e => {
-    // Notebook category tabs
-    const cat = e.target.dataset.cat;
-    if (cat) {
-      nbActiveCat = cat;
-      const nb = e.target.closest('.notebook-window');
-      if (nb) {
-        nb.querySelectorAll('.nb-cat').forEach(el => el.classList.toggle('active', el.dataset.cat === cat));
-        nb.querySelector('.nb-list').innerHTML = renderNbList(cat);
-      }
-    }
-    // Notebook entries
-    const entry = e.target.closest('.nb-entry');
-    if (entry) {
-      const idx = +entry.dataset.idx;
-      nbActiveIdx = idx;
-      const nb = entry.closest('.notebook-window');
-      if (nb) {
-        nb.querySelectorAll('.nb-entry').forEach(el => el.classList.toggle('active', +el.dataset.idx === idx));
-        nb.querySelector('.nb-content').innerHTML = renderNbArticle(idx);
-      }
-    }
-  });
-
-  /* ── NAV ITEMS ── */
   document.querySelectorAll('[data-window]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const type = btn.dataset.window;
-      makeWindow(type, WINDOW_TITLES[type] || type);
-    });
+    btn.addEventListener('click', () => makeWindow(btn.dataset.window, WINDOW_TITLES[btn.dataset.window] || btn.dataset.window));
   });
 
   document.getElementById('notebookBtn').addEventListener('click', () => {
@@ -2046,31 +3340,19 @@ If the answer is no, it's not done yet.`,
   /* ── THEME & SFX ── */
   const root = document.documentElement;
   let sfxOn = localStorage.getItem('sfx') !== 'off';
-
   if (localStorage.getItem('theme') === 'dark') root.classList.add('dark');
 
   function sfx(type) {
     if (!sfxOn) return;
     try {
       const ctx = new (window.AudioContext||window.webkitAudioContext)();
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      const configs = {
-        open:  { freq: 660, type: 'sine',     gain: 0.018, dur: 0.06 },
-        close: { freq: 330, type: 'sine',     gain: 0.018, dur: 0.07 },
-        click: { freq: 520, type: 'triangle', gain: 0.015, dur: 0.04 },
-        pew:   { freq: 880, type: 'square',   gain: 0.015, dur: 0.08 },
-        hit:   { freq: 220, type: 'sawtooth', gain: 0.015, dur: 0.1  },
-        secret:{ freq: 440, type: 'sine',     gain: 0.018, dur: 0.2  },
-        copy:  { freq: 780, type: 'sine',     gain: 0.018, dur: 0.05 },
-      };
-      const c = configs[type] || configs.click;
-      o.type = c.type; o.frequency.value = c.freq;
-      g.gain.value = c.gain;
-      o.connect(g).connect(ctx.destination);
-      o.start(); o.stop(ctx.currentTime + c.dur);
-      setTimeout(() => ctx.close(), 300);
-    } catch (_) {}
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      const C = { open:{freq:660,type:'sine',gain:0.018,dur:0.06}, close:{freq:330,type:'sine',gain:0.018,dur:0.07}, click:{freq:520,type:'triangle',gain:0.015,dur:0.04}, pew:{freq:880,type:'square',gain:0.015,dur:0.08}, hit:{freq:220,type:'sawtooth',gain:0.015,dur:0.1}, secret:{freq:440,type:'sine',gain:0.018,dur:0.2}, copy:{freq:780,type:'sine',gain:0.018,dur:0.05} };
+      const c = C[type]||C.click;
+      o.type=c.type; o.frequency.value=c.freq; g.gain.value=c.gain;
+      o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime+c.dur);
+      setTimeout(()=>ctx.close(),300);
+    } catch(_){}
   }
 
   document.getElementById('darkToggle').addEventListener('click', () => {
@@ -2088,66 +3370,49 @@ If the answer is no, it's not done yet.`,
   });
   if (!sfxOn) sfxBtn.textContent = '🔇 sfx';
 
-  /* ── DOCK ── */
+  /* ── TOAST ── */
   function toast(msg) {
     const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.style.opacity = '1';
-    clearTimeout(el._t);
-    el._t = setTimeout(() => { el.style.opacity = '0'; }, 1800);
+    el.textContent = msg; el.style.opacity = '1';
+    clearTimeout(el._t); el._t = setTimeout(() => { el.style.opacity = '0'; }, 1800);
   }
 
-  /* Contact shortcuts wired to nav chips */
-  document.querySelectorAll('[data-window="contact"]').forEach(el => {
-    el.addEventListener('click', () => { makeWindow('contact', WINDOW_TITLES['contact']); sfx('click'); });
-  });
-
-  /* ── KONAMI / PIXEL GAME ── */
+  /* ── KONAMI GAME ── */
   const canvas = document.getElementById('gameCanvas');
   const gctx = canvas.getContext('2d');
   const scoreEl = document.getElementById('gameScore');
   let gameOn = false, gLoop, gscore = 0, bullets = [], blocks = [], mx = 0, my = 0;
-
   const KONAMI = [38,38,40,40,37,39,37,39,66,65];
   let ki = 0;
+
   document.addEventListener('keydown', e => {
-    // Escape closes top window
     if (e.key === 'Escape' && windows.length) {
-      const topWin = windows.reduce((a, b) => (+b.style.zIndex > +a.style.zIndex ? b : a));
-      topWin.querySelector('.wc.close').click();
-      ki = 0; return;
+      const topWin = windows.reduce((a,b) => (+b.style.zIndex > +a.style.zIndex ? b : a));
+      topWin.querySelector('.wc.close').click(); ki = 0; return;
     }
-    // Konami code
-    if (e.keyCode === KONAMI[ki]) { ki++; if (ki === KONAMI.length) { toggleGame(); sfx('secret'); toast('🎮 KONAMI!'); ki = 0; } }
-    else ki = 0;
+    if (e.keyCode === KONAMI[ki]) { ki++; if (ki === KONAMI.length) { toggleGame(); sfx('secret'); toast('🎮 KONAMI!'); ki = 0; } } else ki = 0;
   });
 
   document.getElementById('copyrightEl').addEventListener('dblclick', () => { toggleGame(); sfx('secret'); });
-
   document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
   document.addEventListener('click', e => {
     if (!gameOn) return;
-    if (e.target.closest('.btn,.dock-btn,.nav-item,.wc,.window')) return;
-    bullets.push({ x: mx, y: my - 30, vy: -9 });
-    sfx('pew');
+    if (e.target.closest('.btn,.dock-btn,.nav-chip,.wc,.window')) return;
+    bullets.push({ x: mx, y: my - 30, vy: -9 }); sfx('pew');
   });
 
   function toggleGame() {
     gameOn = !gameOn;
     root.classList.toggle('pixel-mode', gameOn);
     if (gameOn) {
-      gscore = 0; bullets = []; blocks = [];
-      scoreEl.textContent = '🎮 0';
+      gscore = 0; bullets = []; blocks = []; scoreEl.textContent = '🎮 0';
       (function loop() {
         gLoop = requestAnimationFrame(loop);
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
         gctx.clearRect(0,0,canvas.width,canvas.height);
-        // spawn
         if (Math.random() < 0.022) blocks.push({ x: Math.random()*(window.innerWidth-40), y:-30, w:38, h:38, vy:2+Math.random()*3, t:Math.floor(Math.random()*3) });
-        // move
         bullets = bullets.filter(b=>b.y>-20).map(b=>({...b,y:b.y+b.vy}));
         blocks  = blocks.filter(b=>b.y<window.innerHeight+50).map(b=>({...b,y:b.y+b.vy}));
-        // collide
         const hitBlocks = new Set();
         bullets = bullets.filter(b => {
           const hit = blocks.findIndex((bl,i) => !hitBlocks.has(i) && b.x>bl.x-8 && b.x<bl.x+bl.w+8 && b.y>bl.y-8 && b.y<bl.y+bl.h+8);
@@ -2155,36 +3420,26 @@ If the answer is no, it's not done yet.`,
           return true;
         });
         blocks = blocks.filter((_,i)=>!hitBlocks.has(i));
-        // draw ship
         const cols = ['#ff7f7f','#7fff7f','#7f9fff'];
         gctx.shadowColor='#0a1a10'; gctx.shadowOffsetX=3; gctx.shadowOffsetY=3;
         gctx.fillStyle='#66eeff'; gctx.fillRect(mx-18,my-18,36,18);
         gctx.fillStyle='#ff9aee'; gctx.fillRect(mx-5,my-28,10,14);
-        // bullets
-        gctx.fillStyle='#ffff55';
-        bullets.forEach(b=>gctx.fillRect(b.x-2,b.y-6,4,12));
-        // blocks
-        blocks.forEach(b=>{
-          gctx.fillStyle=cols[b.t]; gctx.fillRect(b.x,b.y,b.w,b.h);
-          gctx.strokeStyle='#000'; gctx.lineWidth=2; gctx.strokeRect(b.x,b.y,b.w,b.h);
-        });
+        gctx.fillStyle='#ffff55'; bullets.forEach(b=>gctx.fillRect(b.x-2,b.y-6,4,12));
+        blocks.forEach(b=>{ gctx.fillStyle=cols[b.t]; gctx.fillRect(b.x,b.y,b.w,b.h); gctx.strokeStyle='#000'; gctx.lineWidth=2; gctx.strokeRect(b.x,b.y,b.w,b.h); });
         gctx.shadowOffsetX=0; gctx.shadowOffsetY=0;
       })();
       toast('🎮 8-bit mode ON · click to shoot');
     } else {
-      cancelAnimationFrame(gLoop);
-      gctx.clearRect(0,0,canvas.width,canvas.height);
-      toast('8-bit mode OFF');
+      cancelAnimationFrame(gLoop); gctx.clearRect(0,0,canvas.width,canvas.height); toast('8-bit mode OFF');
     }
   }
 
   /* ── MISC ── */
   document.getElementById('yr').textContent = new Date().getFullYear();
-
   window.addEventListener('resize', () => {
     windows.forEach(w => {
       const l = parseInt(w.style.left)||0, t = parseInt(w.style.top)||0;
-      if (l + w.offsetWidth > window.innerWidth - 10) w.style.left = Math.max(0, window.innerWidth - w.offsetWidth - 10) + 'px';
+      if (l + w.offsetWidth  > window.innerWidth  - 10) w.style.left = Math.max(0, window.innerWidth  - w.offsetWidth  - 10) + 'px';
       if (t + w.offsetHeight > window.innerHeight - 10) w.style.top  = Math.max(0, window.innerHeight - w.offsetHeight - 10) + 'px';
     });
   });
