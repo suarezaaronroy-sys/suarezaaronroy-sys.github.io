@@ -3467,19 +3467,21 @@ function makeWindow(type, title) {
     });
   });
 
-  // ===== HASH URL HANDLER =====
-  // Update hash when opening ANY window (including notebook)
-  // First, modify the makeWindow function to always update hash
-  // Find this in your makeWindow function (around line 1150) and change:
-  // From: if (type !== 'notebook') { window.location.hash = type; }
-  // To: window.location.hash = type;
-  
-  // But since we can't easily modify makeWindow here, let's override the notebook button
-  const originalNotebookHandler = document.getElementById('notebookBtn').onclick;
-  document.getElementById('notebookBtn').onclick = function() {
-    makeWindow('notebook', '📔 Notes · Blog · Logs');
-    window.location.hash = 'notebook';
-  };
+  // ===== HASH URL HANDLER WITH TITLE SLUGS =====
+  // Function to convert article title to URL slug
+  function titleToSlug(title) {
+    return title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  }
+
+  // Function to find note index by slug
+  function findNoteBySlug(slug) {
+    return NOTES.findIndex(note => titleToSlug(note.title) === slug);
+  }
 
   // Track hash changes in analytics
   function trackHashView() {
@@ -3487,18 +3489,18 @@ function makeWindow(type, title) {
       let pagePath = window.location.hash || '/';
       let pageTitle = document.title;
       
-      // If it's a note, try to get the note title for better tracking
-      if (pagePath.startsWith('#note-')) {
-        let noteIndex = parseInt(pagePath.replace('#note-', ''));
-        if (!isNaN(noteIndex) && NOTES[noteIndex]) {
+      if (pagePath.startsWith('#')) {
+        let slug = pagePath.substring(1);
+        let noteIndex = findNoteBySlug(slug);
+        if (noteIndex !== -1 && NOTES[noteIndex]) {
           pageTitle = NOTES[noteIndex].title + ' · Aaron Suarez';
-        }
-      } else if (pagePath === '#notebook') {
-        pageTitle = 'Notes · Blog · Logs · Aaron Suarez';
-      } else if (pagePath) {
-        let windowType = pagePath.replace('#', '');
-        if (WINDOW_TITLES[windowType]) {
-          pageTitle = WINDOW_TITLES[windowType].replace(/[👤🧭🧱🛠️🧰💬📨⬇️]/g, '').trim() + ' · Aaron Suarez';
+        } else if (slug === 'notebook') {
+          pageTitle = 'Notes · Blog · Logs · Aaron Suarez';
+        } else {
+          let windowType = slug;
+          if (WINDOW_TITLES[windowType]) {
+            pageTitle = WINDOW_TITLES[windowType].replace(/[👤🧭🧱🛠️🧰💬📨⬇️]/g, '').trim() + ' · Aaron Suarez';
+          }
         }
       }
       
@@ -3510,41 +3512,115 @@ function makeWindow(type, title) {
     }
   }
 
+  // Override openArticleInNotebook to update hash with title slug
+  const originalOpenArticle = openArticleInNotebook;
+  openArticleInNotebook = function(nbWin, idx) {
+    originalOpenArticle(nbWin, idx);
+    if (NOTES[idx]) {
+      let slug = titleToSlug(NOTES[idx].title);
+      window.location.hash = slug;
+    }
+    trackHashView();
+  };
+
+  // Handle share button clicks
+  document.addEventListener('click', function(e) {
+    const shareBtn = e.target.closest('.nba-share-btn');
+    if (shareBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (nbActiveIdx !== null && NOTES[nbActiveIdx]) {
+        let slug = titleToSlug(NOTES[nbActiveIdx].title);
+        const url = window.location.href.split('#')[0] + '#' + slug;
+        
+        navigator.clipboard.writeText(url).then(() => {
+          toast('🔗 Link copied to clipboard!');
+        }).catch(() => {
+          const textarea = document.createElement('textarea');
+          textarea.value = url;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          toast('🔗 Link copied!');
+        });
+        sfx('copy');
+      }
+      return;
+    }
+  }, true);
+
   // Open window from hash on page load
   window.addEventListener('load', function() {
     if (window.location.hash) {
-      let hashType = window.location.hash.substring(1); // removes the #
+      let hashType = window.location.hash.substring(1);
       
-      // Handle regular windows
       const validWindows = ['about', 'experience', 'projects', 'skills', 'toolkit', 'testimonials', 'contact', 'downloads'];
       if (validWindows.includes(hashType)) {
         setTimeout(() => {
           makeWindow(hashType, WINDOW_TITLES[hashType] || hashType);
+          window.location.hash = hashType;
           trackHashView();
         }, 500);
         return;
       }
       
-      // Handle notebook (main notebook window)
       if (hashType === 'notebook') {
         setTimeout(() => {
           makeWindow('notebook', '📔 Notes · Blog · Logs');
+          window.location.hash = 'notebook';
           trackHashView();
         }, 500);
         return;
       }
       
-      // Handle notebook article hashes
-      if (hashType.startsWith('note-')) {
-        let noteIndex = parseInt(hashType.replace('note-', ''));
-        if (!isNaN(noteIndex) && noteIndex >= 0 && noteIndex < NOTES.length) {
-          // Open notebook first
+      let noteIndex = findNoteBySlug(hashType);
+      if (noteIndex !== -1) {
+        makeWindow('notebook', '📔 Notes · Blog · Logs');
+        window.location.hash = hashType;
+        
+        setTimeout(() => {
+          const notebookWin = windows.find(w => w.dataset.type === 'notebook');
+          if (notebookWin) {
+            openArticleInNotebook(notebookWin, noteIndex);
+            trackHashView();
+          }
+        }, 600);
+        return;
+      }
+    }
+  });
+
+  // Handle hash changes
+  window.addEventListener('hashchange', function() {
+    if (window.location.hash) {
+      let hashType = window.location.hash.substring(1);
+      
+      const validWindows = ['about', 'experience', 'projects', 'skills', 'toolkit', 'testimonials', 'contact', 'downloads'];
+      if (validWindows.includes(hashType)) {
+        makeWindow(hashType, WINDOW_TITLES[hashType] || hashType);
+        trackHashView();
+        return;
+      }
+      
+      if (hashType === 'notebook') {
+        makeWindow('notebook', '📔 Notes · Blog · Logs');
+        trackHashView();
+        return;
+      }
+      
+      let noteIndex = findNoteBySlug(hashType);
+      if (noteIndex !== -1) {
+        let notebookWin = windows.find(w => w.dataset.type === 'notebook');
+        
+        if (notebookWin) {
+          openArticleInNotebook(notebookWin, noteIndex);
+          trackHashView();
+        } else {
           makeWindow('notebook', '📔 Notes · Blog · Logs');
-          window.location.hash = 'note-' + noteIndex; // Ensure hash is set
-          
-          // Wait for notebook to render, then open specific article
           setTimeout(() => {
-            const notebookWin = windows.find(w => w.dataset.type === 'notebook');
+            notebookWin = windows.find(w => w.dataset.type === 'notebook');
             if (notebookWin) {
               openArticleInNotebook(notebookWin, noteIndex);
               trackHashView();
@@ -3553,83 +3629,20 @@ function makeWindow(type, title) {
         }
         return;
       }
-    }
-  });
-
-  // Handle hash changes (back/forward buttons)
-  window.addEventListener('hashchange', function() {
-    if (window.location.hash) {
-      let hashType = window.location.hash.substring(1);
-      
-      // Handle regular windows
-      const validWindows = ['about', 'experience', 'projects', 'skills', 'toolkit', 'testimonials', 'contact', 'downloads'];
-      if (validWindows.includes(hashType)) {
-        makeWindow(hashType, WINDOW_TITLES[hashType] || hashType);
-        trackHashView();
-        return;
-      }
-      
-      // Handle notebook (main notebook window)
-      if (hashType === 'notebook') {
-        makeWindow('notebook', '📔 Notes · Blog · Logs');
-        trackHashView();
-        return;
-      }
-      
-      // Handle notebook article hashes
-      if (hashType.startsWith('note-')) {
-        let noteIndex = parseInt(hashType.replace('note-', ''));
-        if (!isNaN(noteIndex) && noteIndex >= 0 && noteIndex < NOTES.length) {
-          // Check if notebook is already open
-          let notebookWin = windows.find(w => w.dataset.type === 'notebook');
-          
-          if (notebookWin) {
-            // Notebook exists, just open the article
-            openArticleInNotebook(notebookWin, noteIndex);
-            trackHashView();
-          } else {
-            // Open notebook first, then article
-            makeWindow('notebook', '📔 Notes · Blog · Logs');
-            setTimeout(() => {
-              notebookWin = windows.find(w => w.dataset.type === 'notebook');
-              if (notebookWin) {
-                openArticleInNotebook(notebookWin, noteIndex);
-                trackHashView();
-              }
-            }, 600);
-          }
-        }
-        return;
-      }
     } else {
-      // Hash is empty, close all windows
       windows.forEach(win => {
         win.querySelector('.wc.close').click();
       });
     }
   });
 
-  // Override openArticleInNotebook to update hash
-  const originalOpenArticle = openArticleInNotebook;
-  openArticleInNotebook = function(nbWin, idx) {
-    // Call the original function
-    originalOpenArticle(nbWin, idx);
-    
-    // Update hash to match the opened note
-    window.location.hash = 'note-' + idx;
-    
-    // Track in analytics
-    trackHashView();
-  };
-
-  // Also override the notebook button click to set hash
+  // Override notebook button
   const notebookBtn = document.getElementById('notebookBtn');
   notebookBtn.addEventListener('click', function() {
     setTimeout(() => {
       window.location.hash = 'notebook';
     }, 100);
   });
-
 })();
 </script>
 </body>
