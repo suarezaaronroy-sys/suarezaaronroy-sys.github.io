@@ -9,7 +9,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-GYPEWZXH03');
 </script>
   <title>Aaron Suarez · Systems Support for Founders</title>
@@ -517,11 +516,6 @@
     }
     .badge:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* ══════════════════════════════════════════════
-       NOTEBOOK WINDOW — FULL REDESIGN
-    ══════════════════════════════════════════════ */
-
-
     .notebook-window .window-header {
       background: #e8e0cc;
       border-bottom: 2px solid var(--nb-border);
@@ -538,7 +532,6 @@
       overflow: hidden;
     }
 
-    /* ── Search bar ── */
     .nb-search-bar {
       display: flex;
       align-items: center;
@@ -575,7 +568,6 @@
       white-space: nowrap;
     }
 
-    /* ── Main layout ── */
     .nb-main {
       display: flex;
       flex: 1;
@@ -651,7 +643,6 @@
       flex-shrink: 0;
     }
 
-    /* ── Article content area ── */
     .nb-content {
       flex: 1;
       min-height: 0;
@@ -666,7 +657,6 @@
       position: relative;
     }
 
-    /* ── Scroll progress bar ── */
     .nb-scroll-progress {
       position: sticky;
       top: 0;
@@ -696,10 +686,6 @@
     }
     .nb-empty-icon { font-size: 2rem; opacity: 0.4; }
 
-    /* ══════════════════════════════════════════════
-       ARTICLE RENDERER — FULL REWRITE
-    ══════════════════════════════════════════════ */
-
     .nb-article-wrap {
       padding: 2rem 2.2rem 1rem;
       flex: 1;
@@ -707,7 +693,6 @@
       flex-direction: column;
     }
 
-    /* Header */
     .nba-header {
       margin-bottom: 1.5rem;
       padding-bottom: 1.2rem;
@@ -774,7 +759,6 @@
       color: var(--nb-ink);
     }
 
-    /* Article body */
     .nba-body {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.92rem;
@@ -783,9 +767,7 @@
       flex: 1;
     }
 
-    .nba-body p {
-      margin-bottom: 1.1rem;
-    }
+    .nba-body p { margin-bottom: 1.1rem; }
 
     .nba-body h2 {
       font-family: 'DM Serif Display', serif;
@@ -805,7 +787,6 @@
     }
 
     .nba-body strong { font-weight: 700; color: #1a0e08; }
-
     .nba-body em { font-style: italic; }
 
     .nba-body hr {
@@ -814,7 +795,6 @@
       margin: 1.8rem 0;
     }
 
-    /* Blockquote */
     .nba-body blockquote {
       border-left: 4px solid var(--nb-border);
       background: rgba(122,106,79,0.08);
@@ -826,18 +806,22 @@
       font-size: 0.9rem;
     }
 
-    /* Lists */
     .nba-body ul, .nba-body ol {
       padding-left: 1.4rem;
       margin: 0.5rem 0 1rem;
     }
-    .nba-body li {
-      margin-bottom: 0.4rem;
-      line-height: 1.65;
-    }
+    .nba-body li { margin-bottom: 0.4rem; line-height: 1.65; }
     .nba-body ul li::marker { color: var(--nb-border); }
 
-    /* Callout boxes */
+    /* inline link style inside notes */
+    .nba-body a {
+      color: #1060a0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      word-break: break-all;
+    }
+    .nba-body a:hover { color: #0e4f87; }
+
     .nba-callout {
       border-left: 4px solid var(--green);
       background: rgba(26,128,104,0.08);
@@ -860,7 +844,6 @@
       color: #3d2800;
     }
 
-    /* Tables */
     .nba-body table {
       width: 100%;
       border-collapse: collapse;
@@ -889,7 +872,6 @@
     .nba-body tr:last-child td { border-bottom: none; }
     .nba-body tr:hover td { background: rgba(122,106,79,0.04); }
 
-    /* Code */
     .nba-body code {
       font-family: var(--font-mono);
       font-size: 0.82em;
@@ -899,7 +881,6 @@
       color: #4a2e10;
     }
 
-    /* Diagrams */
     .nba-diagram {
       margin: 1.5rem 0;
       background: rgba(255,255,255,0.55);
@@ -934,192 +915,55 @@
       min-width: 110px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
-    .nba-flow-node strong {
-      display: block;
-      font-size: 0.82rem;
-      margin-bottom: 2px;
-    }
-    .nba-flow-node small {
-      font-size: 0.7rem;
-      color: #8a7a60;
-      font-family: var(--font-mono);
-    }
-    .nba-flow-node.blue { background: #e8f3ff; border-color: #a9c8e6; }
+    .nba-flow-node strong { display: block; font-size: 0.82rem; margin-bottom: 2px; }
+    .nba-flow-node small { font-size: 0.7rem; color: #8a7a60; font-family: var(--font-mono); }
+    .nba-flow-node.blue  { background: #e8f3ff; border-color: #a9c8e6; }
     .nba-flow-node.amber { background: #fff3de; border-color: #e8cf95; }
     .nba-flow-node.green { background: #e5f7ef; border-color: #b9e0d0; }
-    .nba-flow-node.red { background: #fde8e8; border-color: #e4bcbc; }
-
+    .nba-flow-node.red   { background: #fde8e8; border-color: #e4bcbc; }
     .nba-flow-arrow { font-size: 1.2rem; color: #a08060; }
 
-    /* Arch compare */
-    .nba-arch {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 1rem 0;
-    }
-    .nba-arch-col {
-      flex: 1;
-      min-width: 220px;
-      border-radius: 14px;
-      padding: 1rem;
-      border: 1.5px solid;
-    }
+    .nba-arch { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+    .nba-arch-col { flex: 1; min-width: 220px; border-radius: 14px; padding: 1rem; border: 1.5px solid; }
     .nba-arch-col.before { background: #fbe6e6; border-color: #efc0c0; }
     .nba-arch-col.after  { background: #e5f7ef; border-color: #b9e0d0; }
-    .nba-arch-col h4 {
-      font-size: 0.85rem;
-      margin-bottom: 0.7rem;
-      text-align: center;
-      border-bottom: 1px dashed rgba(0,0,0,0.1);
-      padding-bottom: 0.4rem;
-    }
-    .nba-arch-step {
-      background: white;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 7px;
-      padding: 0.45rem 0.7rem;
-      margin-bottom: 0.3rem;
-      font-size: 0.82rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
+    .nba-arch-col h4 { font-size: 0.85rem; margin-bottom: 0.7rem; text-align: center; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 0.4rem; }
+    .nba-arch-step { background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 7px; padding: 0.45rem 0.7rem; margin-bottom: 0.3rem; font-size: 0.82rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
 
-    /* KB architecture diagram */
-    .nba-kb-arch {
-      margin: 1.5rem 0;
-      padding: 1.1rem;
-      border: 1px solid rgba(122,106,79,0.25);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.5);
-    }
+    .nba-kb-arch { margin: 1.5rem 0; padding: 1.1rem; border: 1px solid rgba(122,106,79,0.25); border-radius: 18px; background: rgba(255,255,255,0.5); }
     .nba-kb-stack { display: flex; flex-direction: column; gap: 0.6rem; }
     .nba-kb-row { display: grid; grid-template-columns: 160px 1fr; gap: 0.7rem; align-items: stretch; }
-    .nba-kb-layer {
-      border-radius: 12px;
-      padding: 0.8rem 0.9rem;
-      border: 1.5px solid rgba(122,106,79,0.3);
-    }
+    .nba-kb-layer { border-radius: 12px; padding: 0.8rem 0.9rem; border: 1.5px solid rgba(122,106,79,0.3); }
     .nba-kb-layer strong { display: block; font-size: 0.82rem; }
     .nba-kb-layer span { display: block; font-size: 0.72rem; color: #6a5a45; margin-top: 2px; }
     .nba-kb-layer.intake   { background: #e9f3ff; border-color: #a9c8e6; }
     .nba-kb-layer.classify { background: #fff3de; border-color: #e8cf95; }
     .nba-kb-layer.resolve  { background: #e5f7ef; border-color: #b9e0d0; }
     .nba-kb-layer.escalate { background: #fde8e8; border-color: #e4bcbc; }
-    .nba-kb-detail {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(122,106,79,0.2);
-      border-radius: 12px;
-      padding: 0.8rem 0.9rem;
-    }
+    .nba-kb-detail { background: rgba(255,255,255,0.7); border: 1px solid rgba(122,106,79,0.2); border-radius: 12px; padding: 0.8rem 0.9rem; }
     .nba-kb-detail strong { font-size: 0.82rem; display: block; margin-bottom: 3px; }
     .nba-kb-detail p { margin: 0; font-size: 0.8rem; color: #4a3a28; }
     .nba-kb-arrow { text-align: center; font-size: 1rem; color: #a08060; }
-    .nba-kb-footer {
-      margin-top: 0.8rem;
-      padding-top: 0.8rem;
-      border-top: 1px dashed rgba(122,106,79,0.3);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
-    }
-    .nba-kb-note {
-      background: rgba(255,255,255,0.6);
-      border: 1px solid rgba(122,106,79,0.2);
-      border-radius: 10px;
-      padding: 0.65rem 0.7rem;
-      font-size: 0.75rem;
-    }
+    .nba-kb-footer { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px dashed rgba(122,106,79,0.3); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+    .nba-kb-note { background: rgba(255,255,255,0.6); border: 1px solid rgba(122,106,79,0.2); border-radius: 10px; padding: 0.65rem 0.7rem; font-size: 0.75rem; }
     .nba-kb-note strong { display: block; margin-bottom: 2px; font-size: 0.75rem; }
     .nba-kb-note span { color: #5a4a35; }
 
-    /* ── Prev / Next nav ── */
-    .nba-nav {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.8rem;
-      padding-top: 1.2rem;
-      border-top: 2px dashed rgba(122,106,79,0.3);
-    }
-
-    .nba-nav-btn {
-      flex: 1;
-      background: rgba(255,255,255,0.6);
-      border: 1px solid rgba(122,106,79,0.3);
-      border-radius: 10px;
-      padding: 0.7rem 0.9rem;
-      cursor: pointer;
-      transition: all 0.12s;
-      text-align: left;
-      font-family: var(--font-sans);
-    }
-    .nba-nav-btn:hover {
-      background: white;
-      border-color: var(--nb-border);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transform: translateY(-1px);
-    }
+    .nba-nav { display: flex; gap: 0.75rem; margin-top: 1.8rem; padding-top: 1.2rem; border-top: 2px dashed rgba(122,106,79,0.3); }
+    .nba-nav-btn { flex: 1; background: rgba(255,255,255,0.6); border: 1px solid rgba(122,106,79,0.3); border-radius: 10px; padding: 0.7rem 0.9rem; cursor: pointer; transition: all 0.12s; text-align: left; font-family: var(--font-sans); }
+    .nba-nav-btn:hover { background: white; border-color: var(--nb-border); box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: translateY(-1px); }
     .nba-nav-btn.next { text-align: right; }
-    .nba-nav-label {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #8a7a60;
-      margin-bottom: 3px;
-    }
-    .nba-nav-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 0.82rem;
-      color: var(--nb-ink);
-      line-height: 1.3;
-    }
+    .nba-nav-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8a7a60; margin-bottom: 3px; }
+    .nba-nav-title { font-family: 'DM Serif Display', serif; font-size: 0.82rem; color: var(--nb-ink); line-height: 1.3; }
 
-    /* ── Related articles ── */
-    .nba-related {
-      margin-top: 1.5rem;
-      padding-top: 1.2rem;
-      border-top: 1px dashed rgba(122,106,79,0.25);
-    }
-    .nba-related-label {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #8a7a60;
-      margin-bottom: 0.7rem;
-    }
-    .nba-related-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-    }
-    .nba-related-item {
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(122,106,79,0.25);
-      border-radius: 9px;
-      padding: 0.6rem 0.75rem;
-      cursor: pointer;
-      transition: all 0.12s;
-    }
-    .nba-related-item:hover {
-      background: white;
-      border-color: var(--nb-border);
-      transform: translateY(-1px);
-    }
-    .nba-related-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 0.78rem;
-      color: var(--nb-ink);
-      line-height: 1.3;
-      margin-bottom: 2px;
-    }
-    .nba-related-meta {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: #8a7a60;
-    }
+    .nba-related { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px dashed rgba(122,106,79,0.25); }
+    .nba-related-label { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8a7a60; margin-bottom: 0.7rem; }
+    .nba-related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .nba-related-item { background: rgba(255,255,255,0.55); border: 1px solid rgba(122,106,79,0.25); border-radius: 9px; padding: 0.6rem 0.75rem; cursor: pointer; transition: all 0.12s; }
+    .nba-related-item:hover { background: white; border-color: var(--nb-border); transform: translateY(-1px); }
+    .nba-related-title { font-family: 'DM Serif Display', serif; font-size: 0.78rem; color: var(--nb-ink); line-height: 1.3; margin-bottom: 2px; }
+    .nba-related-meta { font-family: var(--font-mono); font-size: 0.6rem; color: #8a7a60; }
 
-    /* ── DOCK ── */
     .dock {
       position: fixed;
       bottom: 32px;
@@ -1144,102 +988,45 @@
     }
 
     .dock-btn {
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: var(--surface);
       font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       transition: all 0.15s cubic-bezier(0.34,1.56,0.64,1);
       color: var(--text);
       position: relative;
     }
-    .dock-btn:hover {
-      background: var(--blue-light);
-      border-color: var(--blue);
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 6px 16px rgba(16,96,160,0.2);
-    }
-    .dock-btn::after {
-      content: attr(data-tip);
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--text);
-      color: var(--bg);
-      font-size: 0.6rem;
-      font-family: var(--font-mono);
-      padding: 3px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.15s;
-    }
+    .dock-btn:hover { background: var(--blue-light); border-color: var(--blue); transform: translateY(-5px) scale(1.1); box-shadow: 0 6px 16px rgba(16,96,160,0.2); }
+    .dock-btn::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg); font-size: 0.6rem; font-family: var(--font-mono); padding: 3px 8px; border-radius: 4px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
     .dock-btn:hover::after { opacity: 1; }
 
     .copyright {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.6rem;
-      font-family: var(--font-mono);
-      color: var(--muted);
-      opacity: 0.5;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      z-index: 100;
+      position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+      font-size: 0.6rem; font-family: var(--font-mono); color: var(--muted);
+      opacity: 0.5; white-space: nowrap; cursor: pointer; transition: opacity 0.2s; z-index: 100;
     }
     .copyright:hover { opacity: 0.9; }
 
     #toast {
-      position: fixed;
-      left: 50%;
-      bottom: 110px;
-      transform: translateX(-50%);
-      background: var(--text);
-      color: var(--bg);
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: 40px;
-      z-index: 3000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-      white-space: nowrap;
+      position: fixed; left: 50%; bottom: 110px; transform: translateX(-50%);
+      background: var(--text); color: var(--bg);
+      font-family: var(--font-mono); font-size: 0.76rem;
+      padding: 0.45rem 1.1rem; border-radius: 40px;
+      z-index: 3000; opacity: 0; pointer-events: none; transition: opacity 0.2s; white-space: nowrap;
     }
 
-    #gameCanvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 500;
-      display: none;
-    }
+    #gameCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 500; display: none; }
     .pixel-mode #gameCanvas { display: block; }
 
     #gameScore {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      background: var(--card);
-      border: 2px solid var(--border);
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 0.8rem;
-      color: var(--text);
-      z-index: 2500;
-      box-shadow: var(--shadow);
-      display: none;
+      position: fixed; top: 16px; right: 16px;
+      background: var(--card); border: 2px solid var(--border);
+      padding: 8px 18px; border-radius: 40px;
+      font-family: 'Press Start 2P', monospace; font-size: 0.8rem; color: var(--text);
+      z-index: 2500; box-shadow: var(--shadow); display: none;
     }
     .pixel-mode #gameScore { display: block; }
 
@@ -1256,15 +1043,7 @@
       .dock-btn { width: 38px; height: 38px; font-size: 1.1rem; }
     }
 
-    /* No-results state */
-    .nb-no-results {
-      padding: 1rem 0.5rem;
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: #a08060;
-      font-style: italic;
-    }
+    .nb-no-results { padding: 1rem 0.5rem; text-align: center; font-family: var(--font-mono); font-size: 0.7rem; color: #a08060; font-style: italic; }
   </style>
 </head>
 <body>
@@ -1278,7 +1057,6 @@
   </div>
 
   <div class="shell">
-
     <div class="hero">
       <h1>hi — i'm <em>Aaron</em>.</h1>
       <div class="hero-desc">
@@ -1314,7 +1092,6 @@
       </nav>
       <p class="rail-hint" style="margin-top:0.7rem;font-size:0.67rem;font-family:var(--font-mono);color:var(--muted);opacity:0.6;line-height:1.5;text-align:center;">Open a window to see how I reduce operational drag and make work easier to run.</p>
     </div>
-
   </div>
 
   <div id="window-container"></div>
@@ -1334,7 +1111,6 @@
     website:  'https://suarezaaronroy-sys.github.io',
   };
 
-  /* ── CATEGORY CONFIG ── */
   const CAT_CONFIG = {
     'systems':         { color: '#1060a0', bg: '#deedf8', label: '⚙️ Systems' },
     'operations':      { color: '#1a8068', bg: '#ddf0ea', label: '🔧 Operations' },
@@ -1357,7 +1133,6 @@
     return text.trim().split(/\s+/).length;
   }
 
-  /* ── DATA ── */
   const OUTCOMES = [
     'Processes that run without you in the room — not because everyone\'s perfect, but because the system holds them accountable',
     'CRM that acts as a command system: every record tells the next person exactly where things stand and what to do',
@@ -1419,12 +1194,12 @@
   ];
 
   /* ════════════════════════════════════════════════════════════════
-     📚 NOTES DATA — ENHANCED WITH VISUAL ELEMENTS
-     ════════════════════════════════════════════════════════════════ */
+     NOTES DATA
+  ════════════════════════════════════════════════════════════════ */
   const NOTES = [
     {
       title: 'Stop Training People. Start Building Systems That Set Them Free.',
-      date: 'Mar 2026', 
+      date: 'Mar 2026',
       category: 'systems',
       body: `Learning is hard. Not because people aren't smart — but because we keep making it harder than it needs to be.
 
@@ -1504,10 +1279,9 @@ Build the guide rails. Shorten the deep dives. Hand people a compass instead of 
 
 Then step back and watch what they do with it.`,
     },
-
     {
       title: 'Why Knowledge Lives in People\'s Heads (and How to Move It Out)',
-      date: 'Feb 2026', 
+      date: 'Feb 2026',
       category: 'operations',
       body: `Every growing team has the same invisible bottleneck: **knowledge that lives in specific people's heads.**
 
@@ -1549,10 +1323,9 @@ The goal isn't a massive documentation project. It's a structured way of capturi
 
 The system doesn't have to be perfect to be useful. It just has to be **accessible when someone needs it.**`,
     },
-
     {
       title: 'CRM Isn\'t Just a Database. It\'s an Operating System.',
-      date: 'Jan 2026', 
+      date: 'Jan 2026',
       category: 'crm',
       body: `Most teams use their CRM as a filing cabinet. 📁
 
@@ -1596,10 +1369,9 @@ Most teams skip this step. They install the platform, set up some fields, and wo
 
 📌 **The structure has to come first.**`,
     },
-
     {
       title: 'What Founders Actually Need From an Ops Person',
-      date: 'Dec 2025', 
+      date: 'Dec 2025',
       category: 'founder-notes',
       body: `I've worked with founders at different stages, and the needs are surprisingly consistent regardless of company size.
 
@@ -1624,8 +1396,8 @@ The founder's job is to think at the level of strategy, relationship, and produc
 
 An ops person who understands this doesn't wait to be told what to do. They're watching for the drag. They're asking:
 
-📌 Where is this slowing down?  
-📌 What's not captured?  
+📌 Where is this slowing down?
+📌 What's not captured?
 📌 What would happen if I wasn't here?
 
 ---
@@ -1642,10 +1414,9 @@ When you're evaluating someone for an ops role, don't just ask what they've done
 
 **Process thinking is the actual skill.** The tools are just how it gets applied.`,
     },
-
     {
       title: 'The Escalation Tax: What It\'s Costing You Every Day',
-      date: 'Mar 2026', 
+      date: 'Mar 2026',
       category: 'operations',
       body: `There's a cost every team pays that almost no one measures. Not in their dashboards. Not in their reports. Not in any budget line.
 
@@ -1698,10 +1469,9 @@ The fix isn't telling people to stop asking. The fix is **building the infrastru
 
 🎯 **The goal:** By the time something reaches a senior person, it should genuinely require their judgment — not their memory.`,
     },
-
     {
       title: 'Handoffs Are Where Work Goes to Die',
-      date: 'Feb 2026', 
+      date: 'Feb 2026',
       category: 'operations',
       body: `Most operational failures don't happen inside a task. They happen **between tasks.**
 
@@ -1758,16 +1528,15 @@ This doesn't require a complicated system. It requires a cultural norm backed by
 
 Once this becomes standard, something shifts in the team:
 
-✅ Work stops stalling  
-✅ Follow-up questions drop  
-✅ Receivers can actually start working  
+✅ Work stops stalling
+✅ Follow-up questions drop
+✅ Receivers can actually start working
 
 🎯 **The goal:** Continuity without a conversation.`,
     },
-
     {
       title: 'Why Your Onboarding Is Failing (It\'s Not the Material)',
-      date: 'Feb 2026', 
+      date: 'Feb 2026',
       category: 'operations',
       body: `Every time I've walked into an organization with an onboarding problem, the instinct is the same:
 
@@ -1819,10 +1588,9 @@ The best onboarding I've built wasn't a training program. It was a system that c
 
 **The system teaches, not just the training.**`,
     },
-
     {
       title: 'The Difference Between a Process and a System',
-      date: 'Jan 2026', 
+      date: 'Jan 2026',
       category: 'systems',
       body: `People use these words interchangeably. They're **not the same thing** — and the distinction matters if you're trying to build something that actually scales.
 
@@ -1885,10 +1653,9 @@ That's where the system is weakest, and that's where building will have the most
 
 Start there. Build it until it runs without you. Then move to the next one.`,
     },
-
     {
       title: 'Documentation Is Not Bureaucracy',
-      date: 'Jan 2026', 
+      date: 'Jan 2026',
       category: 'systems',
       body: `There's a bias in fast-moving teams against documentation. It feels slow. It feels like something big companies do when they've run out of good ideas. It feels like bureaucracy.
 
@@ -1939,10 +1706,9 @@ Team adoption was immediate. Not because I told people to use it. Because it was
 
 Write it down. Write it briefly. Put it where people will find it.`,
     },
-
     {
       title: 'When to Automate and When Not To',
-      date: 'Dec 2025', 
+      date: 'Dec 2025',
       category: 'systems',
       body: `Automation is one of the most useful tools in operations. It's also one of the most commonly misapplied.
 
@@ -1997,10 +1763,9 @@ Automating a bad process makes it a **fast bad process.** That's not an improvem
 
 **In that order.**`,
     },
-
     {
       title: 'Meetings That Should Be Documents',
-      date: 'Dec 2025', 
+      date: 'Dec 2025',
       category: 'founder-notes',
       body: `Most organizations have too many meetings. Not because people love sitting in calls — but because they haven't built the alternative.
 
@@ -2048,10 +1813,9 @@ The people who needed to know things can read the doc. The decisions that needed
 
 **What's left is usually worth meeting for.**`,
     },
-
     {
       title: 'The Ops Person as Translator',
-      date: 'Nov 2025', 
+      date: 'Nov 2025',
       category: 'founder-notes',
       body: `The most underrated skill in operations isn't process design or systems thinking. It's **translation.**
 
@@ -2102,10 +1866,9 @@ Without this translation layer, organizations get one of two failure modes:
 
 The ops person who can move fluently between both worlds — holding the language of strategy and the language of daily execution simultaneously — is worth far more than their title suggests.`,
     },
-
     {
       title: 'Delegation Debt: Why Your Team Can\'t Work Without You',
-      date: 'Nov 2025', 
+      date: 'Nov 2025',
       category: 'founder-notes',
       body: `Delegation debt is what accumulates when a founder or manager holds onto decisions they should have handed off long ago.
 
@@ -2150,10 +1913,9 @@ Done right, delegation doesn't create risk. It distributes capability.
 
 🎯 **The goal:** A team that can cover ground you'd otherwise have to cover yourself — because the systems and the judgment are both in place.`,
     },
-
     {
       title: 'What "We\'ll Figure It Out" Actually Costs',
-      date: 'Oct 2025', 
+      date: 'Oct 2025',
       category: 'operations',
       body: `"We'll figure it out" is the most expensive phrase in operations.
 
@@ -2197,10 +1959,9 @@ That's the bar. Not every scenario. Not an airtight process from day one. Just:
 
 Stop figuring it out in real time. Start building the logic once and deploying it consistently.`,
     },
-
     {
       title: 'CRM Adoption Isn\'t a Training Problem',
-      date: 'Oct 2025', 
+      date: 'Oct 2025',
       category: 'crm',
       body: `The most common complaint I hear about CRMs: the team isn't using it properly. The solution that gets tried: more training.
 
@@ -2249,10 +2010,9 @@ If those answers aren't immediately visible, the system is working against adopt
 
 **Design for the user, and the data will follow.**`,
     },
-
     {
       title: 'The Quiet Failure Mode: Organized Chaos',
-      date: 'Sep 2025', 
+      date: 'Sep 2025',
       category: 'operations',
       body: `The most dangerous operational state isn't obvious dysfunction. It's **organized chaos** — the condition where things look structured from a distance but are actually held together by specific people working heroically behind the scenes.
 
@@ -2297,10 +2057,9 @@ The goal isn't to remove great people from the equation — it's to make sure th
 
 Document what they know. Codify their decision logic. Build the scaffolding around the work so the work doesn't depend on any one person staying upright.`,
     },
-
     {
       title: 'How to Audit an Operation You Just Inherited',
-      date: 'Sep 2025', 
+      date: 'Sep 2025',
       category: 'field-notes',
       body: `Walking into an existing operation as an ops hire — or as someone brought in to clean things up — is one of the more interesting challenges in this work.
 
@@ -2355,10 +2114,9 @@ Then make decisions about what to keep, what to redesign, and what to retire.
 
 **In that order.**`,
     },
-
     {
       title: 'The Problem With "Just Use Common Sense"',
-      date: 'Aug 2025', 
+      date: 'Aug 2025',
       category: 'operations',
       body: `"Just use common sense" is a management instruction that sounds reasonable and produces inconsistent results.
 
@@ -2404,10 +2162,9 @@ Then write it down.
 
 The first time you write it, it takes longer than saying "use common sense." The tenth time that situation comes up and is handled correctly without anyone asking, you'll see why the upfront investment was worth it.`,
     },
-
     {
       title: 'Tribal Knowledge Is a Single Point of Failure',
-      date: 'Aug 2025', 
+      date: 'Aug 2025',
       category: 'systems',
       body: `In systems design, a **single point of failure** is any component whose failure causes the entire system to stop working. Good engineers design around them — not because failure is inevitable, but because the consequences are too severe to accept as a risk.
 
@@ -2449,10 +2206,9 @@ Single points of failure get addressed by building redundancy. In operations, re
 
 None of this requires removing the key person. It requires building around them so their absence doesn't take the operation down with them.`,
     },
-
     {
       title: 'What I\'ve Learned From Cleaning Up Other People\'s Systems',
-      date: 'Jul 2025', 
+      date: 'Jul 2025',
       category: 'field-notes',
       body: `A significant part of my work over the years has been coming in after something was built — a CRM, a workflow, an onboarding system, an SOP library — and making it actually usable.
 
@@ -2488,10 +2244,9 @@ Before I build anything now, I ask:
 
 If the answer is no, it's not done yet.`,
     },
-
     {
       title: 'How to Design a Workflow Automation That Actually Works',
-      date: 'Mar 2026', 
+      date: 'Mar 2026',
       category: 'technical-notes',
       body: `Most workflow automations fail because they are built around tools instead of process logic. This guide walks through a practical framework for designing automation that is resilient, maintainable, and grounded in how work actually moves.
 
@@ -2575,10 +2330,9 @@ Automation is not about eliminating human work. It is about eliminating repetiti
 
 Build in layers. Build in monitoring. Build in failure recovery. And always start with the manual process before touching a single tool.`,
     },
-
     {
       title: 'How to Build a Knowledge Base People Actually Use',
-      date: 'Mar 2026', 
+      date: 'Mar 2026',
       category: 'technical-notes',
       body: `A knowledge base is not valuable because it exists. It is valuable because, at the exact moment someone is stuck, it helps them move.
 
@@ -2682,13 +2436,90 @@ It lowers escalation volume. It speeds onboarding. It protects institutional mem
 
 Do not write articles just to prove the company has documentation. Write them so the next person can move without needing rescue.`,
     },
+    /* ── PATCH 1: NEW NOTE ─────────────────────────────────────── */
+    {
+      title: 'GHL 101: Why I Published Two Years of Notes for Free',
+      date: 'Mar 2026',
+      category: 'field-notes',
+      body: `GoHighLevel has a problem most people in the ecosystem quietly know about.
+
+Almost everything useful lives behind a paywall. A paid course. A YouTube channel someone is monetizing. A Facebook group you had to beg to join.
+
+The platform itself is powerful. The knowledge around it is artificially scarce.
+
+---
+
+## The honest backstory
+
+I spent two years learning GHL the hard way. Broken workflows. Busted automations. Late-night debugging on client accounts. AI integrations that almost worked. I kept notes the whole time — not to publish, just because I think in systems and systems need documentation to survive.
+
+At some point the notes crossed a threshold. They stopped being personal reminders and started being a reference.
+
+So I organized everything, updated it to 2026 (Voice AI, Agent Studio, WhatsApp native, the new CRM UI, AI Employee pricing — all of it), cross-referenced 29 official GHL support articles, and published the whole thing for free.
+
+No paywall. No email gate. No course upsell.
+
+> "GHL learning is gate-kept. Almost everything useful is behind a paywall. This is my attempt to fix a small piece of that."
+
+---
+
+## What's in it
+
+The document covers 18 modules:
+
+- GHL Foundations & 2026 Pricing
+- System Setup Basics
+- Forms, Surveys & Funnels
+- Workflows & Automation
+- Conversations & Unified Inbox
+- Contact Management
+- Opportunities & Pipelines
+- Reporting & Tracking
+- Integrations & Power-Ups
+- AI Employee (Voice AI, Agent Studio — full setup)
+- Staff Training & Best Practices
+- Real-World Use Case Blueprints
+- Debugging & QA Mastery
+- Advanced Features 2025–2026
+- 50 GHL Power Tips
+- Full Assessment
+
+It also includes something I added specifically for AI tools: a grounding block so language models have accurate, structured GHL context — instead of hallucinated guesses from outdated training data.
+
+**Access it here:** [GHL 101: Speedrun Training Manual — 2026 Edition](https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing&ouid=112802324939177681395&rtpof=true&sd=true)
+
+---
+
+## Why this matters beyond GHL
+
+Building this manual is not a side project. It's a direct expression of how I work on everything.
+
+The pattern that shows up across my career — at ESSA, at AllayPay, through every GHL build I've done for clients and for ASMC — is the same one every time.
+
+I find operational chaos and build the structure that prevents it from recurring. I document systems so they survive without me in the room. I cross-reference multiple sources and distill them into something usable. I build with AI as a collaborator, not just a shortcut.
+
+The GHL manual is a clean artifact of those skills. It wasn't assigned. Nobody paid me to write it. I built it because scattered, paywalled, outdated knowledge is an operational problem — and operational problems are what I fix.
+
+---
+
+## The bigger picture
+
+The direction I'm building toward is what I'd call AI Operations Architecture. CRM automation, AI customer assistants trained on company knowledge, internal knowledge bases employees actually use, workflow systems with no human bottlenecks, dashboards that make the business visible.
+
+The GHL manual is one node in that.
+
+If you're onboarding a VA, training a team, or trying to understand GHL without paying $297 for a course that's already 18 months outdated — it's yours.
+
+If it helps, pass it forward.`,
+    },
+    /* ──────────────────────────────────────────────────────────── */
   ];
+
   /* ══════════════════════════════════════════════════
-     ARTICLE PARSER — ROBUST MARKDOWN-LIKE RENDERER
+     ARTICLE PARSER
   ══════════════════════════════════════════════════ */
 
   function parseArticle(body) {
-    // Normalize line endings
     const text = body.replace(/\r\n/g, '\n').trim();
     const lines = text.split('\n');
     const chunks = [];
@@ -2696,99 +2527,47 @@ Do not write articles just to prove the company has documentation. Write them so
 
     while (i < lines.length) {
       const line = lines[i];
-
-      // Blank line — skip
       if (!line.trim()) { i++; continue; }
 
-      // HR
-      if (/^-{3,}$/.test(line.trim())) {
-        chunks.push({ type: 'hr' });
-        i++;
-        continue;
-      }
+      if (/^-{3,}$/.test(line.trim())) { chunks.push({ type: 'hr' }); i++; continue; }
 
-      // H2 (## or **Text** on its own line)
-      if (/^##\s/.test(line)) {
-        chunks.push({ type: 'h2', text: line.replace(/^##\s+/, '').trim() });
-        i++;
-        continue;
-      }
-      if (/^\*\*[^*]+\*\*$/.test(line.trim()) && !line.includes(' — ') && !line.startsWith('-')) {
-        chunks.push({ type: 'h2', text: line.trim().replace(/\*\*/g, '') });
-        i++;
-        continue;
-      }
+      if (/^##\s/.test(line)) { chunks.push({ type: 'h2', text: line.replace(/^##\s+/, '').trim() }); i++; continue; }
+      if (/^\*\*[^*]+\*\*$/.test(line.trim()) && !line.includes(' — ') && !line.startsWith('-')) { chunks.push({ type: 'h2', text: line.trim().replace(/\*\*/g, '') }); i++; continue; }
 
-      // H3 (### or **Text:** pattern)
-      if (/^###\s/.test(line)) {
-        chunks.push({ type: 'h3', text: line.replace(/^###\s+/, '').trim() });
-        i++;
-        continue;
-      }
+      if (/^###\s/.test(line)) { chunks.push({ type: 'h3', text: line.replace(/^###\s+/, '').trim() }); i++; continue; }
 
-      // Blockquote
       if (/^>\s/.test(line)) {
         const bqLines = [];
-        while (i < lines.length && /^>\s/.test(lines[i])) {
-          bqLines.push(lines[i].replace(/^>\s?/, ''));
-          i++;
-        }
+        while (i < lines.length && /^>\s/.test(lines[i])) { bqLines.push(lines[i].replace(/^>\s?/, '')); i++; }
         chunks.push({ type: 'blockquote', text: bqLines.join(' ') });
         continue;
       }
 
-      // Unordered list (- or • or *)
       if (/^[\-\•\*]\s/.test(line.trim())) {
         const items = [];
-        while (i < lines.length && /^[\-\•\*]\s/.test(lines[i].trim())) {
-          items.push(lines[i].trim().replace(/^[\-\•\*]\s/, ''));
-          i++;
-        }
+        while (i < lines.length && /^[\-\•\*]\s/.test(lines[i].trim())) { items.push(lines[i].trim().replace(/^[\-\•\*]\s/, '')); i++; }
         chunks.push({ type: 'ul', items });
         continue;
       }
 
-      // Ordered list
       if (/^\d+\.\s/.test(line.trim())) {
         const items = [];
-        while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
-          items.push(lines[i].trim().replace(/^\d+\.\s/, ''));
-          i++;
-        }
+        while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) { items.push(lines[i].trim().replace(/^\d+\.\s/, '')); i++; }
         chunks.push({ type: 'ol', items });
         continue;
       }
 
-      // Table (| col | col |)
       if (/^\|/.test(line.trim())) {
         const tableLines = [];
-        while (i < lines.length && /^\|/.test(lines[i].trim())) {
-          tableLines.push(lines[i]);
-          i++;
-        }
+        while (i < lines.length && /^\|/.test(lines[i].trim())) { tableLines.push(lines[i]); i++; }
         chunks.push({ type: 'table', lines: tableLines });
         continue;
       }
-            // Diagram markers
-      if (line.trim() === '[DIAGRAM:trigger-flow]') {
-        chunks.push({ type: 'diagram-trigger-flow' });
-        i++;
-        continue;
-      }
 
-      if (line.trim() === '[DIAGRAM:monolithic]') {
-        chunks.push({ type: 'diagram-monolithic' });
-        i++;
-        continue;
-      }
+      if (line.trim() === '[DIAGRAM:trigger-flow]') { chunks.push({ type: 'diagram-trigger-flow' }); i++; continue; }
+      if (line.trim() === '[DIAGRAM:monolithic]') { chunks.push({ type: 'diagram-monolithic' }); i++; continue; }
+      if (line.trim() === '[DIAGRAM:kb-architecture]') { chunks.push({ type: 'diagram-kb-architecture' }); i++; continue; }
 
-      if (line.trim() === '[DIAGRAM:kb-architecture]') {
-        chunks.push({ type: 'diagram-kb-architecture' });
-        i++;
-        continue;
-      }
-
-      // Paragraph — collect consecutive non-special lines
       const paraLines = [];
       while (i < lines.length) {
         const l = lines[i];
@@ -2798,11 +2577,8 @@ Do not write articles just to prove the company has documentation. Write them so
         paraLines.push(l);
         i++;
       }
-      if (paraLines.length) {
-        chunks.push({ type: 'p', text: paraLines.join(' ') });
-      }
+      if (paraLines.length) { chunks.push({ type: 'p', text: paraLines.join(' ') }); }
     }
-
     return chunks;
   }
 
@@ -2810,17 +2586,14 @@ Do not write articles just to prove the company has documentation. Write them so
     return text
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>');
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   }
 
   function renderTable(lines) {
-    const rows = lines.filter(l => !/^\|[\s\-:|]+\|/.test(l.trim()) || l.includes('|--') === false);
-    const dataRows = lines.filter(l => !/^\|[\s\-:]+\|/.test(l.trim().replace(/[^|\-: ]/g, '')));
-    
     let html = '<table>';
     let isFirst = true;
     for (const line of lines) {
-      // Skip separator rows like |---|---|
       if (/^\|[\s\-:|]+\|$/.test(line.trim())) continue;
       const cells = line.split('|').filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
       if (cells.length === 0) continue;
@@ -2835,135 +2608,35 @@ Do not write articles just to prove the company has documentation. Write them so
     return html;
   }
 
-   function chunksToHTML(chunks) {
+  function chunksToHTML(chunks) {
     return chunks.map(c => {
       switch (c.type) {
-        case 'hr':
-          return '<hr>';
-        case 'h2':
-          return `<h2>${inlineFormat(c.text)}</h2>`;
-        case 'h3':
-          return `<h3>${inlineFormat(c.text)}</h3>`;
-        case 'blockquote':
-          return `<blockquote>${inlineFormat(c.text)}</blockquote>`;
-        case 'ul':
-          return '<ul>' + c.items.map(item => `<li>${inlineFormat(item)}</li>`).join('') + '</ul>';
-        case 'ol':
-          return '<ol>' + c.items.map(item => `<li>${inlineFormat(item)}</li>`).join('') + '</ol>';
-        case 'table':
-          return renderTable(c.lines);
-        case 'diagram-trigger-flow':
-          return renderTriggerFlowDiagram();
-        case 'diagram-monolithic':
-          return renderMonolithicDiagram();
-        case 'diagram-kb-architecture':
-          return renderKBArchitectureDiagram();
-        case 'p':
-          return `<p>${inlineFormat(c.text)}</p>`;
-        default:
-          return '';
+        case 'hr': return '<hr>';
+        case 'h2': return `<h2>${inlineFormat(c.text)}</h2>`;
+        case 'h3': return `<h3>${inlineFormat(c.text)}</h3>`;
+        case 'blockquote': return `<blockquote>${inlineFormat(c.text)}</blockquote>`;
+        case 'ul': return '<ul>' + c.items.map(item => `<li>${inlineFormat(item)}</li>`).join('') + '</ul>';
+        case 'ol': return '<ol>' + c.items.map(item => `<li>${inlineFormat(item)}</li>`).join('') + '</ol>';
+        case 'table': return renderTable(c.lines);
+        case 'diagram-trigger-flow': return renderTriggerFlowDiagram();
+        case 'diagram-monolithic': return renderMonolithicDiagram();
+        case 'diagram-kb-architecture': return renderKBArchitectureDiagram();
+        case 'p': return `<p>${inlineFormat(c.text)}</p>`;
+        default: return '';
       }
     }).join('\n');
   }
-    // Diagram renderers
+
   function renderTriggerFlowDiagram() {
-    return `<div class="nba-diagram">
-      <div class="nba-diagram-label">Trigger → Filter → Action</div>
-      <div class="nba-flow">
-        <div class="nba-flow-node blue">
-          <strong>Trigger</strong>
-          <small>Form, schedule, webhook</small>
-        </div>
-        <div class="nba-flow-arrow">→ only if valid →</div>
-        <div class="nba-flow-node amber">
-          <strong>Filter</strong>
-          <small>Conditions, routing</small>
-        </div>
-        <div class="nba-flow-arrow">↓</div>
-        <div class="nba-flow-node green">
-          <strong>Action</strong>
-          <small>Create, update, send</small>
-        </div>
-      </div>
-    </div>`;
+    return `<div class="nba-diagram"><div class="nba-diagram-label">Trigger → Filter → Action</div><div class="nba-flow"><div class="nba-flow-node blue"><strong>Trigger</strong><small>Form, schedule, webhook</small></div><div class="nba-flow-arrow">→ only if valid →</div><div class="nba-flow-node amber"><strong>Filter</strong><small>Conditions, routing</small></div><div class="nba-flow-arrow">↓</div><div class="nba-flow-node green"><strong>Action</strong><small>Create, update, send</small></div></div></div>`;
   }
 
   function renderMonolithicDiagram() {
-    return `<div class="nba-arch">
-      <div class="nba-arch-col before">
-        <h4>🔴 Before: Monolithic</h4>
-        <div class="nba-arch-step">📥 Form submission</div>
-        <div class="nba-arch-step">🔍 Validate data</div>
-        <div class="nba-arch-step">📊 Update CRM</div>
-        <div class="nba-arch-step">✉️ Send email</div>
-        <div class="nba-arch-step">💰 Create invoice</div>
-        <div class="nba-arch-step">📝 Log to sheet</div>
-        <div class="nba-arch-step">⏰ Schedule follow-up</div>
-      </div>
-      <div class="nba-arch-col after">
-        <h4>✅ After: Layered</h4>
-        <div class="nba-arch-step"><strong>Layer 1:</strong> 📥 Form → validate → queue</div>
-        <div class="nba-arch-step"><strong>Layer 2:</strong> 📦 Queue → update CRM → log</div>
-        <div class="nba-arch-step"><strong>Layer 3:</strong> 📅 Daily batch → invoices → summaries</div>
-        <div class="nba-arch-step"><strong>Layer 4:</strong> ⏰ Follow-up scheduler → reminders</div>
-      </div>
-    </div>`;
+    return `<div class="nba-arch"><div class="nba-arch-col before"><h4>🔴 Before: Monolithic</h4><div class="nba-arch-step">📥 Form submission</div><div class="nba-arch-step">🔍 Validate data</div><div class="nba-arch-step">📊 Update CRM</div><div class="nba-arch-step">✉️ Send email</div><div class="nba-arch-step">💰 Create invoice</div><div class="nba-arch-step">📝 Log to sheet</div><div class="nba-arch-step">⏰ Schedule follow-up</div></div><div class="nba-arch-col after"><h4>✅ After: Layered</h4><div class="nba-arch-step"><strong>Layer 1:</strong> 📥 Form → validate → queue</div><div class="nba-arch-step"><strong>Layer 2:</strong> 📦 Queue → update CRM → log</div><div class="nba-arch-step"><strong>Layer 3:</strong> 📅 Daily batch → invoices → summaries</div><div class="nba-arch-step"><strong>Layer 4:</strong> ⏰ Follow-up scheduler → reminders</div></div></div>`;
   }
 
   function renderKBArchitectureDiagram() {
-    return `<div class="nba-kb-arch">
-      <div class="nba-diagram-label">Knowledge Base Architecture</div>
-      <div class="nba-kb-stack">
-        <div class="nba-kb-row">
-          <div class="nba-kb-layer intake">
-            <strong>Intake Layer</strong>
-            <span>Form submissions, emails, tickets</span>
-          </div>
-          <div class="nba-kb-detail">
-            <strong>Central Intake</strong>
-            <p>All incoming requests normalized here</p>
-          </div>
-        </div>
-        <div class="nba-kb-arrow">↓</div>
-        <div class="nba-kb-row">
-          <div class="nba-kb-layer classify">
-            <strong>Classification</strong>
-            <span>Category, priority, routing</span>
-          </div>
-          <div class="nba-kb-detail">
-            <strong>Smart Router</strong>
-            <p>Directs to right team based on rules</p>
-          </div>
-        </div>
-        <div class="nba-kb-arrow">↓</div>
-        <div class="nba-kb-row">
-          <div class="nba-kb-layer resolve">
-            <strong>Resolution</strong>
-            <span>SOPs, decision trees, scripts</span>
-          </div>
-          <div class="nba-kb-detail">
-            <strong>Knowledge Base</strong>
-            <p>Searchable articles and workflows</p>
-          </div>
-        </div>
-        <div class="nba-kb-arrow">↓</div>
-        <div class="nba-kb-row">
-          <div class="nba-kb-layer escalate">
-            <strong>Escalation</strong>
-            <span>Complex cases, exceptions</span>
-          </div>
-          <div class="nba-kb-detail">
-            <strong>Expert Path</strong>
-            <p>Routes to senior staff with context</p>
-          </div>
-        </div>
-      </div>
-      <div class="nba-kb-footer">
-        <div class="nba-kb-note"><strong>Analytics</strong><span>Usage metrics</span></div>
-        <div class="nba-kb-note"><strong>Feedback</strong><span>Article ratings</span></div>
-        <div class="nba-kb-note"><strong>Updates</strong><span>Version control</span></div>
-      </div>
-    </div>`;
+    return `<div class="nba-kb-arch"><div class="nba-diagram-label">Knowledge Base Architecture</div><div class="nba-kb-stack"><div class="nba-kb-row"><div class="nba-kb-layer intake"><strong>Intake Layer</strong><span>Form submissions, emails, tickets</span></div><div class="nba-kb-detail"><strong>Central Intake</strong><p>All incoming requests normalized here</p></div></div><div class="nba-kb-arrow">↓</div><div class="nba-kb-row"><div class="nba-kb-layer classify"><strong>Classification</strong><span>Category, priority, routing</span></div><div class="nba-kb-detail"><strong>Smart Router</strong><p>Directs to right team based on rules</p></div></div><div class="nba-kb-arrow">↓</div><div class="nba-kb-row"><div class="nba-kb-layer resolve"><strong>Resolution</strong><span>SOPs, decision trees, scripts</span></div><div class="nba-kb-detail"><strong>Knowledge Base</strong><p>Searchable articles and workflows</p></div></div><div class="nba-kb-arrow">↓</div><div class="nba-kb-row"><div class="nba-kb-layer escalate"><strong>Escalation</strong><span>Complex cases, exceptions</span></div><div class="nba-kb-detail"><strong>Expert Path</strong><p>Routes to senior staff with context</p></div></div></div><div class="nba-kb-footer"><div class="nba-kb-note"><strong>Analytics</strong><span>Usage metrics</span></div><div class="nba-kb-note"><strong>Feedback</strong><span>Article ratings</span></div><div class="nba-kb-note"><strong>Updates</strong><span>Version control</span></div></div></div>`;
   }
 
   /* ══════════════════════════════════════════════════
@@ -2976,7 +2649,7 @@ Do not write articles just to prove the company has documentation. Write them so
   let nbSearchQuery = '';
 
   function getFilteredNotes() {
-    return NOTES.filter((n, idx) => {
+    return NOTES.filter(n => {
       const matchesCat = nbActiveCat === 'all' || n.category === nbActiveCat;
       const q = nbSearchQuery.toLowerCase();
       const matchesSearch = !q || n.title.toLowerCase().includes(q) || n.body.toLowerCase().includes(q) || n.category.includes(q);
@@ -2986,9 +2659,7 @@ Do not write articles just to prove the company has documentation. Write them so
 
   function renderNbList() {
     const filtered = getFilteredNotes();
-    if (!filtered.length) {
-      return '<div class="nb-no-results">No notes found</div>';
-    }
+    if (!filtered.length) return '<div class="nb-no-results">No notes found</div>';
     return filtered.map(n => {
       const idx = NOTES.indexOf(n);
       const cs = catStyle(n.category);
@@ -2997,9 +2668,7 @@ Do not write articles just to prove the company has documentation. Write them so
         <div class="nb-entry-title">${n.title}</div>
         <div class="nb-entry-meta">
           <span class="nb-entry-cat-dot" style="background:${cs.color}"></span>
-          <span>${n.date}</span>
-          <span>·</span>
-          <span>${rt} min</span>
+          <span>${n.date}</span><span>·</span><span>${rt} min</span>
         </div>
       </div>`;
     }).join('');
@@ -3038,7 +2707,6 @@ Do not write articles just to prove the company has documentation. Write them so
     const chunks = parseArticle(n.body);
     const bodyHTML = chunksToHTML(chunks);
 
-    // Prev / Next (within current filter)
     const filtered = getFilteredNotes();
     const filteredIdx = filtered.findIndex(fn => NOTES.indexOf(fn) === idx);
     const prevNote = filteredIdx > 0 ? filtered[filteredIdx - 1] : null;
@@ -3046,7 +2714,6 @@ Do not write articles just to prove the company has documentation. Write them so
     const prevIdx = prevNote ? NOTES.indexOf(prevNote) : null;
     const nextIdx = nextNote ? NOTES.indexOf(nextNote) : null;
 
-    // Related (same category, different article, up to 2)
     const related = NOTES
       .map((rn, ri) => ({ note: rn, idx: ri }))
       .filter(({ note, idx: ri }) => note.category === n.category && ri !== idx)
@@ -3065,21 +2732,12 @@ Do not write articles just to prove the company has documentation. Write them so
             <button class="nba-share-btn" data-copy-title="${n.title.replace(/"/g, '&quot;')}">🔗 Copy link</button>
           </div>
         </div>
-
         <div class="nba-body">${bodyHTML}</div>
-
         ${prevNote || nextNote ? `
         <div class="nba-nav">
-          ${prevNote ? `<button class="nba-nav-btn prev" data-nav-idx="${prevIdx}">
-            <div class="nba-nav-label">← Previous</div>
-            <div class="nba-nav-title">${prevNote.title}</div>
-          </button>` : '<div style="flex:1"></div>'}
-          ${nextNote ? `<button class="nba-nav-btn next" data-nav-idx="${nextIdx}">
-            <div class="nba-nav-label">Next →</div>
-            <div class="nba-nav-title">${nextNote.title}</div>
-          </button>` : '<div style="flex:1"></div>'}
+          ${prevNote ? `<button class="nba-nav-btn prev" data-nav-idx="${prevIdx}"><div class="nba-nav-label">← Previous</div><div class="nba-nav-title">${prevNote.title}</div></button>` : '<div style="flex:1"></div>'}
+          ${nextNote ? `<button class="nba-nav-btn next" data-nav-idx="${nextIdx}"><div class="nba-nav-label">Next →</div><div class="nba-nav-title">${nextNote.title}</div></button>` : '<div style="flex:1"></div>'}
         </div>` : ''}
-
         ${related.length ? `
         <div class="nba-related">
           <div class="nba-related-label">Related in ${n.category.replace('-', ' ')}</div>
@@ -3095,7 +2753,7 @@ Do not write articles just to prove the company has documentation. Write them so
   }
 
   /* ══════════════════════════════════════════════════
-     NOTEBOOK EVENTS (delegated)
+     NOTEBOOK EVENTS
   ══════════════════════════════════════════════════ */
 
   function updateSidebarList(nbWin) {
@@ -3112,10 +2770,9 @@ Do not write articles just to prove the company has documentation. Write them so
     if (contentArea) {
       contentArea.innerHTML = renderNbArticle(idx);
       contentArea.scrollTop = 0;
-      // Scroll progress
       const progressBar = contentArea.querySelector('#nb-scroll-bar');
       if (progressBar) {
-        contentArea.addEventListener('scroll', function onScroll() {
+        contentArea.addEventListener('scroll', function() {
           const max = contentArea.scrollHeight - contentArea.clientHeight;
           const pct = max > 0 ? contentArea.scrollTop / max : 0;
           progressBar.style.transform = `scaleX(${pct})`;
@@ -3130,7 +2787,6 @@ Do not write articles just to prove the company has documentation. Write them so
     const nbWin = e.target.closest('.notebook-window');
     if (!nbWin) return;
 
-    // Category tabs
     const catBtn = e.target.closest('.nb-cat');
     if (catBtn) {
       nbActiveCat = catBtn.dataset.cat;
@@ -3140,36 +2796,18 @@ Do not write articles just to prove the company has documentation. Write them so
       return;
     }
 
-    // Entry click
     const entry = e.target.closest('.nb-entry');
-    if (entry) {
-      openArticleInNotebook(nbWin, +entry.dataset.idx);
-      sfx('click');
-      return;
-    }
+    if (entry) { openArticleInNotebook(nbWin, +entry.dataset.idx); sfx('click'); return; }
 
-    // Prev/Next/Related nav
     const navBtn = e.target.closest('[data-nav-idx]');
-    if (navBtn) {
-      openArticleInNotebook(nbWin, +navBtn.dataset.navIdx);
-      sfx('click');
-      return;
-    }
+    if (navBtn) { openArticleInNotebook(nbWin, +navBtn.dataset.navIdx); sfx('click'); return; }
 
-    // Copy link button
     const shareBtn = e.target.closest('.nba-share-btn');
     if (shareBtn) {
       const url = window.location.href.split('#')[0] + '#note-' + nbActiveIdx;
-      navigator.clipboard.writeText(url).then(() => {
-        toast('🔗 Link copied to clipboard!');
-      }).catch(() => {
-        // Fallback for older browsers
-        const textarea = document.createElement('textarea');
-        textarea.value = url;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
+      navigator.clipboard.writeText(url).then(() => toast('🔗 Link copied to clipboard!')).catch(() => {
+        const ta = document.createElement('textarea'); ta.value = url;
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
         toast('🔗 Link copied!');
       });
       sfx('copy');
@@ -3177,7 +2815,6 @@ Do not write articles just to prove the company has documentation. Write them so
     }
   });
 
-  // Search input (input event, delegated via capture)
   windowContainer.addEventListener('input', e => {
     if (!e.target.classList.contains('nb-search-input')) return;
     nbSearchQuery = e.target.value;
@@ -3235,10 +2872,40 @@ Do not write articles just to prove the company has documentation. Write them so
       <div class="w-section"><h3>Best First Message</h3>
         <div class="callout">Tell me what feels messy, where execution is getting stuck, and what you want off your plate first.</div>
       </div>`,
+    /* ── PATCH 2: UPDATED RESOURCES WINDOW ───────────────────── */
     downloads: () => `
-      <div class="w-section"><h3>Resources</h3></div>
-      <div class="w-section"><h3>Resume</h3><p>The formal version of my background. Reach out and I'll send it directly.</p><p><a href="mailto:${P.email}">Request via email →</a></p></div>
-      <div class="w-section"><h3>Case Studies & Work Samples</h3><p>Selected process writeups and documentation samples where confidentiality allows.</p><p><a href="mailto:${P.email}">Request via email →</a> · <a href="${P.linkedin}" target="_blank" rel="noopener">Connect on LinkedIn →</a></p></div>`,
+      <div class="w-section"><h3>Resources</h3>
+        <p style="font-size:0.82rem;color:var(--muted)">Things I've built that might be useful to you.</p>
+      </div>
+
+      <div class="w-section" style="border-top:3px solid var(--blue);background:linear-gradient(135deg,var(--card) 0%,var(--blue-light) 100%)">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+          <span style="font-size:1.1rem">📄</span>
+          <h3 style="margin:0">GHL 101: Speedrun Training Manual</h3>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#10b981;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);padding:2px 8px;border-radius:20px;margin-left:auto">Free · No Gate</span>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:0.75rem">Two years of GoHighLevel field notes compiled into one openly cited reference. 18 modules, 29 official source links, 50 power tips, full QA debugging system, and an LLM grounding block. Updated to 2026 — covers Voice AI, Agent Studio, WhatsApp native, the new CRM UI, AI Employee pricing, and everything that changed in 2025–2026.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.85rem">
+          ${['Workflows','Voice AI','Funnels','CRM','SaaS Mode','Debugging','Pipelines','AI Employee','WhatsApp','50 Tips'].map(t=>`<span style="font-size:0.68rem;padding:2px 8px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-family:var(--font-mono);color:var(--muted)">${t}</span>`).join('')}
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.75rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:0.85rem">
+          ${[['18','Modules'],['29','Official Sources'],['50+','Power Tips']].map(([n,l])=>`<div style="flex:1;text-align:center"><div style="font-size:1.25rem;font-weight:700;color:var(--text)">${n}</div><div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">${l}</div></div>`).join('<div style="width:1px;background:var(--border)"></div>')}
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap">
+          <a href="https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing&ouid=112802324939177681395&rtpof=true&sd=true" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:var(--blue);color:#fff;font-size:0.82rem;font-weight:600;font-family:var(--font-mono);padding:0.55rem 1.1rem;border-radius:30px;text-decoration:none;transition:all 0.15s" onmouseover="this.style.background='var(--blue-mid)'" onmouseout="this.style.background='var(--blue)'">Open Document →</a>
+          <button onclick="(function(){const nb=document.querySelector('.notebook-window');if(nb){const entries=nb.querySelectorAll('.nb-entry');for(const e of entries){if(e.querySelector('.nb-entry-title')&&e.querySelector('.nb-entry-title').textContent.includes('GHL 101')){e.click();return;}}}document.getElementById('notebookBtn').click();setTimeout(function(){const nb=document.querySelector('.notebook-window');if(nb){const entries=nb.querySelectorAll('.nb-entry');for(const e of entries){if(e.querySelector('.nb-entry-title')&&e.querySelector('.nb-entry-title').textContent.includes('GHL 101')){e.click();break;}}}},700);})()" style="display:inline-flex;align-items:center;gap:0.4rem;background:var(--card);color:var(--text);font-size:0.8rem;font-weight:600;font-family:var(--font-mono);padding:0.5rem 1rem;border-radius:30px;border:1px solid var(--border);cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">Read the Story →</button>
+        </div>
+      </div>
+
+      <div class="w-section"><h3>Resume</h3>
+        <p>The formal version of my background. Reach out and I'll send it directly.</p>
+        <p><a href="mailto:${P.email}">Request via email →</a></p>
+      </div>
+      <div class="w-section"><h3>Case Studies & Work Samples</h3>
+        <p>Selected process writeups and documentation samples where confidentiality allows.</p>
+        <p><a href="mailto:${P.email}">Request via email →</a> · <a href="${P.linkedin}" target="_blank" rel="noopener">Connect on LinkedIn →</a></p>
+      </div>`,
+    /* ─────────────────────────────────────────────────────────── */
   };
 
   let windows = [];
@@ -3260,8 +2927,7 @@ Do not write articles just to prove the company has documentation. Write them so
   }, { passive: true });
   document.addEventListener('touchend', () => { dragState = null; });
 
-function makeWindow(type, title) {
-    // Check if this window type is already open
+  function makeWindow(type, title) {
     const existing = windows.find(w => w.dataset.type === type);
     if (existing) {
       existing.style.zIndex = ++zTop;
@@ -3271,10 +2937,7 @@ function makeWindow(type, title) {
       return;
     }
 
-    // UPDATE URL HASH when opening window
-    if (type !== 'notebook') {
-      window.location.hash = type;
-    }
+    if (type !== 'notebook') window.location.hash = type;
 
     const win = document.createElement('div');
     win.className = 'window window-new';
@@ -3317,14 +2980,10 @@ function makeWindow(type, title) {
 
     win.querySelector('.wc.close').addEventListener('click', () => {
       win.style.opacity = '0'; win.style.transform = 'scale(0.95)'; win.style.transition = 'opacity 0.15s, transform 0.15s';
-      setTimeout(() => { 
-        win.remove(); 
-        windows = windows.filter(w => w !== win); 
-        
-        // CLEAR HASH if no windows left
-        if (windows.length === 0) {
-          history.pushState("", document.title, window.location.pathname);
-        }
+      setTimeout(() => {
+        win.remove();
+        windows = windows.filter(w => w !== win);
+        if (windows.length === 0) history.pushState("", document.title, window.location.pathname);
       }, 150);
       sfx('close');
     });
@@ -3335,8 +2994,7 @@ function makeWindow(type, title) {
     });
     win.querySelector('.wc.max').addEventListener('click', () => {
       if (win.classList.contains('maxi')) {
-        Object.assign(win.style, win._prev);
-        win.classList.remove('maxi');
+        Object.assign(win.style, win._prev); win.classList.remove('maxi');
       } else {
         win._prev = { left: win.style.left, top: win.style.top, width: win.style.width, height: win.style.height };
         Object.assign(win.style, { left: '2vw', top: '2vh', width: '96vw', height: '94vh' });
@@ -3348,6 +3006,8 @@ function makeWindow(type, title) {
     win.addEventListener('mousedown', () => { win.style.zIndex = ++zTop; }, true);
     windowContainer.appendChild(win);
     windows.push(win);
+    /* PATCH 3 ─ track notebook window reference */
+    if (type === 'notebook') window._lastNbWin = win;
     setTimeout(() => win.classList.remove('window-new'), 300);
     sfx('open');
   }
@@ -3393,7 +3053,6 @@ function makeWindow(type, title) {
   });
   if (!sfxOn) sfxBtn.textContent = '🔇 sfx';
 
-  /* ── TOAST ── */
   function toast(msg) {
     const el = document.getElementById('toast');
     el.textContent = msg; el.style.opacity = '1';
@@ -3467,28 +3126,19 @@ function makeWindow(type, title) {
     });
   });
 
-  // ===== HASH URL HANDLER WITH TITLE SLUGS =====
-  // Function to convert article title to URL slug
+  /* ── HASH URL HANDLER ── */
   function titleToSlug(title) {
-    return title
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '') // Remove special characters
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple hyphens with single
-      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+    return title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
   }
 
-  // Function to find note index by slug
   function findNoteBySlug(slug) {
     return NOTES.findIndex(note => titleToSlug(note.title) === slug);
   }
 
-  // Track hash changes in analytics
   function trackHashView() {
     if (typeof gtag === 'function') {
       let pagePath = window.location.hash || '/';
       let pageTitle = document.title;
-      
       if (pagePath.startsWith('#')) {
         let slug = pagePath.substring(1);
         let noteIndex = findNoteBySlug(slug);
@@ -3496,53 +3146,30 @@ function makeWindow(type, title) {
           pageTitle = NOTES[noteIndex].title + ' · Aaron Suarez';
         } else if (slug === 'notebook') {
           pageTitle = 'Notes · Blog · Logs · Aaron Suarez';
-        } else {
-          let windowType = slug;
-          if (WINDOW_TITLES[windowType]) {
-            pageTitle = WINDOW_TITLES[windowType].replace(/[👤🧭🧱🛠️🧰💬📨⬇️]/g, '').trim() + ' · Aaron Suarez';
-          }
+        } else if (WINDOW_TITLES[slug]) {
+          pageTitle = WINDOW_TITLES[slug].replace(/[👤🧭🧱🛠️🧰💬📨⬇️]/g, '').trim() + ' · Aaron Suarez';
         }
       }
-      
-      gtag('event', 'page_view', {
-        page_path: pagePath,
-        page_location: window.location.href,
-        page_title: pageTitle
-      });
+      gtag('event', 'page_view', { page_path: pagePath, page_location: window.location.href, page_title: pageTitle });
     }
   }
 
-  // Override openArticleInNotebook to update hash with title slug
   const originalOpenArticle = openArticleInNotebook;
   openArticleInNotebook = function(nbWin, idx) {
     originalOpenArticle(nbWin, idx);
-    if (NOTES[idx]) {
-      let slug = titleToSlug(NOTES[idx].title);
-      window.location.hash = slug;
-    }
+    if (NOTES[idx]) window.location.hash = titleToSlug(NOTES[idx].title);
     trackHashView();
   };
 
-  // Handle share button clicks
   document.addEventListener('click', function(e) {
     const shareBtn = e.target.closest('.nba-share-btn');
     if (shareBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      
+      e.preventDefault(); e.stopPropagation();
       if (nbActiveIdx !== null && NOTES[nbActiveIdx]) {
-        let slug = titleToSlug(NOTES[nbActiveIdx].title);
-        const url = window.location.href.split('#')[0] + '#' + slug;
-        
-        navigator.clipboard.writeText(url).then(() => {
-          toast('🔗 Link copied to clipboard!');
-        }).catch(() => {
-          const textarea = document.createElement('textarea');
-          textarea.value = url;
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand('copy');
-          document.body.removeChild(textarea);
+        const url = window.location.href.split('#')[0] + '#' + titleToSlug(NOTES[nbActiveIdx].title);
+        navigator.clipboard.writeText(url).then(() => toast('🔗 Link copied to clipboard!')).catch(() => {
+          const ta = document.createElement('textarea'); ta.value = url;
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
           toast('🔗 Link copied!');
         });
         sfx('copy');
@@ -3551,98 +3178,56 @@ function makeWindow(type, title) {
     }
   }, true);
 
-  // Open window from hash on page load
   window.addEventListener('load', function() {
-    if (window.location.hash) {
-      let hashType = window.location.hash.substring(1);
-      
-      const validWindows = ['about', 'experience', 'projects', 'skills', 'toolkit', 'testimonials', 'contact', 'downloads'];
-      if (validWindows.includes(hashType)) {
-        setTimeout(() => {
-          makeWindow(hashType, WINDOW_TITLES[hashType] || hashType);
-          window.location.hash = hashType;
-          trackHashView();
-        }, 500);
-        return;
-      }
-      
-      if (hashType === 'notebook') {
-        setTimeout(() => {
-          makeWindow('notebook', '📔 Notes · Blog · Logs');
-          window.location.hash = 'notebook';
-          trackHashView();
-        }, 500);
-        return;
-      }
-      
-      let noteIndex = findNoteBySlug(hashType);
-      if (noteIndex !== -1) {
-        makeWindow('notebook', '📔 Notes · Blog · Logs');
-        window.location.hash = hashType;
-        
-        setTimeout(() => {
-          const notebookWin = windows.find(w => w.dataset.type === 'notebook');
-          if (notebookWin) {
-            openArticleInNotebook(notebookWin, noteIndex);
-            trackHashView();
-          }
-        }, 600);
-        return;
-      }
+    if (!window.location.hash) return;
+    const hashType = window.location.hash.substring(1);
+    const validWindows = ['about','experience','projects','skills','toolkit','testimonials','contact','downloads'];
+    if (validWindows.includes(hashType)) {
+      setTimeout(() => { makeWindow(hashType, WINDOW_TITLES[hashType] || hashType); trackHashView(); }, 500);
+      return;
+    }
+    if (hashType === 'notebook') {
+      setTimeout(() => { makeWindow('notebook', '📔 Notes · Blog · Logs'); trackHashView(); }, 500);
+      return;
+    }
+    const noteIndex = findNoteBySlug(hashType);
+    if (noteIndex !== -1) {
+      makeWindow('notebook', '📔 Notes · Blog · Logs');
+      setTimeout(() => {
+        const nbWin = windows.find(w => w.dataset.type === 'notebook');
+        if (nbWin) { openArticleInNotebook(nbWin, noteIndex); trackHashView(); }
+      }, 600);
     }
   });
 
-  // Handle hash changes
   window.addEventListener('hashchange', function() {
-    if (window.location.hash) {
-      let hashType = window.location.hash.substring(1);
-      
-      const validWindows = ['about', 'experience', 'projects', 'skills', 'toolkit', 'testimonials', 'contact', 'downloads'];
-      if (validWindows.includes(hashType)) {
-        makeWindow(hashType, WINDOW_TITLES[hashType] || hashType);
-        trackHashView();
-        return;
-      }
-      
-      if (hashType === 'notebook') {
+    if (!window.location.hash) {
+      windows.forEach(win => win.querySelector('.wc.close').click());
+      return;
+    }
+    const hashType = window.location.hash.substring(1);
+    const validWindows = ['about','experience','projects','skills','toolkit','testimonials','contact','downloads'];
+    if (validWindows.includes(hashType)) { makeWindow(hashType, WINDOW_TITLES[hashType] || hashType); trackHashView(); return; }
+    if (hashType === 'notebook') { makeWindow('notebook', '📔 Notes · Blog · Logs'); trackHashView(); return; }
+    const noteIndex = findNoteBySlug(hashType);
+    if (noteIndex !== -1) {
+      let nbWin = windows.find(w => w.dataset.type === 'notebook');
+      if (nbWin) { openArticleInNotebook(nbWin, noteIndex); trackHashView(); }
+      else {
         makeWindow('notebook', '📔 Notes · Blog · Logs');
-        trackHashView();
-        return;
+        setTimeout(() => {
+          nbWin = windows.find(w => w.dataset.type === 'notebook');
+          if (nbWin) { openArticleInNotebook(nbWin, noteIndex); trackHashView(); }
+        }, 600);
       }
-      
-      let noteIndex = findNoteBySlug(hashType);
-      if (noteIndex !== -1) {
-        let notebookWin = windows.find(w => w.dataset.type === 'notebook');
-        
-        if (notebookWin) {
-          openArticleInNotebook(notebookWin, noteIndex);
-          trackHashView();
-        } else {
-          makeWindow('notebook', '📔 Notes · Blog · Logs');
-          setTimeout(() => {
-            notebookWin = windows.find(w => w.dataset.type === 'notebook');
-            if (notebookWin) {
-              openArticleInNotebook(notebookWin, noteIndex);
-              trackHashView();
-            }
-          }, 600);
-        }
-        return;
-      }
-    } else {
-      windows.forEach(win => {
-        win.querySelector('.wc.close').click();
-      });
     }
   });
 
-  // Override notebook button
   const notebookBtn = document.getElementById('notebookBtn');
   notebookBtn.addEventListener('click', function() {
-    setTimeout(() => {
-      window.location.hash = 'notebook';
-    }, 100);
+    setTimeout(() => { window.location.hash = 'notebook'; }, 100);
   });
+
 })();
 </script>
 </body>
