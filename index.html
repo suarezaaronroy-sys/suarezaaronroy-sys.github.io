@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Aaron Suarez · systems + operations</title>
-<meta name="description" content="I turn messy operations into clear workflows, documentation, CRM structure, and automation. Proven work: GHL development, AI knowledge bases, CRM migration."/>
+<title>Aaron Suarez · systems thinking</title>
+<meta name="description" content="Operational patterns, field notes, and system thinking. CRM failures, workflow gaps, documentation problems — diagnosed and written down."/>
 <link rel="canonical" href="https://suarezaaronroy-sys.github.io/"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://suarezaaronroy-sys.github.io/"/>
-<meta property="og:title" content="Aaron Suarez · systems + operations"/>
-<meta property="og:description" content="I turn messy operations into clear workflows, documentation, CRM structure, and automation."/>
+<meta property="og:title" content="Aaron Suarez · systems thinking"/>
+<meta property="og:description" content="Operational patterns, field notes, and system thinking. CRM failures, workflow gaps, documentation problems — diagnosed and written down."/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03');</script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
@@ -20,7 +19,7 @@
   --text:#0c1b2a;--text-light:#2a3f56;--muted:#516a82;--border:#ccd8e6;
   --blue:#0f5fa0;--blue-2:#0d4e87;--blue-light:#dceef8;
   --green:#187a64;--green-light:#dcf0ea;
-  --amber:#b5700f;--amber-light:#faedd6;--accent:#c4551f;
+  --amber:#b5700f;--amber-light:#faedd6;
   --shadow-sm:0 1px 4px rgba(0,18,46,.05),0 2px 8px rgba(0,18,46,.04);
   --shadow:0 6px 20px rgba(0,18,46,.09),0 14px 36px rgba(0,18,46,.06);
   --shadow-lg:0 16px 48px rgba(0,18,46,.13),0 28px 64px rgba(0,18,46,.08);
@@ -48,6 +47,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .shell{width:min(var(--max),calc(100% - 2.5rem));margin:0 auto}
+
 /* topbar */
 .topbar-wrap{position:sticky;top:0;z-index:200;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(238,241,247,.88);border-bottom:1px solid rgba(204,216,230,.75)}
 .dark .topbar-wrap{background:rgba(13,24,36,.9);border-bottom-color:rgba(36,58,82,.8)}
@@ -61,6 +61,7 @@ img{max-width:100%;display:block}
 .nav a:hover,.nav button:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
 .nav .nav-cta{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:600;box-shadow:0 4px 14px rgba(15,95,160,.28)}
 .nav .nav-cta:hover{background:var(--blue-2);border-color:var(--blue-2);color:#fff}
+
 /* buttons */
 .btn-primary,.btn-secondary,.btn-ghost{display:inline-flex;align-items:center;gap:.44rem;border-radius:999px;font-family:var(--font-mono);font-size:.76rem;cursor:pointer;transition:.16s ease;text-decoration:none;letter-spacing:.01em}
 .btn-primary{background:var(--blue);color:#fff;border:1px solid var(--blue);padding:.76rem 1.3rem;box-shadow:0 6px 18px rgba(15,95,160,.24);font-weight:600}
@@ -69,38 +70,51 @@ img{max-width:100%;display:block}
 .btn-secondary:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--blue);border:none;padding:.1rem 0;font-size:.78rem}
 .btn-ghost:hover{text-decoration:underline}
+
 /* tags */
 .tag-cloud{display:flex;flex-wrap:wrap;gap:.38rem}
 .tag{background:var(--surface);border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:.3rem .72rem;font-size:.67rem;font-family:var(--font-mono);box-shadow:var(--shadow-sm);transition:.14s;letter-spacing:.01em}
 .tag:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
-/* hero */
+
+/* ── HERO — PORTFOLIO ─────────────────────────────── */
+/* Role: thinking surface. Open with patterns, not pitch. */
 .hero{padding:4rem 0 2.5rem;scroll-margin-top:80px}
 .hero-grid{display:grid;grid-template-columns:1.3fr .75fr;gap:1.4rem;align-items:stretch}
 .hero-main,.hero-side{background:linear-gradient(150deg,var(--surface) 0%,var(--surface-2) 100%);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow)}
 .hero-main{padding:2.4rem 2.5rem 2.2rem;position:relative;overflow:hidden}
 .hero-main::before{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(15,95,160,.055),transparent 65%);pointer-events:none}
+
+/* status chip — sets exploratory tone immediately */
 .win-chrome{display:inline-flex;align-items:center;gap:.42rem;padding:.44rem .78rem;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-family:var(--font-mono);font-size:.67rem;color:var(--muted);box-shadow:var(--shadow-sm);margin-bottom:1.5rem;letter-spacing:.02em}
 .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0}
 .dot.red{background:#ff5f57}.dot.yellow{background:#febc2e}.dot.green{background:#28c840}
+
+/* headline: state the diagnosis, not the service */
 .hero h1{font-family:var(--font-serif);font-size:clamp(2.6rem,5.2vw,4.4rem);line-height:1.04;font-weight:400;letter-spacing:-.03em;margin-bottom:1.4rem;max-width:17ch;color:var(--text)}
 .hero h1 em{font-style:italic;color:var(--blue);border-bottom:2px dashed var(--green);padding-bottom:3px}
+
 .hero p.lead{font-size:1.02rem;color:var(--text-light);max-width:52ch;margin-bottom:.9rem;line-height:1.8}
 .hero p.sublead{font-size:.87rem;color:var(--muted);max-width:54ch;margin-bottom:1.7rem;line-height:1.75}
+
+/* CTA hierarchy: Learn first, Fix second */
 .hero-ctas{display:flex;flex-wrap:wrap;gap:.65rem;margin-bottom:1.5rem}
+
+/* pattern list — shows diagnosis thinking, not services */
+.pattern-list{display:grid;gap:.55rem;margin:0 0 1.4rem}
+.pattern-item{display:flex;align-items:flex-start;gap:.65rem;padding:.75rem .9rem;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);border-left:3px solid transparent;transition:.14s}
+.pattern-item:hover{border-left-color:var(--blue);background:var(--blue-light)}
+.pattern-item-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:.38rem}
+.pattern-item strong{display:block;font-size:.83rem;color:var(--text);margin-bottom:.12rem;line-height:1.4}
+.pattern-item span{font-size:.76rem;color:var(--muted);line-height:1.6}
+
 /* hero side */
 .hero-side{padding:1.05rem;display:grid;gap:.95rem}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden}
 .panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.65rem;color:var(--muted);background:rgba(255,255,255,.28);letter-spacing:.04em;text-transform:uppercase}
 .dark .panel-head{background:rgba(255,255,255,.02)}
 .panel-body{padding:.95rem}
-.signal-list{display:grid;gap:.65rem}
-.signal-item{padding:.85rem .95rem;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)}
-.signal-item strong{display:block;font-size:.82rem;margin-bottom:.2rem;line-height:1.45;color:var(--text)}
-.signal-item span{color:var(--muted);font-size:.76rem;line-height:1.6}
-.nb-panel-preview{padding:.9rem .95rem;border-radius:12px;border:1px solid var(--border);background:linear-gradient(135deg,var(--surface),var(--surface-2));margin-bottom:.7rem}
-.nb-panel-preview small{display:inline-block;margin-bottom:.3rem;font-family:var(--font-mono);font-size:.63rem;color:var(--blue);letter-spacing:.04em;text-transform:uppercase}
-.nb-panel-preview strong{display:block;font-family:var(--font-serif);font-size:.95rem;line-height:1.35;margin-bottom:.3rem;color:var(--text)}
-.nb-panel-preview p{font-size:.77rem;color:var(--muted);line-height:1.6}
+
+/* notebook launch — primary CTA on Portfolio */
 .nb-launch-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.78rem 1rem;border-radius:12px;background:var(--nb-paper);background-image:radial-gradient(circle,var(--nb-dot) 1px,transparent 1px);background-size:18px 18px;border:1.5px solid var(--nb-border);font-family:var(--font-mono);font-size:.74rem;color:var(--nb-ink);cursor:pointer;box-shadow:var(--shadow);transition:.16s ease;width:100%;position:relative;overflow:hidden}
 .nb-launch-btn::before{content:"";position:absolute;inset:0;background:rgba(250,247,240,.88)}
 .nb-launch-btn-inner{position:relative;display:flex;align-items:center;gap:.5rem;width:100%}
@@ -109,18 +123,13 @@ img{max-width:100%;display:block}
 .nb-launch-text strong{display:block;font-size:.78rem;color:var(--nb-ink)}
 .nb-launch-text span{display:block;font-size:.63rem;color:#8a7a60;margin-top:.08rem}
 .nb-launch-arrow{margin-left:auto;font-size:.7rem;color:#8a7a60}
-/* proof */
-.proof-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
-.proof-card{background:linear-gradient(150deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:18px;padding:1.35rem 1.25rem;box-shadow:var(--shadow-sm)}
-.proof-card strong{display:block;font-family:var(--font-serif);font-size:1.5rem;color:var(--blue);line-height:1.2;margin-bottom:.35rem}
-.proof-card span{color:var(--muted);font-size:.75rem;line-height:1.55}
-/* cta band */
-.cta-band{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;padding:1.5rem 1.9rem;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-2) 100%);border-radius:20px;box-shadow:0 8px 28px rgba(15,95,160,.28)}
-.cta-band-text{display:flex;flex-direction:column;gap:.28rem}
-.cta-band-text strong{font-size:.96rem;color:#fff;font-weight:600;letter-spacing:-.01em}
-.cta-band-text span{font-size:.82rem;color:rgba(255,255,255,.82);line-height:1.65;max-width:52ch}
-.cta-band .btn-primary{background:#fff;color:var(--blue);border-color:#fff;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.12);flex-shrink:0}
-.cta-band .btn-primary:hover{background:rgba(255,255,255,.92)}
+
+/* baton pass band — the handoff moment */
+.baton-band{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;padding:1.4rem 1.8rem;border:1px solid var(--border);border-radius:20px;background:linear-gradient(135deg,var(--surface),var(--surface-2));box-shadow:var(--shadow-sm)}
+.baton-band-text strong{display:block;font-size:.88rem;color:var(--text);font-family:var(--font-mono);margin-bottom:.28rem}
+.baton-band-text span{font-size:.82rem;color:var(--muted);line-height:1.65;max-width:48ch}
+.baton-pass-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);margin-bottom:.6rem;padding:.22rem .6rem;border:1px solid var(--border);border-radius:999px;background:var(--surface)}
+
 /* sections */
 section{padding:4rem 0;scroll-margin-top:80px}
 .section-head{display:flex;justify-content:space-between;gap:1.4rem;align-items:flex-end;margin-bottom:2.2rem}
@@ -132,6 +141,7 @@ section{padding:4rem 0;scroll-margin-top:80px}
 .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
 .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
 .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+
 /* cards */
 .card{background:linear-gradient(150deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-sm);overflow:hidden;transition:.2s ease}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(15,95,160,.25)}
@@ -143,6 +153,7 @@ section{padding:4rem 0;scroll-margin-top:80px}
 .card ul li::marker{color:var(--blue)}
 .meta-row{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.95rem}
 .meta-pill{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);padding:.22rem .5rem;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.4);letter-spacing:.02em}
+
 /* featured note */
 .featured-note{background:linear-gradient(150deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:20px;padding:1.75rem 1.8rem;margin-bottom:1.35rem;box-shadow:var(--shadow-sm);display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;cursor:pointer;transition:.2s ease}
 .featured-note:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-left-color:var(--blue-2)}
@@ -151,19 +162,23 @@ section{padding:4rem 0;scroll-margin-top:80px}
 .featured-note p{font-size:.86rem;color:var(--text-light);line-height:1.7;margin-bottom:.75rem}
 .featured-note-meta{font-family:var(--font-mono);font-size:.64rem;color:var(--muted);letter-spacing:.02em}
 .featured-note-arrow{font-size:1.4rem;color:var(--blue);opacity:.45;flex-shrink:0}
-/* about */
-.about-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:1.3rem}
-.stack{display:grid;gap:1.2rem}
-.timeline{display:grid;gap:.9rem}
-.timeline-item{display:grid;grid-template-columns:88px 1fr;gap:.8rem;align-items:start;padding:1.15rem 1.2rem;border:1px solid var(--border);border-radius:16px;background:linear-gradient(150deg,var(--surface),var(--surface-2));box-shadow:var(--shadow-sm)}
-.timeline-date{font-family:var(--font-mono);font-size:.66rem;color:var(--blue);padding-top:.16rem;letter-spacing:.02em;text-transform:uppercase}
-.timeline-item h3{font-family:var(--font-serif);font-size:.96rem;font-weight:400;margin-bottom:.32rem;line-height:1.35;letter-spacing:-.01em;color:var(--text)}
-.timeline-item p{color:var(--text-light);font-size:.83rem;line-height:1.65}
+
 /* resources */
 .resource-band{padding:1.7rem;border-radius:20px;border:1px solid var(--border);background:linear-gradient(150deg,var(--blue-light),var(--surface));box-shadow:var(--shadow-sm);margin-bottom:1.3rem}
 .dark .resource-band{background:linear-gradient(150deg,#122030,var(--surface))}
 .resource-band h3{font-family:var(--font-serif);font-size:1.18rem;font-weight:400;margin-bottom:.52rem;letter-spacing:-.015em;color:var(--text)}
 .resource-band p{color:var(--text-light);font-size:.87rem;line-height:1.75;margin-bottom:1.05rem}
+
+/* timeline — Portfolio owns the depth */
+.timeline{display:grid;gap:.9rem}
+.timeline-item{display:grid;grid-template-columns:88px 1fr;gap:.8rem;align-items:start;padding:1.15rem 1.2rem;border:1px solid var(--border);border-radius:16px;background:linear-gradient(150deg,var(--surface),var(--surface-2));box-shadow:var(--shadow-sm)}
+.timeline-date{font-family:var(--font-mono);font-size:.66rem;color:var(--blue);padding-top:.16rem;letter-spacing:.02em;text-transform:uppercase}
+.timeline-item h3{font-family:var(--font-serif);font-size:.96rem;font-weight:400;margin-bottom:.32rem;line-height:1.35;letter-spacing:-.01em;color:var(--text)}
+.timeline-item p{color:var(--text-light);font-size:.83rem;line-height:1.65}
+
+/* callout */
+.callout{background:var(--green-light);border-left:3px solid var(--green);padding:1rem 1.15rem;border-radius:0 12px 12px 0;margin:.85rem 0;font-size:.86rem;color:var(--text-light);line-height:1.7}
+
 /* footer */
 .footer{padding:3rem 0 4rem;color:var(--muted);font-size:.74rem}
 .footer-line{border-top:1px solid var(--border);padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--font-mono);letter-spacing:.02em}
@@ -171,11 +186,11 @@ section{padding:4rem 0;scroll-margin-top:80px}
 .footer-link:hover{color:var(--blue)}
 .quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.38rem;padding:.68rem .88rem;border-radius:999px;font-family:var(--font-mono);font-size:.7rem;background:var(--surface);color:var(--text-light);border:1px solid var(--border);box-shadow:var(--shadow);transition:.14s}
 .quick-anchor:hover{color:var(--blue);border-color:var(--blue)}
-/* callout */
-.callout{background:var(--green-light);border-left:3px solid var(--green);padding:1rem 1.15rem;border-radius:0 12px 12px 0;margin:.85rem 0;font-size:.86rem;color:var(--text-light);line-height:1.7}
+
 /* toast */
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--text);color:var(--bg);font-family:var(--font-mono);font-size:.72rem;padding:.42rem 1.05rem;border-radius:40px;z-index:4000;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap}
-/* NOTEBOOK */
+
+/* NOTEBOOK (unchanged) */
 #nb-overlay{position:fixed;inset:0;z-index:2000;pointer-events:none}
 .nb-window{position:absolute;pointer-events:auto;background:var(--nb-paper);border:2px solid var(--nb-border);border-radius:20px;box-shadow:var(--shadow-lg);width:820px;min-width:320px;max-height:84vh;display:flex;flex-direction:column;overflow:hidden;resize:both;background-image:radial-gradient(circle,var(--nb-dot) 1px,transparent 1px);background-size:22px 22px}
 @keyframes nbIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
@@ -251,12 +266,13 @@ section{padding:4rem 0;scroll-margin-top:80px}
 .nba-related-title{font-family:'DM Serif Display',serif;font-size:.76rem;color:var(--nb-ink);line-height:1.3;margin-bottom:2px}
 .nba-related-meta{font-family:var(--font-mono);font-size:.58rem;color:#8a7a60}
 .nb-no-results{padding:.9rem .5rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:#a08060;font-style:italic}
+
 /* responsive */
-@media(max-width:1080px){.hero-grid,.about-layout{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1080px){.hero-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){
   .topbar{align-items:start;padding:.75rem 0;flex-direction:column}.nav{width:100%;justify-content:flex-start}
   .hero{padding-top:2rem}.hero-main{padding:1.3rem}
-  .grid-3,.grid-2,.proof-strip{grid-template-columns:1fr}
+  .grid-3,.grid-2{grid-template-columns:1fr}
   .timeline-item{grid-template-columns:1fr}
   .section-head{flex-direction:column;align-items:start}
   .quick-anchor{right:12px;bottom:12px}
@@ -265,20 +281,25 @@ section{padding:4rem 0;scroll-margin-top:80px}
   .nb-inner{flex-direction:column}
   .nb-sidebar{width:100%;border-right:none;border-bottom:2px solid var(--nb-border);max-height:180px}
   .nba-related-grid{grid-template-columns:1fr}
+  .baton-band{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 <body id="top">
+
 <div class="topbar-wrap">
   <div class="topbar shell">
     <div class="brand">
       <div class="brand-mark">AS</div>
-      <div class="brand-copy"><strong>Aaron Suarez</strong><span>Valencia City, PH · remote-first · systems thinking</span></div>
+      <div class="brand-copy">
+        <strong>Aaron Suarez</strong>
+        <span>Valencia City, PH · systems thinking · field notes</span>
+      </div>
     </div>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="#about">About</a>
+    <nav class="nav">
+      <a href="#patterns">Patterns</a>
       <a href="#notes">Notes</a>
-      <a href="#systems">Systems</a>
+      <a href="#background">Background</a>
       <a href="#resources">Resources</a>
       <button id="sfxToggle" type="button">🔊 sfx</button>
       <button id="themeToggle" type="button">🌓 theme</button>
@@ -286,179 +307,341 @@ section{padding:4rem 0;scroll-margin-top:80px}
     </nav>
   </div>
 </div>
+
 <main>
+
+<!-- ══════════════════════════════════════════════════
+     HERO — PORTFOLIO
+     Job: diagnosis + recognition. Zero pitch.
+     H1 = state the pattern, not the service.
+     Primary CTA = Notebook. Secondary = ASMC.
+══════════════════════════════════════════════════ -->
 <section class="hero shell" id="hero">
   <div class="hero-grid">
     <div class="hero-main">
-      <div class="win-chrome"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span>aaron.suarez / hire-me</span></div>
-      <!-- ========== NEW EMPLOYMENT-FIRST HERO ========== -->
-      <h1>I'm the ops person you hire before you can afford a full internal machine.</h1>
-      <p class="lead">I turn operational chaos into scalable systems. I build CRM structure, workflow automation, and knowledge bases that let teams stop guessing and start executing. My work reduces risk, fixes broken handoffs, and makes businesses run without constant oversight.</p>
-      <!-- ========== END NEW HERO ========== -->
+      <div class="win-chrome">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span>aaron.suarez / thinking out loud</span>
+      </div>
+
+      <h1>Most operational breakdowns follow the <em>same three patterns.</em></h1>
+
+      <p class="lead">Work that depends on specific people. Tools that exist but don't connect. Knowledge that lives in heads instead of systems. If any of these sound familiar, you're in the right place.</p>
+      <p class="sublead">This is a thinking surface — notes, field observations, and system breakdowns from real operations. No pitch. Just diagnosis.</p>
+
+      <!-- CTA hierarchy: Learn first, Fix second -->
       <div class="hero-ctas">
-        <a class="btn-primary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix My Systems →</a>
-        <button class="btn-secondary" id="openNotebookBtn">📔 Open notebook</button>
-        <a class="btn-secondary" href="#notes">Read the notes</a>
+        <button class="btn-primary" id="openNotebookBtn">📔 Read the Notebook</button>
+        <a class="btn-secondary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix My Systems →</a>
       </div>
-      <div style="margin:0 0 1.35rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);line-height:1.75;max-width:58ch;">
-        <strong style="color:var(--text);font-weight:600;">Start here:</strong><br><br>
-        → <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" style="color:var(--blue);font-weight:600;">My systems are messy → Fix My Systems</a><br>
-        → <span style="color:var(--text-light);">I want to understand how this works → Open the notebook</span><br>
-        → <span style="color:var(--text-light);">I’m evaluating your work → Scroll and explore</span>
-      </div>
-      <div class="tag-cloud">
-        <span class="tag">CRM architecture</span><span class="tag">workflow automation</span><span class="tag">documentation systems</span><span class="tag">ops cleanup</span><span class="tag">knowledge bases</span><span class="tag">founder support</span><span class="tag">GoHighLevel</span>
-      </div>
-    </div>
-    <aside class="hero-side">
-      <div class="panel">
-        <div class="panel-head"><span>patterns I keep seeing</span><span>01</span></div>
-        <div class="panel-body">
-          <div class="signal-list">
-            <div class="signal-item"><strong>Operations that depend on specific people.</strong><span>When one person is out, the work stops — or breaks. Not a people problem. A system problem.</span></div>
-            <div class="signal-item"><strong>Tools that exist but don't connect.</strong><span>CRM, docs, automations. The infrastructure exists. The logic tying it together doesn't.</span></div>
-            <div class="signal-item"><strong>Knowledge that lives in heads, not systems.</strong><span>Senior staff keep answering the same questions. The answers never get documented.</span></div>
+
+      <!-- Pattern list — this IS the value prop -->
+      <div class="pattern-list">
+        <div class="pattern-item">
+          <div class="pattern-item-dot"></div>
+          <div>
+            <strong>Operations that depend on specific people</strong>
+            <span>When one person is out, work stops or breaks. Not a people problem — a system problem.</span>
+          </div>
+        </div>
+        <div class="pattern-item">
+          <div class="pattern-item-dot"></div>
+          <div>
+            <strong>Tools that exist but don't connect</strong>
+            <span>CRM, docs, automations. The infrastructure is there. The logic tying it together isn't.</span>
+          </div>
+        </div>
+        <div class="pattern-item">
+          <div class="pattern-item-dot"></div>
+          <div>
+            <strong>Knowledge that lives in heads, not systems</strong>
+            <span>Senior staff keep answering the same questions. The answers never get documented.</span>
           </div>
         </div>
       </div>
+
+      <div class="tag-cloud">
+        <span class="tag">CRM failure patterns</span>
+        <span class="tag">workflow gaps</span>
+        <span class="tag">documentation logic</span>
+        <span class="tag">escalation costs</span>
+        <span class="tag">handoff failures</span>
+        <span class="tag">GoHighLevel</span>
+        <span class="tag">ops thinking</span>
+      </div>
+    </div>
+
+    <aside class="hero-side">
+      <!-- Notebook panel — this is what makes Portfolio different -->
       <div class="panel">
-        <div class="panel-head"><span>featured note</span><span>02</span></div>
+        <div class="panel-head"><span>notebook · 9 notes</span><span>open</span></div>
         <div class="panel-body">
-          <div class="nb-panel-preview">
-            <small>notes / systems</small>
-            <strong>Stop Training People. Start Building Systems That Set Them Free.</strong>
-            <p>Over-training hides the real issue: the environment gives people nowhere to turn except up the chain.</p>
+          <div style="margin-bottom:.75rem;padding:.9rem .95rem;border-radius:12px;border:1px solid var(--border);background:linear-gradient(135deg,var(--surface),var(--surface-2))">
+            <small style="display:inline-block;margin-bottom:.3rem;font-family:var(--font-mono);font-size:.63rem;color:var(--blue);letter-spacing:.04em;text-transform:uppercase">pinned note</small>
+            <strong style="display:block;font-family:var(--font-serif);font-size:.95rem;line-height:1.35;margin-bottom:.3rem;color:var(--text)">Stop Training People. Start Building Systems That Set Them Free.</strong>
+            <p style="font-size:.77rem;color:var(--muted);line-height:1.6">Over-training hides the real issue: the environment gives people nowhere to turn except up.</p>
           </div>
-          <p style="font-size:.8rem;color:var(--muted);margin:0 0 .65rem;line-height:1.65;">This is how I actually think through broken systems. Real breakdowns. Real fixes.</p>
           <button class="nb-launch-btn" id="openNoteBtn0">
             <div class="nb-launch-btn-inner">
               <span class="nb-launch-icon">📔</span>
-              <div class="nb-launch-text"><strong>Open in notebook</strong><span>Read · explore · all notes</span></div>
+              <div class="nb-launch-text">
+                <strong>Open the notebook</strong>
+                <span>9 notes · search · categories</span>
+              </div>
               <span class="nb-launch-arrow">→</span>
             </div>
           </button>
         </div>
       </div>
+
+      <!-- Baton pass panel — qualification moment -->
+      <div class="panel">
+        <div class="panel-head"><span>if you recognize the pattern</span><span>→</span></div>
+        <div class="panel-body">
+          <p style="font-size:.83rem;color:var(--text-light);line-height:1.7;margin-bottom:.8rem">The notebook has the diagnosis. If you're seeing these patterns in your own operation — ASMC is where we fix them.</p>
+          <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--muted);margin-bottom:.75rem;line-height:1.8">
+            → CRM that doesn't reflect reality<br>
+            → Workflows that break under pressure<br>
+            → Documentation nobody uses<br>
+            → Support that runs on memory
+          </div>
+          <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.7rem;color:var(--blue);border:1px solid var(--border);padding:.42rem .85rem;border-radius:999px;background:var(--surface);box-shadow:var(--shadow-sm);transition:.14s;text-decoration:none">Fix My Systems → ASMC</a>
+        </div>
+      </div>
     </aside>
   </div>
-  <!-- ========== REPLACED PROOF STRIP WITH YOUR PROJECTS ========== -->
-  <div class="proof-strip">
-    <div class="proof-card"><strong>Full GHL Dev</strong><span>End‑to‑end GoHighLevel development, automations, pipelines, dashboards</span></div>
-    <div class="proof-card"><strong>AI‑Powered KB + Chatbot</strong><span>Multi‑processor knowledge base + decision bot that reduced escalations</span></div>
-    <div class="proof-card"><strong>Full CRM Migration & Rebuild</strong><span>Legacy‑to‑GHL migration, data remap, workflow redesign from ground up</span></div>
-  </div>
-  <!-- ========== END REPLACED PROOF STRIP ========== -->
-  <div style="margin:1.35rem 0 0;padding:1.35rem 1.5rem;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-sm);">
-    <p style="font-family:var(--font-mono);font-size:.65rem;color:var(--blue);margin-bottom:.55rem;text-transform:uppercase;letter-spacing:.08em;">What I Actually Help With</p>
-    <ul style="padding-left:1.15rem;font-size:.85rem;color:var(--text-light);line-height:1.75;display:grid;gap:.32rem;">
-      <li>CRM systems that don’t reflect reality</li>
-      <li>Workflows that break under pressure</li>
-      <li>Documentation nobody actually uses</li>
-      <li>Support systems that rely on memory instead of structure</li>
-    </ul>
-  </div>
-  <div class="cta-band">
-    <div class="cta-band-text">
-      <strong>Recognize any of these patterns?</strong>
-      <span>The notes here diagnose the problem. ASMC is where we fix it — free 30-min ops audit, no pitch, no deck.</span>
+
+  <!-- Baton pass band — the explicit handoff -->
+  <div class="baton-band">
+    <div class="baton-band-text">
+      <div class="baton-pass-pill">system flow</div>
+      <strong>The notebook has the diagnosis. ASMC has the fix.</strong>
+      <span>This site is for learning and recognizing patterns. When you're ready to act on them — that's what ASMC is for. Free 30-min ops audit, no pitch, no deck.</span>
     </div>
-    <a class="btn-primary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
+    <a class="btn-secondary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
   </div>
 </section>
+
 <div class="section-divider shell"></div>
-<section id="about" class="shell">
+
+<!-- ══════════════════════════════════════════════════
+     PATTERNS SECTION
+     Portfolio's core value: naming what's broken.
+     No services here — just diagnosis.
+══════════════════════════════════════════════════ -->
+<section id="patterns" class="shell">
   <div class="section-head">
     <div>
-      <div class="eyebrow">About</div>
-      <h2>The connective tissue between vision and execution.</h2>
-      <p>I work in the messy middle — where founder intent, team behavior, tool limitations, undocumented workflows, and daily execution all collide.</p>
+      <div class="eyebrow">Patterns</div>
+      <h2>The operational failures that keep recurring.</h2>
+      <p>These aren't unique problems. They're patterns — and patterns can be fixed with the right structure.</p>
     </div>
+    <a class="section-link" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">See how they're fixed →</a>
   </div>
-  <div class="about-layout">
-    <div class="stack">
-      <article class="card"><div class="card-body"><div class="card-topline">what I actually do</div><h3>The ops person you hire before you can afford a full internal machine.</h3><p>I cover ground that often gets split across multiple hires: CRM structure, workflow design, documentation systems, operational cleanup, and founder-support infrastructure.</p><ul><li>Turn vague operational pain into clear structures that can be executed</li><li>Reduce dependence on specific people holding critical knowledge</li><li>Design systems that make the next action obvious instead of fragile</li><li>Bridge leadership intent and frontline execution reality</li></ul></div></article>
-      <article class="card"><div class="card-body"><div class="card-topline">how I think</div><h3>Structure-first. Adoption-aware. No fantasy-process nonsense.</h3><p>I don't care how elegant a process looks in a diagram if the real team is going to bypass it by Tuesday. Good systems survive contact with reality.</p><div class="meta-row"><span class="meta-pill">pattern recognition</span><span class="meta-pill">root-cause analysis</span><span class="meta-pill">documentation logic</span><span class="meta-pill">ops truth-telling</span><span class="meta-pill">workflow design</span></div></div></article>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item"><div class="timeline-date">payments ops</div><div><h3>CRM + knowledge systems in high-complexity operations</h3><p>Reverse-engineered undocumented workflows, built institutional memory, turned scattered knowledge into usable systems across 10+ processors.</p></div></div>
-      <div class="timeline-item"><div class="timeline-date">service ops</div><div><h3>Field-to-office workflow stabilization</h3><p>Built fallback logic and data capture flows that reduced missed handoffs — 98% compliance on a previously unreliable process.</p></div></div>
-      <div class="timeline-item"><div class="timeline-date">GHL / CRM</div><div><h3>Automation and operating structures for SMB</h3><p>Designed pipelines, automations, dashboards, and support structures tuned to how work actually moves.</p></div></div>
-      <div class="timeline-item"><div class="timeline-date">founder support</div><div><h3>Operational translation layer</h3><p>Turned "we need to be more organized" into actual systems with ownership, structure, and accountability.</p></div></div>
-    </div>
+  <div class="grid-3">
+    <article class="card">
+      <div class="card-body">
+        <div class="card-topline">pattern · CRM</div>
+        <h3>The CRM nobody trusts.</h3>
+        <p>Stages that don't match real workflow states. Fields that mean different things to different people. Data that reflects what was entered, not what actually happened.</p>
+        <ul>
+          <li>Pipeline stages aren't reflecting actual work</li>
+          <li>Fields are inconsistent across records</li>
+          <li>Reports show history, not current reality</li>
+          <li>Nobody trusts the data, so nobody updates it</li>
+        </ul>
+        <button class="btn-ghost" id="openNoteCRMBtn">Read the breakdown →</button>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-body">
+        <div class="card-topline">pattern · escalation</div>
+        <h3>The escalation tax nobody measures.</h3>
+        <p>Senior staff interrupted constantly. Same questions answered again and again. Every escalation costs not just five minutes — it costs the switching time too.</p>
+        <ul>
+          <li>10 interruptions/day = 3+ hours of senior time lost</li>
+          <li>Knowledge stays in one person's head</li>
+          <li>No documented path for edge cases</li>
+          <li>Dependency builds instead of shrinks over time</li>
+        </ul>
+        <button class="btn-ghost" id="openNoteEscBtn">Read the breakdown →</button>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-body">
+        <div class="card-topline">pattern · handoffs</div>
+        <h3>Handoffs are where work goes to die.</h3>
+        <p>The work is done on one end. The context doesn't transfer. The next person starts over, makes wrong assumptions, or stalls the whole thing waiting for a clarification.</p>
+        <ul>
+          <li>Artifact passes without the reasoning behind it</li>
+          <li>Receiving person lacks status context</li>
+          <li>Edge cases handled but never communicated</li>
+          <li>Follow-up questions eat back all the time saved</li>
+        </ul>
+        <button class="btn-ghost" id="openNoteHandoffBtn">Read the breakdown →</button>
+      </div>
+    </article>
   </div>
 </section>
+
 <div class="section-divider shell"></div>
+
+<!-- ══════════════════════════════════════════════════
+     NOTES SECTION
+     Portfolio's anchor. The notebook IS the product here.
+══════════════════════════════════════════════════ -->
 <section id="notes" class="shell">
   <div class="section-head">
     <div>
       <div class="eyebrow">Notes</div>
-      <h2>Operational notes, essays, and system thinking.</h2>
-      <p>Writing about what actually breaks inside growing operations — and how to build environments where it doesn't. Click any card to open in the notebook.</p>
+      <h2>Operational thinking, written down.</h2>
+      <p>Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Click any note to read in the notebook.</p>
     </div>
-    <a class="section-link" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Apply this thinking →</a>
+    <button class="section-link" id="openNotebookAllBtn">Open all notes →</button>
   </div>
   <div class="featured-note" id="featuredNote">
     <div>
       <div class="featured-note-label">⚙️ Systems · Featured · Mar 2026</div>
       <h3>Stop Training People. Start Building Systems That Set Them Free.</h3>
-      <p>When teams keep asking the same questions, the issue is rarely memory. It's the environment around the work — and environments can be redesigned.</p>
+      <p>When teams keep asking the same questions, the issue is rarely memory — it's the environment around the work. And environments can be redesigned.</p>
       <div class="featured-note-meta">8 min read · 1,400 words</div>
     </div>
     <div class="featured-note-arrow">→</div>
   </div>
   <div class="grid-3" id="notes-preview-grid"></div>
 </section>
+
 <div class="section-divider shell"></div>
-<section id="systems" class="shell">
+
+<!-- ══════════════════════════════════════════════════
+     BACKGROUND SECTION
+     Portfolio owns the depth. The full story lives here.
+     ASMC gets a two-sentence version only.
+══════════════════════════════════════════════════ -->
+<section id="background" class="shell">
   <div class="section-head">
     <div>
-      <div class="eyebrow">Systems</div>
-      <h2>Where I reduce operational drag.</h2>
-      <p>The system problems I understand best — and the thinking behind how to approach them.</p>
+      <div class="eyebrow">Background</div>
+      <h2>Where this thinking comes from.</h2>
+      <p>Not theoretical. Built from years inside real operations where these patterns kept recurring.</p>
     </div>
-    <a class="section-link" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#systems">See services →</a>
   </div>
-  <div class="grid-3">
-    <article class="card"><div class="card-body"><div class="card-topline">CRM systems</div><h3>CRM architecture that reflects how work actually moves.</h3><p>Not a filing cabinet. A working operational system with stages, ownership, visibility, and next-step logic people can actually follow.</p><ul><li>Pipeline and stage design</li><li>Field logic and status structure</li><li>Case routing and escalation visibility</li><li>Cleaner handoffs across teams</li></ul><a class="btn-ghost" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix your CRM →</a></div></article>
-    <article class="card"><div class="card-body"><div class="card-topline">workflow design</div><h3>Automation built on stable logic instead of tool hype.</h3><p>Workflows that support real operations: guardrails, fallback handling, enough structure that one failure doesn't take the whole thing down.</p><ul><li>Workflow mapping before automation</li><li>Layered automation design</li><li>Fallback and exception paths</li><li>Task / alert / routing logic</li></ul><a class="btn-ghost" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix your workflows →</a></div></article>
-    <article class="card"><div class="card-body"><div class="card-topline">documentation systems</div><h3>Knowledge that survives without living in one person's head.</h3><p>SOPs, knowledge bases, decision trees, onboarding support — structures that reduce repeat questions, weak handoffs, and single-point-of-failure dependency.</p><ul><li>Knowledge base taxonomy</li><li>Decision-tree logic</li><li>Onboarding support systems</li><li>Repeat-question reduction</li></ul><button class="btn-ghost" id="openNoteKBBtn">Read the thinking →</button></div></article>
+  <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:1.3rem">
+    <div style="display:grid;gap:1.2rem">
+      <article class="card">
+        <div class="card-body">
+          <div class="card-topline">what I actually do</div>
+          <h3>The connective tissue between vision and execution.</h3>
+          <p>I work in the messy middle — where founder intent, team behavior, tool limitations, undocumented workflows, and daily execution all collide. I cover the ground that often gets split across multiple hires: CRM structure, workflow design, documentation systems, and operational cleanup.</p>
+          <div class="meta-row">
+            <span class="meta-pill">pattern recognition</span>
+            <span class="meta-pill">root-cause analysis</span>
+            <span class="meta-pill">documentation logic</span>
+            <span class="meta-pill">workflow design</span>
+            <span class="meta-pill">ops truth-telling</span>
+          </div>
+          <div class="callout">Available for hire (remote) and open to B2B engagements through ASMC. Two modes, one system.</div>
+        </div>
+      </article>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">payments ops</div>
+        <div>
+          <h3>CRM + knowledge systems across 10+ processors</h3>
+          <p>Reverse-engineered undocumented workflows, built institutional memory, turned scattered knowledge into usable decision systems.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">service ops</div>
+        <div>
+          <h3>Field-to-office workflow stabilization</h3>
+          <p>Built fallback logic and data capture flows — 98% compliance on a previously unreliable handoff process.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">GHL / CRM</div>
+        <div>
+          <h3>Automation and structures for SMB</h3>
+          <p>Pipelines, automations, dashboards, and support structures tuned to how work actually moves — not what the template assumed.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">founder support</div>
+        <div>
+          <h3>Operational translation layer</h3>
+          <p>Turned "we need to be more organized" into actual systems with ownership, structure, and accountability.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
 <div class="section-divider shell"></div>
+
+<!-- ══════════════════════════════════════════════════
+     RESOURCES SECTION
+     Full resources live here. ASMC gets summaries only.
+══════════════════════════════════════════════════ -->
 <section id="resources" class="shell">
   <div class="section-head">
     <div>
       <div class="eyebrow">Resources</div>
-      <h2>Demos, guides, and practical tools.</h2>
-      <p>Public resources that show how I think and build — open, no gates, no pitch.</p>
+      <h2>Public tools, guides, and field references.</h2>
+      <p>Open resources — no gates, no pitch. Built because scattered, paywalled knowledge is an operational problem.</p>
     </div>
   </div>
   <div class="resource-band">
-    <h3>Featured · GHL 101: Speedrun Training Manual — 2026 Edition</h3>
+    <h3>GHL 101: Speedrun Training Manual — 2026 Edition</h3>
     <p>Over a year of GoHighLevel field notes compiled into one openly cited reference. 18 modules, 29 official source links, 50 power tips, full QA debugging system. Updated to 2026: Voice AI, Agent Studio, WhatsApp native, AI Employee pricing.</p>
-    <div class="meta-row"><span class="meta-pill">18 modules</span><span class="meta-pill">2026 update</span><span class="meta-pill">free · no gate</span><span class="meta-pill">29 official sources</span><span class="meta-pill">50+ power tips</span></div>
+    <div class="meta-row">
+      <span class="meta-pill">18 modules</span>
+      <span class="meta-pill">2026 update</span>
+      <span class="meta-pill">free · no gate</span>
+      <span class="meta-pill">29 official sources</span>
+      <span class="meta-pill">50+ power tips</span>
+    </div>
     <div style="display:flex;flex-wrap:wrap;gap:.65rem">
       <a class="btn-primary" href="https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing" target="_blank" rel="noopener">Open GHL 101 →</a>
       <button class="btn-secondary" id="openGHLNoteBtn">Read the story behind it</button>
     </div>
   </div>
   <div class="grid-3">
-    <article class="card"><div class="card-body"><div class="card-topline">demos</div><h3>Live system demos and walkthroughs</h3><p>CRM pipeline demos, workflow automation walkthroughs, and live GHL sandbox examples. Request access for a guided tour.</p><div class="meta-row"><span class="meta-pill">by request</span><span class="meta-pill">CRM · workflows</span></div><a class="btn-ghost" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Request demo access →</a></div></article>
-    <article class="card"><div class="card-body"><div class="card-topline">templates</div><h3>Checklists, SOPs, and audit starters</h3><p>Onboarding checklist, CRM audit framework, documentation map, handoff template, workflow QA sheet.</p><div class="meta-row"><span class="meta-pill">by request</span><span class="meta-pill">practical tools</span></div><a class="btn-ghost" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Request templates →</a></div></article>
-    <article class="card"><div class="card-body"><div class="card-topline">work samples</div><h3>Process writeups and selected artifacts</h3><p>Selected case writeups and documentation samples where confidentiality allows. Resume available on request.</p><div class="meta-row"><span class="meta-pill">by request</span><span class="meta-pill">case support</span></div><a class="btn-ghost" href="mailto:asmultitaskcollective@gmail.com">Request via email →</a></div></article>
-  </div>
-  <div class="cta-band" style="margin-top:2rem">
-    <div class="cta-band-text">
-      <strong>Want this applied to your operation?</strong>
-      <span>This is the thinking layer. ASMC is the execution layer. Free 30-minute audit — no pitch, no deck.</span>
-    </div>
-    <a class="btn-primary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
+    <article class="card">
+      <div class="card-body">
+        <div class="card-topline">demos</div>
+        <h3>Live system demos</h3>
+        <p>CRM pipeline demos, workflow walkthroughs, and GHL sandbox examples. Request access for a guided tour.</p>
+        <div class="meta-row"><span class="meta-pill">by request</span><span class="meta-pill">CRM · workflows</span></div>
+        <a class="btn-ghost" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Request demo access →</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-body">
+        <div class="card-topline">templates</div>
+        <h3>Checklists, SOPs, audit starters</h3>
+        <p>Onboarding checklist, CRM audit framework, documentation map, handoff template, workflow QA sheet.</p>
+        <div class="meta-row"><span class="meta-pill">by request</span><span class="meta-pill">practical tools</span></div>
+        <a class="btn-ghost" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Request templates →</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-body">
+        <div class="card-topline">work samples</div>
+        <h3>Process writeups and artifacts</h3>
+        <p>Selected case writeups and documentation samples where confidentiality allows. Resume available on request.</p>
+        <div class="meta-row"><span class="meta-pill">by request</span><span class="meta-pill">case support</span></div>
+        <a class="btn-ghost" href="mailto:asmultitaskcollective@gmail.com">Request via email →</a>
+      </div>
+    </article>
   </div>
 </section>
+
 <div class="section-divider shell"></div>
+
 <footer class="footer shell">
   <div class="footer-line">
-    <div>© <span id="yr"></span> Aaron Suarez · systems thinking for founders</div>
+    <div>© <span id="yr"></span> Aaron Suarez · systems thinking</div>
     <div style="display:flex;gap:1.4rem;align-items:center">
       <span>Valencia City, PH · remote-first</span>
       <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
@@ -468,9 +651,11 @@ section{padding:4rem 0;scroll-margin-top:80px}
   </div>
 </footer>
 </main>
+
 <a class="quick-anchor" href="#top">↑ top</a>
 <div id="toast"></div>
-<!-- NOTEBOOK OVERLAY (unchanged) -->
+
+<!-- NOTEBOOK OVERLAY (full engine, unchanged) -->
 <div id="nb-overlay">
   <div class="nb-window nb-new" id="nbWindow" style="display:none;top:60px;left:50%;transform:translateX(-50%)">
     <div class="nb-titlebar" id="nbTitlebar">
@@ -491,8 +676,8 @@ section{padding:4rem 0;scroll-margin-top:80px}
     </div>
   </div>
 </div>
+
 <script>
-/* (NOTEBOOK SCRIPT — identical to original, kept for full functionality) */
 (function(){
 'use strict';
 const CAT_CFG={'systems':{color:'#0f5fa0',bg:'#dceef8',label:'⚙️ Systems'},'operations':{color:'#187a64',bg:'#dcf0ea',label:'🔧 Operations'},'crm':{color:'#6a30c0',bg:'#ede8f8',label:'📊 CRM'},'founder-notes':{color:'#9a4810',bg:'#faebd4',label:'🚀 Founder Notes'},'field-notes':{color:'#3a7858',bg:'#e0f0e8',label:'📋 Field Notes'},'technical-notes':{color:'#1c4a88',bg:'#dce8f5',label:'🔬 Technical'}};
@@ -796,6 +981,7 @@ If the answer is "a lot" — the knowledge, judgment, and coordination are still
 
 Pick the **one thing that breaks most often.** Build it until it runs without you. Then move to the next one.`},
 ];
+
 /* notes preview grid */
 (function buildPreview(){
   const grid=document.getElementById('notes-preview-grid');
@@ -814,15 +1000,16 @@ Pick the **one thing that breaks most often.** Build it until it runs without yo
     </article>`;
   }).join('');
 })();
+
 /* notebook engine */
 const NB_CATS=['all','systems','operations','crm','founder-notes','field-notes','technical-notes'];
 let nbCat='all',nbSearch='',nbActive=null,nbOpen=false,nbMinimized=false;
 const nbWin=document.getElementById('nbWindow'),nbContent=document.getElementById('nbContent'),nbList=document.getElementById('nbList'),nbCount=document.getElementById('nbCount');
 function filtered(){return NOTES.filter(n=>{const mc=nbCat==='all'||n.category===nbCat;const q=nbSearch.toLowerCase();return mc&&(!q||n.title.toLowerCase().includes(q)||n.body.toLowerCase().includes(q));});}
 function renderSidebar(){
-  const nbCats=document.getElementById('nbCats');
-  if(!nbCats)return;
-  nbCats.innerHTML=NB_CATS.map(c=>`<button class="nb-cat${nbCat===c?' active':''}" data-cat="${c}">${c==='all'?'all':c.replace(/-/g,' ')}</button>`).join('');
+  const nbCatsEl=document.getElementById('nbCats');
+  if(!nbCatsEl)return;
+  nbCatsEl.innerHTML=NB_CATS.map(c=>`<button class="nb-cat${nbCat===c?' active':''}" data-cat="${c}">${c==='all'?'all':c.replace(/-/g,' ')}</button>`).join('');
   const f=filtered();if(nbCount)nbCount.textContent=f.length+' notes';
   if(nbList)nbList.innerHTML=f.length?f.map(n=>{const idx=NOTES.indexOf(n);const c=cs(n.category);return `<div class="nb-entry${nbActive===idx?' active':''}" data-idx="${idx}"><div class="nb-entry-title">${n.title}</div><div class="nb-entry-meta"><span class="nb-dot-cat" style="background:${c.color}"></span><span>${n.date}</span>·<span>${rt(n.body)} min</span></div></div>`;}).join(''):'<div class="nb-no-results">No notes found</div>';
 }
@@ -868,7 +1055,7 @@ function showArticle(idx){
       <div class="nba-body">${parseBody(n.body)}</div>
       <div class="nba-cta">
         <p><strong>Seeing this in your operation?</strong> This is the kind of problem I help fix — free 30-minute ops audit, no pitch, no deck.</p>
-        <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix My Systems →</a>
+        <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix My Systems → ASMC</a>
       </div>
       ${prev||next?`<div class="nba-nav">
         ${prev?`<button class="nba-nav-btn" data-nidx="${NOTES.indexOf(prev)}"><div class="nba-nav-label">← Previous</div><div class="nba-nav-title">${prev.title}</div></button>`:'<div style="flex:1"></div>'}
@@ -910,15 +1097,24 @@ document.getElementById('nbTitlebar')?.addEventListener('touchstart',e=>{if(e.ta
 document.addEventListener('mousemove',e=>{if(!drag)return;nbWin.style.left=Math.max(0,Math.min(drag.sl+e.clientX-drag.ox,window.innerWidth-nbWin.offsetWidth))+'px';nbWin.style.top=Math.max(0,Math.min(drag.st+e.clientY-drag.oy,window.innerHeight-nbWin.offsetHeight))+'px';});
 document.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];nbWin.style.left=Math.max(0,Math.min(drag.sl+t.clientX-drag.ox,window.innerWidth-nbWin.offsetWidth))+'px';nbWin.style.top=Math.max(0,Math.min(drag.st+t.clientY-drag.oy,window.innerHeight-nbWin.offsetHeight))+'px';},{passive:true});
 document.addEventListener('mouseup',()=>{drag=null;});document.addEventListener('touchend',()=>{drag=null;});
+
+/* button bindings */
 document.getElementById('openNotebookBtn')?.addEventListener('click',()=>openNotebook());
 document.getElementById('openNoteBtn0')?.addEventListener('click',()=>openNoteAt(0));
+document.getElementById('openNotebookAllBtn')?.addEventListener('click',()=>openNotebook());
 document.getElementById('featuredNote')?.addEventListener('click',()=>openNoteAt(0));
-document.getElementById('openNoteKBBtn')?.addEventListener('click',()=>{const idx=NOTES.findIndex(n=>n.title.includes('Knowledge Base'));if(idx>-1)openNoteAt(idx);});
+document.getElementById('openNoteCRMBtn')?.addEventListener('click',()=>{const idx=NOTES.findIndex(n=>n.title.includes('CRM'));if(idx>-1)openNoteAt(idx);});
+document.getElementById('openNoteEscBtn')?.addEventListener('click',()=>{const idx=NOTES.findIndex(n=>n.title.includes('Escalation'));if(idx>-1)openNoteAt(idx);});
+document.getElementById('openNoteHandoffBtn')?.addEventListener('click',()=>{const idx=NOTES.findIndex(n=>n.title.includes('Handoff'));if(idx>-1)openNoteAt(idx);});
 document.getElementById('openGHLNoteBtn')?.addEventListener('click',()=>{const idx=NOTES.findIndex(n=>n.title.includes('GHL 101'));if(idx>-1)openNoteAt(idx);});
+document.getElementById('openNoteKBBtn')?.addEventListener('click',()=>{const idx=NOTES.findIndex(n=>n.title.includes('Knowledge Base'));if(idx>-1)openNoteAt(idx);});
+
 function slug(t){return t.toLowerCase().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
 function findBySlug(s){return NOTES.findIndex(n=>slug(n.title)===s);}
 window.addEventListener('load',()=>{if(!window.location.hash)return;const h=window.location.hash.substring(1);if(h==='notebook'){setTimeout(()=>openNotebook(),300);return;}const ni=findBySlug(h);if(ni>-1)setTimeout(()=>openNoteAt(ni),400);});
 window.addEventListener('hashchange',()=>{if(!window.location.hash)return;const h=window.location.hash.substring(1);if(h==='notebook'&&!nbOpen){openNotebook();return;}const ni=findBySlug(h);if(ni>-1){if(!nbOpen)openNotebook(ni);else showArticle(ni);}});
+
+/* theme + sfx */
 const root=document.documentElement;let sfxOn=localStorage.getItem('sfx')!=='off';
 if(localStorage.getItem('theme')==='dark')root.classList.add('dark');
 function sfx(type){if(!sfxOn)return;try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();const C={open:{f:660,t:'sine',v:.016,d:.07},close:{f:330,t:'sine',v:.016,d:.07},click:{f:520,t:'triangle',v:.014,d:.04},copy:{f:780,t:'sine',v:.015,d:.05}};const c=C[type]||C.click;o.type=c.t;o.frequency.value=c.f;g.gain.value=c.v;o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+c.d);setTimeout(()=>ctx.close(),300);}catch(_){}}
