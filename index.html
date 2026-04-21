@@ -125,7 +125,21 @@ img{max-width:100%;display:block}
 .grimoire-pill{font-family:var(--font-mono);font-size:.58rem;color:#b89af0;padding:.18rem .5rem;border-radius:999px;border:1px solid #b89af044;background:rgba(184,154,240,.08)}
 .grimoire-open-btn{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.66rem;color:#e8d8ff;background:rgba(184,154,240,.15);border:1px solid #b89af055;padding:.32rem .72rem;border-radius:999px;margin-top:.65rem;transition:.14s}
 .grimoire-open-btn:hover{background:rgba(184,154,240,.25);border-color:#b89af0}
- 
+
+/* dual wing grimoire card — teal-green variant */
+.grimoire-card.dual-wing{border-color:#0d948844;background:linear-gradient(135deg,#0a1c1a08,#0d3d36 0%,#071f1c)}
+.grimoire-card.dual-wing .grimoire-card-label span{background:#4dc9a7}
+.grimoire-card.dual-wing .grimoire-card-label{color:#4dc9a7}
+.grimoire-card.dual-wing strong{color:#c8f5ed}
+.grimoire-card.dual-wing p{color:#4dc9a7cc}
+.grimoire-card.dual-wing .grimoire-pill{color:#4dc9a7;border-color:#4dc9a744;background:rgba(77,201,167,.08)}
+.grimoire-card.dual-wing .grimoire-open-btn{color:#c8f5ed;background:rgba(77,201,167,.15);border-color:#4dc9a755}
+.grimoire-card.dual-wing .grimoire-open-btn:hover{background:rgba(77,201,167,.25);border-color:#4dc9a7}
+.grimoire-card.dual-wing:hover{box-shadow:0 8px 28px rgba(10,80,70,.28)}
+
+/* grimoires section label */
+.grimoires-label{font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.6rem;padding:0 .1rem}
+
 /* baton band */
 .baton-band{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;padding:1.4rem 1.8rem;border:1px solid var(--border);border-radius:20px;background:linear-gradient(135deg,var(--surface),var(--surface-2));box-shadow:var(--shadow-sm)}
 .baton-band-text strong{display:block;font-size:.88rem;color:var(--text);font-family:var(--font-mono);margin-bottom:.28rem}
@@ -261,6 +275,13 @@ section{padding:4rem 0;scroll-margin-top:80px}
 .nba-grimoire-launch-left strong{display:block;font-family:'DM Serif Display',serif;font-size:1rem;color:#e8d8ff;margin-bottom:.18rem}
 .nba-grimoire-launch-left span{font-family:var(--font-mono);font-size:.65rem;color:#b89af0cc}
 .nba-grimoire-launch-right{font-size:1.3rem;color:#b89af0;flex-shrink:0}
+
+/* dual wing launch button inside article */
+.nba-dualwing-launch{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem;border-radius:14px;background:linear-gradient(135deg,#071f1c,#0d3d36);border:1px solid #4dc9a744;margin:1.4rem 0;cursor:pointer;transition:.16s;text-decoration:none}
+.nba-dualwing-launch:hover{background:linear-gradient(135deg,#0a2c28,#145c50);border-color:#4dc9a788;transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,80,70,.35)}
+.nba-dualwing-launch-left strong{display:block;font-family:'DM Serif Display',serif;font-size:1rem;color:#c8f5ed;margin-bottom:.18rem}
+.nba-dualwing-launch-left span{font-family:var(--font-mono);font-size:.65rem;color:#4dc9a7cc}
+.nba-dualwing-launch-right{font-size:1.3rem;color:#4dc9a7;flex-shrink:0}
  
 .nba-nav{display:flex;gap:.7rem;margin-top:1.7rem;padding-top:1.1rem;border-top:2px dashed rgba(122,106,79,.28)}
 .nba-nav-btn{flex:1;background:rgba(255,255,255,.6);border:1px solid rgba(122,106,79,.28);border-radius:10px;padding:.65rem .85rem;cursor:pointer;transition:.12s;text-align:left;font-family:var(--font-sans)}
@@ -370,15 +391,21 @@ section{padding:4rem 0;scroll-margin-top:80px}
         <span class="tag">handoff failures</span>
         <span class="tag">GoHighLevel</span>
         <span class="tag">ops thinking</span>
+        <span class="tag">SEO &amp; social</span>
+        <span class="tag">marketing engines</span>
+        <span class="tag">dual-sided systems</span>
       </div>
     </div>
  
     <aside class="hero-side">
       <div class="panel">
-        <div class="panel-head"><span>notebook · 10 notes</span><span>open</span></div>
+        <div class="panel-head"><span>proof of work · 2 grimoires</span><span>open</span></div>
         <div class="panel-body">
- 
-          <!-- GRIMOIRE HIGHLIGHT CARD -->
+
+          <!-- GRIMOIRES LABEL -->
+          <div class="grimoires-label">CRM &amp; Ops System</div>
+
+          <!-- GRIMOIRE v8.1 HIGHLIGHT CARD -->
           <div class="grimoire-card" onclick="openNoteAt(9)">
             <div class="grimoire-card-label"><span></span>proof of work · Apr 2026</div>
             <strong>The Grimoire v8.1</strong>
@@ -388,6 +415,22 @@ section{padding:4rem 0;scroll-margin-top:80px}
               <span class="grimoire-pill">13+ Zaps</span>
               <span class="grimoire-pill">QA-verified</span>
               <span class="grimoire-pill">v8.1</span>
+            </div>
+            <div class="grimoire-open-btn">Read the breakdown + open live doc →</div>
+          </div>
+
+          <!-- DUAL WING GRIMOIRE CARD -->
+          <div class="grimoires-label" style="margin-top:.2rem">Marketing Engine System</div>
+          <div class="grimoire-card dual-wing" onclick="openNoteAt(10)">
+            <div class="grimoire-card-label"><span></span>proof of work · Apr 2026</div>
+            <strong>Dual Wing Rental Engine — Grimoire v1.0</strong>
+            <p>A full marketing + CRM system for dual-sided rental businesses. SEO · Social · GHL · n8n · Claude API. Two pipelines. One flywheel.</p>
+            <div class="grimoire-card-meta">
+              <span class="grimoire-pill">15 modules</span>
+              <span class="grimoire-pill">2 CRM pipelines</span>
+              <span class="grimoire-pill">13-tool stack</span>
+              <span class="grimoire-pill">UK + US</span>
+              <span class="grimoire-pill">v1.0</span>
             </div>
             <div class="grimoire-open-btn">Read the breakdown + open live doc →</div>
           </div>
@@ -404,7 +447,7 @@ section{padding:4rem 0;scroll-margin-top:80px}
               <span class="nb-launch-icon">📔</span>
               <div class="nb-launch-text">
                 <strong>Open the notebook</strong>
-                <span>10 notes · search · categories</span>
+                <span>11 notes · search · categories</span>
               </div>
               <span class="nb-launch-arrow">→</span>
             </div>
@@ -539,6 +582,8 @@ section{padding:4rem 0;scroll-margin-top:80px}
             <span class="meta-pill">workflow design</span>
             <span class="meta-pill">documentation logic</span>
             <span class="meta-pill">GoHighLevel</span>
+            <span class="meta-pill">SEO &amp; social</span>
+            <span class="meta-pill">marketing engines</span>
           </div>
         </div>
       </article>
@@ -563,6 +608,13 @@ section{padding:4rem 0;scroll-margin-top:80px}
         <div>
           <h3>Automation and structures for SMB</h3>
           <p>Pipelines, automations, dashboards, and support structures tuned to how work actually moves — not what the template assumed.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">marketing</div>
+        <div>
+          <h3>Dual-sided marketing engine design</h3>
+          <p>Built a full SEO + social + CRM + automation system for a rental business operating two audiences simultaneously. 15 modules, 6-week build sequence, UK/US compliant.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -639,7 +691,7 @@ section{padding:4rem 0;scroll-margin-top:80px}
     <div>
       <div class="eyebrow">Work With Me</div>
       <h2 style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:.75rem;color:var(--text)">Available for the right role.</h2>
-      <p style="font-size:.9rem;color:var(--text-light);line-height:1.8;max-width:46ch;margin-bottom:1.1rem">Remote-first. Open to ops, systems, or CRM-adjacent roles where the work involves building structure, not just following it. If what you've read here matches a gap you're trying to fill — reach out.</p>
+      <p style="font-size:.9rem;color:var(--text-light);line-height:1.8;max-width:46ch;margin-bottom:1.1rem">Remote-first. Open to ops, systems, CRM, or marketing-adjacent roles where the work involves building structure, not just following it. If what you've read here matches a gap you're trying to fill — reach out.</p>
       <div style="display:flex;gap:.65rem;flex-wrap:wrap">
         <a href="mailto:asmultitaskcollective@gmail.com" class="btn-primary">Get in touch</a>
         <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="btn-secondary">LinkedIn</a>
@@ -648,11 +700,11 @@ section{padding:4rem 0;scroll-margin-top:80px}
     <div style="display:grid;gap:.7rem">
       <div style="padding:.9rem 1rem;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow-sm)">
         <div style="font-family:var(--font-mono);font-size:.63rem;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">seen in real work</div>
-        <div style="font-size:.83rem;color:var(--text-light);line-height:1.65">GHL builds · CRM migrations · knowledge base design · workflow automation · ops documentation · payment processor systems</div>
+        <div style="font-size:.83rem;color:var(--text-light);line-height:1.65">GHL builds · CRM migrations · knowledge base design · workflow automation · ops documentation · SEO + social marketing engines · dual-sided systems · payment processor systems</div>
       </div>
       <div style="padding:.9rem 1rem;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow-sm)">
         <div style="font-family:var(--font-mono);font-size:.63rem;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">best fit</div>
-        <div style="font-size:.83rem;color:var(--text-light);line-height:1.65">Operations, systems, or CRM roles. Remote. Environments where the work is figuring out what should exist, not just executing what already does.</div>
+        <div style="font-size:.83rem;color:var(--text-light);line-height:1.65">Operations, systems, CRM, or marketing roles. Remote. Environments where the work is figuring out what should exist, not just executing what already does.</div>
       </div>
       <div style="padding:.9rem 1rem;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow-sm)">
         <div style="font-family:var(--font-mono);font-size:.63rem;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">need it done for you instead?</div>
@@ -704,20 +756,19 @@ section{padding:4rem 0;scroll-margin-top:80px}
 <script>
 (function(){
 'use strict';
-const CAT_CFG={'systems':{color:'#0f5fa0',bg:'#dceef8',label:'⚙️ Systems'},'operations':{color:'#187a64',bg:'#dcf0ea',label:'🔧 Operations'},'crm':{color:'#6a30c0',bg:'#ede8f8',label:'📊 CRM'},'founder-notes':{color:'#9a4810',bg:'#faebd4',label:'🚀 Founder Notes'},'field-notes':{color:'#3a7858',bg:'#e0f0e8',label:'📋 Field Notes'},'technical-notes':{color:'#1c4a88',bg:'#dce8f5',label:'🔬 Technical'}};
+const CAT_CFG={'systems':{color:'#0f5fa0',bg:'#dceef8',label:'⚙️ Systems'},'operations':{color:'#187a64',bg:'#dcf0ea',label:'🔧 Operations'},'crm':{color:'#6a30c0',bg:'#ede8f8',label:'📊 CRM'},'founder-notes':{color:'#9a4810',bg:'#faebd4',label:'🚀 Founder Notes'},'field-notes':{color:'#3a7858',bg:'#e0f0e8',label:'📋 Field Notes'},'technical-notes':{color:'#1c4a88',bg:'#dce8f5',label:'🔬 Technical'},'marketing':{color:'#0d9488',bg:'#ccfbf1',label:'📈 Marketing'}};
 function cs(cat){return CAT_CFG[cat]||{color:'#516a82',bg:'#eef1f6',label:cat};}
 function rt(txt){return Math.max(1,Math.round(txt.trim().split(/\s+/).length/200));}
 function wc(txt){return txt.trim().split(/\s+/).length;}
- 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   GRIMOIRE_FILE: path to Grimoire-v8.1.html
-   Place Grimoire-v8.1.html in the same folder
-   as this index.html. That's all.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 const GRIMOIRE_FILE = 'Grimoire-v8_1.html';
- 
+const DUAL_WING_FILE = 'dual-wing-grimoire-v1.html';
+
 function openGrimoire(){
   window.open(GRIMOIRE_FILE,'_blank','noopener');
+}
+function openDualWing(){
+  window.open(DUAL_WING_FILE,'_blank','noopener');
 }
  
 const NOTES=[
@@ -1050,6 +1101,59 @@ Earlier versions had field count errors, incorrect Zapier plan requirements list
 ## Why I'm publishing it
  
 It's obsolete as an active operational document — the system has moved on. But as a proof of work it's more honest than a resume line. This is what CRM architecture and workflow automation actually looks like when it's documented properly.`},
+{title:'Dual Wing Rental Engine — Grimoire v1.0: A Full Marketing System, Documented.',date:'Apr 2026',category:'marketing',dualwing:true,body:`The Dual Wing Grimoire is a complete marketing and CRM system built for rental businesses that need to generate both landlord supply and renter demand simultaneously. Not two separate campaigns running in parallel. One flywheel where each wing feeds the other.
+ 
+> *"The wings are not independent. They are a flywheel."*
+ 
+## What the problem was
+ 
+Most rental marketing systems are built for one audience. You either market to landlords or to renters. The problem with a dual-sided rental business is that supply and demand are interdependent — you can't convert landlords without proof of renter demand, and you can't convert renters without enough listings. The system had to solve both at once.
+ 
+## What the flywheel looks like
+ 
+| Step | What happens |
+|---|---|
+| Landlord closes | Property listed on platforms |
+| New listing | n8n triggers Claude API → generates listing-specific social content automatically |
+| Content distributed | Renter inquiries increase |
+| Renter inquiries | Tagged by city in GHL → weekly demand proof report generated |
+| Demand proof email | Sent to warm landlord leads: "X renter inquiries in [city] this week" |
+| More landlords convert | More listings → back to step 1 |
+ 
+The flywheel breaks if any one link fails — which is why Module 14 and Module 15 (monitoring and resilience) exist.
+ 
+## What's inside the Grimoire
+ 
+| Module | Contents |
+|---|---|
+| M1 — Acquisition | SEO inbound, social content engine, listing platforms, paid traffic |
+| M2 — Entry & Capture | Landing pages, forms, GHL submission triggers, outage safety net |
+| M3 — Lead Qualification | Scoring matrix (landlord + renter), score decay, segmentation tags |
+| M4 — CRM Core | 2 pipelines, 30+ custom fields, stage logic |
+| M5 — Automation Engine | Day 0–7 sequences (both wings), behavioral triggers |
+| M6 — Conversion | Consultation flow, viewing flow, agreement + booking close |
+| M7 — Fulfillment | Landlord onboarding, renter stay management |
+| M8–M9 — Retention + Referral | Monthly reports, upsell triggers, referral tracking |
+| M10 — Retargeting | Pixel audiences, ad sequences, exclusion sync |
+| M11 — Content AI Pipeline | n8n + Claude API content machine, AI personalized follow-up |
+| M12 — Reporting | Looker Studio 4-page dashboard, weekly intelligence report |
+| M13 — Finance Tracker | Unit economics, CPL, CPA, operator time ledger |
+| M14 — Flywheel Connection | The growth loop that ties both wings |
+| M15 — Monitoring | Uptime alerting, weekly health check, critical failure points |
+ 
+## The compliance layer
+ 
+Built for UK (GDPR, PECR, ICO) and US (CAN-SPAM, TCPA, CCPA) simultaneously. Consent capture, unsubscribe handling, STOP keyword processing, and suppression list checks are all documented before a single sequence fires.
+ 
+## The stack
+ 
+GHL · n8n (self-hosted) · Make · Claude API (Sonnet) · Pabbly · Buffer · Repurpose.io · Canva Pro · GA4 · Looker Studio · Facebook/TikTok Pixels + CAPI. Bootstrapped budget: ~$168/mo for the first 90 days.
+ 
+## Why I'm publishing it
+ 
+Same reason as the v8.1 — a resume line says "built marketing systems." This shows what that actually means. 15 modules. Every trigger documented. Every failure point named. The flywheel logic explained. A 6-week build sequence that starts with manual observation before any automation runs.
+ 
+This is what a marketing engine looks like when it's built like a system, not a campaign.`},
 ];
  
 /* notes preview grid */
@@ -1072,7 +1176,7 @@ It's obsolete as an active operational document — the system has moved on. But
 })();
  
 /* notebook engine */
-const NB_CATS=['all','systems','operations','crm','founder-notes','field-notes','technical-notes'];
+const NB_CATS=['all','systems','operations','crm','founder-notes','field-notes','technical-notes','marketing'];
 let nbCat='all',nbSearch='',nbActive=null,nbOpen=false,nbMinimized=false;
 const nbWin=document.getElementById('nbWindow'),nbContent=document.getElementById('nbContent'),nbList=document.getElementById('nbList'),nbCount=document.getElementById('nbCount');
 function filtered(){return NOTES.filter(n=>{const mc=nbCat==='all'||n.category===nbCat;const q=nbSearch.toLowerCase();return mc&&(!q||n.title.toLowerCase().includes(q)||n.body.toLowerCase().includes(q));});}
@@ -1112,7 +1216,6 @@ function showArticle(idx){
   const prev=fi>0?f[fi-1]:null;const next=fi<f.length-1?f[fi+1]:null;
   const related=NOTES.map((rn,ri)=>({rn,ri})).filter(({rn,ri})=>rn.category===n.category&&ri!==idx).slice(0,2);
  
-  /* grimoire launch button — only for the grimoire note */
   const grimoireLaunch = n.grimoire ? `
     <a class="nba-grimoire-launch" onclick="openGrimoire();return false;" href="${GRIMOIRE_FILE}" target="_blank" rel="noopener">
       <div class="nba-grimoire-launch-left">
@@ -1120,6 +1223,15 @@ function showArticle(idx){
         <span>Full live document · opens in new window · GHL · Zapier · Bland AI · PandaDoc · Stripe</span>
       </div>
       <div class="nba-grimoire-launch-right">🗃️</div>
+    </a>` : '';
+
+  const dualwingLaunch = n.dualwing ? `
+    <a class="nba-dualwing-launch" onclick="openDualWing();return false;" href="${DUAL_WING_FILE}" target="_blank" rel="noopener">
+      <div class="nba-dualwing-launch-left">
+        <strong>Open the Dual Wing Grimoire v1.0 →</strong>
+        <span>Full live document · opens in new window · 15 modules · SEO · Social · GHL · n8n · Claude API</span>
+      </div>
+      <div class="nba-dualwing-launch-right">🌱</div>
     </a>` : '';
  
   nbContent.innerHTML=`
@@ -1135,13 +1247,14 @@ function showArticle(idx){
       </div>
       <div class="nba-body">${parseBody(n.body)}</div>
       ${grimoireLaunch}
+      ${dualwingLaunch}
       <div class="nba-cta">
         <p><strong>Seeing this in your operation?</strong> This is the kind of problem I help fix — free 30-minute ops audit, no pitch, no deck.</p>
         <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix My Systems → ASMC</a>
       </div>
       ${prev||next?`<div class="nba-nav">
         ${prev?`<button class="nba-nav-btn" data-nidx="${NOTES.indexOf(prev)}"><div class="nba-nav-label">← Previous</div><div class="nba-nav-title">${prev.title}</div></button>`:'<div style="flex:1"></div>'}
-        ${next?`<button class="nba-nav-btn next" data-nidx="${NOTES.indexOf(next)}"><div class="nba-nav-label">Next →</div><div class="nba-nav-title">${next.title}</div></button>`:''}
+        ${next?`<button class="nba-nav-btn next" data-nidx="${NOTES.indexOf(next)}"><div class="nba-nav-title">${next.title}</div><div class="nba-nav-label">Next →</div></button>`:''}
       </div>`:''}
       ${related.length?`<div class="nba-related"><div class="nba-related-label">Related in ${n.category.replace(/-/g,' ')}</div><div class="nba-related-grid">${related.map(({rn,ri})=>`<div class="nba-related-item" data-ridx="${ri}"><div class="nba-related-title">${rn.title}</div><div class="nba-related-meta">${rn.date} · ${rt(rn.body)} min</div></div>`).join('')}</div></div>`:''}
     </div>`;
@@ -1166,6 +1279,7 @@ function closeNotebook(){nbWin.style.display='none';nbOpen=false;nbActive=null;h
 function openNoteAt(idx){openNotebook(idx);}
 window.openNoteAt=openNoteAt;
 window.openGrimoire=openGrimoire;
+window.openDualWing=openDualWing;
 document.getElementById('nbSidebar')?.addEventListener('click',e=>{
   const cat=e.target.closest('.nb-cat');if(cat){nbCat=cat.dataset.cat;renderSidebar();sfx('click');return;}
   const entry=e.target.closest('.nb-entry');if(entry)showArticle(+entry.dataset.idx);
