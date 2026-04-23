@@ -391,6 +391,224 @@
     vertical-align: middle;
   }
 
+  /* ── SEO SYSTEM UPGRADE — NEW COMPONENTS ── */
+
+  /* Sublayer header */
+  .sublayer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2.5rem 0 1rem;
+  }
+  .sublayer-badge {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: var(--code-bg);
+    color: var(--code-val);
+    border: 1px solid rgba(134,239,172,0.2);
+  }
+  .sublayer-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .sublayer-desc {
+    font-size: 12px;
+    color: var(--ink4);
+    margin-left: auto;
+    font-style: italic;
+  }
+
+  /* Data structure block */
+  .data-struct {
+    background: #0F1117;
+    border: 1px solid rgba(134,239,172,0.15);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.9;
+    overflow-x: auto;
+  }
+  .data-struct .ds-type { color: #7DD3FC; }
+  .data-struct .ds-key  { color: #FDA4AF; }
+  .data-struct .ds-val  { color: #86EFAC; }
+  .data-struct .ds-str  { color: #FCD34D; }
+  .data-struct .ds-com  { color: #4B5563; font-style: italic; }
+  .data-struct .ds-op   { color: #C084FC; }
+  .data-struct .ds-enum { color: #F9A8D4; }
+  .data-struct .ds-req  { color: var(--accent2); font-size: 10px; }
+
+  /* Pipeline flow — horizontal chain */
+  .pipeline-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 1.25rem 0;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+  }
+  .pf-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-width: 80px;
+  }
+  .pf-box {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--ink2);
+  }
+  .pf-box.seo    { background: var(--green-bg); color: var(--green); border-color: rgba(21,128,61,0.25); }
+  .pf-box.crm    { background: var(--teal-bg);  color: var(--teal);  border-color: rgba(13,148,136,0.25); }
+  .pf-box.email  { background: var(--amber-bg); color: var(--amber); border-color: rgba(180,83,9,0.25); }
+  .pf-box.conv   { background: var(--blue-bg);  color: var(--blue);  border-color: rgba(29,78,216,0.25); }
+  .pf-box.cta    { background: #FFF1F2;          color: var(--red);   border-color: rgba(185,28,28,0.2); }
+  .pf-label { font-size: 9px; color: var(--ink4); font-family: var(--mono); text-align: center; }
+  .pf-arrow {
+    font-size: 14px;
+    color: var(--ink4);
+    padding: 0 6px;
+    margin-top: -10px;
+  }
+
+  /* Metrics observability grid */
+  .obs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 1rem 0;
+  }
+  .obs-card {
+    border-radius: 7px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .obs-metric {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .obs-threshold {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink4);
+    margin-bottom: 6px;
+  }
+  .obs-action {
+    font-size: 11px;
+    color: var(--ink3);
+    line-height: 1.5;
+    border-top: 1px solid var(--border2);
+    padding-top: 6px;
+    margin-top: 4px;
+  }
+  .obs-action .trigger { color: var(--accent); font-weight: 500; }
+
+  /* Page state machine */
+  .state-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 1rem 0;
+    align-items: center;
+  }
+  .state-pill {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+  }
+  .state-pill.draft    { background: var(--bg3); color: var(--ink3); }
+  .state-pill.pub      { background: var(--blue-bg); color: var(--blue); border-color: rgba(29,78,216,0.2); }
+  .state-pill.indexed  { background: var(--teal-bg); color: var(--teal); border-color: rgba(13,148,136,0.2); }
+  .state-pill.ranking  { background: var(--green-bg); color: var(--green); border-color: rgba(21,128,61,0.2); }
+  .state-pill.optim    { background: var(--amber-bg); color: var(--amber); border-color: rgba(180,83,9,0.2); }
+  .state-pill.decay    { background: var(--red-bg); color: var(--red); border-color: rgba(185,28,28,0.2); }
+  .state-arrow { color: var(--ink4); font-size: 12px; }
+
+  /* Failure mode grid */
+  .fm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 1rem 0;
+  }
+  .fm-item {
+    border-radius: 7px;
+    padding: 12px 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+  }
+  .fm-signal {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--red);
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+  .fm-cause {
+    font-size: 11px;
+    color: var(--ink3);
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  .fm-fix {
+    font-size: 11px;
+    color: var(--teal);
+    font-family: var(--mono);
+  }
+
+  /* Feedback loop visual */
+  .loop-diagram {
+    background: var(--code-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 2;
+    color: var(--code-fg);
+    overflow-x: auto;
+  }
+  .loop-diagram .lp-step  { color: var(--code-val); }
+  .loop-diagram .lp-arrow { color: var(--accent2); }
+  .loop-diagram .lp-cond  { color: var(--code-str); }
+  .loop-diagram .lp-act   { color: var(--code-key); }
+  .loop-diagram .lp-com   { color: var(--code-comment); font-style: italic; }
+
+  /* SEO sublayer nav (injected into sidebar) */
+  .nav-link.sub2 { padding-left: 28px; font-size: 10px; color: var(--ink4); }
+  .nav-link.sub2:hover { color: var(--ink2); }
+
   /* ── HERO ── */
   .hero { margin-bottom: 4rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
   .hero-eyebrow { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
@@ -577,7 +795,15 @@
       <div class="nav-section-label">Module 1</div>
       <div class="nav-hint">How people find the business — search, social, listings</div>
       <a href="#m1" class="nav-link">Acquisition Engine</a>
-      <a href="#m1-seo" class="nav-link sub">M1.1 SEO Inbound</a>
+      <a href="#m1-seo" class="nav-link sub">M1.1 SEO System</a>
+      <a href="#seo-input" class="nav-link sub2">① Input Model</a>
+      <a href="#seo-content" class="nav-link sub2">② Content Engine</a>
+      <a href="#seo-indexing" class="nav-link sub2">③ Indexing Layer</a>
+      <a href="#seo-conversion" class="nav-link sub2">④ Conversion Pipeline</a>
+      <a href="#seo-observability" class="nav-link sub2">⑤ Observability</a>
+      <a href="#seo-feedback" class="nav-link sub2">⑥ Feedback Loop</a>
+      <a href="#seo-crm" class="nav-link sub2">⑦ CRM Integration</a>
+      <a href="#seo-failures" class="nav-link sub2">⚠ Failure Modes</a>
       <a href="#m1-social" class="nav-link sub">M1.2 Social Content</a>
       <a href="#m1-listing" class="nav-link sub">M1.3 Listing Platforms</a>
       <a href="#m1-paid" class="nav-link sub">M1.4 Paid Traffic</a>
@@ -1231,78 +1457,508 @@ TOTAL           <span class="w">~$168–183/mo</span>
       </div>
 
       <h2 class="section-heading" id="m1-seo">
-        <span class="seo-tag">SEO</span> M1.1 — SEO Inbound System
+        <span class="seo-tag">SEO</span> M1.1 — SEO Acquisition Subsystem
       </h2>
 
       <div class="portfolio-explain" style="display:none;">
-        <p>The SEO strategy was built around hyper-local search terms — phrases people actually type when looking for a letting agent in a specific city. Generic terms like "property management" are dominated by large national brands. The approach here was to target longer, more specific searches where smaller businesses can realistically rank.</p>
+        <p>This section documents the SEO system as a deterministic acquisition subsystem — not a set of best practices, but a runtime loop with typed inputs, measurable outputs, state transitions, and feedback control. The architecture is designed so that any performance drop has a traceable cause and a defined correction action.</p>
       </div>
 
-      <h3 class="sub-heading">Keyword Architecture</h3>
-      <pre><span class="w">LANDLORD</span> (transactional intent — high buyer intent, lower volume)
-  /rent-out-property-[city]
-  /airbnb-management-[city]
-  /short-term-rental-income-[city]
-  /guaranteed-rent-[city]
-  /property-management-[city]
+      <div class="callout callout-info">
+        <strong>Architecture intent.</strong> This SEO subsystem is designed as a deterministic acquisition pipeline with measurable outputs and feedback control. Each sublayer has defined inputs, outputs, and failure modes. The system does not run on intuition — it runs on state transitions and metric thresholds.
+      </div>
 
-<span class="w">RENTER</span> (informational + transactional mix — higher volume, lower intent)
-  /apartments-for-rent-[city]
-  /short-stay-[city]
-  /studio-apartment-[city]
-  /cheap-rentals-[city]
-  /rooms-for-rent-[city]
+      <!-- ── SUBLAYER 1: INPUT MODEL ── -->
+      <div class="sublayer-header" id="seo-input">
+        <span class="sublayer-badge">Layer 1</span>
+        <span class="sublayer-title">SEO Input Model — Typed Data Structure</span>
+        <span class="sublayer-desc">What enters the system</span>
+      </div>
 
-<span class="c">// UK: add /HMO-management-[city], /serviced-accommodation-[city]</span>
-<span class="c">// US: add /furnished-apartment-[city], /month-to-month-rentals-[city]</span>
-<span class="c">// Target hyper-local long-tail first — Rightmove/Zillow dominate generic terms</span></pre>
+      <div class="portfolio-explain" style="display:none;">
+        <p>Before any content is created, each keyword target is defined as a structured data object. This means every page has an explicit intent type, a geographic modifier, a content format, and a priority score — not just a keyword phrase. This prevents guesswork later in the pipeline.</p>
+      </div>
+
+      <div class="data-struct">
+<span class="ds-com">// SEO_INPUT — defined before any content is written or page is built</span>
+<span class="ds-type">SEO_INPUT</span> = {
+  <span class="ds-key">keyword_cluster</span>:  <span class="ds-type">string[]</span>,            <span class="ds-com">// ["rent out property liverpool", "property management liverpool", ...]</span>
+  <span class="ds-key">search_intent</span>:    <span class="ds-enum">["informational" | "commercial" | "transactional"]</span>,
+  <span class="ds-key">geo_modifier</span>:     <span class="ds-type">string</span>,              <span class="ds-com">// "liverpool" | "merseyside" | "L1" (postcode-level)</span>
+  <span class="ds-key">wing</span>:             <span class="ds-enum">["landlord" | "renter"]</span>,
+  <span class="ds-key">content_type</span>:     <span class="ds-enum">["pillar" | "supporting" | "landing" | "comparison"]</span>,
+  <span class="ds-key">priority_score</span>:   <span class="ds-type">float</span>,               <span class="ds-com">// 0.0–1.0  derived from: volume × difficulty⁻¹ × intent_weight</span>
+  <span class="ds-key">parent_cluster</span>:   <span class="ds-type">string | null</span>,       <span class="ds-com">// null = pillar. string = points to parent pillar slug</span>
+  <span class="ds-key">target_position</span>:  <span class="ds-type">int</span>,                 <span class="ds-com">// goal ranking position — drives optimization threshold</span>
+  <span class="ds-key">current_state</span>:    <span class="ds-enum">["draft" | "published" | "indexed" | "ranking" | "optimized" | "decaying"]</span>
+}
+
+<span class="ds-com">// Priority scoring formula (implemented in Sheets / n8n)</span>
+<span class="ds-key">priority_score</span> = <span class="ds-op">(</span><span class="ds-val">monthly_volume</span> <span class="ds-op">/</span> <span class="ds-val">100</span><span class="ds-op">)</span>
+                <span class="ds-op">×</span> <span class="ds-op">(</span><span class="ds-val">1</span> <span class="ds-op">-</span> <span class="ds-val">keyword_difficulty</span> <span class="ds-op">/</span> <span class="ds-val">100</span><span class="ds-op">)</span>
+                <span class="ds-op">×</span> <span class="ds-val">intent_weight</span>         <span class="ds-com">// transactional=1.0, commercial=0.7, informational=0.4</span>
+
+<span class="ds-com">// Intent-to-wing mapping</span>
+<span class="ds-key">LANDLORD</span> → transactional intent  → <span class="ds-val">high priority_score</span>  <span class="ds-com">// lower volume, higher conversion</span>
+<span class="ds-key">RENTER</span>   → informational mix     → <span class="ds-val">medium priority_score</span> <span class="ds-com">// higher volume, longer funnel</span>
+
+<span class="ds-com">// Concrete cluster examples — Liverpool / Merseyside deployment</span>
+<span class="ds-key">LANDLORD CLUSTERS</span>:
+  <span class="ds-str">["rent-out-property-liverpool", "guaranteed-rent-liverpool", "airbnb-management-liverpool"]</span>  → transactional
+  <span class="ds-str">["hmo-management-liverpool", "serviced-accommodation-liverpool"]</span>                           → commercial
+  <span class="ds-str">["how-much-can-i-earn-renting-in-liverpool"]</span>                                               → informational
+
+<span class="ds-key">RENTER CLUSTERS</span>:
+  <span class="ds-str">["rooms-for-rent-liverpool", "short-stay-liverpool", "studio-apartment-liverpool"]</span>           → transactional
+  <span class="ds-str">["cheap-rentals-merseyside", "apartments-for-rent-l1"]</span>                                     → commercial
+  <span class="ds-str">["how-to-rent-in-liverpool", "renting-guide-liverpool-2026"]</span>                               → informational
+
+<span class="ds-req">⚠ Rightmove + Zoopla dominate generic head terms. Target hyper-local long-tail exclusively until DA > 30.</span></div>
 
       <div class="show-in-portfolio">
         <div class="callout callout-success">
-          <strong>Why hyper-local?</strong> For the Liverpool market, broad terms like "property management UK" are owned by Rightmove, Zoopla, and large national agencies. Ranking for those is not realistic for a newer business. Instead, the SEO architecture targets city-specific long-tail keywords where competition is lower and searcher intent is high — people searching "/rent-out-property-liverpool" are much closer to making a decision than someone searching "property management."
+          <strong>Why typed inputs?</strong> Defining each keyword target as a structured object means the system can be queried, sorted by priority, and reported on — instead of living in someone's head. The <code>current_state</code> field is what enables the feedback loop in Layer 6.
         </div>
       </div>
 
-      <h3 class="sub-heading">Page Template Structure</h3>
-      <pre><span class="w">SECTION 1</span> — Above Fold
-  H1:     <span class="s">"Earn $2,800–$5,400/month from your [city] property"</span>  <span class="c">// landlord</span>
-  H1:     <span class="s">"Find verified short-stay apartments in [city]"</span>          <span class="c">// renter</span>
-  CTA:    Single button, above fold, no scroll
-  Trust:  # properties managed / # tenants placed / avg rating
+      <!-- ── SUBLAYER 2: CONTENT GENERATION ENGINE ── -->
+      <div class="sublayer-header" id="seo-content">
+        <span class="sublayer-badge">Layer 2</span>
+        <span class="sublayer-title">Content Generation Engine — Cluster Architecture</span>
+        <span class="sublayer-desc">How pages are produced</span>
+      </div>
 
-<span class="w">SECTION 2</span> — Offer Detail
-  3-column benefit block (Icon + Headline + 1 sentence)
+      <div class="portfolio-explain" style="display:none;">
+        <p>Content isn't created one page at a time — it's built in clusters. Each pillar page covers a broad topic, and 3–5 supporting articles cover specific sub-questions. They all link to each other. This structure is what Google's systems reward: topical depth, not isolated pages.</p>
+      </div>
 
-<span class="w">SECTION 3</span> — Proof
-  Landlord: Earnings case study (before/after numbers + timeline)
-  Renter:   "X inquiries this week" / photos / verified badge / reviews
+      <div class="data-struct">
+<span class="ds-com">// Cluster architecture — executed per keyword_cluster with parent_cluster = null</span>
+<span class="ds-type">FOR EACH</span> keyword_cluster (where content_type = <span class="ds-str">"pillar"</span>):
+  <span class="ds-key">GENERATE</span>:
+    pillar_page         → 1500–2500 words, primary keyword density 1.5–2.5%
+    supporting_articles → 3–5 × 800–1200 words (semantic variations of pillar topic)
+    internal_link_graph → bidirectional: pillar ↔ all supporting, supporting ↔ supporting
 
-<span class="w">SECTION 4</span> — CTA + Form
-  Landlord form fields: property_type, city, bedrooms, currently_occupied,
-    current_income, name, phone, email, consent (not pre-ticked), UTM hidden
+<span class="ds-com">// Page structure contract — every landing page must satisfy this schema</span>
+<span class="ds-type">PAGE_SCHEMA</span> = {
+  <span class="ds-key">H1</span>:              primary_keyword,                  <span class="ds-com">// exact match — no exceptions</span>
+  <span class="ds-key">H2s</span>:             semantic_variations[],             <span class="ds-com">// LSI terms, question formats, synonyms</span>
+  <span class="ds-key">word_count</span>:      <span class="ds-val">&gt;= 800</span>,                           <span class="ds-com">// pillar: 1500+. supporting: 800+</span>
+  <span class="ds-key">keyword_density</span>: <span class="ds-val">1.5–2.5%</span>,                         <span class="ds-com">// measured — not eyeballed</span>
+  <span class="ds-key">internal_links</span>:  <span class="ds-val">&gt;= 3</span>,                             <span class="ds-com">// anchor text = destination page target keyword</span>
+  <span class="ds-key">schema_markup</span>:   <span class="ds-str">["LocalBusiness", "FAQPage"]</span>,     <span class="ds-com">// required on all landing pages</span>
+  <span class="ds-key">faq_items</span>:       <span class="ds-val">&gt;= 5</span>,                             <span class="ds-com">// keyword in 2+ answers</span>
+  <span class="ds-key">cta_position</span>:    <span class="ds-str">"above_fold + end_of_page"</span>,
+  <span class="ds-key">trust_signals</span>:   <span class="ds-str">["properties_count", "avg_rating", "reviews_count"]</span>,
+  <span class="ds-key">geo_proof</span>:       <span class="ds-val">1</span> <span class="ds-com">// min 1 locally unique data point — required per 2026 HCU rules</span>
+}
 
-<span class="w">SECTION 5</span> — FAQ (SEO + Objection Handling)
-  Min 5 questions. FAQPage schema markup. Keyword in 2 answers.
+<span class="ds-com">// Internal link topology — not optional, not arbitrary</span>
+<span class="ds-type">LINK_RULES</span>:
+  Pillar → every supporting article    <span class="ds-com">// contextual links in body</span>
+  Supporting → pillar page             <span class="ds-com">// "See our full guide: [pillar H1]"</span>
+  Supporting ↔ supporting              <span class="ds-com">// cross-link where topics overlap</span>
+  All pages → primary conversion page  <span class="ds-com">// at least one CTA link per page</span>
+  No orphan pages                      <span class="ds-req">⚠ orphan = indexed but not linked = crawl budget waste</span>
 
-<span class="w">SECTION 6</span> — Internal Links
-  Min 3 links. Anchor text = destination page target keyword.</pre>
-
-      <h3 class="sub-heading">Technical Checklist</h3>
-      <pre>☐ H1 contains primary keyword
-☐ Meta title: [Keyword] | [Brand] | [City] — under 60 chars
-☐ Meta description: benefit + CTA — under 155 chars
-☐ Schema: LocalBusiness + FAQPage
-☐ Page speed: under 3 seconds (GTmetrix)
-☐ Mobile responsive: test at 375px
-☐ CTA form connected to GHL pipeline
-☐ UTM parameter captured on form submit
-☐ GA4 event: form_submit fires on thank you page load
-☐ FB Pixel: PageView + Lead event on thank you page
-☐ CAPI: Enable server-side events in GHL settings
-☐ Consent checkbox visible and unchecked by default</pre>
+<span class="ds-com">// Meta template</span>
+<span class="ds-key">meta_title</span>:       <span class="ds-str">"[Primary Keyword] | [Brand] | [City]"</span>  → under 60 chars
+<span class="ds-key">meta_description</span>: <span class="ds-str">"[Benefit statement] + [CTA]"</span>            → under 155 chars, include keyword</div>
 
       <div class="callout callout-warn">
-        <strong>2026 Note — Programmatic SEO.</strong> AI-generated programmatic pages are being actively penalised by Google's Helpful Content System. Pages must have genuine local data, real photos, and editorial differentiation. Copy-paste-and-swap-city pages will not rank. Each city page needs at least one locally unique data point or case study.
+        <strong>2026 HCU compliance.</strong> AI-generated programmatic pages without locally unique data points are being actively penalised by Google's Helpful Content System. Each city page requires at minimum: one real local data point, real photos or verified listings, and editorial differentiation. Swap-city templates do not pass HCU review.
+      </div>
+
+      <!-- ── SUBLAYER 3: INDEXING + DISCOVERY ── -->
+      <div class="sublayer-header" id="seo-indexing">
+        <span class="sublayer-badge">Layer 3</span>
+        <span class="sublayer-title">Indexing &amp; Discovery Layer</span>
+        <span class="sublayer-desc">Getting content found by crawlers</span>
+      </div>
+
+      <div class="portfolio-explain" style="display:none;">
+        <p>Publishing a page doesn't mean Google will find it. This layer documents the steps taken after each publish to request indexing, manage the sitemap, and ensure crawl budget isn't wasted on pages that shouldn't be indexed. Skipping this is why newly published pages sometimes sit invisible for weeks.</p>
+      </div>
+
+      <div class="data-struct">
+<span class="ds-com">// Indexing pipeline — fires on every new page publish</span>
+<span class="ds-type">ON_PUBLISH</span>(page):
+  STEP 1: <span class="ds-key">sitemap_update</span>     → add URL + lastmod + changefreq to sitemap.xml
+  STEP 2: <span class="ds-key">index_request</span>      → Google Search Console → URL Inspection → Request Indexing
+                            <span class="ds-com">// OR: Indexing API for programmatic pages (&gt;10 pages/batch)</span>
+  STEP 3: <span class="ds-key">crawl_monitoring</span>   → log in GSC Coverage report — check within 48–72h
+  STEP 4: <span class="ds-key">state_transition</span>   → page.current_state: <span class="ds-str">"published"</span> → <span class="ds-str">"indexed"</span>
+
+<span class="ds-com">// Technical controls — verified at launch and audited monthly</span>
+<span class="ds-type">ROBOTS_CONTROL</span>:
+  robots.txt: <span class="ds-key">Disallow</span> → /thank-you/, /admin/, /?utm_*, /staging/
+  robots.txt: <span class="ds-key">Allow</span>    → all landing pages, blog, pillar pages
+  <span class="ds-req">⚠ Check robots.txt before launch — blocking your own landing pages is a common silent failure</span>
+
+<span class="ds-type">CANONICAL_RULES</span>:
+  /rent-out-property-liverpool/  → self-referencing canonical on all variants
+  /rent-out-property-liverpool?ref=email → canonical to clean URL  <span class="ds-com">// prevents UTM duplication</span>
+  All /thank-you/ pages          → noindex, nofollow
+
+<span class="ds-type">CRAWL_BUDGET</span>:
+  Applies when site reaches 100+ pages.
+  Until then: ensure no redirect chains &gt; 2 hops.
+  Log 404s weekly via GSC Coverage. Fix or 301 redirect within 48h.
+  <span class="ds-com">// Broken internal links = crawl budget waste + ranking signal dilution</span>
+
+<span class="ds-type">SITEMAP_STRUCTURE</span>:
+  /sitemap.xml          → index sitemap (links to sub-sitemaps)
+  /sitemap-landlord.xml → all landlord landing + pillar + supporting pages
+  /sitemap-renter.xml   → all renter landing + pillar + supporting pages
+  /sitemap-blog.xml     → all blog posts
+  Submit all to GSC. Re-submit on any structural change.</div>
+
+      <!-- ── SUBLAYER 4: CONVERSION PIPELINE ── -->
+      <div class="sublayer-header" id="seo-conversion">
+        <span class="sublayer-badge">Layer 4</span>
+        <span class="sublayer-title">Conversion Pipeline — SEO to CRM</span>
+        <span class="sublayer-desc">The full path from search click to pipeline entry</span>
+      </div>
+
+      <div class="portfolio-explain" style="display:none;">
+        <p>This is where SEO stops being a traffic exercise and becomes a revenue system. Every step from the moment someone clicks a search result to the moment they enter the CRM pipeline is defined, tracked, and attributed. This is what makes it possible to calculate a real cost-per-lead from organic search.</p>
+      </div>
+
+      <div class="pipeline-flow">
+        <div class="pf-node">
+          <div class="pf-box seo">GSC Rank</div>
+          <div class="pf-label">position 1–10</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box seo">SERP Click</div>
+          <div class="pf-label">impressions → CTR</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box">Landing Page</div>
+          <div class="pf-label">bounce / engage</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box cta">CTA Click</div>
+          <div class="pf-label">above fold / end</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box">Form Submit</div>
+          <div class="pf-label">UTM captured</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box crm">CRM Entry</div>
+          <div class="pf-label">GHL pipeline</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box email">Email Seq</div>
+          <div class="pf-label">D0–D7</div>
+        </div>
+        <div class="pf-arrow">→</div>
+        <div class="pf-node">
+          <div class="pf-box conv">Conversion</div>
+          <div class="pf-label">consultation / booking</div>
+        </div>
+      </div>
+
+      <div class="data-struct">
+<span class="ds-com">// Every step in the pipeline has a corresponding GA4 event + GHL tag</span>
+<span class="ds-type">CONVERSION_PIPELINE</span>:
+
+  <span class="ds-key">SEO_PAGE</span>         → GA4 event: <span class="ds-str">page_view</span>   + dimension: <span class="ds-str">wing</span>, <span class="ds-str">keyword_cluster</span>, <span class="ds-str">geo</span>
+  <span class="ds-key">CTA_CLICK</span>        → GA4 event: <span class="ds-str">cta_click</span>   + parameter: <span class="ds-str">position</span> (above_fold | inline | footer)
+  <span class="ds-key">FORM_START</span>       → GA4 event: <span class="ds-str">form_start</span>
+  <span class="ds-key">FORM_SUBMIT</span>      → GA4 event: <span class="ds-str">form_submit</span> + GHL tag: <span class="ds-str">[Source: organic_seo]</span>
+                     → UTM fields: <span class="ds-val">utm_source=google</span>, <span class="ds-val">utm_medium=organic</span>, <span class="ds-val">utm_campaign=[cluster]</span>
+                     → GHL custom field: <span class="ds-val">keyword_cluster</span> written from hidden form field
+  <span class="ds-key">THANK_YOU_PAGE</span>   → GA4 event: <span class="ds-str">conversion</span>  + FB Pixel: <span class="ds-str">Lead</span>
+  <span class="ds-key">CRM_ENTRY</span>        → GHL pipeline stage: <span class="ds-str">New Lead</span>
+                     → Lead scoring fires (M3)
+                     → Email sequence fires (M5)
+
+<span class="ds-com">// Page template — conversion architecture</span>
+<span class="ds-type">LANDING_PAGE_SCHEMA</span>:
+  Section 1 — Above fold (no scroll)
+    H1:         primary keyword (exact)
+    Sub-head:   benefit statement (income / speed / verification)
+    CTA:        single button → form anchor or booking link
+    Trust bar:  [properties count] · [avg rating] · [tenancies placed]
+
+  Section 2 — Offer block (3-column: Icon + H3 + 1 sentence)
+  Section 3 — Proof
+    Landlord:   before/after income case study (real city, real numbers)
+    Renter:     <span class="ds-str">"X inquiries this week in [city]"</span> — pulled from flywheel (M14)
+
+  Section 4 — Form
+    Fields (landlord): property_type, city, bedrooms, currently_occupied,
+                       current_income, name, phone, email
+    Fields (renter):   city, budget_min, budget_max, move_in_date, property_type
+    Hidden fields:     utm_source, utm_medium, utm_campaign, utm_content, keyword_cluster
+    Required:          consent checkbox — not pre-ticked. Linked privacy policy.
+
+  Section 5 — FAQ (min 5 questions)
+    Schema:     FAQPage JSON-LD
+    Keyword:    appears in 2+ answers verbatim
+
+  Section 6 — Internal links (min 3)
+    Anchor text = destination page target keyword — no "click here"
+
+<span class="ds-com">// Attribute every SEO conversion to a keyword cluster — not just "organic"</span>
+<span class="ds-req">⚠ Without keyword_cluster in GHL, you cannot calculate real CPL per cluster. This field is required.</span></div>
+
+      <!-- ── SUBLAYER 5: OBSERVABILITY ── -->
+      <div class="sublayer-header" id="seo-observability">
+        <span class="sublayer-badge">Layer 5</span>
+        <span class="sublayer-title">Performance Observability — Metrics &amp; Thresholds</span>
+        <span class="sublayer-desc">What gets measured and what triggers action</span>
+      </div>
+
+      <div class="portfolio-explain" style="display:none;">
+        <p>Every metric in this layer has a defined threshold. When that threshold is crossed, the system specifies exactly what to do — not "investigate further," but a concrete action. This is what separates passive SEO reporting from decision-driven SEO operations.</p>
+      </div>
+
+      <div class="obs-grid">
+        <div class="obs-card">
+          <div class="obs-metric">Impressions</div>
+          <div class="obs-threshold">Source: GSC · Weekly</div>
+          <div class="obs-action">Low impressions after 6 weeks → <span class="trigger">indexing issue or keyword mismatch</span>. Re-audit crawl coverage + intent alignment.</div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-metric">CTR</div>
+          <div class="obs-threshold">Threshold: &lt; 3% on position 1–5</div>
+          <div class="obs-action"><span class="trigger">Rewrite title + meta description.</span> A/B test 2 variants. Measure over 14-day window. High impressions + low CTR = title mismatch.</div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-metric">Avg Position</div>
+          <div class="obs-threshold">Target: ≤ 10 within 90 days</div>
+          <div class="obs-action">Position &gt; target after 90d → <span class="trigger">improve content depth</span>: word count, H2 coverage, internal link equity, backlink gap.</div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-metric">Session Duration</div>
+          <div class="obs-threshold">Threshold: &lt; 45 seconds</div>
+          <div class="obs-action"><span class="trigger">Content–intent mismatch.</span> Review what the searcher expected vs what the page delivers. Restructure above-fold content.</div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-metric">Landing Page CVR</div>
+          <div class="obs-threshold">Threshold: &lt; 4% (landlord) / &lt; 2% (renter)</div>
+          <div class="obs-action"><span class="trigger">Optimize CTA + form.</span> Test micro-form (2 fields above fold). Check trust signals are visible without scroll.</div>
+        </div>
+        <div class="obs-card">
+          <div class="obs-metric">CPL (organic)</div>
+          <div class="obs-threshold">Derived: time_cost ÷ leads_from_seo</div>
+          <div class="obs-action">CPL rising = either time increasing or leads declining. <span class="trigger">Audit which clusters are converting</span> vs which are traffic-only. Kill or deprioritize non-converting clusters.</div>
+        </div>
+      </div>
+
+      <div class="data-struct">
+<span class="ds-com">// Observability data structure — populated weekly from GSC + GA4 + GHL</span>
+<span class="ds-type">SEO_METRICS</span> = {
+  <span class="ds-key">impressions</span>:       <span class="ds-type">int</span>,      <span class="ds-com">// GSC — per page, per cluster, per wing</span>
+  <span class="ds-key">ctr</span>:               <span class="ds-type">float</span>,    <span class="ds-com">// GSC — clicks / impressions</span>
+  <span class="ds-key">avg_position</span>:      <span class="ds-type">float</span>,    <span class="ds-com">// GSC — target &lt;= 10 within 90 days of publish</span>
+  <span class="ds-key">session_duration</span>:  <span class="ds-type">seconds</span>,  <span class="ds-com">// GA4 — target &gt;= 45s. Below = intent mismatch.</span>
+  <span class="ds-key">conversion_rate</span>:   <span class="ds-type">float</span>,    <span class="ds-com">// GA4 — form_submit / page_view. target: 4% landlord / 2% renter</span>
+  <span class="ds-key">leads_from_seo</span>:    <span class="ds-type">int</span>,      <span class="ds-com">// GHL — tag [Source: organic_seo] count per period</span>
+  <span class="ds-key">cpl_organic</span>:       <span class="ds-type">float</span>,    <span class="ds-com">// derived: (operator_hours × rate) / leads_from_seo</span>
+  <span class="ds-key">page_state</span>:        <span class="ds-type">string</span>    <span class="ds-com">// current_state from SEO_INPUT — drives feedback loop</span>
+}
+
+<span class="ds-com">// Decision logic — evaluated weekly in Looker Studio review</span>
+<span class="ds-key">if</span> ctr &lt; <span class="ds-val">0.03</span> AND avg_position &lt;= <span class="ds-val">5</span>:
+  → <span class="ds-op">ACTION</span>: rewrite meta_title + meta_description. A/B test 2 variants. Evaluate after 14 days.
+
+<span class="ds-key">if</span> avg_position &gt; target_position AND days_since_publish &gt;= <span class="ds-val">90</span>:
+  → <span class="ds-op">ACTION</span>: content depth audit.
+             Run Semrush content gap against top 3 ranking pages.
+             Add missing H2 topics. Increase word count. Improve internal link equity.
+             Add backlink outreach task to queue.
+
+<span class="ds-key">if</span> conversion_rate &lt; <span class="ds-val">0.04</span> (landlord) <span class="ds-key">or</span> &lt; <span class="ds-val">0.02</span> (renter):
+  → <span class="ds-op">ACTION</span>: CTA + form audit.
+             Test micro-form variant (2 fields only above fold).
+             Verify trust signals visible above fold on mobile (375px viewport).
+             Check form → GHL pipeline connection is live.
+
+<span class="ds-key">if</span> session_duration &lt; <span class="ds-val">45</span>:
+  → <span class="ds-op">ACTION</span>: intent audit.
+             Re-read SERP for that query — what does top 3 deliver that this page doesn't?
+             Restructure H1 + first 100 words to match search intent more precisely.</div>
+
+      <!-- ── SUBLAYER 6: FEEDBACK LOOP ── -->
+      <div class="sublayer-header" id="seo-feedback">
+        <span class="sublayer-badge">Layer 6</span>
+        <span class="sublayer-title">Feedback Control Loop — Page State Machine</span>
+        <span class="sublayer-desc">Continuous optimization cycle</span>
+      </div>
+
+      <div class="portfolio-explain" style="display:none;">
+        <p>Publishing is not the end of the process. Every page moves through a series of states — draft, published, indexed, ranking, optimized, decaying — and the system defines what action to take at each state. Pages that start declining get caught early, not months later when the damage is done.</p>
+      </div>
+
+      <div style="margin: 1rem 0;">
+        <div class="state-row">
+          <div class="state-pill draft">DRAFT</div>
+          <div class="state-arrow">→</div>
+          <div class="state-pill pub">PUBLISHED</div>
+          <div class="state-arrow">→</div>
+          <div class="state-pill indexed">INDEXED</div>
+          <div class="state-arrow">→</div>
+          <div class="state-pill ranking">RANKING</div>
+          <div class="state-arrow">→</div>
+          <div class="state-pill optim">OPTIMIZED</div>
+          <div class="state-arrow">→</div>
+          <div class="state-pill decay">DECAYING</div>
+          <div class="state-arrow">↺</div>
+          <div class="state-pill optim">RE-OPT</div>
+        </div>
+        <p style="font-size:11px; color:var(--ink4); margin-top:6px; font-family:var(--mono);">State transitions are tracked per page in Google Sheets. n8n reads state weekly and flags any page in DECAYING for audit queue.</p>
+      </div>
+
+      <div class="loop-diagram">
+<span class="lp-com">// Feedback control loop — runs weekly. Not a manual review. A system state check.</span>
+
+<span class="lp-step">LOOP</span>:
+  <span class="lp-step">1. PUBLISH</span>          → page goes live. State: <span class="lp-cond">"published"</span>
+  <span class="lp-step">2. INDEX_CHECK</span>      → GSC Coverage reviewed. State: <span class="lp-cond">"indexed"</span> | <span class="lp-cond">"crawl_error"</span>
+                         <span class="lp-com">// if crawl_error → robots.txt / canonical / noindex audit immediately</span>
+  <span class="lp-step">3. MEASURE</span>          → pull GSC + GA4 metrics into Sheets. State: <span class="lp-cond">"ranking"</span>
+  <span class="lp-step">4. EVALUATE</span>         → apply threshold logic (Layer 5)
+                         <span class="lp-act">if all metrics in range</span> → State: <span class="lp-cond">"optimized"</span> → monitor only
+                         <span class="lp-act">if any metric below threshold</span> → State: <span class="lp-cond">"needs_work"</span> → create audit task
+  <span class="lp-step">5. DETECT_DROPOFF</span>   → compare this week vs 4 weeks prior
+                         <span class="lp-act">if avg_position increased by &gt; 3 positions</span> → State: <span class="lp-cond">"decaying"</span>
+                         <span class="lp-act">if organic_leads decreased by &gt; 30%</span>      → State: <span class="lp-cond">"decaying"</span>
+  <span class="lp-step">6. APPLY_ADJUSTMENT</span> → based on detected failure mode (Layer 7 mapping):
+                         <span class="lp-act">title/meta fix</span>     → update + re-request indexing
+                         <span class="lp-act">content depth fix</span>  → expand H2s + word count + re-publish
+                         <span class="lp-act">CTA fix</span>            → update form/button + test variant
+                         <span class="lp-act">link equity fix</span>   → add internal links from high-authority pages
+  <span class="lp-step">7. REPUBLISH</span>        → updated page + sitemap ping + index re-request
+  <span class="lp-step">8. RE-EVALUATE</span>      → wait 14 days minimum. Measure delta. Close loop.
+
+<span class="lp-com">// State is written to Google Sheets column: page_state</span>
+<span class="lp-com">// n8n reads Sheets weekly. Any row with state = "decaying" → Slack alert + audit task in GHL</span>
+<span class="lp-com">// This means no page decays silently. Every drop has a timestamp and an audit task.</span></div>
+
+      <!-- ── SUBLAYER 7: CRM INTEGRATION ── -->
+      <div class="sublayer-header" id="seo-crm">
+        <span class="sublayer-badge">Layer 7</span>
+        <span class="sublayer-title">Cross-Wing CRM Integration — SEO to Pipeline</span>
+        <span class="sublayer-desc">Closing the loop between organic traffic and revenue</span>
+      </div>
+
+      <div class="portfolio-explain" style="display:none;">
+        <p>This is where SEO connects to everything else in the system. A lead from organic search enters the CRM with full attribution — which keyword cluster brought them, which wing they are, and what their lead score is. From there, the same email sequences and pipeline logic that applies to all leads applies to them — with the organic source tracked through to conversion.</p>
+      </div>
+
+      <div class="data-struct">
+<span class="ds-com">// SEO → CRM handoff — fires on every form_submit from an organic landing page</span>
+<span class="ds-type">ON_FORM_SUBMIT</span> (source = organic):
+  GHL_CONTACT.tags.add(<span class="ds-str">"Source: organic_seo"</span>)
+  GHL_CONTACT.tags.add(<span class="ds-str">"Wing: [landlord | renter]"</span>)
+  GHL_CONTACT.custom_fields.keyword_cluster = utm_campaign_value
+  GHL_CONTACT.custom_fields.landing_page    = page_url
+
+  → <span class="ds-key">LEAD SCORING FIRES</span> (M3) — same scoring matrix as all other sources
+  → <span class="ds-key">PIPELINE STAGE</span>: <span class="ds-str">"New Lead"</span>
+  → <span class="ds-key">SEQUENCE FIRES</span> (M5) — same D0–D7 sequence, attribution tag carried
+
+<span class="ds-com">// Conditional routing based on engagement</span>
+<span class="ds-type">IF</span> no_conversion AND days_since_entry &gt;= <span class="ds-val">7</span>:
+  → tag: <span class="ds-str">"Sequence: Completed"</span>
+  → enter 90-day re-engagement list (landlord) or 30-day list (renter)
+  → organic source tag preserved — tracks long-cycle attribution
+
+<span class="ds-type">IF</span> email_opens &gt;= <span class="ds-val">3</span> AND no_click AND no_reply:
+  → tag: <span class="ds-str">"High Interest - No Action"</span>
+  → trigger AI personalized follow-up (M11.2) — references landing page topic
+
+<span class="ds-type">IF</span> lead_score &gt;= <span class="ds-val">60</span> (HOT):
+  → Slack alert: <span class="ds-str">"HOT lead from organic — [cluster] — call within 2h"</span>
+  → GHL task created with keyword_cluster context for caller
+
+<span class="ds-com">// Attribution tracking through full funnel</span>
+<span class="ds-type">SEO_ATTRIBUTION_CHAIN</span>:
+  keyword_cluster  → stored on contact record
+  landing_page     → stored on contact record
+  form_submit_date → stored on contact record
+  conversion_date  → stored on contact record (when stage = Closed Won)
+  days_to_convert  → calculated field
+
+<span class="ds-com">// This enables: CPL per cluster, conversion rate per cluster, avg days-to-close per cluster</span>
+<span class="ds-com">// Without this chain, SEO ROI cannot be calculated — it becomes "organic traffic, some conversions"</span>
+<span class="ds-req">⚠ All four fields must be populated for attribution to be meaningful. Audit monthly.</span>
+
+<span class="ds-com">// Flywheel integration — SEO feeds the demand proof engine (M14)</span>
+<span class="ds-type">RENTER_INQUIRY</span> (from organic):
+  → tagged: <span class="ds-str">"Wing: Renter"</span> + <span class="ds-str">"city: [geo_modifier]"</span>
+  → counted in weekly demand proof report (M14)
+  → demand proof email → warm landlord leads in same city
+  → more landlords → more listings → more renter SEO content triggered
+  <span class="ds-com">// Organic renter traffic directly feeds landlord conversion. The wings are not independent.</span></div>
+
+      <!-- ── FAILURE MODES ── -->
+      <div class="sublayer-header" id="seo-failures">
+        <span class="sublayer-badge">Failures</span>
+        <span class="sublayer-title">SEO Failure Mode Registry</span>
+        <span class="sublayer-desc">Signal → root cause → fix</span>
+      </div>
+
+      <div class="portfolio-explain" style="display:none;">
+        <p>A system that can only grow is not a real system. This registry maps observable symptoms to their root causes and to the specific corrective action. When something goes wrong with SEO performance, the diagnosis starts here — not with a gut feeling.</p>
+      </div>
+
+      <div class="fm-grid">
+        <div class="fm-item">
+          <div class="fm-signal">HIGH IMPRESSIONS · LOW CTR</div>
+          <div class="fm-cause">Title or meta description does not match searcher expectation. Page ranks for the query but the snippet doesn't earn the click.</div>
+          <div class="fm-fix">→ rewrite_title_and_meta() · A/B test 2 variants · evaluate after 14 days</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">HIGH CTR · LOW CONVERSION</div>
+          <div class="fm-cause">Page earns the click but doesn't convert. Usually: weak above-fold CTA, trust signals not visible, form friction, or page–intent mismatch.</div>
+          <div class="fm-fix">→ optimize_cta() · test micro-form · verify trust bar above fold · mobile 375px check</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">PUBLISHED · NOT INDEXED</div>
+          <div class="fm-cause">Robots.txt blocking URL, noindex tag present, canonical pointing elsewhere, or Google simply hasn't crawled it yet (&lt;72h).</div>
+          <div class="fm-fix">→ crawl_audit() · check robots.txt + noindex + canonical · re-request indexing via GSC</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">RANKING · POSITION DECLINING</div>
+          <div class="fm-cause">Content freshness decay, competitor published stronger page, lost backlinks, or Google algorithm update affected vertical.</div>
+          <div class="fm-fix">→ content_depth_audit() · Semrush gap analysis vs current rank 1 · update + republish + index re-request</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">HIGH SESSION DURATION · LOW CONVERSION</div>
+          <div class="fm-cause">User is engaged but CTA is not visible or compelling. Content is answering the question so well there's no reason to convert.</div>
+          <div class="fm-fix">→ insert_inline_cta() mid-page · add urgency signal (demand proof number from M14 flywheel)</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">LEADS FROM SEO · NO CRM TAG</div>
+          <div class="fm-cause">UTM params not passing to hidden form fields. GHL workflow not applying Source tag. Attribution chain is broken.</div>
+          <div class="fm-fix">→ test_utm_capture() · submit test form · verify GHL contact fields · fix within 24h or leads are unattributed</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">ORGANIC LEADS PLATEAU AFTER MONTH 2</div>
+          <div class="fm-cause">All easy long-tail terms captured. Remaining clusters are more competitive or lower intent. Content production has stalled.</div>
+          <div class="fm-fix">→ expand_cluster() to adjacent geo (Merseyside → Manchester) · add comparison pages · activate backlink outreach</div>
+        </div>
+        <div class="fm-item">
+          <div class="fm-signal">CITY PAGE RANKS · NATIONAL PAGE DOESN'T</div>
+          <div class="fm-cause">Expected. National generic terms owned by Rightmove / Zoopla. Hyper-local architecture is correct. Do not chase national terms until DA &gt; 30.</div>
+          <div class="fm-fix">→ no action · continue local cluster expansion · monitor DA monthly via Semrush</div>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <strong>State-driven SEO.</strong> Every page in this system has a <code>current_state</code> field tracked in Google Sheets and read weekly by n8n. Any page entering <code>decaying</code> state triggers a Slack alert and a GHL audit task automatically — no manual monitoring required. Performance drops are caught at the signal, not at the revenue impact.
       </div>
 
       <h2 class="section-heading" id="m1-social">M1.2 — Social Content Engine</h2>
