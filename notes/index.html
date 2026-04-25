@@ -1,1 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Notes — Aaron Suarez · Operational Thinking</title>
+<meta name="description" content="Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Notes and articles by Aaron Suarez."/>
+<meta name="author" content="Aaron Suarez"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://suarezaaronroy-sys.github.io/notes/"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03');</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#edf0f6;--surface:#fff;--surface-2:#f4f7fb;
+  --text:#0b1a28;--text-light:#243d56;--muted:#4f6880;--border:#c8d4e4;
+  --blue:#0d5c9e;--blue-2:#0b4d87;--blue-light:#d8ecf8;--blue-faint:#eef6fc;
+  --green:#166b58;--green-light:#d8f0e8;
+  --purple:#5a2d9e;--purple-light:#ede8f8;
+  --teal:#0d8f82;--teal-light:#d0f4ef;
+  --shadow-xs:0 1px 3px rgba(0,18,46,.04);
+  --shadow-sm:0 1px 4px rgba(0,18,46,.05),0 2px 10px rgba(0,18,46,.04);
+  --shadow:0 4px 16px rgba(0,18,46,.08),0 12px 32px rgba(0,18,46,.05);
+  --shadow-lg:0 14px 44px rgba(0,18,46,.12),0 28px 60px rgba(0,18,46,.07);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'DM Serif Display',Georgia,serif;
+  --font-mono:'DM Mono','SF Mono',monospace;
+  --max:1060px;
+  --nb-paper:#faf7f0;--nb-border:#7a6a4f;--nb-ink:#1d2e1a;--nb-dot:#c8bba0;
+}
+.dark{
+  --bg:#0c1720;--surface:#111e2c;--surface-2:#152030;
+  --text:#d8e8f4;--text-light:#b0c8dc;--muted:#6e8fa8;--border:#1e3248;
+  --blue:#5aa8ec;--blue-2:#7cc0ff;--blue-light:#0c1e30;--blue-faint:#0a1822;
+  --green:#3ec49e;--green-light:#0c2820;
+  --purple:#9e7ce8;--purple-light:#1e1430;
+  --teal:#2dc4b4;--teal-light:#0c2828;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.26);
+  --shadow:0 6px 24px rgba(0,0,0,.36);
+  --shadow-lg:0 18px 52px rgba(0,0,0,.50);
+  --nb-paper:#e8e0d0;--nb-ink:#1d2e1a;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;font-size:16px;
+  background-image:radial-gradient(ellipse at 8% 0%,rgba(13,92,158,.055),transparent 38%),radial-gradient(ellipse at 92% 6%,rgba(22,107,88,.04),transparent 32%);}
+a{color:inherit;text-decoration:none}
+.shell{width:min(var(--max),calc(100% - 2.5rem));margin:0 auto}
+/* TOPBAR */
+.topbar-wrap{position:sticky;top:0;z-index:200;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);background:rgba(237,240,246,.9);border-bottom:1px solid rgba(200,212,228,.7);}
+.dark .topbar-wrap{background:rgba(12,23,32,.92);border-bottom-color:rgba(30,50,72,.8)}
+.topbar{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.75rem}
+.brand-mark{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue-light),var(--surface));border:1px solid var(--border);box-shadow:var(--shadow-sm);font-family:var(--font-mono);font-weight:700;color:var(--blue);font-size:.82rem;flex-shrink:0;}
+.brand-copy strong{display:block;font-size:.88rem;line-height:1.2;letter-spacing:-.01em}
+.brand-copy span{display:block;font-size:.66rem;color:var(--muted);font-family:var(--font-mono);margin-top:.1rem}
+.nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
+.nav a,.nav button{border:1px solid var(--border);background:var(--surface);color:var(--text-light);padding:.42rem .8rem;border-radius:999px;font-size:.7rem;font-family:var(--font-mono);cursor:pointer;box-shadow:var(--shadow-xs);transition:.16s ease;text-decoration:none;letter-spacing:.01em;}
+.nav a:hover,.nav button:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.nav .nav-cta{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:600;}
+.nav .nav-cta:hover{background:var(--blue-2);border-color:var(--blue-2);color:#fff}
+.nav .nav-active{border-color:var(--blue);color:var(--blue);background:var(--blue-faint);}
+/* PAGE HEADER */
+.page-header{padding:3rem 0 2rem}
+.page-header .eyebrow{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.58rem;font-family:var(--font-mono);font-size:.65rem;color:var(--blue);text-transform:uppercase;letter-spacing:.12em;padding-left:.52rem;border-left:2px solid var(--blue);}
+.page-header h1{font-family:var(--font-serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.06;letter-spacing:-.03em;margin-bottom:.72rem;color:var(--text);}
+.page-header p{color:var(--text-light);max-width:60ch;font-size:.95rem;line-height:1.78}
+/* NOTEBOOK */
+.nb-wrap{display:grid;grid-template-columns:260px 1fr;gap:0;border:2px solid var(--nb-border);border-radius:20px;overflow:hidden;background:var(--nb-paper);background-image:radial-gradient(circle,var(--nb-dot) 1px,transparent 1px);background-size:22px 22px;box-shadow:var(--shadow-lg);min-height:680px;margin-bottom:3rem;}
+.nb-sidebar{background:rgba(210,195,170,.28);border-right:2px solid var(--nb-border);display:flex;flex-direction:column;overflow:hidden;}
+.nb-sidebar-head{background:#e8e0cc;border-bottom:2px solid var(--nb-border);padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;}
+.nb-sidebar-title{font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--nb-ink);}
+.nb-search{padding:.6rem .85rem;border-bottom:1px solid rgba(122,106,79,.28);background:rgba(210,195,170,.22);}
+.nb-search input{width:100%;background:rgba(255,255,255,.6);border:1px solid rgba(122,106,79,.38);border-radius:20px;padding:.32rem .75rem;font-family:var(--font-mono);font-size:.68rem;color:var(--nb-ink);outline:none;}
+.nb-search input:focus{background:white;border-color:var(--nb-border)}
+.nb-search input::placeholder{color:#a08060}
+.nb-cats{display:flex;flex-wrap:wrap;gap:3px;padding:.55rem .75rem;border-bottom:1px solid rgba(122,106,79,.18);}
+.nb-cat{font-size:.6rem;font-family:var(--font-mono);padding:2px 7px;border:1px solid var(--nb-border);border-radius:20px;cursor:pointer;background:transparent;color:var(--nb-ink);transition:.1s;}
+.nb-cat.active,.nb-cat:hover{background:var(--nb-border);color:#faf7f0}
+.nb-list{flex:1;overflow-y:auto;padding:.5rem;display:flex;flex-direction:column;gap:2px;}
+.nb-count{font-family:var(--font-mono);font-size:.58rem;color:#8a7a60;padding:.3rem .75rem;border-bottom:1px solid rgba(122,106,79,.12);}
+.nb-entry{padding:.52rem .6rem;border-radius:7px;cursor:pointer;transition:background .1s;border-left:3px solid transparent;}
+.nb-entry:hover{background:rgba(120,100,70,.12);border-left-color:var(--nb-border)}
+.nb-entry.active{background:rgba(120,100,70,.2);border-left-color:var(--nb-ink)}
+.nb-entry-title{font-size:.73rem;font-weight:600;color:var(--nb-ink);margin-bottom:2px;line-height:1.3;font-family:'DM Serif Display',serif}
+.nb-entry-meta{display:flex;align-items:center;gap:.3rem;font-size:.57rem;font-family:var(--font-mono);color:#8a7a60}
+.nb-dot-cat{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.nb-content{flex:1;overflow-y:auto;display:flex;flex-direction:column;background:rgba(250,247,240,.96);scrollbar-width:thin;scrollbar-color:#c8b898 transparent;position:relative;}
+.nb-progress{position:sticky;top:0;left:0;height:3px;background:var(--nb-border);transform-origin:left;transform:scaleX(0);transition:transform .05s linear;z-index:10;flex-shrink:0;}
+.nb-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#a08060;font-family:var(--font-mono);font-size:.72rem;gap:.5rem;padding:2rem;text-align:center;}
+.nb-empty-icon{font-size:2rem;opacity:.35}
+.nb-article{padding:2rem 2.4rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+.nba-cat-pill{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--font-mono);font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:2px 9px;border-radius:20px;margin-bottom:.72rem;border:1px solid;}
+.nba-title{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--nb-ink);line-height:1.18;margin-bottom:.72rem}
+.nba-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem;padding-bottom:1.1rem;border-bottom:2px dashed rgba(122,106,79,.38);margin-bottom:1.25rem;}
+.nba-meta-item{font-family:var(--font-mono);font-size:.62rem;color:#8a7a60}
+.nba-share{display:inline-flex;align-items:center;gap:.28rem;font-family:var(--font-mono);font-size:.58rem;color:#8a7a60;background:rgba(255,255,255,.5);border:1px solid rgba(122,106,79,.32);padding:2px 8px;border-radius:20px;cursor:pointer;margin-left:auto;transition:.12s;}
+.nba-share:hover{background:white;border-color:var(--nb-border);color:var(--nb-ink)}
+.nba-body{font-family:'DM Sans',sans-serif;font-size:.9rem;line-height:1.82;color:var(--nb-ink);flex:1}
+.nba-body p{margin-bottom:1rem}
+.nba-body h2{font-family:'DM Serif Display',serif;font-size:1.28rem;color:var(--nb-ink);margin:1.65rem 0 .5rem;border-bottom:1px solid rgba(122,106,79,.22);padding-bottom:.26rem}
+.nba-body h3{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--nb-ink);margin:1.25rem 0 .42rem}
+.nba-body strong{font-weight:700;color:#1a0e08}
+.nba-body em{font-style:italic}
+.nba-body hr{border:none;border-top:2px dashed rgba(122,106,79,.32);margin:1.65rem 0}
+.nba-body blockquote{border-left:4px solid var(--nb-border);background:rgba(122,106,79,.07);padding:.72rem 1rem;margin:1rem 0;border-radius:0 8px 8px 0;font-style:italic;color:#4a3a28;font-size:.88rem}
+.nba-body ul,.nba-body ol{padding-left:1.3rem;margin:.42rem 0 .9rem}
+.nba-body li{margin-bottom:.36rem;line-height:1.6}
+.nba-body ul li::marker{color:var(--nb-border)}
+.nba-body a{color:#0d5c9e;text-decoration:underline;text-underline-offset:2px;word-break:break-all}
+.nba-body table{width:100%;border-collapse:collapse;margin:1.05rem 0;background:rgba(255,255,255,.68);border:1px solid rgba(122,106,79,.28);border-radius:9px;overflow:hidden;font-size:.84rem}
+.nba-body th{background:rgba(122,106,79,.13);color:var(--nb-ink);font-family:var(--font-mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.05em;padding:.58rem .82rem;text-align:left}
+.nba-body td{padding:.58rem .82rem;border-bottom:1px solid rgba(122,106,79,.13);vertical-align:top}
+.nba-body tr:last-child td{border-bottom:none}
+.nba-body code{font-family:var(--font-mono);font-size:.8em;background:rgba(122,106,79,.1);padding:2px 4px;border-radius:4px;color:#4a2e10}
+.nba-cta{background:linear-gradient(135deg,rgba(13,92,158,.06),rgba(22,107,88,.06));border:1px solid rgba(122,106,79,.22);border-radius:13px;padding:1rem 1.15rem;margin:1.3rem 0}
+.nba-cta p{font-size:.84rem;color:#2a3d52;margin-bottom:.58rem;line-height:1.55}
+.nba-cta strong{color:#0c1b2a}
+.nba-cta a{display:inline-flex;align-items:center;gap:.36rem;background:var(--blue);color:#fff;border:none;padding:.58rem 1.05rem;border-radius:999px;font-size:.72rem;font-family:var(--font-mono);font-weight:600;text-decoration:none;cursor:pointer;transition:.14s}
+.nba-cta a:hover{background:var(--blue-2);transform:translateY(-1px)}
+.nba-grimoire-launch{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.05rem 1.25rem;border-radius:14px;background:linear-gradient(135deg,#1a0830,#2d1060);border:1px solid #b89af044;margin:1.3rem 0;cursor:pointer;transition:.16s;text-decoration:none}
+.nba-grimoire-launch:hover{background:linear-gradient(135deg,#230a42,#3d1880);border-color:#b89af088;transform:translateY(-2px);box-shadow:0 8px 28px rgba(50,10,100,.35)}
+.nba-grimoire-launch-left strong{display:block;font-family:'DM Serif Display',serif;font-size:.98rem;color:#e8d8ff;margin-bottom:.16rem}
+.nba-grimoire-launch-left span{font-family:var(--font-mono);font-size:.63rem;color:#b89af0bb}
+.nba-grimoire-launch-right{font-size:1.3rem;color:#b89af0;flex-shrink:0}
+.nba-dualwing-launch{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.05rem 1.25rem;border-radius:14px;background:linear-gradient(135deg,#071f1c,#0d3d36);border:1px solid #4dc9a744;margin:1.3rem 0;cursor:pointer;transition:.16s;text-decoration:none}
+.nba-dualwing-launch:hover{background:linear-gradient(135deg,#0a2c28,#145c50);border-color:#4dc9a788;transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,80,70,.35)}
+.nba-dualwing-launch-left strong{display:block;font-family:'DM Serif Display',serif;font-size:.98rem;color:#c8f5ed;margin-bottom:.16rem}
+.nba-dualwing-launch-left span{font-family:var(--font-mono);font-size:.63rem;color:#4dc9a7bb}
+.nba-dualwing-launch-right{font-size:1.3rem;color:#4dc9a7;flex-shrink:0}
+.nba-nav{display:flex;gap:.65rem;margin-top:1.65rem;padding-top:1.05rem;border-top:2px dashed rgba(122,106,79,.28)}
+.nba-nav-btn{flex:1;background:rgba(255,255,255,.6);border:1px solid rgba(122,106,79,.28);border-radius:10px;padding:.62rem .82rem;cursor:pointer;transition:.12s;text-align:left;font-family:var(--font-sans)}
+.nba-nav-btn:hover{background:white;border-color:var(--nb-border);transform:translateY(-1px)}
+.nba-nav-btn.next{text-align:right}
+.nba-nav-label{font-family:var(--font-mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;color:#8a7a60;margin-bottom:2px}
+.nba-nav-title{font-family:'DM Serif Display',serif;font-size:.78rem;color:var(--nb-ink);line-height:1.3}
+.nba-related{margin-top:1.3rem;padding-top:1.05rem;border-top:1px dashed rgba(122,106,79,.22)}
+.nba-related-label{font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:#8a7a60;margin-bottom:.62rem}
+.nba-related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.42rem}
+.nba-related-item{background:rgba(255,255,255,.52);border:1px solid rgba(122,106,79,.22);border-radius:9px;padding:.55rem .7rem;cursor:pointer;transition:.12s}
+.nba-related-item:hover{background:white;border-color:var(--nb-border)}
+.nba-related-title{font-family:'DM Serif Display',serif;font-size:.74rem;color:var(--nb-ink);line-height:1.3;margin-bottom:2px}
+.nba-related-meta{font-family:var(--font-mono);font-size:.56rem;color:#8a7a60}
+.nb-no-results{padding:.85rem .5rem;text-align:center;font-family:var(--font-mono);font-size:.66rem;color:#a08060;font-style:italic}
+/* FOOTER */
+.footer{padding:2rem 0 3rem;color:var(--muted);font-size:.72rem}
+.footer-line{border-top:1px solid var(--border);padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--font-mono);}
+.footer-link{color:var(--muted);transition:color .14s}.footer-link:hover{color:var(--blue)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--text);color:var(--bg);font-family:var(--font-mono);font-size:.7rem;padding:.4rem 1rem;border-radius:40px;z-index:4000;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap}
+@media(max-width:860px){
+  .nb-wrap{grid-template-columns:1fr;min-height:auto}
+  .nb-sidebar{border-right:none;border-bottom:2px solid var(--nb-border);max-height:220px}
+  .nba-related-grid{grid-template-columns:1fr}
+  .nb-article{padding:1.25rem}
+  .topbar{flex-direction:column;align-items:start;padding:.7rem 0}
+  .nav{width:100%;justify-content:flex-start}
+}
+</style>
+</head>
+<body>
 
+<div class="topbar-wrap">
+  <div class="topbar shell">
+    <div class="brand">
+      <div class="brand-mark">AS</div>
+      <div class="brand-copy">
+        <strong>Aaron Suarez</strong>
+        <span>notes · field logs · operational thinking</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="../">← Portfolio</a>
+      <a href="../#build">Build</a>
+      <a href="./" class="nav-active">Notes</a>
+      <a href="../#about">About</a>
+      <button id="themeToggle" type="button">🌓 theme</button>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" class="nav-cta">Fix My Systems →</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+<div class="page-header shell">
+  <div class="eyebrow">Notes</div>
+  <h1>Operational thinking,<br>written down.</h1>
+  <p>Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Select any note to read.</p>
+</div>
+
+<div class="shell">
+  <div class="nb-wrap">
+    <!-- SIDEBAR -->
+    <div class="nb-sidebar">
+      <div class="nb-sidebar-head">
+        <span class="nb-sidebar-title">📔 Field Notebook</span>
+      </div>
+      <div class="nb-search">
+        <input type="text" id="nbSearch" placeholder="Search notes…" aria-label="Search notes"/>
+      </div>
+      <div class="nb-cats" id="nbCats"></div>
+      <div class="nb-count" id="nbCount"></div>
+      <div class="nb-list" id="nbList"></div>
+    </div>
+    <!-- CONTENT -->
+    <div class="nb-content" id="nbContent">
+      <div class="nb-progress" id="nbProgress"></div>
+      <div class="nb-empty" id="nbEmpty">
+        <div class="nb-empty-icon">📔</div>
+        <div>Select a note from the left to read</div>
+        <div style="font-size:.62rem;margin-top:.3rem;opacity:.7">11 notes · use search or categories to filter</div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="footer shell">
+  <div class="footer-line">
+    <div>© <span id="yr"></span> Aaron Suarez · <a href="../" style="color:var(--blue)">portfolio →</a></div>
+    <div style="display:flex;gap:1.3rem">
+      <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
+      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="footer-link" style="font-weight:600">ASMC ↗</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+document.getElementById('yr').textContent = new Date().getFullYear();
+const root = document.documentElement;
+if(localStorage.getItem('theme')==='dark') root.classList.add('dark');
+document.getElementById('themeToggle')?.addEventListener('click',()=>{
+  root.classList.toggle('dark');
+  localStorage.setItem('theme', root.classList.contains('dark')?'dark':'light');
+});
+
+const GRIMOIRE_FILE = '../Grimoire-v8_1.html';
+const DUAL_WING_FILE = '../dual-wing-grimoire-v1.html';
+
+const CAT_CFG={
+  'systems':{color:'#0d5c9e',bg:'#d8ecf8',label:'⚙️ Systems'},
+  'operations':{color:'#166b58',bg:'#d8f0e8',label:'🔧 Operations'},
+  'crm':{color:'#5a2d9e',bg:'#ede8f8',label:'📊 CRM'},
+  'founder-notes':{color:'#9a4810',bg:'#faebd4',label:'🚀 Founder Notes'},
+  'field-notes':{color:'#3a7858',bg:'#e0f0e8',label:'📋 Field Notes'},
+  'technical-notes':{color:'#1c4a88',bg:'#dce8f5',label:'🔬 Technical'},
+  'marketing':{color:'#0d8f82',bg:'#d0f4ef',label:'📈 Marketing'}
+};
+function cs(cat){return CAT_CFG[cat]||{color:'#4f6880',bg:'#eef1f6',label:cat};}
+function rt(txt){return Math.max(1,Math.round(txt.trim().split(/\s+/).length/200));}
+function wc(txt){return txt.trim().split(/\s+/).length;}
+function slug(t){return t.toLowerCase().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
+
+const NOTES=[
+{title:'Stop Training People. Start Building Systems That Set Them Free.',date:'Mar 2026',category:'systems',body:`Learning is hard. Not because people aren't smart — but because we keep making it harder than it needs to be.
+
+> 💡 *"The gap between 'what we trained on' and 'what actually happens on Monday morning' tells you everything about your system."*
+
+I've spent years inside operations, CRM rollouts, and support environments. Across every environment, I kept watching the same thing unfold: something breaks down, leadership responds by adding more training, and it rarely fixes the actual problem.
+
+## The Thing That Kept Bothering Me
+
+**Capable people were constantly getting stuck on simple things.** Not because they didn't understand the work. Because the environment around the work gave them nowhere to turn except up.
+
+Every edge case, every exception, every "here's how we actually handle that" lived in someone's head — usually a senior person, usually already stretched thin. So the default became: *"I need my supervisor to unblock this."*
+
+This wasn't a learning failure. It was a **systems failure.** We were asking people to navigate without a compass and then blaming them for getting lost.
+
+## What Over-Training Actually Creates
+
+When we over-train, we don't build confidence — we build dependency.
+
+| Training Approach | Outcome |
+|---|---|
+| Endless documentation | "I'll just ask Sarah" |
+| Complex SOPs | "Where do I even start?" |
+| More meetings | "I'll wait for confirmation" |
+| **Systems that guide** | **Autonomous execution** |
+
+Think about handing someone a map of every back road in a city versus handing them a compass and teaching them to navigate. One creates someone who can follow instructions. The other creates someone who can get anywhere — including places you never mapped.
+
+## What Actually Works
+
+The teams operating at the highest level didn't solve this by training harder. They built better systems around the work itself:
+
+- **Shorter, sharper onboarding.** New people get the essentials — enough to start moving, not every edge case front-loaded into week one.
+- **Systems as guides, not gatekeepers.** Documentation and decision trees that surface answers instead of routing everything back up the chain.
+- **Frameworks over permission.** Someone who understands *why* a process exists can handle cases you never explicitly trained for.
+- **Autonomy built in from day one.** Not earned after years of tenure.
+
+## The Question Worth Asking
+
+Look at your training and onboarding right now. Ask yourself:
+
+> Is this building **navigators** — or creating **dependency**?
+
+If people keep coming back with questions you've already answered before, it's probably not their memory. It's the **system** — and systems can be redesigned.`},
+{title:"The Escalation Tax: What It's Costing You Every Day",date:'Mar 2026',category:'operations',body:`There's a cost every team pays that almost no one measures. Not in dashboards. Not in reports. Not in any budget line.
+
+It shows up as a senior person constantly interrupted. A team member who can't decide without checking first. A founder still answering the same questions from six months ago.
+
+I call it the **escalation tax.**
+
+## What It Looks Like
+
+Someone hits a situation they haven't encountered before. Nothing in the documentation covers it. So they do the rational thing: they ask. The ask goes up the chain. The person at the top figures it out, gives an answer, moves on. But they don't write it down. Three weeks later, someone else hits the same situation and the cycle repeats.
+
+## The Hidden Multiplier
+
+What most managers don't account for is the **switching cost.** Every time someone interrupts a senior person, that person doesn't just spend five minutes answering. They spend five minutes **re-entering the context** of whatever they were doing.
+
+| Interruptions/Day | Time Lost (5 min) | With Switching Cost (20 min) |
+|---|---|---|
+| 5 | 25 minutes | 1.5 hours |
+| 10 | 50 minutes | 3+ hours |
+| 20 | 1.5 hours | 6+ hours |
+
+An operation with ten escalations per day isn't losing fifty minutes. It might be losing **three or four hours of focused, senior work** — every single day.
+
+## How to Cut It
+
+The fix isn't telling people to stop asking. The fix is **building the infrastructure that removes the need to ask.**
+
+| Solution | Impact |
+|---|---|
+| Decision trees for top 20 edge cases | 80% of questions answered |
+| Searchable, current knowledge base | Self-service resolution |
+| Clear ownership documented | No guessing who handles what |
+| Documented escalation paths | Structured exceptions |
+
+🎯 **The goal:** By the time something reaches a senior person, it should genuinely require their judgment — not their memory.`},
+{title:"Handoffs Are Where Work Goes to Die",date:'Feb 2026',category:'operations',body:`Most operational failures don't happen inside a task. They happen **between tasks.**
+
+The work is finished on one end. It moves to the next person. Something gets lost in the gap — context, status, an edge case that was handled but never communicated.
+
+The next person either starts from scratch, makes a wrong assumption, or pauses the whole thing to ask.
+
+**Handoffs are where work goes to die.**
+
+## Why This Happens
+
+The person passing the work knows everything about it. They lived it. So they hand over the artifact — the file, the record, the update — **without handing over the thinking that shaped it.**
+
+The receiving person gets the output but not the reasoning. They're left to reconstruct context that seemed obvious at the time.
+
+## The Standard Is Low
+
+Most handoffs are just: *"Done. Passing to you."* That's not a handoff. That's a hand-grenade with the pin pulled.
+
+A useful handoff answers three questions without the receiver having to ask:
+
+| Question | What It Prevents |
+|---|---|
+| What is this? | Context loss |
+| Where does it stand? | Status confusion |
+| What does next person need to know? | Missing edge cases |
+
+## Building Handoff Discipline
+
+| Element | Example |
+|---|---|
+| Status at transfer | "Quote sent, awaiting client response" |
+| Key decisions made | "Offered 10% discount for annual commitment" |
+| Open items with ownership | "Legal review pending — Sarah owns" |
+| Non-obvious context | "Client mentioned competitor pricing" |
+
+Once this becomes standard, work stops stalling, follow-up questions drop, receivers can actually start working.
+
+🎯 **The goal:** Continuity without a conversation.`},
+{title:"CRM Isn't Just a Database. It's an Operating System.",date:'Jan 2026',category:'crm',body:`Most teams use their CRM as a filing cabinet. They put records in. They pull records out. They report on what's there.
+
+That's **not** what a CRM is for.
+
+A well-architected CRM is an **operating system** for how your team works. It tells people what to do next, tracks what's been done, surfaces what's slipping, and makes accountability visible without someone having to chase it.
+
+## What a Filing Cabinet CRM Looks Like
+
+| Symptom | Reality |
+|---|---|
+| Contacts with no clear stage | No pipeline logic |
+| Status fields mean different things | Inconsistent execution |
+| Notes written for the writer | Not useful to next person |
+| Reports show what happened | Not why or what to do |
+
+## What an Operating System CRM Looks Like
+
+| Feature | Benefit |
+|---|---|
+| Every record has clear status | Maps to real state of work |
+| Stages trigger tasks | Right action at right moment |
+| Consistent field usage | Trustworthy data |
+| Next steps are visible | Anyone can pick it up |
+
+## The Gap
+
+Getting from filing cabinet to operating system requires someone to make decisions about how your team actually works and then **encode those decisions into the CRM.**
+
+That's not a software configuration problem. It's a **workflow design problem** that happens to be solved with software. Most teams skip this step. They install the platform, set up some fields, and wonder why adoption is low and data is messy.
+
+📌 **The structure has to come first.**`},
+{title:"What Founders Actually Need From an Ops Person",date:'Dec 2025',category:'founder-notes',body:`I've worked with founders at different stages, and the needs are surprisingly consistent regardless of company size.
+
+**Not a task executor.** Anyone can execute tasks. What founders need is someone who can look at a vague direction and figure out what it actually means to implement it.
+
+> 🎯 "We need to be more organized" is not a task.
+
+Turning that into a system — figuring out where the friction is, what needs to be documented, what should be automated, what needs a human decision point — **that's the actual work.**
+
+## The Real Value
+
+| Founder's Role | Ops Person's Role |
+|---|---|
+| Strategy | Translate strategy to execution |
+| Relationships | Build operational infrastructure |
+| Product | Remove operational drag |
+| Vision | Make vision executable |
+
+The founder's job is to think at the level of strategy, relationship, and product. Every hour they spend routing an operational question, explaining a process for the third time, or re-doing something because it wasn't clear — **that's an hour they're not doing the thing only they can do.**
+
+An ops person who understands this doesn't wait to be told what to do. They're watching for the drag. They're asking: Where is this slowing down? What's not captured? What would happen if I wasn't here?
+
+## What to Look For
+
+| Question | What It Reveals |
+|---|---|
+| Why was this process built this way? | Understanding of tradeoffs |
+| What would break it? | Systems thinking |
+| What are the downstream effects? | Causal reasoning |
+
+**Process thinking is the actual skill.** The tools are just how it gets applied.`},
+{title:'GHL 101: Why I Published Over a Year of Notes for Free',date:'Mar 2026',category:'field-notes',body:`GoHighLevel has a problem most people in the ecosystem quietly know about.
+
+Almost everything useful lives behind a paywall. A paid course. A YouTube channel someone is monetizing. A Facebook group you had to beg to join.
+
+The platform itself is powerful. The knowledge around it is artificially scarce.
+
+## The Honest Backstory
+
+I spent over a year learning GHL the hard way. Broken workflows. Busted automations. Late-night debugging on client accounts. I kept notes the whole time — not to publish, just because I think in systems and systems need documentation to survive.
+
+At some point the notes crossed a threshold. They stopped being personal reminders and started being a reference.
+
+So I organized everything, updated it to 2026 — Voice AI, Agent Studio, WhatsApp native, the new CRM UI, AI Employee pricing — cross-referenced 29 official GHL support articles, and published the whole thing for free.
+
+No paywall. No email gate. No course upsell.
+
+> *"GHL learning is gate-kept. Almost everything useful is behind a paywall. This is my attempt to fix a small piece of that."*
+
+**Access it here:** [GHL 101: Speedrun Training Manual — 2026 Edition](https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing)
+
+## Why This Matters Beyond GHL
+
+Building this manual is a direct expression of how I work. I find operational chaos and build the structure that prevents it from recurring. I document systems so they survive without me in the room.
+
+The GHL manual is a clean artifact of those skills. It wasn't assigned. Nobody paid me to write it. I built it because scattered, paywalled, outdated knowledge is an operational problem — and operational problems are what I fix.`},
+{title:'How to Design a Workflow Automation That Actually Works',date:'Mar 2026',category:'technical-notes',body:`Most workflow automations fail because they are built around tools instead of process logic.
+
+> ⚠️ **Automations do not fix broken processes. They just make broken processes run faster.**
+
+## The Mental Model
+
+Think of automation like plumbing. You do not start by buying pipes. You start by understanding where the water needs to go.
+
+| Component | What it does | Example |
+|---|---|---|
+| **Trigger** | Starts the flow | Form submission, schedule, webhook |
+| **Filter** | Routes the flow | Only if priority = urgent |
+| **Action** | Defines what happens next | Create record, send email, update sheet |
+
+**The right order:** Map the manual process first → identify bottlenecks → design backward from desired end result → add filters as guardrails.
+
+## Build in Layers, Not Monoliths
+
+In a layered system, one failure affects one layer — not the entire workflow.
+
+| Layer | Responsibility |
+|---|---|
+| **Layer 1** | Form → validate → queue |
+| **Layer 2** | Queue → update CRM → log |
+| **Layer 3** | Daily batch → invoices → summaries |
+| **Layer 4** | Follow-up scheduler → reminders |
+
+## The Common Gotchas
+
+| Problem | Fix |
+|---|---|
+| Silent Failure | Add failure alerts, health checks, logs |
+| Data Drift | Review critical automations quarterly |
+| One More Step Trap | Ask: "Should this be separate?" |
+| Human Bypass | Fix the design, not the people |`},
+{title:'How to Build a Knowledge Base People Actually Use',date:'Mar 2026',category:'technical-notes',body:`A knowledge base is not valuable because it exists. It is valuable because, at the exact moment someone is stuck, it helps them move.
+
+> 🔑 **If your team keeps asking experienced people instead of using the KB, the problem is usually design, not discipline.**
+
+## The Actual Standard
+
+| Question | Why It Matters |
+|---|---|
+| Can the right person find it fast? | Speed |
+| Can they understand it without translation? | Clarity |
+| Can they act on it without guessing? | Confidence |
+| Can they tell when to escalate? | Safety |
+
+## The Taxonomy Problem
+
+A weak knowledge base uses vague categories: General, Support, Admin, Operations, Miscellaneous.
+
+A stronger knowledge base uses categories that mirror how work actually breaks: Funding, Billing, Risk, Descriptor, Deployment, Underwriting, Terminal/POS, CRM Process, Escalations.
+
+📌 **Good taxonomy follows operational friction, not org chart politeness.**
+
+## Why Teams Stop Trusting the KB
+
+Trust usually breaks because of outdated guidance, conflicting articles, or the brutal one: **senior staff bypassing the system.** If senior people keep answering repeat questions in chat instead of reinforcing the documented path, the team learns:
+
+> "The real answer probably isn't in the knowledge base."
+
+Once that happens, the KB turns into a museum. A strong knowledge base is not clerical work. It is **operational architecture.**`},
+{title:"The Difference Between a Process and a System",date:'Jan 2026',category:'systems',body:`People use these words interchangeably. They're **not the same thing** — and the distinction matters if you're trying to build something that scales.
+
+| Concept | Definition |
+|---|---|
+| **Process** | A sequence of steps |
+| **System** | An environment where the process happens reliably, even when you're not watching |
+
+## A Process Without a System
+
+You write an SOP. You train the team on it. Everyone nods. For a few weeks, things run the way you designed them. Then someone leaves, or a new person joins, or the workload spikes.
+
+And the process quietly degrades — steps get skipped, shortcuts become the default, the SOP sits in a folder no one opens.
+
+The process existed. The **system** didn't.
+
+## What Makes It a System
+
+| Process | System |
+|---|---|
+| Tells people what to do | Makes it harder to do it wrong |
+| Depends on memory | Built-in accountability |
+| Requires enforcement | Self-correcting |
+| Breaks under pressure | Adapts to conditions |
+
+## The Practical Test
+
+> If you removed yourself from the operation for two weeks with no warning, **what would break?**
+
+If the answer is "a lot" — the knowledge, judgment, and coordination are still sitting in your head instead of being encoded into the environment itself.
+
+Pick the **one thing that breaks most often.** Build it until it runs without you. Then move to the next one.`},
+{title:'The Grimoire v8.1: A Full CRM Automation System, Documented.',date:'Apr 2026',category:'technical-notes',grimoire:true,body:`The Grimoire is the most complete artifact I've built — a full operational reference for a CRM automation system running on GoHighLevel, Zapier, Calendly, Bland AI, PandaDoc, Stripe, Google Sheets, and Looker Studio. It went through eight major versions. This is v8.1, QA-verified.
+
+## What it is
+
+A single-file HTML application. No server. No build step. Open it and everything is there: the full system map, every automation documented with trigger logic and loop guards, a 76-field CRM dictionary, legal compliance notes (TCPA, CAN-SPAM), permit reality notes for construction operations, and a full phase breakdown from initial lead capture through post-close.
+
+## Why it exists
+
+Every system I build eventually needs to outlive the person who built it. Documentation that lives in someone's head is a liability. Documentation that lives in a searchable, offline-capable, single HTML file is a system asset.
+
+## What's inside
+
+| Section | Contents |
+|---|---|
+| System Overview | Full stack map, platform roles, integration architecture |
+| CRM Field Dictionary | 76 fields across 7 groups, with data type and purpose |
+| Automation Index | 24 Zaps with trigger logic, filters, loop guards |
+| Bland AI Flows | Voice AI call logic, prerequisites, failure handling |
+| PandaDoc + Stripe | Contract and payment automation sequences |
+| Legal / Compliance | TCPA, CAN-SPAM, consent capture, record retention |
+| Permit Reality Notes | Construction-specific compliance context |
+| Automation Alternatives | Make/Integromat, n8n, ActivePieces — decision matrix |
+
+## The QA corrections in v8.1
+
+Earlier versions had field count errors, incorrect Zapier plan requirements listed, and missing loop-guard documentation on Zaps 10 and 13. v8.1 fixed all of these: field count corrected to 76 across 7 groups, plan tiers verified, loop guards documented inline, Bland AI prerequisite warnings added.`},
+{title:'Dual Wing Rental Engine — Grimoire v4: A Full Marketing System, Documented.',date:'Apr 2026',category:'marketing',dualwing:true,body:`The Dual Wing Grimoire v4 is a complete marketing and CRM system built for rental businesses that need to generate both landlord supply and renter demand simultaneously. Not two separate campaigns running in parallel. One flywheel where each wing feeds the other.
+
+> *"The wings are not independent. They are a flywheel."*
+
+## What the problem was
+
+Most rental marketing systems are built for one audience. The problem with a dual-sided rental business is that supply and demand are interdependent — you can't convert landlords without proof of renter demand, and you can't convert renters without enough listings. The system had to solve both at once.
+
+## Real campaign results
+
+| Metric | Result | Industry avg |
+|---|---|---|
+| Avg open rate | 34.2% | 21–28% |
+| Click-through rate | 6.8% | 3–5% |
+| Consultations booked | 18 | — |
+| Consultation→agreement | 41% | — |
+
+List size: 340 contacts. City-specific subject lines outperformed generic ones by 11 percentage points.
+
+## What the flywheel looks like
+
+| Step | What happens |
+|---|---|
+| Landlord closes | Property listed on platforms |
+| New listing | n8n triggers Claude API → listing-specific social content |
+| Content distributed | Renter inquiries increase |
+| Renter inquiries | Tagged by city in GHL → weekly demand proof report |
+| Demand proof email | Sent to warm landlord leads in same city |
+| More landlords convert | More listings → back to step 1 |
+
+## What's inside v4
+
+| Module | Contents |
+|---|---|
+| M1 — Acquisition | SEO subsystem (7 layers), social content engine, listing platforms |
+| M2–M4 | Entry & Capture, Lead Qualification, CRM Core (2 pipelines, 30+ fields) |
+| M5 | Automation Engine — Day 0–7 sequences, behavioral triggers |
+| Email Campaign Engine | Campaign types, A/B testing, CRM integration, daily ops |
+| M6–M9 | Conversion, fulfillment, retention, referral |
+| M10–M11 | Retargeting, n8n + Claude API content machine |
+| M12–M15 | Reporting, finance tracker, flywheel loop, monitoring |
+
+~$168/mo bootstrapped stack for first 90 days. Built for UK (GDPR, PECR, ICO) and US (CAN-SPAM, TCPA, CCPA) simultaneously.`},
+];
+
+const NB_CATS=['all','systems','operations','crm','founder-notes','field-notes','technical-notes','marketing'];
+let nbCat='all', nbSearch='', nbActive=null;
+
+function filtered(){
+  return NOTES.filter(n=>{
+    const mc=nbCat==='all'||n.category===nbCat;
+    const q=nbSearch.toLowerCase();
+    return mc&&(!q||n.title.toLowerCase().includes(q)||n.body.toLowerCase().includes(q));
+  });
+}
+
+function renderSidebar(){
+  document.getElementById('nbCats').innerHTML=NB_CATS.map(c=>`<button class="nb-cat${nbCat===c?' active':''}" data-cat="${c}">${c==='all'?'all':c.replace(/-/g,' ')}</button>`).join('');
+  const f=filtered();
+  document.getElementById('nbCount').textContent=f.length+' note'+(f.length!==1?'s':'');
+  document.getElementById('nbList').innerHTML=f.length?f.map(n=>{
+    const idx=NOTES.indexOf(n);const c=cs(n.category);
+    return `<div class="nb-entry${nbActive===idx?' active':''}" data-idx="${idx}" tabindex="0"><div class="nb-entry-title">${n.title}</div><div class="nb-entry-meta"><span class="nb-dot-cat" style="background:${c.color}"></span><span>${n.date}</span><span>·</span><span>${rt(n.body)} min</span></div></div>`;
+  }).join(''):'<div class="nb-no-results">No notes found</div>';
+}
+
+function inlineFmt(txt){
+  return txt.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\n]+)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+}
+
+function parseBody(body){
+  const lines=body.replace(/\r\n/g,'\n').trim().split('\n');
+  const out=[];let i=0;
+  while(i<lines.length){
+    const l=lines[i];
+    if(!l.trim()){i++;continue;}
+    if(/^---+$/.test(l.trim())){out.push('<hr>');i++;continue;}
+    if(/^##\s/.test(l)){out.push(`<h2>${inlineFmt(l.replace(/^##\s+/,'').trim())}</h2>`);i++;continue;}
+    if(/^###\s/.test(l)){out.push(`<h3>${inlineFmt(l.replace(/^###\s+/,'').trim())}</h3>`);i++;continue;}
+    if(/^>\s/.test(l)){const bq=[];while(i<lines.length&&/^>\s/.test(lines[i])){bq.push(lines[i].replace(/^>\s?/,''));i++;}out.push(`<blockquote>${inlineFmt(bq.join(' '))}</blockquote>`);continue;}
+    if(/^[-•*]\s/.test(l.trim())){const items=[];while(i<lines.length&&/^[-•*]\s/.test(lines[i].trim())){items.push(lines[i].trim().replace(/^[-•*]\s/,''));i++;}out.push('<ul>'+items.map(it=>`<li>${inlineFmt(it)}</li>`).join('')+'</ul>');continue;}
+    if(/^\|/.test(l.trim())){
+      const tl=[];while(i<lines.length&&/^\|/.test(lines[i].trim())){tl.push(lines[i]);i++;}
+      let h='',b='',first=true;
+      for(const tline of tl){
+        if(/^\|[\s\-:|]+\|$/.test(tline.trim()))continue;
+        const cells=tline.split('|').filter((_,ci,arr)=>ci>0&&ci<arr.length-1);
+        if(!cells.length)continue;
+        if(first){h+=`<tr>${cells.map(c=>`<th>${inlineFmt(c.trim())}</th>`).join('')}</tr>`;first=false;}
+        else b+=`<tr>${cells.map(c=>`<td>${inlineFmt(c.trim())}</td>`).join('')}</tr>`;
+      }
+      out.push(`<table><thead>${h}</thead><tbody>${b}</tbody></table>`);continue;
+    }
+    const para=[];
+    while(i<lines.length){const ln=lines[i];if(!ln.trim())break;if(/^(##|###|>\s|[-•*]\s|\||-{3,})/.test(ln.trim()))break;para.push(ln);i++;}
+    if(para.length)out.push(`<p>${inlineFmt(para.join(' '))}</p>`);
+  }
+  return out.join('\n');
+}
+
+function showNote(idx){
+  nbActive=idx;renderSidebar();
+  const n=NOTES[idx];const c=cs(n.category);
+  const f=filtered();const fi=f.findIndex(fn=>NOTES.indexOf(fn)===idx);
+  const prev=fi>0?f[fi-1]:null;const next=fi<f.length-1?f[fi+1]:null;
+  const related=NOTES.map((rn,ri)=>({rn,ri})).filter(({rn,ri})=>rn.category===n.category&&ri!==idx).slice(0,2);
+
+  const grimoireLaunch=n.grimoire?`<a class="nba-grimoire-launch" href="${GRIMOIRE_FILE}" target="_blank" rel="noopener"><div class="nba-grimoire-launch-left"><strong>Open the Grimoire v8.1 →</strong><span>Full live document · GHL · Zapier · Bland AI · PandaDoc · Stripe · 76 fields · 24 Zaps</span></div><div class="nba-grimoire-launch-right">🗃️</div></a>`:'';
+  const dualwingLaunch=n.dualwing?`<a class="nba-dualwing-launch" href="${DUAL_WING_FILE}" target="_blank" rel="noopener"><div class="nba-dualwing-launch-left"><strong>Open the Dual Wing Grimoire →</strong><span>Full live document · 15 modules · SEO · Email · GHL · n8n · Claude API · UK + US</span></div><div class="nba-dualwing-launch-right">🌱</div></a>`:'';
+
+  const nbContent=document.getElementById('nbContent');
+  nbContent.innerHTML=`
+    <div class="nb-progress" id="nbProg"></div>
+    <div class="nb-article">
+      <div class="nba-cat-pill" style="color:${c.color};background:${c.bg};border-color:${c.color}33">${c.label}</div>
+      <div class="nba-title">${n.title}</div>
+      <div class="nba-meta">
+        <span class="nba-meta-item">📅 ${n.date}</span>
+        <span class="nba-meta-item">⏱ ${rt(n.body)} min read</span>
+        <span class="nba-meta-item">✍️ ${wc(n.body)} words</span>
+        <button class="nba-share" id="shareBtn">🔗 copy link</button>
+      </div>
+      <div class="nba-body">${parseBody(n.body)}</div>
+      ${grimoireLaunch}${dualwingLaunch}
+      <div class="nba-cta">
+        <p><strong>Seeing this in your operation?</strong> This is the kind of problem I help fix — free 30-minute ops audit, no pitch, no deck.</p>
+        <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact">Fix My Systems → ASMC</a>
+      </div>
+      ${prev||next?`<div class="nba-nav">
+        ${prev?`<button class="nba-nav-btn" data-nidx="${NOTES.indexOf(prev)}"><div class="nba-nav-label">← Previous</div><div class="nba-nav-title">${prev.title}</div></button>`:'<div style="flex:1"></div>'}
+        ${next?`<button class="nba-nav-btn next" data-nidx="${NOTES.indexOf(next)}"><div class="nba-nav-title">${next.title}</div><div class="nba-nav-label">Next →</div></button>`:''}
+      </div>`:''}
+      ${related.length?`<div class="nba-related"><div class="nba-related-label">Related in ${n.category.replace(/-/g,' ')}</div><div class="nba-related-grid">${related.map(({rn,ri})=>`<div class="nba-related-item" data-ridx="${ri}"><div class="nba-related-title">${rn.title}</div><div class="nba-related-meta">${rn.date} · ${rt(rn.body)} min</div></div>`).join('')}</div></div>`:''}
+    </div>`;
+
+  nbContent.scrollTop=0;
+  const pb=document.getElementById('nbProg');
+  if(pb){nbContent.addEventListener('scroll',()=>{const m=nbContent.scrollHeight-nbContent.clientHeight;pb.style.transform=`scaleX(${m>0?nbContent.scrollTop/m:0})`;},{passive:true});}
+
+  document.getElementById('shareBtn')?.addEventListener('click',()=>{
+    const url=location.origin+location.pathname+'#'+slug(n.title);
+    navigator.clipboard?.writeText(url).catch(()=>{});
+    toast('🔗 Link copied!');
+  });
+  nbContent.querySelectorAll('[data-nidx]').forEach(el=>el.addEventListener('click',()=>showNote(+el.dataset.nidx)));
+  nbContent.querySelectorAll('[data-ridx]').forEach(el=>el.addEventListener('click',()=>showNote(+el.dataset.ridx)));
+  history.replaceState(null,'',location.pathname+'#'+slug(n.title));
+}
+
+// sidebar events
+document.getElementById('nbCats')?.addEventListener('click',e=>{const cat=e.target.closest('.nb-cat');if(cat){nbCat=cat.dataset.cat;renderSidebar();}});
+document.getElementById('nbList')?.addEventListener('click',e=>{const entry=e.target.closest('.nb-entry');if(entry)showNote(+entry.dataset.idx);});
+document.getElementById('nbList')?.addEventListener('keydown',e=>{if(e.key==='Enter'){const entry=e.target.closest('.nb-entry');if(entry)showNote(+entry.dataset.idx);}});
+document.getElementById('nbSearch')?.addEventListener('input',e=>{nbSearch=e.target.value;renderSidebar();});
+
+// hash routing
+function openByHash(){
+  const h=location.hash.substring(1);
+  if(!h)return;
+  const ni=NOTES.findIndex(n=>slug(n.title)===h);
+  if(ni>-1)showNote(ni);
+}
+
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.style.opacity='1';clearTimeout(el._t);el._t=setTimeout(()=>{el.style.opacity='0';},2000);}
+
+renderSidebar();
+window.addEventListener('load',openByHash);
+window.addEventListener('hashchange',openByHash);
+})();
+</script>
+</body>
+</html>
