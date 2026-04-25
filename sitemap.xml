@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
     <loc>https://suarezaaronroy-sys.github.io/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  
+  <!-- Project Case Study Pages -->
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/projects/dual-wing-v4.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/projects/grimoire-v8.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Full Live Documentation -->
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/dual-wing-grimoire-v1.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/Grimoire-v8_1.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Notes Hub -->
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/notes/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
