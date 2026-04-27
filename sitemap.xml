@@ -1,40 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
+
+  <!-- Core pages -->
   <url>
     <loc>https://suarezaaronroy-sys.github.io/</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Project Case Study Pages -->
+
   <url>
-    <loc>https://suarezaaronroy-sys.github.io/projects/dual-wing-v4.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://suarezaaronroy-sys.github.io/projects/grimoire-v8.html</loc>
+    <loc>https://suarezaaronroy-sys.github.io/about.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Full Live Documentation -->
   <url>
-    <loc>https://suarezaaronroy-sys.github.io/dual-wing-grimoire-v1.html</loc>
+    <loc>https://suarezaaronroy-sys.github.io/projects.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://suarezaaronroy-sys.github.io/Grimoire-v8_1.html</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://suarezaaronroy-sys.github.io/notes.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Notes Hub -->
   <url>
-    <loc>https://suarezaaronroy-sys.github.io/notes/</loc>
+    <loc>https://suarezaaronroy-sys.github.io/articles.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
+
+  <!-- Live Grimoires — full content, indexable -->
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/grimoires/001-asmc-crm-engine.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/grimoires/002-dual-wing-rental.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://suarezaaronroy-sys.github.io/grimoires/003-ghl-101.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Placeholder grimoires excluded — noindex + disallowed in robots.txt -->
+
 </urlset>
