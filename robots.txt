@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
 
+# Disallow utility and redirect pages
+Disallow: /fix-my-systems.html
+Disallow: /theme.html
+Disallow: /sound.html
+
+# Disallow placeholder grimoires (noindex anyway, belt + suspenders)
+Disallow: /grimoires/004-n8n-101.html
+Disallow: /grimoires/005-zapier-101.html
+Disallow: /grimoires/006-automations-101.html
+Disallow: /grimoires/007-agentic-ai-101.html
+Disallow: /grimoires/008-seo-101.html
+Disallow: /grimoires/009-payment-support.html
+Disallow: /grimoires/010-claude-openclaw.html
+
 Sitemap: https://suarezaaronroy-sys.github.io/sitemap.xml
