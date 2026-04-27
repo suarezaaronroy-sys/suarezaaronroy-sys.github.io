@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sound — Aaron Suarez</title>
+<meta name="description" content="Ambient sound for focused reading and thinking."/>
+<meta name="robots" content="noindex"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03',{page_title:'Sound',page_path:'/sound.html'});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F5F2EC;--bg2:#EDE9E0;--bg3:#E5E0D5;
+  --ink:#1C1917;--ink2:#44403C;--ink3:#78716C;--ink4:#A8A29E;
+  --accent:#C2410C;--teal:#0D9488;--teal-bg:#CCFBF1;
+  --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
+  --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 10% 0%,rgba(13,148,136,.04),transparent 40%),radial-gradient(ellipse at 90% 8%,rgba(28,25,23,.02),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
+a{color:inherit;text-decoration:none}
+.shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
+.topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
+.brand-icon{width:36px;height:36px;border-radius:8px;background:#1C1917;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
+.brand-icon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.brand-icon-fallback{font-family:var(--mono);font-size:.78rem;font-weight:500;color:#F5F2EC;display:none}
+.brand-copy strong{display:block;font-family:var(--mono);font-size:.82rem;line-height:1.2;color:var(--ink)}
+.brand-copy span{display:block;font-size:.64rem;color:var(--ink4);font-family:var(--mono);margin-top:.1rem}
+.nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
+.nav a{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);transition:.15s ease;text-decoration:none;letter-spacing:.01em}
+.nav a:hover{border-color:var(--accent);color:var(--accent)}
+.nav .nav-active{color:var(--teal);border-color:rgba(13,148,136,.3);background:rgba(13,148,136,.06)}
+.nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
+.nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.page-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border)}
+.page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--teal);margin-bottom:.7rem}
+.page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.7rem;color:var(--ink)}
+.page-header h1 em{font-style:italic;font-weight:300;color:var(--teal)}
+.page-header p{font-size:.92rem;color:var(--ink2);max-width:52ch;line-height:1.75}
+
+.sound-body{padding:3rem 0 5rem}
+.sound-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-bottom:2rem}
+.sound-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.5rem;cursor:pointer;transition:.18s ease;text-align:center;position:relative;overflow:hidden}
+.sound-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,25,23,.1)}
+.sound-card.playing{border-color:var(--teal);background:rgba(13,148,136,.04)}
+.sound-card.playing::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(13,148,136,.06),transparent 60%);pointer-events:none}
+.sound-icon{font-size:2.2rem;margin-bottom:.75rem}
+.sound-name{font-family:var(--serif);font-size:.96rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.sound-desc{font-size:.74rem;color:var(--ink3);line-height:1.55;margin-bottom:.9rem}
+.sound-btn{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.64rem;padding:.48rem .9rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);cursor:pointer;transition:.15s}
+.sound-btn:hover{border-color:var(--teal);color:var(--teal)}
+.sound-card.playing .sound-btn{background:var(--teal);color:#fff;border-color:var(--teal)}
+.playing-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* volume */
+.volume-row{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding:1rem 1.2rem;background:#fff;border:1px solid var(--border);border-radius:12px}
+.volume-label{font-family:var(--mono);font-size:.66rem;color:var(--ink4);white-space:nowrap}
+.volume-slider{flex:1;-webkit-appearance:none;height:4px;border-radius:4px;background:var(--bg3);outline:none;cursor:pointer}
+.volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--teal);cursor:pointer}
+.volume-val{font-family:var(--mono);font-size:.66rem;color:var(--ink3);min-width:30px;text-align:right}
+
+/* now playing */
+.now-playing{padding:1.2rem 1.4rem;background:var(--ink);border-radius:14px;display:flex;align-items:center;gap:1rem;margin-top:1.5rem}
+.np-icon{font-size:1.5rem;flex-shrink:0}
+.np-text strong{display:block;font-family:var(--mono);font-size:.72rem;color:#F5F2EC;margin-bottom:.15rem}
+.np-text span{font-family:var(--mono);font-size:.62rem;color:#78716C}
+.np-stop{margin-left:auto;font-family:var(--mono);font-size:.62rem;padding:.38rem .72rem;border-radius:999px;border:1px solid rgba(245,242,236,.2);background:transparent;color:#A8A29E;cursor:pointer;transition:.15s;flex-shrink:0}
+.np-stop:hover{color:#F5F2EC;border-color:rgba(245,242,236,.4)}
+.np-hidden{display:none}
+
+.footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
+.footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
+.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
+.footer-links{display:flex;gap:1.2rem;align-items:center}
+
+@media(max-width:760px){
+  .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
+  .nav{width:100%;justify-content:flex-start}
+  .sound-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body id="top">
+
+<div class="topbar-wrap">
+  <div class="topbar shell">
+    <a href="/" class="brand">
+      <div class="brand-icon">
+        <img src="/favicon.png" alt="AS" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <span class="brand-icon-fallback">AS</span>
+      </div>
+      <div class="brand-copy">
+        <strong>Aaron Suarez</strong>
+        <span>Valencia City, PH · systems builder · remote-first</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="/about.html">About</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/notes.html">Notes</a>
+      <a href="/theme.html">Theme</a>
+      <a href="/sound.html" class="nav-active">Sound</a>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="nav-cta">Fix My Systems →</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+<div class="shell">
+
+  <header class="page-header">
+    <div class="page-eyebrow">Sound</div>
+    <h1>Ambient sound for <em>focused reading.</em></h1>
+    <p>Background noise for long reads. Runs in browser — no install, no account. Just pick a scene and read.</p>
+  </header>
+
+  <div class="sound-body">
+    <div class="sound-grid">
+      <div class="sound-card" id="card-rain" onclick="toggle('rain')">
+        <div class="sound-icon">🌧️</div>
+        <div class="sound-name">Rain on Glass</div>
+        <div class="sound-desc">Steady rainfall. Consistent, low-distraction. Best for deep reading.</div>
+        <button class="sound-btn" id="btn-rain">▶ Play</button>
+      </div>
+      <div class="sound-card" id="card-cafe" onclick="toggle('cafe')">
+        <div class="sound-icon">☕</div>
+        <div class="sound-name">Café Background</div>
+        <div class="sound-desc">Low murmur, soft clatter. The productive chaos of a good coffee shop.</div>
+        <button class="sound-btn" id="btn-cafe">▶ Play</button>
+      </div>
+      <div class="sound-card" id="card-forest" onclick="toggle('forest')">
+        <div class="sound-icon">🌿</div>
+        <div class="sound-name">Forest + Wind</div>
+        <div class="sound-desc">Birds, rustling leaves, occasional wind. Calm without being silent.</div>
+        <button class="sound-btn" id="btn-forest">▶ Play</button>
+      </div>
+      <div class="sound-card" id="card-fire" onclick="toggle('fire')">
+        <div class="sound-icon">🔥</div>
+        <div class="sound-name">Fireplace</div>
+        <div class="sound-desc">Crackling fire. Warm, grounding. Good for late-night Grimoire sessions.</div>
+        <button class="sound-btn" id="btn-fire">▶ Play</button>
+      </div>
+      <div class="sound-card" id="card-ocean" onclick="toggle('ocean')">
+        <div class="sound-icon">🌊</div>
+        <div class="sound-name">Ocean Waves</div>
+        <div class="sound-desc">Rolling waves, steady rhythm. Natural white noise at its best.</div>
+        <button class="sound-btn" id="btn-ocean">▶ Play</button>
+      </div>
+      <div class="sound-card" id="card-white" onclick="toggle('white')">
+        <div class="sound-icon">〰️</div>
+        <div class="sound-name">White Noise</div>
+        <div class="sound-desc">Pure signal mask. No texture, no distraction. Just coverage.</div>
+        <button class="sound-btn" id="btn-white">▶ Play</button>
+      </div>
+    </div>
+
+    <!-- Volume -->
+    <div class="volume-row">
+      <span class="volume-label">Volume</span>
+      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" oninput="setVolume(this.value)"/>
+      <span class="volume-val" id="volumeVal">50%</span>
+    </div>
+
+    <!-- Now Playing -->
+    <div class="now-playing np-hidden" id="nowPlaying">
+      <div class="np-icon" id="npIcon">🌧️</div>
+      <div class="np-text">
+        <strong id="npName">Rain on Glass</strong>
+        <span>Playing · <span id="npDot">●</span> Live</span>
+      </div>
+      <button class="np-stop" onclick="stopAll()">■ Stop</button>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer shell">
+  <div class="footer-line">
+    <div>© <span id="yr"></span> Aaron Suarez · operational systems builder</div>
+    <div class="footer-links">
+      <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
+      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="footer-link" style="font-weight:500">ASMC ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const sounds = {
+  rain:   { name: 'Rain on Glass',     icon: '🌧️', url: 'https://www.soundjay.com/nature/sounds/rain-03.mp3' },
+  cafe:   { name: 'Café Background',   icon: '☕', url: 'https://www.soundjay.com/nature/sounds/cafe-ambience-1.mp3' },
+  forest: { name: 'Forest + Wind',     icon: '🌿', url: 'https://www.soundjay.com/nature/sounds/wind-in-trees-1.mp3' },
+  fire:   { name: 'Fireplace',         icon: '🔥', url: 'https://www.soundjay.com/nature/sounds/fire-1.mp3' },
+  ocean:  { name: 'Ocean Waves',       icon: '🌊', url: 'https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3' },
+  white:  { name: 'White Noise',       icon: '〰️', url: null }, // generated
+};
+
+let currentId = null;
+let audioCtx = null;
+let currentSource = null;
+let gainNode = null;
+let audioEl = null;
+let volume = 0.5;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function generateWhiteNoise() {
+  const ctx = getAudioCtx();
+  gainNode = ctx.createGain();
+  gainNode.gain.value = volume;
+  gainNode.connect(ctx.destination);
+  const bufferSize = ctx.sampleRate * 2;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+  const source = ctx.createBufferSource();
+  source.buffer = buffer;
+  source.loop = true;
+  source.connect(gainNode);
+  source.start();
+  currentSource = source;
+}
+
+function playAudio(url) {
+  stopAll(false);
+  audioEl = new Audio();
+  audioEl.src = url;
+  audioEl.loop = true;
+  audioEl.volume = volume;
+  audioEl.play().catch(() => {
+    // fallback — use oscillator hum if audio fails to load
+    const ctx = getAudioCtx();
+    gainNode = ctx.createGain();
+    gainNode.gain.value = volume * 0.05;
+    gainNode.connect(ctx.destination);
+    const osc = ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = 60;
+    osc.connect(gainNode);
+    osc.start();
+    currentSource = osc;
+  });
+}
+
+function toggle(id) {
+  if (currentId === id) { stopAll(); return; }
+  stopAll(false);
+  currentId = id;
+  const s = sounds[id];
+  if (id === 'white') generateWhiteNoise();
+  else playAudio(s.url);
+  // UI
+  document.querySelectorAll('.sound-card').forEach(c => c.classList.remove('playing'));
+  document.getElementById('card-' + id).classList.add('playing');
+  Object.keys(sounds).forEach(k => {
+    document.getElementById('btn-' + k).innerHTML = k === id ? '<span class="playing-dot"></span> Playing' : '▶ Play';
+  });
+  document.getElementById('nowPlaying').classList.remove('np-hidden');
+  document.getElementById('npName').textContent = s.name;
+  document.getElementById('npIcon').textContent = s.icon;
+}
+
+function stopAll(updateUI = true) {
+  if (audioEl) { audioEl.pause(); audioEl = null; }
+  if (currentSource) { try { currentSource.stop(); } catch(e){} currentSource = null; }
+  if (gainNode) { gainNode.disconnect(); gainNode = null; }
+  if (updateUI) {
+    currentId = null;
+    document.querySelectorAll('.sound-card').forEach(c => c.classList.remove('playing'));
+    Object.keys(sounds).forEach(k => { document.getElementById('btn-' + k).innerHTML = '▶ Play'; });
+    document.getElementById('nowPlaying').classList.add('np-hidden');
+  }
+}
+
+function setVolume(val) {
+  volume = val / 100;
+  document.getElementById('volumeVal').textContent = val + '%';
+  if (audioEl) audioEl.volume = volume;
+  if (gainNode) gainNode.gain.value = volume * (currentId === 'white' ? 1 : 1);
+}
+</script>
+</body>
+</html>
