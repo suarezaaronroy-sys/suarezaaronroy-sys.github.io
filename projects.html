@@ -72,14 +72,22 @@ a{color:inherit;text-decoration:none}
 }
 .section-label-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 
-/* live grimoire cards */
+/* ── LIVE GRIMOIRE CARDS ── */
 .live-grimoire{
   background:#fff;border:1px solid var(--border);border-radius:18px;
   overflow:hidden;margin-bottom:1.2rem;transition:.18s ease;
   text-decoration:none;color:inherit;display:block;
 }
 .live-grimoire:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(28,25,23,.1)}
-.lg-inner{display:grid;grid-template-columns:1fr auto;gap:1.5rem;padding:1.6rem 1.8rem;align-items:start}
+
+/* Two-column inner — stat block locked to right, never collapses */
+.lg-inner{
+  display:grid;
+  /* left col: fluid. right col: fixed 120px so all 3 cards are identical */
+  grid-template-columns:1fr 120px;
+  gap:1.5rem;padding:1.6rem 1.8rem;align-items:start;
+}
+
 .lg-badge{
   display:inline-flex;align-items:center;gap:.3rem;
   font-family:var(--mono);font-size:.58rem;text-transform:uppercase;
@@ -89,6 +97,7 @@ a{color:inherit;text-decoration:none}
 .lg-badge.purple{color:var(--purple);background:var(--purple-bg);border-color:rgba(124,58,237,.2)}
 .lg-badge.teal{color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)}
 .lg-badge.blue{color:var(--blue);background:var(--blue-bg);border-color:rgba(29,78,216,.2)}
+
 .live-grimoire h2{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
 .live-grimoire .lg-desc{font-size:.88rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:60ch}
 .lg-bullets{list-style:none;display:grid;gap:.3rem;margin-bottom:.9rem}
@@ -97,6 +106,43 @@ a{color:inherit;text-decoration:none}
 .lg-meta{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:1rem}
 .lg-meta-pill{font-family:var(--mono);font-size:.6rem;padding:.16rem .44rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
 .lg-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
+
+/* ── STAT BLOCK — right column, consistent across all 3 cards ── */
+.lg-stat-block{
+  display:flex;flex-direction:column;gap:.7rem;
+  align-items:center;
+  /* fixed width matches grid column */
+  width:120px;flex-shrink:0;
+  padding-top:.2rem;
+}
+.lg-stat{
+  text-align:center;width:100%;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:10px;padding:.55rem .4rem;
+}
+/* All stat numbers: same font-size, same line-height, no wrapping */
+.lg-stat-num{
+  font-family:var(--mono);
+  font-size:1.65rem;  /* reduced from 2rem so "50+" and "34.2%" fit on one line */
+  font-weight:500;
+  line-height:1;
+  white-space:nowrap;   /* prevents wrapping on "34.2%" */
+  display:block;
+}
+.lg-stat-label{
+  font-family:var(--mono);font-size:.56rem;color:var(--ink4);
+  margin-top:.25rem;display:block;
+}
+
+.lg-status{
+  padding:.6rem 1rem;border-top:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--bg2);
+}
+.lg-status-left{font-family:var(--mono);font-size:.6rem;color:var(--teal)}
+.lg-status-right{font-family:var(--mono);font-size:.6rem;color:var(--ink4)}
+
+/* ── BUTTONS ── */
 .btn-open{
   display:inline-flex;align-items:center;gap:.4rem;
   font-family:var(--mono);font-size:.72rem;padding:.68rem 1.15rem;
@@ -111,19 +157,9 @@ a{color:inherit;text-decoration:none}
 .btn-open.blue:hover{background:#1741ba;transform:translateY(-1px)}
 .btn-open.ghost{background:transparent;color:var(--ink3);border-color:var(--border)}
 .btn-open.ghost:hover{color:var(--accent);border-color:var(--accent)}
-.lg-stat-block{display:flex;flex-direction:column;gap:.5rem;align-items:center;flex-shrink:0}
-.lg-stat{text-align:center}
-.lg-stat-num{font-family:var(--mono);font-size:2rem;font-weight:500;line-height:1}
-.lg-stat-label{font-family:var(--mono);font-size:.58rem;color:var(--ink4);margin-top:.15rem}
-.lg-status{
-  padding:.6rem 1rem;border-top:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--bg2);
-}
-.lg-status-left{font-family:var(--mono);font-size:.6rem;color:var(--teal)}
-.lg-status-right{font-family:var(--mono);font-size:.6rem;color:var(--ink4)}
 
 /* placeholder grimoires */
+.section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
 .placeholders-section{padding:2rem 0 3rem}
 .placeholder-heading{
   font-family:var(--mono);font-size:.62rem;color:var(--ink4);
@@ -149,9 +185,6 @@ a{color:inherit;text-decoration:none}
   text-transform:uppercase;letter-spacing:.06em;
 }
 
-/* section divider */
-.section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
-
 /* footer */
 .footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
 .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
@@ -163,8 +196,10 @@ a{color:inherit;text-decoration:none}
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
   .nav{width:100%;justify-content:flex-start}
+  /* On mobile: single column, stat block moves below text */
   .lg-inner{grid-template-columns:1fr}
-  .lg-stat-block{flex-direction:row;justify-content:flex-start}
+  .lg-stat-block{flex-direction:row;justify-content:flex-start;width:100%;padding-top:0}
+  .lg-stat{width:auto;min-width:80px}
   .placeholder-grid{grid-template-columns:1fr 1fr}
   .quick-anchor{right:12px;bottom:12px}
 }
@@ -213,7 +248,7 @@ a{color:inherit;text-decoration:none}
       Live grimoires · 3 published
     </div>
 
-    <!-- Grimoire 001 -->
+    <!-- ── Grimoire 001 ── -->
     <a href="/grimoires/001-asmc-crm-engine.html" class="live-grimoire" aria-label="Open Grimoire 001">
       <div class="lg-inner">
         <div>
@@ -240,9 +275,18 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
         <div class="lg-stat-block">
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--purple)">76</div><div class="lg-stat-label">fields</div></div>
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--accent)">24</div><div class="lg-stat-label">Zaps</div></div>
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--teal)">v8.1</div><div class="lg-stat-label">version</div></div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--purple)">76</span>
+            <span class="lg-stat-label">custom fields</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--accent)">24</span>
+            <span class="lg-stat-label">Zaps</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--teal)">v8.1</span>
+            <span class="lg-stat-label">QA-verified</span>
+          </div>
         </div>
       </div>
       <div class="lg-status">
@@ -251,7 +295,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <!-- Grimoire 002 -->
+    <!-- ── Grimoire 002 ── -->
     <a href="/grimoires/002-dual-wing-rental.html" class="live-grimoire" aria-label="Open Grimoire 002">
       <div class="lg-inner">
         <div>
@@ -278,9 +322,18 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
         <div class="lg-stat-block">
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--teal)">15</div><div class="lg-stat-label">modules</div></div>
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--accent)">34.2%</div><div class="lg-stat-label">open rate</div></div>
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--green)">18</div><div class="lg-stat-label">consults</div></div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--teal)">15</span>
+            <span class="lg-stat-label">modules</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--accent)">34.2%</span>
+            <span class="lg-stat-label">open rate</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--green)">18</span>
+            <span class="lg-stat-label">consults booked</span>
+          </div>
         </div>
       </div>
       <div class="lg-status">
@@ -289,21 +342,31 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <!-- Grimoire 003 -->
-    <a href="/grimoires/003-ghl-101.html" class="live-grimoire" aria-label="Open Grimoire 003">
+    <!-- ── Grimoire 003 ── -->
+    <!--
+      FIX: 003 card had two problems:
+      1. Nested <a> inside <a> (invalid HTML) — ghost "Open in Google Docs" btn
+         broken because browsers auto-close the outer anchor. Fixed by wrapping
+         the whole card in a <div> instead of <a>, and making both actions
+         explicit <a> tags inside .lg-actions.
+      2. Stat block "50+" overflowed its container because lg-stat-num had no
+         white-space:nowrap and the parent had no fixed width. Fixed above in CSS.
+    -->
+    <div class="live-grimoire" style="cursor:default">
       <div class="lg-inner">
         <div>
           <div class="lg-badge blue">003 · Knowledge System · Mar 2026</div>
           <h2>GHL 101: Speedrun Training Manual — 2026 Edition</h2>
           <p class="lg-desc">Over a year of GoHighLevel field notes compiled into one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated to 2026: Voice AI, Agent Studio, WhatsApp native, AI Employee pricing. No paywall, no gate.</p>
           <ul class="lg-bullets">
-            <li>18 modules covering the full GHL feature set</li>
+            <li>18 modules covering the full GHL feature set end-to-end</li>
             <li>29 official source citations — every claim is backed</li>
             <li>50+ power tips distilled from real field usage</li>
             <li>2026 updates: Voice AI, Agent Studio, WhatsApp native, AI Employee pricing</li>
-            <li>Free · Open · No gate</li>
+            <li>Free · Open · No gate — read it, share it, use it</li>
           </ul>
           <div class="lg-meta">
+            <span class="lg-meta-pill">GoHighLevel</span>
             <span class="lg-meta-pill">18 modules</span>
             <span class="lg-meta-pill">29 official sources</span>
             <span class="lg-meta-pill">50+ power tips</span>
@@ -311,21 +374,31 @@ a{color:inherit;text-decoration:none}
             <span class="lg-meta-pill">free · no gate</span>
           </div>
           <div class="lg-actions">
-            <span class="btn-open blue">Open Grimoire 003 →</span>
-            <a href="https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing" target="_blank" rel="noopener" class="btn-open ghost" onclick="event.stopPropagation()">Open in Google Docs ↗</a>
+            <a href="/grimoires/003-ghl-101.html" class="btn-open blue">Open Grimoire 003 →</a>
+            <a href="https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing" target="_blank" rel="noopener" class="btn-open ghost">Open in Google Docs ↗</a>
           </div>
         </div>
         <div class="lg-stat-block">
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--blue)">18</div><div class="lg-stat-label">modules</div></div>
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--green)">29</div><div class="lg-stat-label">sources</div></div>
-          <div class="lg-stat"><div class="lg-stat-num" style="color:var(--amber)">50+</div><div class="lg-stat-label">tips</div></div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--blue)">18</span>
+            <span class="lg-stat-label">modules</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--green)">29</span>
+            <span class="lg-stat-label">sources</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--amber)">50+</span>
+            <span class="lg-stat-label">power tips</span>
+          </div>
         </div>
       </div>
       <div class="lg-status">
         <span class="lg-status-left">✓ Live · Free · No gate · March 2026</span>
         <span class="lg-status-right">Grimoire 003 / 010</span>
       </div>
-    </a>
+    </div>
+
   </section>
 
   <div class="section-divider"></div>
