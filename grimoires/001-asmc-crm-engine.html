@@ -74,6 +74,9 @@ a{color:inherit;text-decoration:none}
   padding:0 1.5rem;z-index:200;
 }
 .header-left{display:flex;align-items:center;gap:1rem}
+.header-back{font-family:var(--mono);font-size:11px;color:var(--ink3);transition:color .14s;letter-spacing:.03em}
+.header-back:hover{color:var(--accent)}
+.header-div{width:1px;height:16px;background:var(--border)}
 .header-title{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:.02em}
 .header-badge{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:20px;background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd)}
 
@@ -411,26 +414,37 @@ mark{background:rgba(124,58,237,.15);color:var(--purple);border-radius:2px;paddi
 </head>
 <body>
 <div id="shell">
+
+<!-- ── DARK STATUS BAR ── -->
 <div id="bar">
-  <div class="bar-brand">
-    <div class="bar-logo">AS</div>
-    <div><div class="bar-name">ASMC CRM Engine</div><div class="bar-ver">v8.1 · QA-Verified Full-Loop System</div></div>
+  <div class="bar-left">
+    <div class="bar-dot"></div>
+    <span>Grimoire 001 · Full-Stack CRM Engine · v8.1 · QA-Verified</span>
   </div>
-  <div class="bar-search">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5l3 3"/></svg>
-    <input id="si" placeholder="Search Zaps, fields, phases, SOPs…" autocomplete="off">
-  </div>
-  <div class="bar-spacer"></div>
   <div class="bar-chips">
     <span class="chip on">● Live</span>
     <span class="chip">24 Zaps</span>
     <span class="chip">76 Fields</span>
-    <span class="chip">22 Seqs</span>
     <span class="chip warn">v8.1 · QA-Verified</span>
   </div>
 </div>
+
+<!-- ── PARCHMENT SITE HEADER ── -->
+<header id="site-header">
+  <div class="header-left">
+    <a href="https://suarezaaronroy-sys.github.io/" class="header-back">← Aaron Suarez</a>
+    <div class="header-div"></div>
+    <span class="header-title">Full-Stack CRM Engine</span>
+  </div>
+  <span class="header-badge">Grimoire 001 · v8.1</span>
+</header>
+
 <div id="body">
-<div id="nav">
+<nav id="nav">
+  <div class="nav-search">
+    <input type="text" id="si" placeholder="Search phases, Zaps, fields…" autocomplete="off"/>
+  </div>
+
   <div class="nav-sec">System Core</div>
   <div class="nav-item act" data-p="p0"><div class="ni-num">00</div><div class="ni-body"><div class="ni-name">System Loop</div><div class="ni-sub">Input→Loop · Intent · SLAs</div></div><div class="ni-dot"></div></div>
   <div class="nav-item" data-p="p_foundation"><div class="ni-num">01</div><div class="ni-body"><div class="ni-name">Foundation</div><div class="ni-sub">Stack · Fields · Build Order</div></div><div class="ni-dot"></div></div>
@@ -470,8 +484,8 @@ mark{background:rgba(124,58,237,.15);color:var(--purple);border-radius:2px;paddi
   <div class="nav-item" data-p="p_tech"><div class="ni-num">23</div><div class="ni-body"><div class="ni-name">Tech Reference</div><div class="ni-sub">APIs · Upgrades · Bridges</div></div><div class="ni-dot"></div></div>
   <div class="nav-item" data-p="p_auto"><div class="ni-num">24</div><div class="ni-body"><div class="ni-name">Automation Alternatives</div><div class="ni-sub">Make · n8n · ActivePieces</div></div><div class="ni-dot"></div></div>
 
-  <div class="nav-foot"><div class="nav-foot-v">Grimoire v8.1 · ASMC · 2025</div></div>
-</div>
+  <div class="nav-foot">Grimoire 001 · v8.1 · ASMC · 2025</div>
+</nav>
 <div id="main">
 <div id="mbar">
   <div class="mt act" data-m="map"><div class="mt-dot"></div> Map</div>
@@ -2395,7 +2409,7 @@ si.addEventListener('input', () => {
         <div class="sri-path">${r.p}</div>
         <div class="sri-t">${highlight(r.title, q)}</div>
         <div class="sri-d">${highlight(r.desc.substring(0,180)+'…', q)}</div>
-      </div>`).join('') : '<div style="color:var(--t3);font-size:12px;padding:20px 0">No results. Try a different keyword.</div>');
+      </div>`).join('') : '<div style="color:var(--ink4);font-size:12px;padding:20px 0">No results. Try a different keyword.</div>');
 });
 
 si.addEventListener('keydown', e => {
