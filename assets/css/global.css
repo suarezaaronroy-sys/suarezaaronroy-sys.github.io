@@ -2,9 +2,25 @@
  * global.css — Aaron Suarez Portfolio
  * Shared design tokens, nav, footer, base resets
  * Visual language: Dual Wing warm parchment system
- * Import this first on every page, then page-specific CSS
  *
  * Usage: <link rel="stylesheet" href="/assets/css/global.css"/>
+ *
+ * FONT LOADING NOTE:
+ * All pages must include the following in <head> for font-display:swap:
+ *   <link rel="preconnect" href="https://fonts.googleapis.com">
+ *   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ *   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500
+ *     &family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300
+ *     &family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+ *
+ * EXTERNAL LINKS NOTE:
+ * All target="_blank" links must include rel="noopener noreferrer"
+ *
+ * DARK MODE:
+ * Applied via [data-theme="dark"] on <html> (set by ui.js / theme.html).
+ * Also respects prefers-color-scheme via ui.js when no manual preference saved.
+ * Never use body.style overrides alone — use CSS custom property overrides
+ * on :root or [data-theme="dark"] so all components respond.
  */
 
 /* ── RESET ── */
@@ -12,24 +28,20 @@
 html { scroll-behavior: smooth; }
 a { color: inherit; text-decoration: none; }
 
-/* ── DESIGN TOKENS ── */
+/* ── LIGHT MODE TOKENS (default) ── */
 :root {
-  /* Backgrounds — warm parchment scale */
   --bg:    #F5F2EC;
   --bg2:   #EDE9E0;
   --bg3:   #E5E0D5;
 
-  /* Ink scale */
   --ink:   #1C1917;
   --ink2:  #44403C;
   --ink3:  #78716C;
   --ink4:  #A8A29E;
 
-  /* Accent — terracotta (default, overridable via localStorage) */
   --accent:  #C2410C;
   --accent2: #EA580C;
 
-  /* Semantic colors */
   --teal:       #0D9488; --teal-bg:   #CCFBF1;
   --amber:      #B45309; --amber-bg:  #FEF3C7;
   --blue:       #1D4ED8; --blue-bg:   #DBEAFE;
@@ -37,7 +49,7 @@ a { color: inherit; text-decoration: none; }
   --red:        #B91C1C; --red-bg:    #FEE2E2;
   --purple:     #7C3AED; --purple-bg: #F5F3FF;
 
-  /* Dark surface (used inside dark showcase blocks — warm ink, NOT pure black) */
+  /* Dark surface — warm ink, NOT pure black */
   --dark:       #1C1917;
   --dark2:      #292524;
   --dark3:      #3C3835;
@@ -45,17 +57,82 @@ a { color: inherit; text-decoration: none; }
   --dark-muted: #A8A29E;
   --dark-dim:   #78716C;
 
-  /* Borders */
   --border:  rgba(28, 25, 23, 0.12);
   --border2: rgba(28, 25, 23, 0.06);
 
-  /* Typography */
   --mono:  'DM Mono', 'SF Mono', monospace;
   --serif: 'Fraunces', Georgia, serif;
   --sans:  'DM Sans', system-ui, sans-serif;
 
-  /* Layout */
   --max-width: 1060px;
+}
+
+/* ── DARK MODE — via [data-theme="dark"] set by ui.js ── */
+[data-theme="dark"] {
+  --bg:    #1C1917;
+  --bg2:   #292524;
+  --bg3:   #3C3835;
+  --ink:   #F5F2EC;
+  --ink2:  #D6D3D1;
+  --ink3:  #A8A29E;
+  --ink4:  #78716C;
+  --border:  rgba(245, 242, 236, 0.10);
+  --border2: rgba(245, 242, 236, 0.05);
+}
+
+[data-theme="dark"] body {
+  background: #1C1917;
+  color: #F5F2EC;
+}
+
+[data-theme="dark"] .topbar-wrap {
+  background: rgba(28, 25, 23, .95);
+}
+
+/* Cards on dark */
+[data-theme="dark"] .nav-card,
+[data-theme="dark"] .grimoire-card,
+[data-theme="dark"] .note-card,
+[data-theme="dark"] .featured-note,
+[data-theme="dark"] .bio-card,
+[data-theme="dark"] .live-grimoire,
+[data-theme="dark"] .wwm-card {
+  background: #292524;
+  border-color: rgba(245, 242, 236, 0.1);
+}
+
+[data-theme="dark"] .nav a,
+[data-theme="dark"] .nav button {
+  background: #292524;
+  border-color: rgba(245, 242, 236, 0.1);
+  color: #A8A29E;
+}
+
+/* ── prefers-color-scheme ──
+   ui.js reads this and applies applyDarkModeCSS() when no manual override.
+   These rules provide a CSS-only fallback for when JS is disabled.
+── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:    #1C1917;
+    --bg2:   #292524;
+    --bg3:   #3C3835;
+    --ink:   #F5F2EC;
+    --ink2:  #D6D3D1;
+    --ink3:  #A8A29E;
+    --ink4:  #78716C;
+    --border:  rgba(245, 242, 236, 0.10);
+    --border2: rgba(245, 242, 236, 0.05);
+  }
+
+  :root:not([data-theme="light"]) body {
+    background: #1C1917;
+    color: #F5F2EC;
+  }
+
+  :root:not([data-theme="light"]) .topbar-wrap {
+    background: rgba(28, 25, 23, .95);
+  }
 }
 
 /* ── BASE BODY ── */
@@ -67,15 +144,13 @@ body {
   line-height: 1.7;
   font-weight: 300;
   overflow-x: hidden;
-
-  /* Subtle ambient gradient + noise texture */
   background-image:
     radial-gradient(ellipse at 8% 0%, rgba(194, 65, 12, .04), transparent 38%),
     radial-gradient(ellipse at 92% 6%, rgba(13, 148, 136, .03), transparent 32%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
 }
 
-/* ── SHELL (max-width container) ── */
+/* ── SHELL ── */
 .shell {
   width: min(var(--max-width), calc(100% - 2.5rem));
   margin: 0 auto;
@@ -90,6 +165,7 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
+  transition: background .25s;
 }
 
 .topbar {
@@ -100,7 +176,6 @@ body {
   gap: 1rem;
 }
 
-/* Brand */
 .brand {
   display: flex;
   align-items: center;
@@ -151,7 +226,6 @@ body {
   margin-top: .1rem;
 }
 
-/* Nav links */
 .nav {
   display: flex;
   align-items: center;
@@ -181,14 +255,12 @@ body {
   color: var(--accent);
 }
 
-/* Active state — set per page via class or inline style override */
 .nav .nav-active {
   border-color: rgba(194, 65, 12, .3);
   color: var(--accent);
   background: rgba(194, 65, 12, .06);
 }
 
-/* CTA pill */
 .nav .nav-cta {
   background: var(--dark);
   color: var(--dark-fg);
@@ -242,7 +314,7 @@ body {
   color: var(--accent);
 }
 
-/* ── QUICK ANCHOR (back to top) ── */
+/* ── QUICK ANCHOR ── */
 .quick-anchor {
   position: fixed;
   right: 20px;
@@ -268,7 +340,7 @@ body {
   border-color: var(--accent);
 }
 
-/* ── BUTTONS (shared) ── */
+/* ── BUTTONS ── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -318,7 +390,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* ── CALLOUTS (shared across pages and grimoires) ── */
+/* ── CALLOUTS ── */
 .callout {
   border-radius: 8px;
   padding: 1rem 1.25rem;
@@ -333,7 +405,7 @@ body {
 .callout-success { background: var(--teal-bg);   border-left: 3px solid var(--teal);   color: #134E4A; }
 .callout strong  { font-weight: 500; }
 
-/* ── BADGE PILLS (shared) ── */
+/* ── BADGES ── */
 .badge {
   display: inline-block;
   font-family: var(--mono);
@@ -349,7 +421,7 @@ body {
 .badge-essential{ background: var(--teal-bg);   color: var(--teal);   border: 1px solid rgba(13, 148, 136, .2); }
 .badge-optional { background: var(--bg3);       color: var(--ink3);   border: 1px solid var(--border); }
 
-/* ── PAGE EYEBROW (shared heading pattern) ── */
+/* ── PAGE EYEBROW ── */
 .page-eyebrow {
   font-family: var(--mono);
   font-size: .62rem;
@@ -389,9 +461,9 @@ td {
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: var(--bg2); }
 
-/* ── CODE BLOCKS (shared dark — warm ink surface, never black) ── */
+/* ── CODE BLOCKS — always dark surface ── */
 pre {
-  background: var(--dark);   /* #1C1917 — warm dark, not #000 */
+  background: var(--dark);   /* #1C1917 — warm, never #000 */
   border-radius: 8px;
   padding: 1.25rem 1.5rem;
   overflow-x: auto;
@@ -399,22 +471,18 @@ pre {
   font-family: var(--mono);
   font-size: 12px;
   line-height: 1.8;
-  color: #D6D3D1;
+  color: #D6D3D1; /* explicit — prevents invisible text on dark backgrounds */
 }
 
-pre .c  { color: #78716C; font-style: italic; }  /* comment */
-pre .k  { color: #FDA4AF; }                        /* key */
-pre .v  { color: #86EFAC; }                        /* value */
-pre .s  { color: #FCD34D; }                        /* string */
-pre .w  { color: #F8FAFC; font-weight: 500; }      /* white/important */
-pre .h  { color: #A8A29E; }                        /* hint/dim */
-pre .tl { color: #93C5FD; }                        /* type-level */
+pre .c  { color: #78716C; font-style: italic; }
+pre .k  { color: #FDA4AF; }
+pre .v  { color: #86EFAC; }
+pre .s  { color: #FCD34D; }
+pre .w  { color: #F8FAFC; font-weight: 500; }
+pre .h  { color: #A8A29E; }
+pre .tl { color: #93C5FD; }
 
-/* ── DARK SHOWCASE BLOCKS ──
-   Rule: Use --dark (#1C1917) not #000.
-   Text: --dark-fg (#F5F2EC) at full weight, --dark-muted (#A8A29E) for supporting text.
-   This prevents the "black block invisible text" issue from M1.1 SEO sublayer.
-── */
+/* ── DARK SHOWCASE BLOCKS ── */
 .showcase {
   background: var(--dark);
   border-radius: 14px;
@@ -436,12 +504,12 @@ pre .tl { color: #93C5FD; }                        /* type-level */
   font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: .5rem;
-  color: var(--dark-fg);   /* #F5F2EC — always visible */
+  color: var(--dark-fg);
 }
 
 .showcase p {
   font-size: 13px;
-  color: var(--dark-muted); /* #A8A29E — readable on --dark */
+  color: var(--dark-muted);
   line-height: 1.65;
   margin-bottom: 0;
 }
@@ -451,7 +519,7 @@ pre .tl { color: #93C5FD; }                        /* type-level */
   font-weight: 400;
 }
 
-/* ── NOTEBOOK BUTTON (notes launch pattern) ── */
+/* ── NOTEBOOK BUTTON ── */
 .nb-launch-btn {
   display: inline-flex;
   align-items: center;
@@ -499,7 +567,7 @@ pre .tl { color: #93C5FD; }                        /* type-level */
 .nb-launch-text span   { display: block; font-size: .6rem; color: var(--ink4); margin-top: .05rem; }
 .nb-launch-arrow   { margin-left: auto; font-size: .68rem; color: var(--ink4); }
 
-/* ── RESPONSIVE BREAKPOINTS ── */
+/* ── RESPONSIVE ── */
 @media (max-width: 760px) {
   .topbar {
     flex-direction: column;
