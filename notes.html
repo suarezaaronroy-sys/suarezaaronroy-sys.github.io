@@ -3,44 +3,42 @@
 <head>
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notes — Aaron Suarez</title>
-<meta name="description" content="Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Operational thinking written down."/>
+<meta name="description" content="Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Operational thinking written down.">
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://suarezaaronroy-sys.github.io/notes.html"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","url":"https://suarezaaronroy-sys.github.io/notes.html","name":"Notes — Aaron Suarez","description":"Field observations from real operations.","author":{"@type":"Person","name":"Aaron Suarez","url":"https://suarezaaronroy-sys.github.io/"}}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03',{page_title:'Notes',page_path:'/notes.html'});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#F5F2EC;--bg2:#EDE9E0;--bg3:#E5E0D5;
   --ink:#1C1917;--ink2:#44403C;--ink3:#78716C;--ink4:#A8A29E;
   --accent:#C2410C;--accent2:#EA580C;
-  --teal:#0D9488;--teal-bg:#CCFBF1;
-  --amber:#B45309;--amber-bg:#FEF3C7;
-  --blue:#1D4ED8;--blue-bg:#DBEAFE;
-  --green:#15803D;--green-bg:#DCFCE7;
-  --purple:#7C3AED;--purple-bg:#F5F3FF;
+  --teal:#0D9488;--teal-bg:#CCFBF1;--teal-bd:rgba(13,148,136,.2);
+  --amber:#B45309;--amber-bg:#FEF3C7;--amber-bd:rgba(180,83,9,.2);
+  --blue:#1D4ED8;--blue-bg:#DBEAFE;--blue-bd:rgba(29,78,216,.2);
+  --green:#15803D;--green-bg:#DCFCE7;--green-bd:rgba(21,128,61,.2);
+  --purple:#7C3AED;--purple-bg:#F5F3FF;--purple-bd:rgba(124,58,237,.2);
   --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
-  --nb-dot:rgba(120,113,108,.15);
+  --dark:#1C1917;--dark-fg:#F5F2EC;--dark-muted:#A8A29E;
   --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--sans);background:var(--bg);color:var(--ink);
-  font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse at 5% 0%,rgba(124,58,237,.03),transparent 40%),
-    radial-gradient(ellipse at 95% 10%,rgba(194,65,12,.03),transparent 35%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
-}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 5% 0%,rgba(124,58,237,.03),transparent 40%),radial-gradient(ellipse at 95% 10%,rgba(194,65,12,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
 a{color:inherit;text-decoration:none}
+::selection{background:rgba(194,65,12,.13)}
 .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
 
-/* ── TOP BAR ── */
+/* ── TOPBAR ── */
 .topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
@@ -52,156 +50,146 @@ a{color:inherit;text-decoration:none}
 .nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
 .nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em}
 .nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
-.nav .nav-active{color:var(--purple);border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.06)}
-.nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
+.nav .nav-active{color:var(--purple);border-color:var(--purple-bd);background:var(--purple-bg)}
+.nav .nav-cta{background:var(--dark);color:var(--dark-fg);border-color:var(--dark);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* ── PAGE LAYOUT ── */
-.notes-layout{
-  display:grid;grid-template-columns:240px 1fr;gap:0;
-  min-height:calc(100vh - 56px);
-}
+/* ── LAYOUT ── */
+.notes-layout{display:grid;grid-template-columns:230px 1fr;gap:0;min-height:calc(100vh - 56px)}
 
 /* ── SIDEBAR ── */
-.notes-sidebar{
-  position:sticky;top:56px;height:calc(100vh - 56px);
-  overflow-y:auto;border-right:1px solid var(--border);
-  padding:1.6rem 0;scrollbar-width:thin;scrollbar-color:var(--border) transparent;
-  background:rgba(255,255,255,.4);
-}
+.notes-sidebar{position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;border-right:1px solid var(--border);padding:1.6rem 0;scrollbar-width:thin;scrollbar-color:var(--border) transparent;background:rgba(255,255,255,.4)}
 .sb-section{margin-bottom:1.6rem;padding:0 1rem}
 .sb-section-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.5rem;padding:0 8px}
-.sb-link{display:block;padding:5px 8px;font-size:.78rem;color:var(--ink3);text-decoration:none;border-radius:5px;line-height:1.45;transition:.14s}
+.sb-link{display:flex;align-items:center;padding:5px 8px;font-size:.76rem;color:var(--ink3);text-decoration:none;border-radius:5px;line-height:1.45;transition:.14s;gap:.35rem}
 .sb-link:hover{background:var(--bg2);color:var(--ink)}
-.sb-link.active{background:var(--bg3);color:var(--accent);font-weight:500}
-.sb-link.sub{padding-left:16px;font-size:.72rem}
-.sb-cat-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:.35rem;vertical-align:middle;flex-shrink:0}
+.sb-link.active{background:var(--bg3);color:var(--accent)}
+.sb-link.sub{padding-left:16px;font-size:.71rem}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-div{height:1px;background:var(--border);margin:.8rem 1rem}
+.sb-note{padding:0 1rem;font-size:.71rem;color:var(--ink4);line-height:1.65}
+.sb-note a{color:var(--accent);font-family:var(--mono);font-size:.65rem}
 
-/* ── MAIN CONTENT ── */
+/* ── MAIN ── */
 .notes-main{padding:2.8rem 2.8rem 5rem}
 
-/* ── PAGE HEADER ── */
-.notes-header{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+/* Header */
+.notes-header{margin-bottom:2.4rem;padding-bottom:1.8rem;border-bottom:1px solid var(--border)}
 .page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--purple);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--purple);margin-bottom:.7rem}
-.notes-header h1{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.7rem;color:var(--ink)}
+.notes-header h1{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.6rem;color:var(--ink)}
 .notes-header h1 em{font-style:italic;font-weight:300;color:var(--accent)}
 .notes-header p{font-size:.9rem;color:var(--ink2);max-width:58ch;line-height:1.75}
 
-/* search */
-.notes-search-wrap{margin-bottom:1.8rem}
-.notes-search{
-  width:100%;max-width:460px;padding:.68rem 1rem;
-  background:#fff;border:1px solid var(--border);border-radius:999px;
-  font-family:var(--mono);font-size:.76rem;color:var(--ink);
-  outline:none;transition:.15s;
-}
-.notes-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(194,65,12,.08)}
+/* Search */
+.search-row{display:flex;align-items:center;gap:.9rem;margin-bottom:1.8rem;flex-wrap:wrap}
+.notes-search{padding:.64rem 1rem;background:#fff;border:1px solid var(--border);border-radius:999px;font-family:var(--mono);font-size:.76rem;color:var(--ink);outline:none;transition:.15s;width:280px}
+.notes-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(194,65,12,.07)}
 .notes-search::placeholder{color:var(--ink4)}
+.filter-chips{display:flex;gap:.3rem;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:.62rem;padding:.24rem .62rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);cursor:pointer;transition:.13s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.active{background:rgba(194,65,12,.08);border-color:rgba(194,65,12,.25);color:var(--accent)}
+.active-filter{display:none;align-items:center;gap:.4rem;margin-bottom:1.2rem}
+.active-filter.show{display:flex}
+.af-pill{font-family:var(--mono);font-size:.62rem;padding:.2rem .6rem;border-radius:999px;background:rgba(194,65,12,.08);color:var(--accent);border:1px solid rgba(194,65,12,.2)}
+.af-clear{font-family:var(--mono);font-size:.62rem;color:var(--ink4);cursor:pointer;border:none;background:transparent;padding:0}
+.af-clear:hover{color:var(--accent)}
 
-/* ── FEATURED NOTE ── */
-.featured-note{
-  background:#fff;border:1px solid var(--border);border-left:4px solid var(--purple);
-  border-radius:14px;padding:1.6rem 1.7rem;margin-bottom:2rem;
-  transition:.18s ease;text-decoration:none;color:inherit;display:block;
-  position:relative;overflow:hidden;
-}
-.featured-note::before{
-  content:"";position:absolute;right:0;top:0;width:180px;height:180px;
-  background:radial-gradient(circle,rgba(124,58,237,.04),transparent 65%);
-  pointer-events:none;
-}
+/* Featured */
+.featured-note{background:#fff;border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:14px;padding:1.6rem 1.7rem;margin-bottom:2rem;transition:.18s ease;display:block;position:relative;overflow:hidden;color:inherit;text-decoration:none}
+.featured-note::before{content:"";position:absolute;right:0;top:0;width:180px;height:180px;background:radial-gradient(circle,rgba(124,58,237,.04),transparent 65%);pointer-events:none}
 .featured-note:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,25,23,.1)}
-.featured-eyebrow{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem}
-.featured-badge{
-  font-family:var(--mono);font-size:.58rem;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--purple);
-  padding:.14rem .44rem;border-radius:4px;
-  background:var(--purple-bg);border:1px solid rgba(124,58,237,.2);
-}
+.featured-eyebrow{display:flex;align-items:center;gap:.5rem;margin-bottom:.65rem}
+.featured-badge{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);padding:.14rem .44rem;border-radius:4px;background:var(--purple-bg);border:1px solid var(--purple-bd)}
 .featured-date{font-family:var(--mono);font-size:.58rem;color:var(--ink4)}
-.featured-note h2{
-  font-family:var(--serif);font-size:1.3rem;font-weight:600;
-  color:var(--ink);margin-bottom:.55rem;line-height:1.2;letter-spacing:-.015em;
-}
-.featured-note p{font-size:.86rem;color:var(--ink2);line-height:1.72;margin-bottom:.75rem;max-width:62ch}
+.featured-note h2{font-family:var(--serif);font-size:1.28rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2;letter-spacing:-.015em}
+.featured-note .featured-lead{font-size:.86rem;color:var(--ink2);line-height:1.72;margin-bottom:.7rem;max-width:62ch}
 .featured-meta{font-family:var(--mono);font-size:.6rem;color:var(--ink4)}
 .featured-arrow{position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:1.2rem;color:var(--purple);opacity:.3}
 
-/* ── NOTE CATEGORIES ── */
-.notes-cat-section{margin-bottom:2.4rem}
-.cat-header{
-  display:flex;align-items:center;gap:.5rem;
-  margin-bottom:1.1rem;
-  font-family:var(--mono);font-size:.62rem;
-  text-transform:uppercase;letter-spacing:.1em;
-  color:var(--ink3);
-}
-.cat-badge{
-  display:inline-flex;align-items:center;gap:.3rem;
-  padding:.18rem .5rem;border-radius:4px;
-  font-family:var(--mono);font-size:.6rem;text-transform:uppercase;
-  letter-spacing:.08em;border:1px solid;
-}
-.notes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+/* Patterns */
+.patterns-section{margin:0 0 2.4rem;padding:1.8rem 2rem;background:#fff;border:1px solid var(--border);border-radius:14px;border-left:3px solid var(--amber)}
+.patterns-eyebrow{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:.6rem}
+.patterns-section h2{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.38rem;line-height:1.2}
+.patterns-section p{font-size:.84rem;color:var(--ink2);line-height:1.7;margin-bottom:1.1rem}
+.patterns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.pat{padding:.85rem .95rem;border:1px solid var(--border);border-radius:10px;background:var(--bg2);cursor:pointer;transition:.13s;text-decoration:none;color:inherit;display:block}
+.pat:hover{border-color:var(--amber);background:var(--amber-bg)}
+.pat-label{font-family:var(--mono);font-size:.57rem;color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.32rem}
+.pat h3{font-size:.81rem;font-weight:500;color:var(--ink);margin-bottom:.28rem;line-height:1.3}
+.pat p{font-size:.73rem;color:var(--ink3);line-height:1.56}
 
-/* ── NOTE CARD ── */
-.note-card{
-  background:#fff;border:1px solid var(--border);border-radius:12px;
-  padding:1.2rem 1.3rem;transition:.18s ease;
-  text-decoration:none;color:inherit;display:block;
-}
-.note-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(28,25,23,.09);border-color:rgba(28,25,23,.18)}
-.note-card-cat{
-  display:inline-flex;align-items:center;gap:.28rem;
-  font-family:var(--mono);font-size:.56rem;text-transform:uppercase;
-  letter-spacing:.1em;margin-bottom:.5rem;
-  padding:.14rem .4rem;border-radius:4px;border:1px solid;
-}
-.note-card h3{
-  font-family:var(--serif);font-size:.95rem;font-weight:600;
-  color:var(--ink);margin-bottom:.38rem;line-height:1.28;
-}
-.note-card p{font-size:.78rem;color:var(--ink3);line-height:1.62;margin-bottom:.6rem}
-.note-card-meta{font-family:var(--mono);font-size:.58rem;color:var(--ink4)}
+/* Category sections */
+.cat-section{margin-bottom:2.6rem}
+.cat-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.1rem}
+.cat-badge{display:inline-flex;align-items:center;gap:.28rem;font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .52rem;border-radius:4px;border:1px solid}
+.cat-count{font-family:var(--mono);font-size:.62rem;color:var(--ink4)}
 
-/* ── PATTERNS SECTION ── */
-.patterns-section{
-  margin:2.5rem 0;padding:2rem 2.2rem;
-  background:#fff;border:1px solid var(--border);border-radius:16px;
-  border-left:3px solid var(--amber);
-}
-.patterns-eyebrow{
-  font-family:var(--mono);font-size:.6rem;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--amber);margin-bottom:.65rem;
-}
-.patterns-section h2{
-  font-family:var(--serif);font-size:1.15rem;font-weight:600;
-  color:var(--ink);margin-bottom:.4rem;line-height:1.2;
-}
-.patterns-section p{font-size:.84rem;color:var(--ink2);line-height:1.7;margin-bottom:1.2rem}
-.patterns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.pattern-card{
-  padding:.9rem 1rem;border:1px solid var(--border);border-radius:10px;
-  background:var(--bg2);
-}
-.pattern-card-label{font-family:var(--mono);font-size:.58rem;color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
-.pattern-card h3{font-size:.82rem;font-weight:500;color:var(--ink);margin-bottom:.3rem;line-height:1.3}
-.pattern-card p{font-size:.74rem;color:var(--ink3);line-height:1.58}
+/* Note cards (index) */
+.notes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem}
+.nc-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;transition:.17s ease;display:block;color:inherit;text-decoration:none;cursor:pointer}
+.nc-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(28,25,23,.09);border-color:rgba(28,25,23,.18)}
+.nc-cat{display:inline-flex;align-items:center;gap:.28rem;font-family:var(--mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;padding:.14rem .4rem;border-radius:4px;border:1px solid}
+.nc-card h3{font-family:var(--serif);font-size:.93rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.27}
+.nc-card p{font-size:.77rem;color:var(--ink3);line-height:1.6;margin-bottom:.55rem}
+.nc-meta{font-family:var(--mono);font-size:.57rem;color:var(--ink4)}
 
-/* footer */
-.footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
+/* ── FULL NOTE BODY ── */
+.note-full{border-top:2px solid var(--border);margin-top:.5rem;padding-top:1.5rem}
+.note-full-inner{max-width:640px}
+.note-body-text{font-size:.91rem;color:var(--ink2);line-height:1.82}
+.note-body-text p{margin-bottom:.9rem}
+.note-body-text p:last-child{margin-bottom:0}
+.note-body-text strong{color:var(--ink);font-weight:500}
+.note-body-text em{font-style:italic;color:var(--ink3)}
+.note-body-text blockquote{border-left:3px solid var(--accent);padding:.55rem 1rem;margin:.9rem 0;background:rgba(194,65,12,.04);border-radius:0 8px 8px 0;font-size:.87rem;color:var(--ink2);line-height:1.7;font-family:var(--serif);font-style:italic}
+.note-body-text blockquote strong{color:var(--ink);font-style:normal}
+.note-body-text table{width:100%;border-collapse:collapse;margin:.9rem 0;font-size:.81rem}
+.note-body-text th{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);text-align:left;padding:.5rem .72rem;border-bottom:1px solid var(--border);background:var(--bg2)}
+.note-body-text td{padding:.56rem .72rem;border-bottom:1px solid var(--border2);color:var(--ink2);line-height:1.5;vertical-align:top}
+.note-body-text td:first-child{color:var(--ink);font-weight:400}
+.note-body-text tr:last-child td{border-bottom:none}
+.note-body-text tr:hover td{background:var(--bg2)}
+.note-body-text h2{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--ink);margin:1.2rem 0 .48rem;line-height:1.2;letter-spacing:-.01em}
+.note-body-text h2::before{content:"— ";color:var(--accent);font-style:normal;font-weight:300}
+.nb-callout{display:flex;align-items:flex-start;gap:.52rem;padding:.62rem .85rem;margin:.85rem 0;border-radius:8px;font-size:.82rem;line-height:1.62;border:1px solid}
+.nb-callout.warn{background:rgba(194,65,12,.05);border-color:rgba(194,65,12,.17);color:#7C2D12}
+.nb-callout.rule{background:rgba(180,83,9,.05);border-color:rgba(180,83,9,.18);color:#78350F}
+.nb-callout.tip{background:rgba(13,148,136,.05);border-color:rgba(13,148,136,.18);color:#134E4A}
+.nb-i{flex-shrink:0;font-size:12px;margin-top:2px}
+.note-tkwy{display:flex;align-items:flex-start;gap:.48rem;margin-top:1rem;padding:.68rem .92rem;background:var(--bg2);border-radius:8px;border:1px solid var(--border);font-size:.8rem;color:var(--ink2);line-height:1.6;border-left:3px solid var(--accent)}
+.note-tkwy::before{content:"→";font-family:var(--mono);font-size:.74rem;color:var(--accent);flex-shrink:0;margin-top:1px}
+.read-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.64rem;color:var(--accent);background:rgba(194,65,12,.06);border:1px solid rgba(194,65,12,.18);padding:.28rem .65rem;border-radius:999px;cursor:pointer;margin-top:.9rem;transition:.13s;user-select:none}
+.read-toggle:hover{background:rgba(194,65,12,.12)}
+
+/* Bottom CTA */
+.bottom-cta{margin-top:2.4rem;padding:1.6rem 1.8rem;background:#fff;border:1px solid var(--border);border-radius:14px;border-left:3px solid var(--accent)}
+.bottom-cta-eye{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
+.bottom-cta p{font-size:.87rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:56ch}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;color:#fff;background:var(--accent);border:1px solid var(--accent);padding:.62rem 1.1rem;border-radius:999px;font-weight:500;transition:.14s;text-decoration:none}
+.btn-cta:hover{background:#b83b0b;border-color:#b83b0b;transform:translateY(-1px)}
+
+/* Empty state */
+.empty-state{padding:2.5rem 0;font-family:var(--mono);font-size:.78rem;color:var(--ink4);display:none}
+.empty-state.show{display:block}
+
+/* Footer */
+.footer{padding:2.2rem 0 3rem;border-top:1px solid var(--border)}
 .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
-.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
 .footer-links{display:flex;gap:1.2rem;align-items:center}
-.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
+.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
+.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.56rem .76rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
 .quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
 
+/* Responsive */
 @media(max-width:900px){
   .notes-layout{grid-template-columns:1fr}
   .notes-sidebar{display:none}
-  .notes-main{padding:2rem 1rem 4rem}
+  .notes-main{padding:2rem 1.2rem 4rem}
   .notes-grid{grid-template-columns:1fr}
   .patterns-grid{grid-template-columns:1fr}
+  .search-row{flex-direction:column;align-items:flex-start}
+  .notes-search{width:100%}
 }
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
@@ -212,6 +200,7 @@ a{color:inherit;text-decoration:none}
 </head>
 <body id="top">
 
+<!-- TOPBAR -->
 <div class="topbar-wrap">
   <div class="topbar shell">
     <a href="/" class="brand">
@@ -224,261 +213,529 @@ a{color:inherit;text-decoration:none}
         <span>Valencia City, PH · systems builder · remote-first</span>
       </div>
     </a>
-    <nav class="nav" aria-label="Main navigation">
+    <nav class="nav">
       <a href="/about.html">About</a>
       <a href="/articles.html">Articles</a>
       <a href="/projects.html">Projects</a>
       <a href="/notes.html" class="nav-active">Notes</a>
       <a href="/theme.html">Theme</a>
       <a href="/sound.html">Sound</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="nav-cta">Fix My Systems →</a>
+      <a href="/fix-my-systems.html" class="nav-cta">Fix My Systems &rarr;</a>
     </nav>
   </div>
 </div>
 
 <div class="notes-layout">
 
-  <!-- ── SIDEBAR ── -->
-  <aside class="notes-sidebar" aria-label="Notes navigation">
-    <div class="sb-section">
-      <div class="sb-section-label">Jump to</div>
-      <a href="#featured" class="sb-link">⭐ Featured note</a>
-      <a href="#patterns" class="sb-link">🔁 Patterns</a>
-    </div>
-    <div class="sb-section">
-      <div class="sb-section-label">By category</div>
-      <a href="#cat-systems" class="sb-link">
-        <span class="sb-cat-dot" style="background:#7c3aed"></span>Systems
-      </a>
-      <a href="#cat-crm" class="sb-link">
-        <span class="sb-cat-dot" style="background:var(--teal)"></span>CRM
-      </a>
-      <a href="#cat-ops" class="sb-link">
-        <span class="sb-cat-dot" style="background:var(--accent)"></span>Operations
-      </a>
-      <a href="#cat-field" class="sb-link">
-        <span class="sb-cat-dot" style="background:var(--green)"></span>Field Notes
-      </a>
-    </div>
-    <div class="sb-section">
-      <div class="sb-section-label">Recent</div>
-      <a href="#stop-training-people" class="sb-link sub">Stop Training People...</a>
-      <a href="#escalation-tax" class="sb-link sub">The Escalation Tax</a>
-      <a href="#crm-operating-system" class="sb-link sub">CRM as OS</a>
-      <a href="#handoffs" class="sb-link sub">Handoffs Die Here</a>
-      <a href="#ghl-101-why" class="sb-link sub">Why I Published GHL 101</a>
-    </div>
-  </aside>
+<!-- SIDEBAR -->
+<aside class="notes-sidebar" id="sidebar">
+  <div class="sb-section">
+    <div class="sb-section-label">Jump to</div>
+    <a href="#featured" class="sb-link">&#9733; Featured note</a>
+    <a href="#patterns" class="sb-link">&#8635; Patterns</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-section-label">By category</div>
+    <a href="#cat-systems" class="sb-link"><span class="sb-dot" style="background:#7c3aed"></span>Systems</a>
+    <a href="#cat-crm" class="sb-link"><span class="sb-dot" style="background:var(--teal)"></span>CRM</a>
+    <a href="#cat-ops" class="sb-link"><span class="sb-dot" style="background:var(--accent)"></span>Operations</a>
+    <a href="#cat-technical" class="sb-link"><span class="sb-dot" style="background:var(--blue)"></span>Technical</a>
+    <a href="#cat-founder" class="sb-link"><span class="sb-dot" style="background:var(--green)"></span>Founder notes</a>
+  </div>
+  <div class="sb-div"></div>
+  <div class="sb-section">
+    <div class="sb-section-label">Recent</div>
+    <a href="#note-stop-training" class="sb-link sub">Stop Training People...</a>
+    <a href="#note-escalation" class="sb-link sub">The Escalation Tax</a>
+    <a href="#note-handoffs" class="sb-link sub">Handoffs Die Here</a>
+    <a href="#note-crm-os" class="sb-link sub">CRM as OS</a>
+    <a href="#note-ghl101" class="sb-link sub">Why I Published GHL 101</a>
+  </div>
+  <div class="sb-div"></div>
+  <div class="sb-note">Notes are shorter than articles. Specific enough to be useful. Not formatted for virality.<br><br><a href="/articles.html">Articles &rarr;</a></div>
+</aside>
 
-  <!-- ── MAIN ── -->
-  <main class="notes-main">
+<!-- MAIN -->
+<main class="notes-main" id="main-content">
 
-    <header class="notes-header" id="top-content">
-      <div class="page-eyebrow">Notes · Field Logs · Operational Thinking</div>
-      <h1>Operational thinking, <em>written down.</em></h1>
-      <p>Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Not theory — pattern recognition from working inside real systems.</p>
-    </header>
+  <!-- Header -->
+  <header class="notes-header">
+    <div class="page-eyebrow">Notes &middot; Field Logs &middot; Operational Thinking</div>
+    <h1>Operational thinking, <em>written down.</em></h1>
+    <p>Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Not theory &mdash; pattern recognition from working inside real systems.</p>
+  </header>
 
-    <!-- Search -->
-    <div class="notes-search-wrap">
-      <input type="text" class="notes-search" placeholder="Search notes..." id="noteSearch" aria-label="Search notes"/>
+  <!-- Search + Filter -->
+  <div class="search-row">
+    <input type="text" class="notes-search" id="noteSearch" placeholder="Search notes&hellip;" autocomplete="off"/>
+    <div class="filter-chips" id="filterChips">
+      <button class="chip active" data-cat="all">All</button>
+      <button class="chip" data-cat="systems">Systems</button>
+      <button class="chip" data-cat="crm">CRM</button>
+      <button class="chip" data-cat="operations">Operations</button>
+      <button class="chip" data-cat="technical">Technical</button>
+      <button class="chip" data-cat="founder">Founder</button>
     </div>
+  </div>
+  <div class="active-filter" id="activeFilter">
+    <span class="af-pill" id="afPill"></span>
+    <button class="af-clear" id="clearFilter">Clear</button>
+  </div>
 
-    <!-- ── FEATURED ── -->
-    <section id="featured" aria-label="Featured note">
-      <a href="#stop-training-people" class="featured-note" id="stop-training-people">
-        <div class="featured-eyebrow">
-          <span class="featured-badge">⭐ Featured · Systems</span>
-          <span class="featured-date">Mar 2026</span>
+  <!-- Featured -->
+  <section id="featured">
+    <div class="featured-note" id="note-stop-training" data-cat="systems">
+      <div class="featured-eyebrow">
+        <span class="featured-badge">&#9733; Featured &middot; Systems</span>
+        <span class="featured-date">Mar 2026</span>
+      </div>
+      <h2>Stop Training People. Start Building Systems That Set Them Free.</h2>
+      <p class="featured-lead">When teams keep asking the same questions, the issue is rarely memory &mdash; it's the environment around the work. And environments can be redesigned.</p>
+      <div class="featured-meta">4 min read &middot; Systems design</div>
+      <div class="note-full">
+        <div class="note-full-inner">
+          <div class="note-body-text">
+            <p>Learning is hard. Not because people aren't smart &mdash; but because we keep making it harder than it needs to be. I've spent years inside operations, CRM rollouts, and support environments. Across every one, I kept watching the same thing unfold: something breaks down, leadership responds by adding more training, and it rarely fixes the actual problem.</p>
+            <h2>The thing that kept bothering me</h2>
+            <p>Capable people were constantly getting stuck on simple things. Not because they didn't understand the work. Because the environment around the work gave them nowhere to turn except up. Every edge case, every exception, every "here's how we actually handle that" lived in someone's head &mdash; usually a senior person, usually already stretched thin. So the default became: <em>I need my supervisor to unblock this.</em></p>
+            <p>This wasn't a learning failure. It was a <strong>systems failure.</strong> We were asking people to navigate without a compass and then blaming them for getting lost.</p>
+            <h2>What over-training actually creates</h2>
+            <p>When we over-train, we don't build confidence &mdash; we build dependency. Endless documentation creates people who say "I'll just ask Sarah." Complex SOPs create people who say "Where do I even start?" More meetings create people who wait for confirmation. None of those responses are laziness. They're rational responses to an environment that never equipped people to decide independently.</p>
+            <blockquote>The gap between "what we trained on" and "what actually happens on Monday morning" tells you everything about your system.</blockquote>
+            <p>Think about handing someone a map of every back road in a city versus handing them a compass and teaching them to navigate. One creates someone who can follow instructions. The other creates someone who can get anywhere &mdash; including places you never mapped.</p>
+            <h2>What actually works</h2>
+            <p>The teams operating at the highest level didn't solve this by training harder. They built better systems around the work itself. Shorter, sharper onboarding &mdash; new people get the essentials, enough to start moving, not every edge case front-loaded into week one. Documentation and decision trees that surface answers at the moment of need instead of routing everything back up the chain. Frameworks over permission: someone who understands <em>why</em> a process exists can handle cases you never explicitly trained for. Autonomy built in from day one &mdash; not something earned after years of tenure.</p>
+            <p>The shift isn't from training to not training. It's from training as the primary fix to systems as the primary fix, with training playing a supporting role.</p>
+            <div class="note-tkwy">Look at your training and onboarding right now and ask: is this building navigators &mdash; or creating dependency? If people keep coming back with questions you've already answered, it's probably not their memory. It's the system. Systems can be redesigned.</div>
+          </div>
         </div>
-        <h2>Stop Training People. Start Building Systems That Set Them Free.</h2>
-        <p>When teams keep asking the same questions, the issue is rarely memory — it's the environment around the work. And environments can be redesigned. Here's the distinction that changes how you build.</p>
-        <div class="featured-meta">8 min read · 1,400 words · Systems design</div>
-        <div class="featured-arrow">→</div>
-      </a>
-    </section>
-
-    <!-- ── PATTERNS ── -->
-    <section class="patterns-section" id="patterns" aria-label="Operational patterns">
-      <div class="patterns-eyebrow">🔁 Recurring Patterns</div>
-      <h2>The operational failures that keep recurring.</h2>
-      <p>These aren't unique problems. They're patterns — and patterns can be fixed with the right structure. Field observations from real operations, not theory.</p>
-      <div class="patterns-grid">
-        <a href="#crm-operating-system" class="pattern-card" style="text-decoration:none;color:inherit">
-          <div class="pattern-card-label">Pattern · CRM</div>
-          <h3>The CRM nobody trusts.</h3>
-          <p>Stages that don't match reality. Data that reflects what was entered, not what happened. Nobody updates what nobody trusts.</p>
-        </a>
-        <a href="#escalation-tax" class="pattern-card" style="text-decoration:none;color:inherit">
-          <div class="pattern-card-label">Pattern · Escalation</div>
-          <h3>The escalation tax nobody measures.</h3>
-          <p>10 interruptions/day = 3+ hours of senior time. Every escalation costs not just 5 minutes — it costs the switching time too.</p>
-        </a>
-        <a href="#handoffs" class="pattern-card" style="text-decoration:none;color:inherit">
-          <div class="pattern-card-label">Pattern · Handoffs</div>
-          <h3>Handoffs are where work goes to die.</h3>
-          <p>The work passes. The context doesn't. The next person starts over, makes wrong assumptions, or stalls waiting for clarification.</p>
-        </a>
       </div>
-    </section>
-
-    <!-- ── SYSTEMS NOTES ── -->
-    <section class="notes-cat-section" id="cat-systems" aria-label="Systems notes">
-      <div class="cat-header">
-        <span class="cat-badge" style="color:#7c3aed;background:var(--purple-bg);border-color:rgba(124,58,237,.2)">⚙️ Systems</span>
-        <span>3 notes</span>
-      </div>
-      <div class="notes-grid">
-        <a href="#stop-training-people" class="note-card">
-          <div class="note-card-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:rgba(124,58,237,.2)">⭐ Featured · Systems</div>
-          <h3>Stop Training People. Start Building Systems That Set Them Free.</h3>
-          <p>The environment gives people nowhere to turn except up. And environments can be redesigned.</p>
-          <div class="note-card-meta">Mar 2026 · 8 min read</div>
-        </a>
-        <a href="#documentation-failure" class="note-card" id="documentation-failure">
-          <div class="note-card-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:rgba(124,58,237,.2)">⚙️ Systems</div>
-          <h3>Documentation Nobody Uses Is Just Organized Noise.</h3>
-          <p>Most documentation fails not because it's wrong — but because it's not built for the moment someone needs it.</p>
-          <div class="note-card-meta">Feb 2026 · 5 min read</div>
-        </a>
-        <a href="#system-vs-tool" class="note-card" id="system-vs-tool">
-          <div class="note-card-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:rgba(124,58,237,.2)">⚙️ Systems</div>
-          <h3>The Difference Between a Tool and a System.</h3>
-          <p>You bought the CRM. You have the tool. You don't have the system. Here's the difference.</p>
-          <div class="note-card-meta">Feb 2026 · 4 min read</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ── CRM NOTES ── -->
-    <section class="notes-cat-section" id="cat-crm" aria-label="CRM notes">
-      <div class="cat-header">
-        <span class="cat-badge" style="color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)">📊 CRM</span>
-        <span>2 notes</span>
-      </div>
-      <div class="notes-grid">
-        <a href="#crm-operating-system" class="note-card" id="crm-operating-system">
-          <div class="note-card-cat" style="color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)">📊 CRM</div>
-          <h3>CRM Isn't Just a Database. It's an Operating System.</h3>
-          <p>Most teams use their CRM as a filing cabinet. A well-architected CRM is an operating system for how your team works.</p>
-          <div class="note-card-meta">Jan 2026 · 3 min read</div>
-        </a>
-        <a href="#pipeline-lies" class="note-card" id="pipeline-lies">
-          <div class="note-card-cat" style="color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)">📊 CRM</div>
-          <h3>Pipeline Stages That Lie to You.</h3>
-          <p>When "Proposal Sent" means three different things depending on who moved the deal — the stage isn't a stage. It's a conversation.</p>
-          <div class="note-card-meta">Jan 2026 · 4 min read</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ── OPS NOTES ── -->
-    <section class="notes-cat-section" id="cat-ops" aria-label="Operations notes">
-      <div class="cat-header">
-        <span class="cat-badge" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">🔧 Operations</span>
-        <span>3 notes</span>
-      </div>
-      <div class="notes-grid">
-        <a href="#escalation-tax" class="note-card" id="escalation-tax">
-          <div class="note-card-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">🔧 Operations</div>
-          <h3>The Escalation Tax: What It's Costing You Every Day.</h3>
-          <p>Senior staff interrupted constantly. Same questions answered again. 10 escalations/day might be costing you 3+ hours of focused work.</p>
-          <div class="note-card-meta">Mar 2026 · 4 min read</div>
-        </a>
-        <a href="#handoffs" class="note-card" id="handoffs">
-          <div class="note-card-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">🔧 Operations</div>
-          <h3>Handoffs Are Where Work Goes to Die.</h3>
-          <p>The artifact passes. The reasoning doesn't. The next person starts over or stalls waiting for the context that should have been included.</p>
-          <div class="note-card-meta">Mar 2026 · 5 min read</div>
-        </a>
-        <a href="#automation-trap" class="note-card" id="automation-trap">
-          <div class="note-card-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">🔧 Operations</div>
-          <h3>The Automation Trap: When You Automate a Broken Process.</h3>
-          <p>Automation amplifies what's already there. If the process is broken, automation just breaks it faster and at scale.</p>
-          <div class="note-card-meta">Feb 2026 · 4 min read</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ── FIELD NOTES ── -->
-    <section class="notes-cat-section" id="cat-field" aria-label="Field notes">
-      <div class="cat-header">
-        <span class="cat-badge" style="color:var(--green);background:var(--green-bg);border-color:rgba(21,128,61,.2)">📋 Field Notes</span>
-        <span>3 notes</span>
-      </div>
-      <div class="notes-grid">
-        <a href="#ghl-101-why" class="note-card" id="ghl-101-why">
-          <div class="note-card-cat" style="color:var(--green);background:var(--green-bg);border-color:rgba(21,128,61,.2)">📋 Field Notes</div>
-          <h3>GHL 101: Why I Published Over a Year of Notes for Free.</h3>
-          <p>Almost everything useful about GoHighLevel lives behind a paywall. That's an operational problem — and operational problems are what I fix.</p>
-          <div class="note-card-meta">Mar 2026 · 3 min read</div>
-        </a>
-        <a href="#seo-ranking-pattern" class="note-card" id="seo-ranking-pattern">
-          <div class="note-card-cat" style="color:var(--green);background:var(--green-bg);border-color:rgba(21,128,61,.2)">📋 Field Notes</div>
-          <h3>Why Local SEO Beats National for New Businesses.</h3>
-          <p>Rightmove and Zoopla own the national terms. The only realistic path for a new business is hyper-local long-tail. Here's the logic.</p>
-          <div class="note-card-meta">Feb 2026 · 3 min read</div>
-        </a>
-        <a href="#email-deliverability" class="note-card" id="email-deliverability">
-          <div class="note-card-cat" style="color:var(--green);background:var(--green-bg);border-color:rgba(21,128,61,.2)">📋 Field Notes</div>
-          <h3>34.2% Open Rate from a Landlord List. What Actually Worked.</h3>
-          <p>City-specific subject lines outperformed generic ones by 11 percentage points. Here's the full breakdown from the Dual Wing campaign.</p>
-          <div class="note-card-meta">Apr 2026 · 5 min read</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ASMC CTA -->
-    <div style="margin-top:2.5rem;padding:1.6rem 1.8rem;background:#fff;border:1px solid var(--border);border-radius:14px;border-left:3px solid var(--accent)">
-      <div style="font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem">if you recognize the pattern</div>
-      <p style="font-size:.88rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:56ch">The notebook has the diagnosis. If you're seeing these patterns in your operation — ASMC is where we fix them. Free 30-min ops audit, no pitch, no deck.</p>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;color:#fff;background:var(--accent);border:1px solid var(--accent);padding:.64rem 1.1rem;border-radius:999px;font-weight:500;transition:.14s;text-decoration:none">Fix My Systems → ASMC</a>
     </div>
+  </section>
 
-  </main>
-</div>
+  <!-- Patterns -->
+  <section class="patterns-section" id="patterns">
+    <div class="patterns-eyebrow">&#8635; Recurring Patterns</div>
+    <h2>The operational failures that keep recurring.</h2>
+    <p>These aren't unique problems. They're patterns &mdash; and patterns can be fixed with the right structure.</p>
+    <div class="patterns-grid">
+      <a href="#note-crm-os" class="pat">
+        <div class="pat-label">Pattern &middot; CRM</div>
+        <h3>The CRM nobody trusts.</h3>
+        <p>Stages that don't match reality. Data that reflects what was entered, not what happened. Nobody updates what nobody trusts.</p>
+      </a>
+      <a href="#note-escalation" class="pat">
+        <div class="pat-label">Pattern &middot; Escalation</div>
+        <h3>The tax nobody measures.</h3>
+        <p>10 interruptions/day = 3+ hours of senior time. Every escalation costs not just 5 minutes &mdash; it costs the switching time too.</p>
+      </a>
+      <a href="#note-handoffs" class="pat">
+        <div class="pat-label">Pattern &middot; Handoffs</div>
+        <h3>Handoffs are where work dies.</h3>
+        <p>The work passes. The context doesn't. The next person starts over, makes wrong assumptions, or stalls.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- SYSTEMS CATEGORY -->
+  <section class="cat-section" id="cat-systems">
+    <div class="cat-header">
+      <span class="cat-badge" style="color:#7c3aed;background:var(--purple-bg);border-color:var(--purple-bd)">&#9881; Systems</span>
+      <span class="cat-count">2 notes</span>
+    </div>
+    <div class="notes-grid" id="grid-systems">
+
+      <div class="nc-card" data-cat="systems" id="note-process-system">
+        <div class="nc-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:var(--purple-bd)">&#9881; Systems</div>
+        <h3>The Difference Between a Process and a System</h3>
+        <p>People use these words interchangeably. They're not the same thing &mdash; and the distinction matters if you're trying to build something that runs without you.</p>
+        <div class="nc-meta">Jan 2026 &middot; 3 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <table>
+                <tr><th>Concept</th><th>Definition</th></tr>
+                <tr><td>Process</td><td>A sequence of steps</td></tr>
+                <tr><td>System</td><td>An environment where the process happens reliably, even when you're not watching</td></tr>
+              </table>
+              <h2>A process without a system</h2>
+              <p>You write an SOP. You train the team on it. Everyone nods. For a few weeks, things run the way you designed them. Then someone leaves, or a new person joins, or the workload spikes. The process quietly degrades &mdash; steps get skipped, shortcuts become the default, the SOP sits in a folder no one opens. The process existed. The <strong>system</strong> didn't. The process described what should happen. The system is what makes it happen regardless of conditions.</p>
+              <h2>What the difference looks like in practice</h2>
+              <p>A process tells people what to do. A system makes it harder to do it wrong. A process depends on memory. A system has built-in accountability. A process requires enforcement. A system is self-correcting. A process breaks under pressure. A system adapts. The difference isn't in the quality of the documentation &mdash; it's in whether the environment around the work reinforces the right behavior even when nobody is watching.</p>
+              <p>A CRM that requires a stage change before an invoice can be sent is a system. A CRM where people are <em>supposed to</em> change the stage before sending an invoice is a process. One enforces. The other relies on memory and discipline under pressure.</p>
+              <h2>The practical test</h2>
+              <blockquote>If you removed yourself from the operation for two weeks with no warning &mdash; what would break?</blockquote>
+              <p>If the answer is "a lot," the knowledge, judgment, and coordination are still sitting in your head instead of being encoded into the environment. The path forward isn't to build everything at once. Pick the one thing that breaks most often. Build it until it runs without you. Then move to the next one.</p>
+              <div class="note-tkwy">You don't need to systemize everything at once. Pick the single most common failure. Build until it stops failing. Then repeat.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-card" data-cat="systems" id="note-stop-training-2">
+        <div class="nc-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:var(--purple-bd)">&#9733; Featured &middot; Systems</div>
+        <h3>Stop Training People. Start Building Systems That Set Them Free.</h3>
+        <p>The environment gives people nowhere to turn except up. And environments can be redesigned.</p>
+        <div class="nc-meta">Mar 2026 &middot; 4 min read</div>
+        <a href="#note-stop-training" class="read-toggle" style="display:inline-flex">Read above &uarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CRM CATEGORY -->
+  <section class="cat-section" id="cat-crm">
+    <div class="cat-header">
+      <span class="cat-badge" style="color:var(--teal);background:var(--teal-bg);border-color:var(--teal-bd)">&#128202; CRM</span>
+      <span class="cat-count">1 note</span>
+    </div>
+    <div class="notes-grid">
+
+      <div class="nc-card" data-cat="crm" id="note-crm-os">
+        <div class="nc-cat" style="color:var(--teal);background:var(--teal-bg);border-color:var(--teal-bd)">&#128202; CRM</div>
+        <h3>CRM Isn't Just a Database. It's an Operating System.</h3>
+        <p>Most teams use their CRM as a filing cabinet. A well-architected CRM is an operating system for how your team works.</p>
+        <div class="nc-meta">Jan 2026 &middot; 3 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>Most teams use their CRM as a filing cabinet. They put records in. They pull records out. They report on what's there. That's not what a CRM is for. A well-architected CRM is an <strong>operating system</strong> for how your team works &mdash; it tells people what to do next, tracks what's been done, surfaces what's slipping, and makes accountability visible without someone having to chase it.</p>
+              <h2>What a filing cabinet CRM looks like</h2>
+              <p>You know you're in filing cabinet territory when contacts have no clear stage, when status fields mean different things depending on who filled them in, when notes are written for the person who wrote them rather than the next person who opens the record, and when your reports tell you what happened but not why. The data exists but it doesn't do anything.</p>
+              <h2>What an operating system CRM looks like</h2>
+              <p>Every record has a clear status that maps to the actual state of the work. Stages trigger tasks: the right action surfaces at the right moment without someone having to remember. Field usage is consistent across the team so the data is trustworthy enough to act on. Next steps are visible to anyone who opens the record, not just the person managing it.</p>
+              <h2>The gap between the two</h2>
+              <p>Getting from filing cabinet to operating system requires someone to make decisions about how your team actually works and then <strong>encode those decisions into the CRM.</strong> That's not a software configuration problem. It's a workflow design problem that happens to be solved with software. Most teams skip this step. They install the platform, set up some default fields, push it out, and wonder why adoption is low six months later.</p>
+              <p>The structure has to come before the configuration. You can't configure your way to good pipeline design. You have to decide how the work moves first, then build the system around that decision.</p>
+              <div class="note-tkwy">If your CRM requires a conversation to understand where something stands, it's working as a filing cabinet. The operating system version answers that question the moment you open the record.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OPERATIONS CATEGORY -->
+  <section class="cat-section" id="cat-ops">
+    <div class="cat-header">
+      <span class="cat-badge" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</span>
+      <span class="cat-count">3 notes</span>
+    </div>
+    <div class="notes-grid">
+
+      <div class="nc-card" data-cat="operations" id="note-escalation">
+        <div class="nc-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</div>
+        <h3>The Escalation Tax: What It's Costing You Every Day</h3>
+        <p>Senior staff interrupted constantly. 10 escalations/day might be costing you 3+ hours of focused work &mdash; not 50 minutes.</p>
+        <div class="nc-meta">Mar 2026 &middot; 3 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>There's a cost every team pays that almost no one measures. Not in dashboards. Not in reports. Not in any budget line. It shows up as a senior person constantly interrupted. A team member who can't decide without checking first. A founder still answering the same questions from six months ago. I call it the <strong>escalation tax.</strong></p>
+              <h2>What it looks like</h2>
+              <p>Someone hits a situation they haven't encountered before. Nothing in the documentation covers it. So they do the rational thing: they ask. The ask goes up the chain. The person at the top figures it out, gives an answer, moves on. But they don't write it down. Three weeks later, someone else hits the same situation and the cycle repeats. Multiply by ten people, fifty edge cases, and a year of operation &mdash; and you have an organization where senior people are spending the majority of their cognitive capacity re-answering questions that have already been answered.</p>
+              <h2>The hidden multiplier</h2>
+              <p>What most managers don't account for is the <strong>switching cost.</strong> Every interruption costs not just the 5 minutes of the conversation, but the time to re-enter context before and after.</p>
+              <table>
+                <tr><th>Interruptions/day</th><th>At 5 min each</th><th>With 15 min switching cost</th></tr>
+                <tr><td>5</td><td>25 minutes</td><td>1.6 hours</td></tr>
+                <tr><td>10</td><td>50 minutes</td><td>3.3 hours</td></tr>
+                <tr><td>20</td><td>1.6 hours</td><td>6.6 hours</td></tr>
+              </table>
+              <h2>How to cut it</h2>
+              <p>The fix isn't telling people to stop asking. People ask because asking is the most reliable path to an answer. The fix is building infrastructure that makes asking unnecessary for the common cases. Decision trees for your top twenty edge cases. A searchable, current knowledge base. Clear ownership so there's no guessing. Documented escalation paths so exceptions are structured, not ad hoc.</p>
+              <p>The goal isn't zero escalations &mdash; some things genuinely require judgment. The goal is that by the time something reaches a senior person, it <em>actually</em> requires their judgment, not just their memory.</p>
+              <div class="note-tkwy">Count how many questions your senior people answered today that they've answered before. That number is your escalation tax. It's also your clearest signal of where to build next.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-card" data-cat="operations" id="note-handoffs">
+        <div class="nc-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</div>
+        <h3>Handoffs Are Where Work Goes to Die</h3>
+        <p>The artifact passes. The reasoning doesn't. The next person starts over or stalls waiting for the context that should have been included.</p>
+        <div class="nc-meta">Feb 2026 &middot; 3 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>Most operational failures don't happen inside a task. They happen <strong>between tasks.</strong> The work is finished on one end. It moves to the next person. Something gets lost in the gap &mdash; context, status, an edge case that was handled but never communicated. The next person either starts from scratch, makes a wrong assumption, or pauses the whole thing to ask.</p>
+              <h2>Why this keeps happening</h2>
+              <p>The person passing the work knows everything about it. They lived it. So they hand over the artifact &mdash; the file, the record, the ticket update &mdash; <strong>without handing over the thinking that shaped it.</strong> The receiving person gets the output but not the reasoning. This isn't negligence. It's a natural result of proximity. The solution isn't to tell people to communicate better &mdash; it's to build a handoff structure that prompts the right information every time, automatically.</p>
+              <h2>What a useful handoff actually contains</h2>
+              <table>
+                <tr><th>Element</th><th>Example</th><th>What it prevents</th></tr>
+                <tr><td>Status at transfer</td><td>"Quote sent, awaiting response"</td><td>Status confusion</td></tr>
+                <tr><td>Key decisions made</td><td>"Offered 10% for annual commit"</td><td>Undocumented context</td></tr>
+                <tr><td>Open items with owner</td><td>"Legal review &mdash; Sarah owns"</td><td>Dropped threads</td></tr>
+                <tr><td>Non-obvious context</td><td>"Client mentioned competitor pricing"</td><td>Missing signal</td></tr>
+              </table>
+              <h2>Making it structural</h2>
+              <p>The best handoff systems don't rely on people remembering &mdash; they build the structure into the tool. A CRM with required fields before stage advancement. A ticket system that surfaces a handoff template on status change. The format matters less than the consistency. People fill out what's in front of them.</p>
+              <div class="note-tkwy">If the receiving person has to ask a question before they can start, the handoff wasn't finished. Design for continuity without a conversation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-card" data-cat="operations" id="note-founders">
+        <div class="nc-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</div>
+        <h3>What Founders Actually Need From an Ops Person</h3>
+        <p>Not a task executor. Someone who can take a vague direction and figure out what it actually means to implement it.</p>
+        <div class="nc-meta">Dec 2025 &middot; 3 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>I've worked with founders at different stages. The needs are surprisingly consistent regardless of company size. What founders need is not a task executor &mdash; anyone can execute tasks. What they need is someone who can take a vague direction and figure out what it actually means to implement it without being told every step.</p>
+              <blockquote><strong>"We need to be more organized"</strong> is not a task. Turning that into a system &mdash; figuring out where the friction is, what needs to be documented, what should be automated, what needs a human decision point &mdash; that's the actual work.</blockquote>
+              <h2>The translation problem</h2>
+              <p>Founders think in strategy, relationships, and product. That's the right level for them to operate at. But strategy has to become execution at some point, and the translation layer between the two is where most operational problems live. A good ops person holds that translation layer.</p>
+              <table>
+                <tr><th>Founder's role</th><th>Ops person's role</th></tr>
+                <tr><td>Strategy</td><td>Translate strategy into execution steps</td></tr>
+                <tr><td>Relationships</td><td>Build infrastructure that scales them</td></tr>
+                <tr><td>Product</td><td>Remove operational drag from the team</td></tr>
+                <tr><td>Vision</td><td>Make vision something the org can execute daily</td></tr>
+              </table>
+              <h2>What to look for</h2>
+              <p>An ops person who understands this doesn't wait to be assigned work. They're watching for drag. They're asking: Where is this slowing down? What's not captured anywhere? What would break if I wasn't here for two weeks? Process thinking is the actual skill. The tools are just how it gets applied.</p>
+              <div class="note-tkwy">Every hour a founder spends routing an operational question or re-explaining a process is an hour not spent on the thing only they can do. That's the cost the ops layer is supposed to absorb.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECHNICAL CATEGORY -->
+  <section class="cat-section" id="cat-technical">
+    <div class="cat-header">
+      <span class="cat-badge" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</span>
+      <span class="cat-count">3 notes</span>
+    </div>
+    <div class="notes-grid">
+
+      <div class="nc-card" data-cat="technical" id="note-ghl101">
+        <div class="nc-cat" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</div>
+        <h3>GHL 101: Why I Published Over a Year of Notes for Free</h3>
+        <p>Almost everything useful about GoHighLevel lives behind a paywall. That's an operational problem &mdash; and operational problems are what I fix.</p>
+        <div class="nc-meta">Mar 2026 &middot; 3 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>GoHighLevel has a problem most people in the ecosystem quietly know about. Almost everything useful lives behind a paywall. A paid course. A YouTube channel someone is monetizing. A Facebook group you had to beg to join. The platform itself is genuinely powerful. The knowledge around it is artificially scarce &mdash; not because the information doesn't exist, but because the incentive structure of the GHL community pushes everything toward monetization.</p>
+              <h2>The honest backstory</h2>
+              <p>I spent over a year learning GHL the hard way. Broken workflows. Busted automations. Late-night debugging on client accounts that had real consequences. I kept notes the whole time &mdash; not to publish, just because I think in systems and systems need documentation to survive. At some point the notes crossed a threshold. They stopped being personal reminders and started being a reference.</p>
+              <p>So I organized everything, updated it to 2026 &mdash; Voice AI, Agent Studio, WhatsApp native, the new CRM UI, AI Employee pricing &mdash; cross-referenced 29 official GHL support articles, and published the whole thing. No paywall. No email gate. No course upsell at the end.</p>
+              <blockquote>GHL learning is gate-kept. Almost everything useful is behind a paywall. This was my attempt to fix a small piece of that.</blockquote>
+              <h2>Why this matters beyond GHL</h2>
+              <p>Building this manual is a direct expression of how I work. I find operational chaos and build the structure that prevents it from recurring. I document systems so they survive without me in the room. The GHL 101 manual is a clean artifact of those skills &mdash; it wasn't assigned, nobody paid me to write it, and it exists because scattered, paywalled, outdated knowledge is an operational problem. Operational problems are what I fix.</p>
+              <div class="note-tkwy"><a href="/grimoires/003-ghl-101.html" style="color:var(--accent);font-family:var(--mono);font-size:.77rem">GHL 101: Speedrun Training Manual &mdash; 2026 Edition &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-card" data-cat="technical" id="note-automation">
+        <div class="nc-cat" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</div>
+        <h3>How to Design a Workflow Automation That Actually Works</h3>
+        <p>Most automations fail because they're built around tools instead of process logic. Map the process first &mdash; then automate it.</p>
+        <div class="nc-meta">Mar 2026 &middot; 4 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>Most workflow automations fail because they're built around tools instead of process logic. The platform gets chosen first. The workflow gets designed around what the platform can do. The actual process &mdash; how work moves, where it stalls, what needs to happen when things go wrong &mdash; gets figured out later. Usually after something breaks in production with a real client record attached.</p>
+              <div class="nb-callout warn"><span class="nb-i">&#9888;</span><span>Automations do not fix broken processes. They make broken processes run faster and fail at scale.</span></div>
+              <h2>The mental model</h2>
+              <p>Think of automation like plumbing. You don't start by buying pipes. Every automation has three components: a trigger that starts the flow, a filter that routes it correctly, and an action that defines what happens next. The right order is: map the manual process first, identify the bottlenecks, design backward from the desired end state, then add filters as guardrails.</p>
+              <table>
+                <tr><th>Component</th><th>What it does</th><th>Example</th></tr>
+                <tr><td>Trigger</td><td>Starts the flow</td><td>Form submission, schedule, webhook</td></tr>
+                <tr><td>Filter</td><td>Routes it correctly</td><td>Only if priority = urgent</td></tr>
+                <tr><td>Action</td><td>Defines what happens next</td><td>Create record, send email, update sheet</td></tr>
+              </table>
+              <h2>Build in layers, not monoliths</h2>
+              <p>A monolith automation is one long chain where everything is connected. When it breaks, the failure can be anywhere and affects everything downstream. A layered system assigns each layer a single responsibility. Layer 1 handles intake and validation. Layer 2 handles CRM updates and logging. Layer 3 handles scheduled batch processes. Layer 4 handles follow-up sequences. Each layer is testable independently.</p>
+              <h2>The common gotchas</h2>
+              <p><strong>Silent failure</strong> is the worst outcome &mdash; a Zap that errors and notifies nobody. Add error notifications to anything that touches revenue or client-facing data. <strong>Data drift</strong> is slow and invisible: review critical automations quarterly, not just after something breaks. <strong>The one-more-step trap</strong> creates fragile monoliths that are hard to debug. <strong>Human bypass</strong> is a design problem: if team members work around the automation, the automation isn't modeling how work actually moves.</p>
+              <div class="note-tkwy">Map the manual process before you touch the tool. The automation should describe how the work moves &mdash; not how the platform happens to be configured.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nc-card" data-cat="technical" id="note-kb">
+        <div class="nc-cat" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</div>
+        <h3>How to Build a Knowledge Base People Actually Use</h3>
+        <p>A KB is valuable because at the exact moment someone is stuck, it helps them move. Most fail the second test even when they pass the first.</p>
+        <div class="nc-meta">Mar 2026 &middot; 4 min read</div>
+        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
+        <div class="note-full" style="display:none">
+          <div class="note-full-inner">
+            <div class="note-body-text">
+              <p>A knowledge base is not valuable because it exists. It's valuable because at the exact moment someone is stuck, it helps them move. Most knowledge bases fail the second test even when they pass the first. They exist. But when someone hits a real edge case at 4pm on a Friday, they message a senior person instead of checking the KB &mdash; because they've learned the KB probably won't have what they need.</p>
+              <blockquote>If your team keeps asking experienced people instead of using the KB, the problem is usually design, not discipline.</blockquote>
+              <h2>The actual standard to hit</h2>
+              <p>A knowledge base earns consistent use when four things are true: the right person can find the right article fast, they can understand it without translation, they can act on it without guessing, and they know when to escalate. Most KBs fail on speed and clarity &mdash; articles exist but they're buried in vague categories or written for the person who wrote them.</p>
+              <h2>The taxonomy problem</h2>
+              <p>Weak knowledge bases use categories that reflect how the organization thinks about itself: General, Support, Admin, Misc. Strong ones use categories that mirror how work actually breaks. In a payments environment: Funding, Billing, Risk, Descriptor, Deployment, Underwriting, Escalations.</p>
+              <div class="nb-callout rule"><span class="nb-i">&rarr;</span><span>Good taxonomy follows operational friction, not org chart politeness.</span></div>
+              <h2>Why teams stop trusting it</h2>
+              <p>Trust breaks in one of three ways. Outdated guidance. Conflicting articles. Or the most damaging: senior staff bypassing the system. If experienced people keep answering repeat questions in Slack instead of pointing to the documented path, the team learns the real answer probably isn't in the KB. Once that signal is established, the KB becomes a museum. Maintenance is <strong>operational architecture</strong> &mdash; someone has to own it, audit it on a schedule, and kill articles that no longer reflect reality.</p>
+              <div class="note-tkwy">If senior people are answering the same question more than twice, it belongs in the knowledge base. The third time it comes up, the answer should be a link &mdash; not a conversation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOUNDER CATEGORY -->
+  <section class="cat-section" id="cat-founder">
+    <div class="cat-header">
+      <span class="cat-badge" style="color:var(--green);background:var(--green-bg);border-color:var(--green-bd)">&#128203; Founder notes</span>
+      <span class="cat-count">1 note</span>
+    </div>
+    <div class="notes-grid">
+      <div class="nc-card" data-cat="founder" id="note-founders-2">
+        <div class="nc-cat" style="color:var(--green);background:var(--green-bg);border-color:var(--green-bd)">&#128203; Founder notes</div>
+        <h3>What Founders Actually Need From an Ops Person</h3>
+        <p>Not a task executor. Someone who can take "we need to be more organized" and turn it into a system.</p>
+        <div class="nc-meta">Dec 2025 &middot; 3 min read</div>
+        <a href="#note-founders" class="read-toggle" style="display:inline-flex">Read above &uarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <div class="bottom-cta-eye">If you recognize the pattern</div>
+    <p>The notes have the diagnosis. If you're seeing these patterns in your operation &mdash; ASMC is where we fix them. Free 30-min ops audit, no pitch, no deck.</p>
+    <a href="/fix-my-systems.html" class="btn-cta">Fix My Systems &rarr; ASMC</a>
+  </div>
+
+  <div class="empty-state" id="emptyState">No notes match that search. Try a different keyword.</div>
+
+</main>
+</div><!-- /notes-layout -->
 
 <footer class="footer shell">
   <div class="footer-line">
-    <div>© <span id="yr"></span> Aaron Suarez · operational systems builder</div>
+    <div>&copy; <span id="yr"></span> Aaron Suarez &middot; operational systems builder</div>
     <div class="footer-links">
-      <span>Valencia City, PH · remote-first</span>
+      <span>Valencia City, PH &middot; remote-first</span>
       <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
       <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="footer-link" style="font-weight:500">ASMC ↗</a>
+      <a href="/fix-my-systems.html" class="footer-link" style="font-weight:500">ASMC &rarr;</a>
     </div>
   </div>
 </footer>
 
-<a class="quick-anchor" href="#top">↑ top</a>
+<a class="quick-anchor" href="#top">&uarr; top</a>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-// Simple search filter
+// ── EXPAND/COLLAPSE NOTES ────────────────────────────────────
+function toggleNote(btn) {
+  const card = btn.closest('.nc-card') || btn.closest('.featured-note');
+  const body = btn.nextElementSibling;
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  btn.innerHTML = open ? 'Read note &#9660;' : 'Collapse &#9650;';
+  if (!open && typeof gtag === 'function') {
+    const title = card?.querySelector('h3')?.textContent?.trim().slice(0,50);
+    gtag('event','note_expand',{event_category:'engagement',event_label:title});
+  }
+}
+
+// ── SEARCH ───────────────────────────────────────────────────
 const searchInput = document.getElementById('noteSearch');
-const noteCards = document.querySelectorAll('.note-card, .featured-note');
-searchInput?.addEventListener('input', function(){
-  const q = this.value.toLowerCase();
-  noteCards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.style.display = q === '' || text.includes(q) ? '' : 'none';
+const allCards = document.querySelectorAll('.nc-card, .featured-note[data-cat]');
+const emptyState = document.getElementById('emptyState');
+
+function runFilter() {
+  const q = searchInput.value.toLowerCase();
+  const cat = document.querySelector('.chip.active')?.dataset.cat || 'all';
+  let vis = 0;
+  allCards.forEach(card => {
+    const catMatch = cat === 'all' || card.dataset.cat === cat;
+    const textMatch = !q || card.textContent.toLowerCase().includes(q);
+    const show = catMatch && textMatch;
+    card.style.display = show ? '' : 'none';
+    if (show) vis++;
+  });
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    const hasVis = [...sec.querySelectorAll('.nc-card')].some(c => c.style.display !== 'none');
+    sec.style.display = hasVis ? '' : 'none';
+  });
+  emptyState.classList.toggle('show', vis === 0);
+}
+
+searchInput.addEventListener('input', runFilter);
+
+// ── CHIPS ────────────────────────────────────────────────────
+const chips = document.querySelectorAll('.chip');
+const activeFilterEl = document.getElementById('activeFilter');
+const afPill = document.getElementById('afPill');
+const catLabels = {all:'All',systems:'Systems',crm:'CRM',operations:'Operations',technical:'Technical',founder:'Founder notes'};
+
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const cat = chip.dataset.cat;
+    if (cat !== 'all') {
+      afPill.textContent = catLabels[cat] || cat;
+      activeFilterEl.classList.add('show');
+    } else {
+      activeFilterEl.classList.remove('show');
+    }
+    runFilter();
   });
 });
 
-// Active sidebar link on scroll
+document.getElementById('clearFilter').addEventListener('click', () => {
+  chips.forEach(c => c.classList.remove('active'));
+  document.querySelector('[data-cat="all"]').classList.add('active');
+  activeFilterEl.classList.remove('show');
+  runFilter();
+});
+
+// ── SIDEBAR SCROLL HIGHLIGHT ──────────────────────────────────
+const sbLinks = document.querySelectorAll('.sb-link[href^="#"]');
 const sections = document.querySelectorAll('[id]');
-const sbLinks = document.querySelectorAll('.sb-link');
-const obs = new IntersectionObserver(entries => {
+const obsOpts = {rootMargin:'-15% 0px -75% 0px'};
+const secObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if(e.isIntersecting){
+    if (e.isIntersecting) {
       sbLinks.forEach(l => l.classList.remove('active'));
       const active = document.querySelector(`.sb-link[href="#${e.target.id}"]`);
-      if(active) active.classList.add('active');
+      if (active) active.classList.add('active');
     }
   });
-}, {rootMargin:'-20% 0px -70% 0px'});
-sections.forEach(s => obs.observe(s));
+}, obsOpts);
+sections.forEach(s => secObs.observe(s));
+
+// ── GA TRACKING ───────────────────────────────────────────────
+const secObs2 = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && typeof gtag === 'function') {
+      gtag('event','section_view',{event_category:'engagement',event_label:e.target.id,non_interaction:true});
+    }
+  });
+}, {threshold:.3});
+document.querySelectorAll('.cat-section, #featured, #patterns').forEach(s => secObs2.observe(s));
 </script>
 </body>
 </html>
