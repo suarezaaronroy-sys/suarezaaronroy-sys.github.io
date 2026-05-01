@@ -9,9 +9,31 @@
 <meta name="description" content="Aaron Suarez builds the operational layer growing businesses run out of — CRM architecture, workflow automation, marketing engines, and documentation systems."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://suarezaaronroy-sys.github.io/about.html"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "url": "https://suarezaaronroy-sys.github.io/about.html",
+  "name": "About Aaron Suarez",
+  "description": "Aaron Suarez builds the operational layer growing businesses run out of — CRM architecture, workflow automation, marketing engines, and documentation systems.",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Aaron Suarez",
+    "url": "https://suarezaaronroy-sys.github.io/",
+    "jobTitle": "Operational Systems Builder",
+    "description": "Builds CRM architecture, workflow automation systems, marketing engines, and operational documentation for growing businesses.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Valencia City", "addressCountry": "PH" },
+    "sameAs": [
+      "https://www.linkedin.com/in/suarez-aaronroy/",
+      "https://asmultitaskcollective-prog.github.io/aaron-systems/"
+    ]
+  }
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03',{page_title:'About',page_path:'/about.html'});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -28,18 +50,10 @@
   --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--sans);background:var(--bg);color:var(--ink);
-  font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse at 10% 0%,rgba(13,148,136,.04),transparent 40%),
-    radial-gradient(ellipse at 90% 8%,rgba(194,65,12,.03),transparent 35%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
-}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 10% 0%,rgba(13,148,136,.04),transparent 40%),radial-gradient(ellipse at 90% 8%,rgba(194,65,12,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
 a{color:inherit;text-decoration:none}
 .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
-
-/* ── TOP BAR ── */
 .topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
@@ -54,131 +68,51 @@ a{color:inherit;text-decoration:none}
 .nav .nav-active{color:var(--teal);border-color:rgba(13,148,136,.3);background:rgba(13,148,136,.06)}
 .nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-
-/* ── PAGE HEADER ── */
 .page-header{padding:3.5rem 0 2.8rem;border-bottom:1px solid var(--border)}
 .page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--teal);margin-bottom:.7rem}
 .page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.8rem;color:var(--ink)}
 .page-header h1 em{font-style:italic;font-weight:300;color:var(--teal)}
 .page-header p{font-size:.95rem;color:var(--ink2);max-width:58ch;line-height:1.75}
-
-/* ── MAIN GRID ── */
 .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1.4rem;padding:3rem 0}
-
-/* ── BIO CARD ── */
-.bio-card{
-  background:#fff;border:1px solid var(--border);border-radius:18px;
-  padding:1.8rem 2rem;margin-bottom:1.2rem;
-  position:relative;overflow:hidden;
-}
-.bio-card::before{
-  content:"";position:absolute;right:-40px;top:-40px;
-  width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,rgba(13,148,136,.05),transparent 65%);
-  pointer-events:none;
-}
-.bio-card-label{
-  font-family:var(--mono);font-size:.6rem;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;
-  padding-left:.5rem;border-left:2px solid var(--teal);
-}
+.bio-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.8rem 2rem;margin-bottom:1.2rem;position:relative;overflow:hidden}
+.bio-card::before{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.05),transparent 65%);pointer-events:none}
+.bio-card-label{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--teal)}
 .bio-card p{font-size:.92rem;color:var(--ink2);line-height:1.82;margin-bottom:1rem}
 .skill-pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.2rem}
-.skill-pill{
-  font-family:var(--mono);font-size:.6rem;color:var(--ink3);
-  padding:.22rem .56rem;border-radius:999px;border:1px solid var(--border);
-  background:var(--bg2);letter-spacing:.01em;transition:.14s;
-}
+.skill-pill{font-family:var(--mono);font-size:.6rem;color:var(--ink3);padding:.22rem .56rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);letter-spacing:.01em;transition:.14s}
 .skill-pill:hover{border-color:var(--teal);color:var(--teal)}
 .contact-row{display:flex;gap:.6rem;flex-wrap:wrap}
-.btn-contact{
-  display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;
-  font-family:var(--mono);font-size:.72rem;cursor:pointer;
-  transition:.15s ease;text-decoration:none;padding:.68rem 1.15rem;letter-spacing:.01em;border:1px solid;
-}
+.btn-contact{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;font-family:var(--mono);font-size:.72rem;cursor:pointer;transition:.15s ease;text-decoration:none;padding:.68rem 1.15rem;letter-spacing:.01em;border:1px solid}
 .btn-contact.primary{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:500;box-shadow:0 4px 12px rgba(13,148,136,.2)}
 .btn-contact.primary:hover{background:#0c7a70;transform:translateY(-1px)}
 .btn-contact.ghost{background:transparent;color:var(--ink2);border-color:var(--border)}
 .btn-contact.ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-1px)}
-
-/* availability card */
-.avail-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
-  padding:1.3rem 1.5rem;
-}
-.avail-label{
-  font-family:var(--mono);font-size:.58rem;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--green);margin-bottom:.6rem;
-  display:flex;align-items:center;gap:.4rem;
-}
+.avail-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem}
+.avail-label{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
 .avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .avail-card h3{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.45rem}
 .avail-card p{font-size:.82rem;color:var(--ink3);line-height:1.7;margin-bottom:.9rem}
 .avail-items{display:grid;gap:.35rem}
-.avail-item{
-  display:flex;align-items:flex-start;gap:.5rem;
-  font-size:.78rem;color:var(--ink3);padding:.5rem .65rem;
-  border:1px solid var(--border);border-radius:8px;
-  background:#fff;line-height:1.5;
-}
-.avail-item-label{
-  font-family:var(--mono);font-size:.58rem;text-transform:uppercase;
-  letter-spacing:.06em;color:var(--ink4);margin-bottom:.12rem;
-}
-
-/* ── TIMELINE ── */
+.avail-item{display:flex;align-items:flex-start;gap:.5rem;font-size:.78rem;color:var(--ink3);padding:.5rem .65rem;border:1px solid var(--border);border-radius:8px;background:#fff;line-height:1.5}
+.avail-item-label{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink4);margin-bottom:.12rem}
 .timeline-col{display:flex;flex-direction:column;gap:0}
-.timeline-section-label{
-  font-family:var(--mono);font-size:.62rem;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;
-  padding-left:.5rem;border-left:2px solid var(--border);
-}
-.timeline-item{
-  display:flex;gap:1rem;padding-bottom:1.2rem;
-  position:relative;
-}
-.timeline-item::before{
-  content:"";position:absolute;left:17px;top:36px;bottom:0;
-  width:1px;background:var(--border);
-}
+.timeline-section-label{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--border)}
+.timeline-item{display:flex;gap:1rem;padding-bottom:1.2rem;position:relative}
+.timeline-item::before{content:"";position:absolute;left:17px;top:36px;bottom:0;width:1px;background:var(--border)}
 .timeline-item:last-child::before{display:none}
-.tl-badge{
-  flex-shrink:0;width:34px;height:34px;border-radius:8px;
-  background:var(--bg2);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;
-}
+.tl-badge{flex-shrink:0;width:34px;height:34px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem}
 .tl-body{flex:1;padding-bottom:.3rem}
-.tl-date{
-  font-family:var(--mono);font-size:.6rem;color:var(--teal);
-  text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;
-}
-.tl-body h3{
-  font-family:var(--serif);font-size:.96rem;font-weight:600;
-  color:var(--ink);margin-bottom:.3rem;line-height:1.3;
-}
+.tl-date{font-family:var(--mono);font-size:.6rem;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
+.tl-body h3{font-family:var(--serif);font-size:.96rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;line-height:1.3}
 .tl-body p{font-size:.8rem;color:var(--ink3);line-height:1.65}
 .tl-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.45rem}
-.tl-tag{
-  font-family:var(--mono);font-size:.56rem;padding:.12rem .38rem;
-  border-radius:4px;border:1px solid var(--border);
-  background:var(--bg2);color:var(--ink4);
-}
-
-/* work with me */
+.tl-tag{font-family:var(--mono);font-size:.56rem;padding:.12rem .38rem;border-radius:4px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
 .wwm-section{padding:2.5rem 0 3rem;border-top:1px solid var(--border)}
 .wwm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
-.wwm-card{
-  background:#fff;border:1px solid var(--border);border-radius:14px;
-  padding:1.1rem 1.25rem;
-}
-.wwm-card-label{
-  font-family:var(--mono);font-size:.58rem;color:var(--teal);
-  text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem;
-}
+.wwm-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem}
+.wwm-card-label{font-family:var(--mono);font-size:.58rem;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
 .wwm-card p{font-size:.82rem;color:var(--ink2);line-height:1.68}
-
 .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);margin:0}
 .footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
 .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
@@ -186,13 +120,8 @@ a{color:inherit;text-decoration:none}
 .footer-links{display:flex;gap:1.2rem;align-items:center}
 .quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
 .quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
-
 @media(max-width:860px){.about-grid,.wwm-grid{grid-template-columns:1fr}}
-@media(max-width:760px){
-  .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
-  .nav{width:100%;justify-content:flex-start}
-  .quick-anchor{right:12px;bottom:12px}
-}
+@media(max-width:760px){.topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}.nav{width:100%;justify-content:flex-start}.quick-anchor{right:12px;bottom:12px}}
 </style>
 </head>
 <body id="top">
@@ -216,12 +145,12 @@ a{color:inherit;text-decoration:none}
       <a href="/notes.html">Notes</a>
       <a href="/theme.html">Theme</a>
       <a href="/sound.html">Sound</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="nav-cta">Fix My Systems →</a>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-cta">Fix My Systems →</a>
     </nav>
   </div>
 </div>
 
-<main>
+<main id="main-content">
 <div class="shell">
 
   <header class="page-header">
@@ -231,8 +160,6 @@ a{color:inherit;text-decoration:none}
   </header>
 
   <div class="about-grid">
-
-    <!-- ── LEFT: BIO + AVAILABILITY ── -->
     <div>
       <div class="bio-card">
         <div class="bio-card-label">Background</div>
@@ -255,15 +182,12 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="contact-row">
           <a href="mailto:asmultitaskcollective@gmail.com" class="btn-contact primary">Get in touch</a>
-          <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="btn-contact ghost">LinkedIn ↗</a>
+          <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="btn-contact ghost">LinkedIn ↗</a>
         </div>
       </div>
 
       <div class="avail-card">
-        <div class="avail-label">
-          <span class="avail-dot"></span>
-          Available — Remote-first
-        </div>
+        <div class="avail-label"><span class="avail-dot"></span>Available — Remote-first</div>
         <h3>Open to the right role.</h3>
         <p>Remote-first. Ops, systems, CRM, or marketing-adjacent. Environments where the work is figuring out what should exist — not just executing what already does.</p>
         <div class="avail-items">
@@ -282,14 +206,13 @@ a{color:inherit;text-decoration:none}
           <div class="avail-item">
             <div>
               <div class="avail-item-label">External help instead?</div>
-              If you'd rather bring in help than hire, <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" style="color:var(--teal)">ASMC is where that happens →</a>
+              If you'd rather bring in help than hire, <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">ASMC is where that happens →</a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ── RIGHT: TIMELINE ── -->
     <div class="timeline-col">
       <div class="timeline-section-label">Work history</div>
 
@@ -300,10 +223,7 @@ a{color:inherit;text-decoration:none}
           <h3>CRM + knowledge systems across 10+ processors</h3>
           <p>Reverse-engineered undocumented workflows. Built institutional memory from scratch. Turned scattered, person-dependent knowledge into usable decision systems that survived staff turnover.</p>
           <div class="tl-tags">
-            <span class="tl-tag">CRM</span>
-            <span class="tl-tag">knowledge base</span>
-            <span class="tl-tag">process documentation</span>
-            <span class="tl-tag">10+ payment processors</span>
+            <span class="tl-tag">CRM</span><span class="tl-tag">knowledge base</span><span class="tl-tag">process documentation</span><span class="tl-tag">10+ payment processors</span>
           </div>
         </div>
       </div>
@@ -315,9 +235,7 @@ a{color:inherit;text-decoration:none}
           <h3>Field-to-office workflow stabilization</h3>
           <p>Built fallback logic and data capture flows for a field service operation where handoff failures were costing hours per week. Reached 98% compliance on a previously unreliable handoff process.</p>
           <div class="tl-tags">
-            <span class="tl-tag">workflow design</span>
-            <span class="tl-tag">fallback logic</span>
-            <span class="tl-tag">98% compliance</span>
+            <span class="tl-tag">workflow design</span><span class="tl-tag">fallback logic</span><span class="tl-tag">98% compliance</span>
           </div>
         </div>
       </div>
@@ -329,10 +247,7 @@ a{color:inherit;text-decoration:none}
           <h3>Automation and structures for SMB</h3>
           <p>Pipelines, automations, dashboards, and support structures tuned to how work actually moves — not what the template assumed. Grimoire v8.1 is the documentation artifact: 76 fields, 24 Zaps, full QA log.</p>
           <div class="tl-tags">
-            <span class="tl-tag">GoHighLevel</span>
-            <span class="tl-tag">Zapier</span>
-            <span class="tl-tag">Bland AI</span>
-            <span class="tl-tag">76 fields · 24 Zaps</span>
+            <span class="tl-tag">GoHighLevel</span><span class="tl-tag">Zapier</span><span class="tl-tag">Bland AI</span><span class="tl-tag">76 fields · 24 Zaps</span>
           </div>
         </div>
       </div>
@@ -344,11 +259,7 @@ a{color:inherit;text-decoration:none}
           <h3>Dual-sided marketing engine — 34.2% open rate</h3>
           <p>Full SEO + social + email + CRM + automation for a UK rental business operating two audiences simultaneously. 15 modules, 18 consultations booked from 340 contacts. Dual Wing Grimoire v4 is the artifact.</p>
           <div class="tl-tags">
-            <span class="tl-tag">GoHighLevel</span>
-            <span class="tl-tag">n8n</span>
-            <span class="tl-tag">Claude API</span>
-            <span class="tl-tag">34.2% open rate</span>
-            <span class="tl-tag">UK + US</span>
+            <span class="tl-tag">GoHighLevel</span><span class="tl-tag">n8n</span><span class="tl-tag">Claude API</span><span class="tl-tag">34.2% open rate</span><span class="tl-tag">UK + US</span>
           </div>
         </div>
       </div>
@@ -360,9 +271,7 @@ a{color:inherit;text-decoration:none}
           <h3>Operational translation layer</h3>
           <p>Turned "we need to be more organized" into actual systems with ownership, structure, and accountability that survive without the person who built them.</p>
           <div class="tl-tags">
-            <span class="tl-tag">systems design</span>
-            <span class="tl-tag">ops documentation</span>
-            <span class="tl-tag">knowledge transfer</span>
+            <span class="tl-tag">systems design</span><span class="tl-tag">ops documentation</span><span class="tl-tag">knowledge transfer</span>
           </div>
         </div>
       </div>
@@ -371,7 +280,6 @@ a{color:inherit;text-decoration:none}
 
   <div class="section-divider"></div>
 
-  <!-- ── WORK WITH ME ── -->
   <section class="wwm-section">
     <div class="page-eyebrow" style="border-left-color:var(--accent);color:var(--accent)">Work With Me</div>
     <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;line-height:1.1;letter-spacing:-.02em;color:var(--ink)">Available for the right role.</h2>
@@ -386,14 +294,14 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="wwm-card">
         <div class="wwm-card-label">Need it done externally?</div>
-        <p>If you'd rather bring in external help than hire in-house, <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" style="color:var(--teal)">ASMC is where that happens →</a></p>
+        <p>If you'd rather bring in external help than hire in-house, <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">ASMC is where that happens →</a></p>
       </div>
       <div class="wwm-card" style="border-left:3px solid var(--accent)">
         <div class="wwm-card-label" style="color:var(--accent)">Direct contact</div>
         <p style="margin-bottom:.75rem">Remote-first. Open to async-first environments. No deck required.</p>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap">
           <a href="mailto:asmultitaskcollective@gmail.com" class="btn-contact primary" style="font-size:.68rem;padding:.58rem .95rem">Get in touch</a>
-          <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="btn-contact ghost" style="font-size:.68rem;padding:.58rem .95rem">LinkedIn ↗</a>
+          <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="btn-contact ghost" style="font-size:.68rem;padding:.58rem .95rem">LinkedIn ↗</a>
         </div>
       </div>
     </div>
@@ -408,8 +316,8 @@ a{color:inherit;text-decoration:none}
     <div class="footer-links">
       <span>Valencia City, PH · remote-first</span>
       <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
-      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="footer-link" style="font-weight:500">ASMC ↗</a>
+      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="footer-link" style="font-weight:500">ASMC ↗</a>
     </div>
   </div>
 </footer>
