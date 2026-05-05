@@ -27,7 +27,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03',{page_title:'Articles',page_path:'/articles.html'});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -38,14 +38,23 @@
   --blue:#1D4ED8;--blue-bg:#DBEAFE;
   --green:#15803D;--green-bg:#DCFCE7;
   --purple:#7C3AED;--purple-bg:#F5F3FF;
+  --amber:#B45309;--amber-bg:#FEF3C7;
   --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
   --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:radial-gradient(ellipse at 8% 0%,rgba(29,78,216,.04),transparent 40%),radial-gradient(ellipse at 92% 10%,rgba(124,58,237,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--ink);
+  font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse at 8% 0%,rgba(29,78,216,.04),transparent 40%),
+    radial-gradient(ellipse at 92% 10%,rgba(124,58,237,.03),transparent 35%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+}
 a{color:inherit;text-decoration:none}
 .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
+
+/* ── TOPBAR ── */
 .topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
@@ -60,44 +69,85 @@ a{color:inherit;text-decoration:none}
 .nav .nav-active{color:var(--blue);border-color:rgba(29,78,216,.3);background:rgba(29,78,216,.06)}
 .nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ── PAGE HEADER ── */
 .page-header{padding:3.5rem 0 2.8rem;border-bottom:1px solid var(--border)}
 .page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--blue);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--blue);margin-bottom:.7rem}
 .page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.8rem;color:var(--ink)}
 .page-header h1 em{font-style:italic;font-weight:300;color:var(--blue)}
 .page-header p{font-size:.95rem;color:var(--ink2);max-width:58ch;line-height:1.75}
-.articles-body{padding:3rem 0 5rem}
-.coming-soon-block{background:#fff;border:1px solid var(--border);border-radius:18px;padding:3rem 3.5rem;text-align:center;max-width:600px;margin:0 auto 3rem;position:relative;overflow:hidden}
-.coming-soon-block::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(29,78,216,.04),transparent 55%);pointer-events:none}
-.cs-icon{font-size:2.8rem;margin-bottom:1.2rem}
-.cs-title{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.02em}
-.cs-sub{font-size:.88rem;color:var(--ink3);line-height:1.75;margin-bottom:1.4rem;max-width:42ch;margin-left:auto;margin-right:auto}
-.cs-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.62rem;color:var(--blue);padding:.26rem .6rem;border-radius:999px;background:var(--blue-bg);border:1px solid rgba(29,78,216,.2);letter-spacing:.02em}
-.planned-label{font-family:var(--mono);font-size:.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--border)}
-.planned-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
-.planned-card{background:var(--bg2);border:1px dashed var(--border);border-radius:12px;padding:1.1rem 1.25rem}
-.planned-card-cat{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45rem}
-.planned-card h3{font-family:var(--serif);font-size:.94rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.28}
-.planned-card p{font-size:.78rem;color:var(--ink3);line-height:1.6;margin-bottom:.5rem}
-.planned-soon{display:inline-block;font-family:var(--mono);font-size:.54rem;padding:.1rem .38rem;border-radius:3px;background:var(--bg3);color:var(--ink4);text-transform:uppercase;letter-spacing:.06em}
-.notify-band{margin-top:2.5rem;padding:1.5rem 1.8rem;background:var(--ink);border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.notify-text strong{display:block;font-family:var(--serif);font-size:1rem;font-weight:600;color:#F5F2EC;margin-bottom:.25rem}
-.notify-text span{font-size:.8rem;color:#A8A29E;line-height:1.6}
-.notify-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;padding:.7rem 1.2rem;border-radius:999px;background:var(--accent);color:#fff;border:none;cursor:pointer;transition:.15s ease;text-decoration:none;flex-shrink:0;font-weight:500}
-.notify-btn:hover{background:#b83b0b;transform:translateY(-1px)}
+
+/* ── FILTER BAR ── */
+.filter-bar{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding:1.8rem 0 .8rem}
+.filter-btn{font-family:var(--mono);font-size:.62rem;padding:.3rem .7rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);cursor:pointer;transition:.14s ease;letter-spacing:.02em}
+.filter-btn:hover{border-color:var(--ink3);color:var(--ink2)}
+.filter-btn.active{background:var(--ink);color:#F5F2EC;border-color:var(--ink)}
+
+/* ── CATEGORY PILLS ── */
+.pill{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.07em;padding:.22rem .55rem;border-radius:999px;font-weight:500;line-height:1}
+.cat-systems{background:var(--purple-bg);color:var(--purple)}
+.cat-crm{background:var(--teal-bg);color:var(--teal)}
+.cat-operations{background:#FEE2E2;color:#B91C1C}
+.cat-marketing{background:var(--blue-bg);color:var(--blue)}
+.cat-fieldnotes{background:var(--green-bg);color:var(--green)}
+.cat-industry{background:var(--amber-bg);color:var(--amber)}
+.cat-positioning{background:#F3E8FF;color:#6D28D9}
+.cat-devbridge{background:#E0F2FE;color:#0369A1}
+
+/* ── TYPE BADGE ── */
+.type-badge{font-family:var(--mono);font-size:.54rem;text-transform:uppercase;letter-spacing:.07em;padding:.15rem .42rem;border-radius:3px;font-weight:500}
+.type-standard{background:var(--bg3);color:var(--ink4)}
+.type-deepdive{background:#DBEAFE;color:#1D4ED8}
+.type-pillar{background:#FEF3C7;color:#92400E}
+
+/* ── ARTICLES GRID ── */
+.articles-body{padding:0 0 5rem}
+.articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;padding-bottom:3rem}
+.article-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.6rem 1.4rem;display:flex;flex-direction:column;gap:.75rem;transition:.18s ease;position:relative;overflow:hidden}
+.article-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(29,78,216,.025),transparent 55%);pointer-events:none;opacity:0;transition:.18s}
+.article-card:hover{border-color:rgba(28,25,23,.22);box-shadow:0 4px 20px rgba(28,25,23,.07);transform:translateY(-2px)}
+.article-card:hover::before{opacity:1}
+.card-top{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.card-title{font-family:var(--serif);font-size:1.06rem;font-weight:600;color:var(--ink);line-height:1.28;letter-spacing:-.015em}
+.card-excerpt{font-size:.84rem;color:var(--ink3);line-height:1.7;flex:1}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;margin-top:auto;padding-top:.5rem;border-top:1px solid var(--border2)}
+.card-meta-left{font-family:var(--mono);font-size:.6rem;color:var(--ink4);letter-spacing:.02em}
+.card-link{font-family:var(--mono);font-size:.64rem;color:var(--accent);font-weight:500;transition:gap .14s;display:inline-flex;align-items:center;gap:.3rem}
+.card-link:hover{gap:.5rem}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--ink);border-radius:16px;padding:2.2rem 2.4rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.cta-band-text strong{display:block;font-family:var(--serif);font-size:1.1rem;font-weight:600;color:#F5F2EC;margin-bottom:.3rem;letter-spacing:-.015em}
+.cta-band-text span{font-size:.82rem;color:#A8A29E;line-height:1.6}
+.cta-band-links{display:flex;gap:.6rem;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.7rem;padding:.65rem 1.1rem;border-radius:999px;transition:.15s ease;flex-shrink:0;font-weight:500;cursor:pointer}
+.cta-btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.cta-btn-primary:hover{background:#b83b0b;transform:translateY(-1px)}
+.cta-btn-ghost{background:transparent;color:#A8A29E;border:1px solid rgba(255,255,255,.15)}
+.cta-btn-ghost:hover{border-color:rgba(255,255,255,.35);color:#F5F2EC}
+
+/* ── FOOTER ── */
 .footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
 .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
-.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
+.footer-link{color:var(--ink4);transition:color .14s}
+.footer-link:hover{color:var(--accent)}
 .footer-links{display:flex;gap:1.2rem;align-items:center}
+
+/* ── BACK TO TOP ── */
 .quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
 .quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── RESPONSIVE ── */
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
   .nav{width:100%;justify-content:flex-start}
-  .coming-soon-block{padding:2rem 1.5rem}
-  .planned-grid{grid-template-columns:1fr}
-  .notify-band{flex-direction:column;align-items:flex-start}
+  .articles-grid{grid-template-columns:1fr}
+  .cta-band{flex-direction:column;align-items:flex-start;padding:1.6rem 1.4rem}
   .quick-anchor{right:12px;bottom:12px}
 }
+
+/* ── HIDDEN CARD STATE ── */
+.article-card.hidden{display:none}
 </style>
 </head>
 <body id="top">
@@ -132,64 +182,289 @@ a{color:inherit;text-decoration:none}
   <header class="page-header">
     <div class="page-eyebrow">Articles</div>
     <h1>Longer-form writing, <em>when it earns it.</em></h1>
-    <p>Not everything belongs in a quick note. Articles are where patterns get the full treatment — the full argument, the full diagnosis, the full alternative. Coming soon.</p>
+    <p>Not everything belongs in a quick note. These are the patterns that needed the full argument — the full diagnosis, the full alternative. 18 articles across systems, CRM, operations, and the industry dynamics worth naming.</p>
   </header>
 
   <div class="articles-body">
 
-    <div class="coming-soon-block">
-      <div class="cs-icon">✍️</div>
-      <div class="cs-title">Articles are in the queue.</div>
-      <p class="cs-sub">The notes have the thinking. The Grimoires have the proof. Articles will be where both get expanded into full arguments worth bookmarking.</p>
-      <span class="cs-badge">✦ In progress · Publishing soon</span>
+    <div class="filter-bar" role="group" aria-label="Filter articles by category">
+      <button class="filter-btn active" data-filter="all">All <span style="color:var(--ink4);margin-left:.2rem">18</span></button>
+      <button class="filter-btn" data-filter="cat-systems">Systems</button>
+      <button class="filter-btn" data-filter="cat-crm">CRM</button>
+      <button class="filter-btn" data-filter="cat-operations">Operations</button>
+      <button class="filter-btn" data-filter="cat-marketing">Marketing</button>
+      <button class="filter-btn" data-filter="cat-fieldnotes">Field Notes</button>
+      <button class="filter-btn" data-filter="cat-industry">Industry</button>
+      <button class="filter-btn" data-filter="cat-positioning">Positioning</button>
+      <button class="filter-btn" data-filter="cat-devbridge">Dev Bridge</button>
     </div>
 
-    <div class="planned-label">Planned articles — topics confirmed</div>
-    <div class="planned-grid">
-      <div class="planned-card">
-        <div class="planned-card-cat" style="color:var(--purple)">⚙️ Systems</div>
-        <h3>Why "Organised" Is Not a System (And What Is)</h3>
-        <p>The difference between collecting information and building something that makes decisions easier. Most operations are organised. Almost none are systematic.</p>
-        <span class="planned-soon">Drafting</span>
-      </div>
-      <div class="planned-card">
-        <div class="planned-card-cat" style="color:var(--teal)">📊 CRM</div>
-        <h3>The Single-Owner Rule: Why CRM Data Goes Wrong</h3>
-        <p>Every field needs one owner. One definition. One update source. When a field means different things to different people, the CRM lies — quietly and consistently.</p>
-        <span class="planned-soon">Planned</span>
-      </div>
-      <div class="planned-card">
-        <div class="planned-card-cat" style="color:var(--accent)">🔧 Operations</div>
-        <h3>The 5-Minute Rule Is Wrong. Here's What Works Instead.</h3>
-        <p>Speed of response matters. But the framework most teams use to define "fast" is measuring the wrong thing at the wrong moment in the pipeline.</p>
-        <span class="planned-soon">Planned</span>
-      </div>
-      <div class="planned-card">
-        <div class="planned-card-cat" style="color:var(--blue)">📧 Marketing</div>
-        <h3>Why Landlord Email Copy Needs a Different Playbook</h3>
-        <p>The audience dynamics that make landlord outreach genuinely hard — social stigma, geographic displacement, loyalty barriers — and the copy strategy that worked around them.</p>
-        <span class="planned-soon">Planned</span>
-      </div>
-      <div class="planned-card">
-        <div class="planned-card-cat" style="color:var(--green)">📋 Field Notes</div>
-        <h3>Automating a Broken Process Just Breaks It Faster</h3>
-        <p>The most expensive automation mistake isn't choosing the wrong tool. It's automating before validating the logic by hand. A full breakdown of what to test first.</p>
-        <span class="planned-soon">Planned</span>
-      </div>
-      <div class="planned-card">
-        <div class="planned-card-cat" style="color:var(--purple)">⚙️ Systems</div>
-        <h3>What "Institutional Memory" Actually Means — And How to Build It</h3>
-        <p>Institutional memory isn't documentation. It's the accumulation of decisions, their context, and the reasoning behind them — made findable when the original person is gone.</p>
-        <span class="planned-soon">Planned</span>
-      </div>
-    </div>
+    <div class="articles-grid" id="articles-grid">
 
-    <div class="notify-band">
-      <div class="notify-text">
-        <strong>Want to know when articles drop?</strong>
-        <span>Follow on LinkedIn — that's where new pieces get announced first.</span>
+      <!-- 1 -->
+      <a class="article-card" href="/articles/why-organised-is-not-a-system.html" data-cat="cat-systems">
+        <div class="card-top">
+          <span class="pill cat-systems">Systems</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">Why "Organised" Is Not a System (And What Actually Is)</div>
+        <div class="card-excerpt">Most operations are tidy. Almost none are systematic. This piece draws the hard line between collecting information and building something that actually makes decisions easier — and shows what crosses it.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 7 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 2 -->
+      <a class="article-card" href="/articles/single-owner-rule-crm-data.html" data-cat="cat-crm">
+        <div class="card-top">
+          <span class="pill cat-crm">CRM</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">The Single-Owner Rule: Why CRM Data Goes Wrong</div>
+        <div class="card-excerpt">Every CRM field needs one owner, one definition, one update source. When a field means different things to different people, the CRM lies — quietly, consistently, and expensively.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 6 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 3 -->
+      <a class="article-card" href="/articles/five-minute-rule-wrong.html" data-cat="cat-operations">
+        <div class="card-top">
+          <span class="pill cat-operations">Operations</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">The 5-Minute Rule Is Wrong. Here's What Actually Predicts Speed</div>
+        <div class="card-excerpt">Speed of response matters — but most teams are measuring it at the wrong moment in the pipeline. Here's the metric that actually determines whether a lead converts before someone else gets there.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 8 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 4 -->
+      <a class="article-card" href="/articles/landlord-email-different-playbook.html" data-cat="cat-marketing">
+        <div class="card-top">
+          <span class="pill cat-marketing">Marketing</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">Why Landlord Email Copy Needs a Different Playbook</div>
+        <div class="card-excerpt">Social stigma, geographic displacement, loyalty barriers — landlord outreach has audience dynamics that make standard B2C copy actively counterproductive. A breakdown of the strategy that worked around them.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 6 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 5 -->
+      <a class="article-card" href="/articles/automating-broken-process.html" data-cat="cat-fieldnotes">
+        <div class="card-top">
+          <span class="pill cat-fieldnotes">Field Notes</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">Automating a Broken Process Just Breaks It Faster</div>
+        <div class="card-excerpt">The most expensive automation mistake isn't the wrong tool — it's automating before validating the logic by hand. A field-tested checklist of what to stress-test before you touch a workflow builder.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 7 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 6 -->
+      <a class="article-card" href="/articles/institutional-memory.html" data-cat="cat-systems">
+        <div class="card-top">
+          <span class="pill cat-systems">Systems</span>
+          <span class="type-badge type-deepdive">Deep Dive</span>
+        </div>
+        <div class="card-title">What "Institutional Memory" Actually Means (And How to Build It)</div>
+        <div class="card-excerpt">Institutional memory isn't documentation — it's decisions, their context, and the reasoning behind them, made findable after the original person is gone. Here's how to build the real version.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 9 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 7 -->
+      <a class="article-card" href="/articles/death-of-crm-setup.html" data-cat="cat-industry">
+        <div class="card-top">
+          <span class="pill cat-industry">Industry</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">The Death of "CRM Setup" as a Service</div>
+        <div class="card-excerpt">Clients don't need another person to configure fields and import contacts — they need someone who can diagnose why their pipeline logic doesn't reflect how deals actually close. The market has moved.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 8 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 8 -->
+      <a class="article-card" href="/articles/ai-exposed-weak-operators.html" data-cat="cat-industry">
+        <div class="card-top">
+          <span class="pill cat-industry">Industry</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">AI Didn't Replace Operators — It Exposed Weak Ones</div>
+        <div class="card-excerpt">The operators AI displaced weren't replaced by models — they were revealed as people who were executing instructions, not understanding systems. Here's what that distinction means for the people still standing.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 7 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 9 -->
+      <a class="article-card" href="/articles/automation-agencies-fail.html" data-cat="cat-industry">
+        <div class="card-top">
+          <span class="pill cat-industry">Industry</span>
+          <span class="type-badge type-deepdive">Deep Dive</span>
+        </div>
+        <div class="card-title">Why Most Automation Agencies Quietly Fail After 12 Months</div>
+        <div class="card-excerpt">They win the build. They lose the relationship. A forensic look at the structural reasons automation shops stall out — and the one positioning shift that changes the retention curve entirely.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 10 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 10 -->
+      <a class="article-card" href="/articles/builder-to-architect.html" data-cat="cat-positioning">
+        <div class="card-top">
+          <span class="pill cat-positioning">Positioning</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">From Builder to Architect: The Skill Shift No One Talks About</div>
+        <div class="card-excerpt">There's a ceiling on builder-mode work, and most people hit it without knowing why. The shift to architect-mode isn't about knowing more tools — it's a fundamentally different way of framing the problem.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 8 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 11 -->
+      <a class="article-card" href="/articles/fewer-decisions-not-tools.html" data-cat="cat-positioning">
+        <div class="card-top">
+          <span class="pill cat-positioning">Positioning</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">You Don't Need More Tools. You Need Fewer Decisions</div>
+        <div class="card-excerpt">Every new tool that enters an operation adds decision surface. The teams that scale fastest aren't the ones with the best stack — they're the ones who've eliminated the most recurring choices.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 7 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 12 -->
+      <a class="article-card" href="/articles/hidden-cost-flexible-systems.html" data-cat="cat-positioning">
+        <div class="card-top">
+          <span class="pill cat-positioning">Positioning</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">The Hidden Cost of "Flexible" Systems</div>
+        <div class="card-excerpt">Flexibility is the thing every client asks for and the thing that makes most systems degrade within six months. The cost isn't in the build — it's in every decision that gets deferred because the system "can go either way."</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 7 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 13 -->
+      <a class="article-card" href="/articles/crm-not-working-not-vas-fault.html" data-cat="cat-crm">
+        <div class="card-top">
+          <span class="pill cat-crm">CRM</span>
+          <span class="type-badge type-deepdive">Deep Dive</span>
+        </div>
+        <div class="card-title">Why Your CRM Isn't Working (And It's Not Your VA's Fault)</div>
+        <div class="card-excerpt">Bad CRM hygiene is almost never a people problem — it's a design problem that was destined to produce bad data from the moment the fields were named. A deep diagnostic of the real failure points.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 9 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 14 -->
+      <a class="article-card" href="/articles/reminders-no-system.html" data-cat="cat-operations">
+        <div class="card-top">
+          <span class="pill cat-operations">Operations</span>
+          <span class="type-badge type-standard">Standard</span>
+        </div>
+        <div class="card-title">If Your Team Needs Constant Reminders, You Don't Have a System</div>
+        <div class="card-excerpt">A system that requires a manager to remember to remind someone isn't a system — it's a dependency in disguise. Here's the structural test that exposes which processes actually run themselves.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 6 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 15 -->
+      <a class="article-card" href="/articles/audit-system-30-minutes.html" data-cat="cat-fieldnotes">
+        <div class="card-top">
+          <span class="pill cat-fieldnotes">Field Notes</span>
+          <span class="type-badge type-deepdive">Deep Dive</span>
+        </div>
+        <div class="card-title">How to Audit Any Business System in 30 Minutes</div>
+        <div class="card-excerpt">A repeatable framework for diagnosing what's actually wrong with an operation before touching anything. The audit questions that reveal broken logic, missing ownership, and systems that only work when the right person is in the room.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 11 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 16 -->
+      <a class="article-card" href="/articles/single-source-of-truth-framework.html" data-cat="cat-systems">
+        <div class="card-top">
+          <span class="pill cat-systems">Systems</span>
+          <span class="type-badge type-pillar">Pillar</span>
+        </div>
+        <div class="card-title">The "Single Source of Truth" Framework (And Why Most Teams Fake It)</div>
+        <div class="card-excerpt">Most teams claim a single source of truth and maintain three. This is the pillar breakdown of what the real version requires — structurally, culturally, and in terms of who gets to define what "true" means.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 12 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 17 -->
+      <a class="article-card" href="/articles/no-code-breaks-when-need-dev.html" data-cat="cat-devbridge">
+        <div class="card-top">
+          <span class="pill cat-devbridge">Dev Bridge</span>
+          <span class="type-badge type-pillar">Pillar</span>
+        </div>
+        <div class="card-title">Where No-Code Breaks (And When You Actually Need a Developer)</div>
+        <div class="card-excerpt">No-code can take you further than most people realize — and will fail you faster than you expect if you don't know its structural limits. A clear map of the boundary, and what crossing it actually costs.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 11 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- 18 -->
+      <a class="article-card" href="/articles/missing-system-layer.html" data-cat="cat-positioning">
+        <div class="card-top">
+          <span class="pill cat-positioning">Positioning</span>
+          <span class="type-badge type-pillar">Pillar</span>
+        </div>
+        <div class="card-title">The System Layer Most Businesses Don't Know They're Missing</div>
+        <div class="card-excerpt">There's a layer between strategy and execution that most businesses have never named — and its absence is why decisions don't stick, processes revert, and good hires underperform. This is the full argument for what it is and how to build it.</div>
+        <div class="card-meta">
+          <span class="card-meta-left">May 2026 · 13 min read</span>
+          <span class="card-link">Read article →</span>
+        </div>
+      </a>
+
+    </div><!-- /articles-grid -->
+
+    <div class="cta-band">
+      <div class="cta-band-text">
+        <strong>Want to go deeper?</strong>
+        <span>Quick observations live in Notes. Documented builds live in the Grimoires.</span>
       </div>
-      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="notify-btn">Follow on LinkedIn →</a>
+      <div class="cta-band-links">
+        <a href="/notes.html" class="cta-btn cta-btn-ghost">Browse Notes</a>
+        <a href="/grimoires/" class="cta-btn cta-btn-ghost">See Grimoires</a>
+        <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-primary">Follow on LinkedIn →</a>
+      </div>
     </div>
 
   </div>
@@ -209,6 +484,28 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <a class="quick-anchor" href="#top">↑ top</a>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Category filter
+const btns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.article-card');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
