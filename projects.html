@@ -97,6 +97,7 @@ a{color:inherit;text-decoration:none}
 .lg-badge.purple{color:var(--purple);background:var(--purple-bg);border-color:rgba(124,58,237,.2)}
 .lg-badge.teal{color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)}
 .lg-badge.blue{color:var(--blue);background:var(--blue-bg);border-color:rgba(29,78,216,.2)}
+.lg-badge.orange{color:var(--accent);background:#FFF7ED;border-color:rgba(194,65,12,.2)}
 
 .live-grimoire h2{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
 .live-grimoire .lg-desc{font-size:.88rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:60ch}
@@ -107,11 +108,10 @@ a{color:inherit;text-decoration:none}
 .lg-meta-pill{font-family:var(--mono);font-size:.6rem;padding:.16rem .44rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
 .lg-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
 
-/* ── STAT BLOCK — right column, consistent across all 3 cards ── */
+/* ── STAT BLOCK — right column, consistent across all cards ── */
 .lg-stat-block{
   display:flex;flex-direction:column;gap:.7rem;
   align-items:center;
-  /* fixed width matches grid column */
   width:120px;flex-shrink:0;
   padding-top:.2rem;
 }
@@ -120,13 +120,12 @@ a{color:inherit;text-decoration:none}
   background:var(--bg2);border:1px solid var(--border2);
   border-radius:10px;padding:.55rem .4rem;
 }
-/* All stat numbers: same font-size, same line-height, no wrapping */
 .lg-stat-num{
   font-family:var(--mono);
-  font-size:1.65rem;  /* reduced from 2rem so "50+" and "34.2%" fit on one line */
+  font-size:1.65rem;
   font-weight:500;
   line-height:1;
-  white-space:nowrap;   /* prevents wrapping on "34.2%" */
+  white-space:nowrap;
   display:block;
 }
 .lg-stat-label{
@@ -155,6 +154,8 @@ a{color:inherit;text-decoration:none}
 .btn-open.teal:hover{background:#0c7a70;transform:translateY(-1px)}
 .btn-open.blue{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:500;box-shadow:0 4px 12px rgba(29,78,216,.2)}
 .btn-open.blue:hover{background:#1741ba;transform:translateY(-1px)}
+.btn-open.purple{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500;box-shadow:0 4px 12px rgba(124,58,237,.2)}
+.btn-open.purple:hover{background:#6d28d9;transform:translateY(-1px)}
 .btn-open.ghost{background:transparent;color:var(--ink3);border-color:var(--border)}
 .btn-open.ghost:hover{color:var(--accent);border-color:var(--accent)}
 
@@ -196,7 +197,6 @@ a{color:inherit;text-decoration:none}
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
   .nav{width:100%;justify-content:flex-start}
-  /* On mobile: single column, stat block moves below text */
   .lg-inner{grid-template-columns:1fr}
   .lg-stat-block{flex-direction:row;justify-content:flex-start;width:100%;padding-top:0}
   .lg-stat{width:auto;min-width:80px}
@@ -234,21 +234,19 @@ a{color:inherit;text-decoration:none}
 <main>
 <div class="shell">
 
-  <!-- ── PAGE HEADER ── -->
   <header class="page-header">
     <div class="page-eyebrow">Projects &amp; Grimoires</div>
     <h1>Systems built. Documented. <em>Shipped.</em></h1>
     <p>Not concepts. Working systems with real results — versioned, QA-checked, and published as proof-of-work artifacts. Reading them gives you a jump start on how each system works. That's why they're called Grimoires.</p>
   </header>
 
-  <!-- ── LIVE GRIMOIRES ── -->
   <section class="grimoire-section" aria-label="Live grimoires">
     <div class="section-label">
       <span class="section-label-dot"></span>
-      Live grimoires · 3 published
+      Live grimoires · 4 published
     </div>
 
-    <!-- ── Grimoire 001 ── -->
+    <!-- Grimoire 001 -->
     <a href="/grimoires/001-asmc-crm-engine.html" class="live-grimoire" aria-label="Open Grimoire 001">
       <div class="lg-inner">
         <div>
@@ -295,7 +293,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <!-- ── Grimoire 002 ── -->
+    <!-- Grimoire 002 -->
     <a href="/grimoires/002-dual-wing-rental.html" class="live-grimoire" aria-label="Open Grimoire 002">
       <div class="lg-inner">
         <div>
@@ -342,16 +340,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <!-- ── Grimoire 003 ── -->
-    <!--
-      FIX: 003 card had two problems:
-      1. Nested <a> inside <a> (invalid HTML) — ghost "Open in Google Docs" btn
-         broken because browsers auto-close the outer anchor. Fixed by wrapping
-         the whole card in a <div> instead of <a>, and making both actions
-         explicit <a> tags inside .lg-actions.
-      2. Stat block "50+" overflowed its container because lg-stat-num had no
-         white-space:nowrap and the parent had no fixed width. Fixed above in CSS.
-    -->
+    <!-- Grimoire 003 -->
     <div class="live-grimoire" style="cursor:default">
       <div class="lg-inner">
         <div>
@@ -399,20 +388,63 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
+    <!-- Grimoire 004: N8N 101 - LIVE (NEW) -->
+    <div class="live-grimoire" style="cursor:default">
+      <div class="lg-inner">
+        <div>
+          <div class="lg-badge orange">004 · AI Automation · May 2026</div>
+          <h2>n8n 101: AI Workflow Automation</h2>
+          <p class="lg-desc">12-module guide to AI-native automation. Webhooks, HTTP requests, vector stores, RAG, WhatsApp Business, and self-hosting security. Built from real field failures — including the $800 Zapier bill that forced the switch to self-hosted n8n.</p>
+          <ul class="lg-bullets">
+            <li>12 modules covering AI agents, RAG, WhatsApp, error handling</li>
+            <li>Museum-map workflows with copy-paste node configs</li>
+            <li>Self-host with Docker + PostgreSQL — no per-execution fees</li>
+            <li>CVE-2026-21858 security patch and hardening guide included</li>
+            <li>n8n vs Make vs Zapier — honest comparison from real usage</li>
+          </ul>
+          <div class="lg-meta">
+            <span class="lg-meta-pill">n8n</span>
+            <span class="lg-meta-pill">OpenAI</span>
+            <span class="lg-meta-pill">WhatsApp API</span>
+            <span class="lg-meta-pill">Pinecone</span>
+            <span class="lg-meta-pill">Docker</span>
+            <span class="lg-meta-pill">PostgreSQL</span>
+            <span class="lg-meta-pill">12 modules</span>
+          </div>
+          <div class="lg-actions">
+            <a href="/grimoires/004-n8n-101.html" class="btn-open purple">Open Grimoire 004 →</a>
+          </div>
+        </div>
+        <div class="lg-stat-block">
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--purple)">12</span>
+            <span class="lg-stat-label">modules</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--accent)">5+</span>
+            <span class="lg-stat-label">workflows</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--teal)">$0</span>
+            <span class="lg-stat-label">per-exec fees</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg-status">
+        <span class="lg-status-left">✓ Live · May 2026 · Free · No gate</span>
+        <span class="lg-status-right">Grimoire 004 / 010</span>
+      </div>
+    </div>
+
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- ── PLACEHOLDERS ── -->
+  <!-- Placeholders for upcoming grimoires -->
   <section class="placeholders-section" aria-label="Upcoming grimoires">
     <div class="placeholder-heading">Coming next — grimoires in progress</div>
     <p style="font-size:.84rem;color:var(--ink3);line-height:1.7;max-width:58ch;margin-bottom:1.4rem">These are planned. Not vaporware — each one is a real body of notes waiting to be compiled. The series keeps going.</p>
     <div class="placeholder-grid">
-      <div class="placeholder-card">
-        <div class="pc-num">004</div>
-        <div class="pc-name">N8N 101</div>
-        <span class="pc-soon">Soon</span>
-      </div>
       <div class="placeholder-card">
         <div class="pc-num">005</div>
         <div class="pc-name">Zapier 101</div>
