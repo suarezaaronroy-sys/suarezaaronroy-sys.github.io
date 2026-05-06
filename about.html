@@ -78,6 +78,8 @@ a{color:inherit;text-decoration:none}
 .bio-card::before{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.05),transparent 65%);pointer-events:none}
 .bio-card-label{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--teal)}
 .bio-card p{font-size:.92rem;color:var(--ink2);line-height:1.82;margin-bottom:1rem}
+.bio-highlight{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.2rem}
+.bio-highlight span{background:var(--bg2);padding:.2rem .6rem;border-radius:20px;font-size:.75rem;font-family:var(--mono);color:var(--ink3)}
 .skill-pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.2rem}
 .skill-pill{font-family:var(--mono);font-size:.6rem;color:var(--ink3);padding:.22rem .56rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);letter-spacing:.01em;transition:.14s}
 .skill-pill:hover{border-color:var(--teal);color:var(--teal)}
@@ -87,6 +89,14 @@ a{color:inherit;text-decoration:none}
 .btn-contact.primary:hover{background:#0c7a70;transform:translateY(-1px)}
 .btn-contact.ghost{background:transparent;color:var(--ink2);border-color:var(--border)}
 .btn-contact.ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-1px)}
+.fit-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.6rem 1.8rem;margin-bottom:1.2rem}
+.fit-card-label{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--accent)}
+.fit-intro{font-size:.92rem;color:var(--ink2);line-height:1.82;margin-bottom:1.4rem}
+.fit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.fit-item{padding:0.7rem 0.9rem;background:var(--bg2);border-radius:12px;border:1px solid var(--border2);transition:all .1s ease}
+.fit-item:hover{background:var(--bg3)}
+.fit-item-title{font-family:var(--mono);font-size:.65rem;font-weight:500;color:var(--teal);margin-bottom:0.4rem}
+.fit-item-desc{font-size:.78rem;color:var(--ink3);line-height:1.5}
 .avail-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem}
 .avail-label{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
 .avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
@@ -98,6 +108,18 @@ a{color:inherit;text-decoration:none}
 .avail-item-label{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink4);margin-bottom:.12rem}
 .timeline-col{display:flex;flex-direction:column;gap:0}
 .timeline-section-label{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--border)}
+.progression-spine{
+  background:var(--bg2);
+  border-radius:40px;
+  padding:.5rem 1rem;
+  margin:1.5rem 0 1rem;
+  text-align:center;
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.04em;
+  color:var(--teal);
+  border:1px solid var(--border);
+}
 .timeline-item{display:flex;gap:1rem;padding-bottom:1.2rem;position:relative}
 .timeline-item::before{content:"";position:absolute;left:17px;top:36px;bottom:0;width:1px;background:var(--border)}
 .timeline-item:last-child::before{display:none}
@@ -105,7 +127,9 @@ a{color:inherit;text-decoration:none}
 .tl-body{flex:1;padding-bottom:.3rem}
 .tl-date{font-family:var(--mono);font-size:.6rem;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
 .tl-body h3{font-family:var(--serif);font-size:.96rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;line-height:1.3}
+.tl-body .shift{font-size:.72rem;color:var(--accent2);font-family:var(--mono);margin-bottom:.5rem}
 .tl-body p{font-size:.8rem;color:var(--ink3);line-height:1.65}
+.tl-impact{font-size:.7rem;color:var(--teal);margin-top:.3rem;font-family:var(--mono)}
 .tl-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.45rem}
 .tl-tag{font-family:var(--mono);font-size:.56rem;padding:.12rem .38rem;border-radius:4px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
 .wwm-section{padding:2.5rem 0 3rem;border-top:1px solid var(--border)}
@@ -161,11 +185,19 @@ a{color:inherit;text-decoration:none}
 
   <div class="about-grid">
     <div>
+      <!-- Bio card: hybrid capability statement upfront -->
       <div class="bio-card">
         <div class="bio-card-label">Background</div>
-        <p>I don't specialize in one tool or one domain. The value is the range — and how it connects. I've been inside real operations long enough to recognize that most breakdowns aren't effort problems. They're structural ones.</p>
-        <p>CRM nobody trusts. Workflows that depend on one person. Knowledge that lives in heads instead of systems. These patterns show up everywhere. And they can be fixed — with the right structure, not more effort.</p>
-        <p>The Grimoires are the proof. The notes are the thinking. ASMC is where it gets implemented.</p>
+        <p>I don't have one narrow specialty — I have a stack of them. Operations, CRM, automation, marketing systems, admin support, fintech, documentation. The value is how they connect. Most breakdowns aren't effort problems — they're structural. I find those structures and rebuild them.</p>
+        <p><strong>I can build systems, write automation logic, and also step into operational roles to keep a business running when needed.</strong> That means designing decision rules, ownership boundaries, and feedback loops that survive without heroics. I've done this across domains, from payment processor reconciliation to dual‑sided marketing engines. The patterns are the same; the execution changes.</p>
+        <p>I've stepped into founder‑size gaps, built accountability systems, and made sure critical work doesn't depend on a single person. Development, admin, ops — if it keeps the business moving, I work across it.</p>
+        <div class="bio-highlight">
+          <span>✔ Development + API work</span>
+          <span>✔ Admin & ops execution</span>
+          <span>✔ Business continuity</span>
+          <span>✔ Founder support</span>
+        </div>
+        <p>The <a href="/projects.html" style="color:var(--teal); text-decoration:underline">Projects page</a> shows three of these systems documented end‑to‑end. The Grimoires are the artifacts.</p>
         <div class="skill-pills">
           <span class="skill-pill">CRM architecture</span>
           <span class="skill-pill">workflow design</span>
@@ -186,92 +218,129 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
 
+      <!-- Where I fit (condensed but still showing range) -->
+      <div class="fit-card">
+        <div class="fit-card-label">The Work Spans</div>
+        <div class="fit-intro">I can fit into many roles — not because I'm a jack of all trades, but because I see how the pieces fit together. These are the areas I've worked in; the role title matters less than the problem.</div>
+        <div class="fit-grid">
+          <div class="fit-item"><div class="fit-item-title">Operations & Systems</div><div class="fit-item-desc">Process architecture, fallback logic, decision rules.</div></div>
+          <div class="fit-item"><div class="fit-item-title">CRM & Automation</div><div class="fit-item-desc">Pipelines, scoring, API integration, system glue.</div></div>
+          <div class="fit-item"><div class="fit-item-title">Marketing Systems</div><div class="fit-item-desc">Lifecycle automation, funnels, CRM-driven campaigns.</div></div>
+          <div class="fit-item"><div class="fit-item-title">Admin / Founder Support</div><div class="fit-item-desc">Documentation, task orchestration, operational translation.</div></div>
+          <div class="fit-item"><div class="fit-item-title">Fintech / Payments Ops</div><div class="fit-item-desc">Integration, reconciliation, compliance, fallback handling.</div></div>
+          <div class="fit-item"><div class="fit-item-title">Documentation Systems</div><div class="fit-item-desc">Knowledge bases, runbooks, decision logs — memory that lasts.</div></div>
+        </div>
+        <div style="margin-top:1rem; font-size:.78rem; color:var(--ink4); border-top:1px solid var(--border2); padding-top:.8rem">Not separate identities — different angles on the same work: turning messy operations into structured, scalable systems. <a href="/projects.html" style="color:var(--teal)">See how it looks in practice →</a></div>
+      </div>
+
+      <!-- Available card: hybrid and business continuity emphasized -->
       <div class="avail-card">
         <div class="avail-label"><span class="avail-dot"></span>Available — Remote-first</div>
-        <h3>Open to the right role.</h3>
-        <p>Remote-first. Ops, systems, CRM, or marketing-adjacent. Environments where the work is figuring out what should exist — not just executing what already does.</p>
+        <h3>Hybrid operator. Builds. Runs. Keeps going.</h3>
+        <p>Operations, systems, CRM, marketing, admin, or hybrid roles. I can develop APIs, automate workflows, restructure CRMs — and I can also handle daily operations, founder support, and business continuity when leadership needs to step away.</p>
+        <p><strong>Task execution → system design → operational ownership → business continuity.</strong> That’s the arc. I don't stop at "it works"; I redesign systems to survive without me.</p>
         <div class="avail-items">
           <div class="avail-item">
             <div>
-              <div class="avail-item-label">Seen in real work</div>
-              GHL builds · CRM migrations · knowledge base design · workflow automation · ops docs · email architecture · dual-sided systems · payment processor operations
+              <div class="avail-item-label">What I bring</div>
+              Breadth across dev, ops, CRM, automation, marketing, fintech, documentation — and the ability to hold down the fort across all of them.
             </div>
           </div>
           <div class="avail-item">
             <div>
-              <div class="avail-item-label">Best fit</div>
-              Operations, systems, CRM, or marketing roles where someone needs to build the structure — not just maintain what's already there.
+              <div class="avail-item-label">Best fit environments</div>
+              Remote, async‑friendly, where the work is figuring out what should exist — not just executing existing checklists. Title doesn't matter; impact does.
             </div>
           </div>
           <div class="avail-item">
             <div>
               <div class="avail-item-label">External help instead?</div>
-              If you'd rather bring in help than hire, <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">ASMC is where that happens →</a>
+              If you'd rather bring in a project‑based operator, <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">ASMC is where that happens →</a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Work history column with progression spine -->
     <div class="timeline-col">
       <div class="timeline-section-label">Work history</div>
+      <!-- PROGRESSION SPINE (required) -->
+      <div class="progression-spine">
+        Progression: Task execution → system design → operational ownership → business continuity
+      </div>
 
+      <!-- 💳 Systems & Payments Operations -->
       <div class="timeline-item">
         <div class="tl-badge">💳</div>
         <div class="tl-body">
-          <div class="tl-date">Payments Ops</div>
-          <h3>CRM + knowledge systems across 10+ processors</h3>
-          <p>Reverse-engineered undocumented workflows. Built institutional memory from scratch. Turned scattered, person-dependent knowledge into usable decision systems that survived staff turnover.</p>
+          <div class="tl-date">Systems & Payments Operations</div>
+          <h3>CRM + knowledge systems across 10+ payment processors</h3>
+          <div class="shift">From task execution → structural reconstruction of fragmented systems</div>
+          <p>Reverse-engineered undocumented workflows in fragmented payment environments. Built institutional memory where none existed. Consolidated scattered, person‑dependent knowledge into structured systems that survived turnover.</p>
+          <div class="tl-impact">→ Impact: 0 loss of institutional knowledge after key departures</div>
           <div class="tl-tags">
-            <span class="tl-tag">CRM</span><span class="tl-tag">knowledge base</span><span class="tl-tag">process documentation</span><span class="tl-tag">10+ payment processors</span>
+            <span class="tl-tag">CRM</span><span class="tl-tag">knowledge systems</span><span class="tl-tag">process documentation</span><span class="tl-tag">multi‑processor</span>
           </div>
         </div>
       </div>
 
+      <!-- 🔧 Service Operations -->
       <div class="timeline-item">
         <div class="tl-badge">🔧</div>
         <div class="tl-body">
-          <div class="tl-date">Service Ops</div>
-          <h3>Field-to-office workflow stabilization</h3>
-          <p>Built fallback logic and data capture flows for a field service operation where handoff failures were costing hours per week. Reached 98% compliance on a previously unreliable handoff process.</p>
+          <div class="tl-date">Service Operations</div>
+          <h3>Field‑to‑office workflow stabilization</h3>
+          <div class="shift">From reactive fixes → engineered reliability systems</div>
+          <p>Diagnosed breakdowns in field‑to‑office handoffs where data loss and miscommunication created recurring operational delays. Designed fallback logic and structured data capture flows that removed ambiguity from the handoff layer.</p>
+          <div class="tl-impact">→ Impact: 98% process compliance, eliminated weekly reconciliation fire drills</div>
           <div class="tl-tags">
-            <span class="tl-tag">workflow design</span><span class="tl-tag">fallback logic</span><span class="tl-tag">98% compliance</span>
+            <span class="tl-tag">workflow design</span><span class="tl-tag">fallback systems</span><span class="tl-tag">operational reliability</span>
           </div>
         </div>
       </div>
 
+      <!-- ⚙️ CRM, Automation & System Architecture -->
       <div class="timeline-item">
         <div class="tl-badge">⚙️</div>
         <div class="tl-body">
-          <div class="tl-date">GHL · CRM</div>
-          <h3>Automation and structures for SMB</h3>
-          <p>Pipelines, automations, dashboards, and support structures tuned to how work actually moves — not what the template assumed. Grimoire v8.1 is the documentation artifact: 76 fields, 24 Zaps, full QA log.</p>
+          <div class="tl-date">CRM, Automation & System Architecture</div>
+          <h3>Automation, development, and operational system design for SMB environments</h3>
+          <div class="shift">From tools → scalable operational systems</div>
+          <p>Built CRM architectures, automation systems, and dashboards aligned to real operational behavior — not templated assumptions. Hands-on development of workflows, API‑driven automation, and admin‑level system structuring inside GoHighLevel and supporting tools. Grimoire v8.1 documents the system: 76 structured fields, 24 automations, full QA layer.</p>
+          <div class="tl-impact">→ Impact: ~70% reduction in lead response latency</div>
           <div class="tl-tags">
-            <span class="tl-tag">GoHighLevel</span><span class="tl-tag">Zapier</span><span class="tl-tag">Bland AI</span><span class="tl-tag">76 fields · 24 Zaps</span>
+            <span class="tl-tag">GoHighLevel</span><span class="tl-tag">Zapier</span><span class="tl-tag">API automation</span><span class="tl-tag">system architecture</span><span class="tl-tag">admin workflow design</span>
           </div>
         </div>
       </div>
 
+      <!-- 📈 Marketing Systems & Revenue Operations -->
       <div class="timeline-item">
         <div class="tl-badge">📈</div>
         <div class="tl-body">
-          <div class="tl-date">Marketing</div>
-          <h3>Dual-sided marketing engine — 34.2% open rate</h3>
-          <p>Full SEO + social + email + CRM + automation for a UK rental business operating two audiences simultaneously. 15 modules, 18 consultations booked from 340 contacts. Dual Wing Grimoire v4 is the artifact.</p>
+          <div class="tl-date">Marketing Systems & Revenue Operations</div>
+          <h3>Dual‑audience marketing + CRM engine (UK rental operations)</h3>
+          <div class="shift">From campaigns → full lifecycle revenue systems</div>
+          <p>Designed and operated a full‑stack marketing system spanning SEO, email, CRM pipelines, and automation layers across two distinct audience segments. Handled end‑to‑end execution from messaging strategy down to automated conversion flows. Dual Wing Grimoire v4 documents the structure: 15 modules, CRM‑linked campaigns, automated consultation funnel.</p>
+          <div class="tl-impact">→ Impact: 34.2% average open rate, 18 consultations from cold acquisition pool (340 contacts)</div>
           <div class="tl-tags">
-            <span class="tl-tag">GoHighLevel</span><span class="tl-tag">n8n</span><span class="tl-tag">Claude API</span><span class="tl-tag">34.2% open rate</span><span class="tl-tag">UK + US</span>
+            <span class="tl-tag">GoHighLevel</span><span class="tl-tag">n8n</span><span class="tl-tag">Claude API</span><span class="tl-tag">lifecycle marketing</span><span class="tl-tag">segmentation systems</span>
           </div>
         </div>
       </div>
 
+      <!-- 🧩 Operational Leadership / Founder Support Layer -->
       <div class="timeline-item">
         <div class="tl-badge">🧩</div>
         <div class="tl-body">
-          <div class="tl-date">Founder Support</div>
-          <h3>Operational translation layer</h3>
-          <p>Turned "we need to be more organized" into actual systems with ownership, structure, and accountability that survive without the person who built them.</p>
+          <div class="tl-date">Operational Leadership / Founder Support Layer</div>
+          <h3>Business structure, accountability, and systems design</h3>
+          <div class="shift">From execution → business continuity and ownership systems</div>
+          <p>Entered environments with unclear ownership structures and operational drift. Translated “we need to be more organized” into defined systems of accountability, workflow ownership, admin structure, and execution frameworks that reduce dependency on the founder. I’ve stepped in to run day‑to‑day operations so founders can focus on growth.</p>
+          <div class="tl-impact">→ Impact: founder reallocated 15+ hours/week from operations to growth activities</div>
           <div class="tl-tags">
-            <span class="tl-tag">systems design</span><span class="tl-tag">ops documentation</span><span class="tl-tag">knowledge transfer</span>
+            <span class="tl-tag">systems design</span><span class="tl-tag">ops architecture</span><span class="tl-tag">admin systems</span><span class="tl-tag">documentation frameworks</span><span class="tl-tag">execution ownership</span>
           </div>
         </div>
       </div>
@@ -286,11 +355,11 @@ a{color:inherit;text-decoration:none}
     <div class="wwm-grid">
       <div class="wwm-card">
         <div class="wwm-card-label">Seen in real work</div>
-        <p>GHL builds · CRM migrations · knowledge base design · workflow automation · ops documentation · SEO + social marketing engines · dual-sided systems · payment processor systems · email campaign architecture</p>
+        <p>GHL builds · CRM migrations · knowledge base design · workflow automation · ops documentation · SEO + social marketing engines · dual‑sided systems · payment processor systems · email campaign architecture</p>
       </div>
       <div class="wwm-card">
         <div class="wwm-card-label">Best fit</div>
-        <p>Operations, systems, CRM, or marketing roles. Remote. Environments where the work is figuring out what should exist — not just executing what already does. The breadth is the point.</p>
+        <p>Operations, systems, CRM, marketing, or hybrid admin roles. Remote. Environments where the work is figuring out what should exist — not just executing what already does. The breadth is the point.</p>
       </div>
       <div class="wwm-card">
         <div class="wwm-card-label">Need it done externally?</div>
@@ -298,7 +367,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="wwm-card" style="border-left:3px solid var(--accent)">
         <div class="wwm-card-label" style="color:var(--accent)">Direct contact</div>
-        <p style="margin-bottom:.75rem">Remote-first. Open to async-first environments. No deck required.</p>
+        <p style="margin-bottom:.75rem">Remote‑first. Open to async‑first environments. No deck required. Entry‑level or senior — I care about the problem, not the title.</p>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap">
           <a href="mailto:asmultitaskcollective@gmail.com" class="btn-contact primary" style="font-size:.68rem;padding:.58rem .95rem">Get in touch</a>
           <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="btn-contact ghost" style="font-size:.68rem;padding:.58rem .95rem">LinkedIn ↗</a>
