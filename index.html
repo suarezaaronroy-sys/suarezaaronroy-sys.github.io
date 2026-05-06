@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Aaron Suarez — CRM Architecture · Operational Systems · Marketing Engines</title>
-<meta name="description" content="Aaron Suarez builds the operational layer growing businesses run out of — CRM architecture, workflow automation, marketing engines, and documentation systems. Based in Valencia City, PH. Remote-first."/>
+<meta name="description" content="Hybrid systems operator. Builds CRM, automation, API integration, ops, and runs business continuity. Documented impact: 98% compliance, 34% open rates, 70% faster lead response."/>
 <meta name="keywords" content="CRM architecture, GoHighLevel, workflow automation, operational systems, marketing engine, SEO systems, n8n, Claude API, dual-sided systems, documentation design"/>
 <meta name="author" content="Aaron Suarez"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://suarezaaronroy-sys.github.io/"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Aaron Suarez — CRM Architecture · Operational Systems · Marketing Engines"/>
-<meta property="og:description" content="I build the operational layer — CRM architecture, workflow automation, marketing engines, and documentation systems."/>
+<meta property="og:title" content="Aaron Suarez — Hybrid Systems Operator · CRM · Automation · Continuity"/>
+<meta property="og:description" content="I build systems (CRM, automation, APIs) and I also run the business — admin, ops, founder support, continuity."/>
 <meta property="og:url" content="https://suarezaaronroy-sys.github.io/"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Aaron Suarez — Systems Builder"/>
@@ -26,7 +26,7 @@
     "name": "Aaron Suarez",
     "url": "https://suarezaaronroy-sys.github.io/",
     "jobTitle": "Operational Systems Builder",
-    "description": "Builds CRM architecture, workflow automation systems, marketing engines, and operational documentation for growing businesses.",
+    "description": "Hybrid operator — CRM architecture, workflow automation, marketing systems, business continuity.",
     "sameAs": ["https://www.linkedin.com/in/suarez-aaronroy/","https://asmultitaskcollective-prog.github.io/aaron-systems/"]
   }
 }
@@ -46,6 +46,7 @@
   --amber:#B45309;--amber-bg:#FEF3C7;
   --blue:#1D4ED8;--blue-bg:#DBEAFE;
   --green:#15803D;--green-bg:#DCFCE7;
+  --purple:#7C3AED;--purple-bg:#F5F3FF;
   --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
   --dark-surface:#1C1917;--dark-surface2:#292524;
   --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
@@ -120,6 +121,22 @@ a{color:inherit;text-decoration:none}
 .gc.teal .gc-pill{color:#4dc9a7;border-color:#4dc9a744;background:rgba(77,201,167,.08)}
 .gc.teal .gc-open{color:#c8f5ed;background:rgba(77,201,167,.15);border-color:#4dc9a755}
 .gc.teal .gc-open:hover{background:rgba(77,201,167,.25)}
+.gc.blue{background:linear-gradient(135deg,#081c2f08,#0d3d6e 0%,#081c2f);border-color:#1d4ed844}
+.gc.blue:hover{box-shadow:0 8px 28px rgba(20,80,150,.28)}
+.gc.blue .gc-eyebrow{color:#8fb5f0}
+.gc.blue .gc-dot{background:#8fb5f0;animation:pulse 2s infinite}
+.gc.blue strong{color:#e0ecff;font-family:var(--serif);font-size:.94rem}
+.gc.blue p{color:#8fb5f0bb;font-size:.73rem;margin-bottom:.55rem}
+.gc.blue .gc-pill{color:#8fb5f0;border-color:#8fb5f044;background:rgba(143,181,240,.08)}
+.gc.blue .gc-open{color:#e0ecff;background:rgba(143,181,240,.15);border-color:#8fb5f055}
+.gc.orange{background:linear-gradient(135deg,#1c0a0008,#4a2a0f 0%,#1c0a00);border-color:#c2410c44}
+.gc.orange:hover{box-shadow:0 8px 28px rgba(200,80,20,.28)}
+.gc.orange .gc-eyebrow{color:#f5b88c}
+.gc.orange .gc-dot{background:#f5b88c;animation:pulse 2s infinite}
+.gc.orange strong{color:#ffe2cc;font-family:var(--serif);font-size:.94rem}
+.gc.orange p{color:#f5b88cbb;font-size:.73rem;margin-bottom:.55rem}
+.gc.orange .gc-pill{color:#f5b88c;border-color:#f5b88c44;background:rgba(245,184,140,.08)}
+.gc.orange .gc-open{color:#ffe2cc;background:rgba(245,184,140,.15);border-color:#f5b88c55}
 .gc-label{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:.5rem;padding-left:.5rem;border-left:2px solid var(--border)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .gc-eyebrow{display:flex;align-items:center;gap:.32rem;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.35rem}
@@ -168,6 +185,7 @@ a{color:inherit;text-decoration:none}
 .grimoire-badge.purple{color:#7c3aed;background:#f5f3ff;border-color:#ddd6fe}
 .grimoire-badge.teal{color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)}
 .grimoire-badge.blue{color:var(--blue);background:var(--blue-bg);border-color:rgba(29,78,216,.2)}
+.grimoire-badge.orange{color:var(--accent);background:#FFF7ED;border-color:rgba(194,65,12,.2)}
 .grimoire-card h3{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.25}
 .grimoire-card p{font-size:.8rem;color:var(--ink3);line-height:1.6;margin-bottom:.65rem}
 .grimoire-card-meta{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.65rem}
@@ -201,10 +219,7 @@ a{color:inherit;text-decoration:none}
 }
 @media(max-width:480px){.grimoire-placeholder-row{grid-template-columns:1fr}}
 </style>
-
-<!-- ✅ NEW LINE — this makes theme work on all pages -->
 <script src="/assets/js/theme.js"></script>
-
 </head>
 <body id="top">
 
@@ -239,11 +254,11 @@ a{color:inherit;text-decoration:none}
     <div class="hero-main">
       <div class="win-chrome">
         <span class="wdot r"></span><span class="wdot y"></span><span class="wdot g"></span>
-        <span>aaron.suarez / proof of work</span>
+        <span>aaron.suarez / hybrid systems operator</span>
       </div>
-      <h1>I build the operational layer <em>growing businesses run out of.</em></h1>
-      <p class="lead">CRM architecture, workflow automation, marketing engines, documentation systems — wherever the structure is missing and the work is piling up in someone's head instead of the system.</p>
-      <p class="sublead">This is the portfolio. It doesn't define one lane. It shows how all of it connects — across domains, across tools, across the full operational stack.</p>
+      <h1>I build systems <em>and I run operations.</em></h1>
+      <p class="lead">CRM architecture, workflow automation, APIs, admin continuity — whatever keeps the business moving. Most breakdowns aren't effort problems; they're structural. I find those structures and rebuild them.</p>
+      <p class="sublead">This is the portfolio. It shows how all of it connects — across domains, across tools, across the full operational stack. <strong>Progression:</strong> task execution → system design → operational ownership → business continuity.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="/notes.html">📔 Read the Notes</a>
         <a class="btn-secondary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer">Fix My Systems →</a>
@@ -263,63 +278,50 @@ a{color:inherit;text-decoration:none}
         <span class="cap-pill">UK · US compliance</span>
       </div>
       <div class="pattern-list" aria-label="Common problems solved">
-        <div class="pattern-item">
-          <div class="pattern-dot"></div>
-          <div><strong>Operations that depend on specific people</strong><span>When one person is out, work stops or breaks. Not a people problem — a system problem.</span></div>
-        </div>
-        <div class="pattern-item">
-          <div class="pattern-dot"></div>
-          <div><strong>Tools that exist but don't connect</strong><span>CRM, docs, automations. The infrastructure is there. The logic tying it together isn't.</span></div>
-        </div>
-        <div class="pattern-item">
-          <div class="pattern-dot"></div>
-          <div><strong>Knowledge that lives in heads, not systems</strong><span>Senior staff keep answering the same questions. The answers never get documented.</span></div>
-        </div>
+        <div class="pattern-item"><div class="pattern-dot"></div><div><strong>Operations that depend on specific people</strong><span>When one person is out, work stops or breaks. Not a people problem — a system problem.</span></div></div>
+        <div class="pattern-item"><div class="pattern-dot"></div><div><strong>Tools that exist but don't connect</strong><span>CRM, docs, automations. The infrastructure is there. The logic tying it together isn't.</span></div></div>
+        <div class="pattern-item"><div class="pattern-dot"></div><div><strong>Knowledge that lives in heads, not systems</strong><span>Senior staff keep answering the same questions. The answers never get documented.</span></div></div>
       </div>
     </div>
 
     <aside class="hero-side" aria-label="Proof of work">
       <div class="panel">
-        <div class="panel-head">
-          <span>proof of work · 2 live grimoires</span>
-          <span class="lu-badge">✓ Apr 2026</span>
-        </div>
+        <div class="panel-head"><span>proof of work · 4 live grimoires</span><span class="lu-badge">✓ May 2026</span></div>
         <div class="panel-body">
           <div class="gc-label">CRM &amp; Ops System</div>
           <a href="/grimoires/001-asmc-crm-engine.html" class="gc purple" aria-label="Grimoire 001 — ASMC CRM Engine">
             <div class="gc-eyebrow"><span class="gc-dot"></span>ASMC CRM Engine · v8.1 · QA-Verified</div>
             <strong>Grimoire 001</strong>
             <p>Full CRM automation. GHL · Zapier · Bland AI · PandaDoc · Stripe. 76 fields. 24 Zaps.</p>
-            <div class="gc-meta">
-              <span class="gc-pill">76-field CRM</span>
-              <span class="gc-pill">24 Zaps</span>
-              <span class="gc-pill">Bland AI</span>
-              <span class="gc-pill">QA-verified</span>
-            </div>
+            <div class="gc-meta"><span class="gc-pill">76-field CRM</span><span class="gc-pill">24 Zaps</span><span class="gc-pill">Bland AI</span><span class="gc-pill">QA-verified</span></div>
             <div class="gc-open">Open Grimoire →</div>
           </a>
-          <div class="gc-label" style="margin-top:.15rem">Marketing Engine System</div>
+          <div class="gc-label">Marketing Engine System</div>
           <a href="/grimoires/002-dual-wing-rental.html" class="gc teal" aria-label="Grimoire 002 — Dual Wing Rental Engine">
             <div class="gc-eyebrow"><span class="gc-dot"></span>Dual Wing Rental Engine · Grimoire v4 · Apr 2026</div>
             <strong>Grimoire 002</strong>
             <p>Full marketing + CRM for dual-sided rental. SEO · Email · GHL · n8n · Claude API. 34.2% open rate.</p>
-            <div class="gc-meta">
-              <span class="gc-pill">15 modules</span>
-              <span class="gc-pill">2 pipelines</span>
-              <span class="gc-pill">UK + US</span>
-              <span class="gc-pill">v4</span>
-            </div>
+            <div class="gc-meta"><span class="gc-pill">15 modules</span><span class="gc-pill">2 pipelines</span><span class="gc-pill">UK + US</span><span class="gc-pill">v4</span></div>
+            <div class="gc-open">Open Grimoire →</div>
+          </a>
+          <div class="gc-label">Knowledge System (GHL)</div>
+          <a href="/grimoires/003-ghl-101.html" class="gc blue" aria-label="Grimoire 003 — GHL 101">
+            <div class="gc-eyebrow"><span class="gc-dot"></span>GHL 101 · 2026 Edition</div>
+            <strong>Grimoire 003</strong>
+            <p>18 modules, 29 official sources, 50+ power tips. Free, no gate.</p>
+            <div class="gc-meta"><span class="gc-pill">18 modules</span><span class="gc-pill">29 sources</span><span class="gc-pill">50+ tips</span><span class="gc-pill">free</span></div>
+            <div class="gc-open">Open Grimoire →</div>
+          </a>
+          <div class="gc-label">AI Workflow Automation</div>
+          <a href="/grimoires/004-n8n-101.html" class="gc orange" aria-label="Grimoire 004 — n8n 101">
+            <div class="gc-eyebrow"><span class="gc-dot"></span>n8n 101 · AI Workflow Automation</div>
+            <strong>Grimoire 004</strong>
+            <p>12 modules, AI agents, RAG, WhatsApp Business, self-hosting security.</p>
+            <div class="gc-meta"><span class="gc-pill">12 modules</span><span class="gc-pill">AI agent</span><span class="gc-pill">RAG</span><span class="gc-pill">self-host</span></div>
             <div class="gc-open">Open Grimoire →</div>
           </a>
           <a href="/notes.html" class="nb-launch-btn" aria-label="Open notes">
-            <div class="nb-launch-inner">
-              <span class="nb-launch-icon">📔</span>
-              <div class="nb-launch-text">
-                <strong>Open the notebook</strong>
-                <span>11 notes · field logs · operational thinking</span>
-              </div>
-              <span class="nb-launch-arrow">→</span>
-            </div>
+            <div class="nb-launch-inner"><span class="nb-launch-icon">📔</span><div class="nb-launch-text"><strong>Open the notebook</strong><span>15 notes · field logs · operational thinking</span></div><span class="nb-launch-arrow">→</span></div>
           </a>
         </div>
       </div>
@@ -327,12 +329,7 @@ a{color:inherit;text-decoration:none}
         <div class="panel-head"><span>if you recognize the pattern</span><span>→</span></div>
         <div class="panel-body">
           <p style="font-size:.8rem;color:var(--ink3);line-height:1.72;margin-bottom:.7rem">The notebook has the diagnosis. If you're seeing these patterns in your operation — ASMC is where we fix them.</p>
-          <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink4);margin-bottom:.68rem;line-height:1.82">
-            → CRM that doesn't reflect reality<br>
-            → Workflows that break under pressure<br>
-            → Documentation nobody uses<br>
-            → Support that runs on memory
-          </div>
+          <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink4);margin-bottom:.68rem;line-height:1.82">→ CRM that doesn't reflect reality<br>→ Workflows that break under pressure<br>→ Documentation nobody uses<br>→ Support that runs on memory</div>
           <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.36rem;font-family:var(--mono);font-size:.66rem;color:var(--accent);border:1px solid var(--border);padding:.38rem .78rem;border-radius:999px;background:var(--bg2);transition:.14s;text-decoration:none">Fix My Systems → ASMC</a>
         </div>
       </div>
@@ -340,11 +337,7 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <div class="baton-band" aria-label="Portfolio to service">
-    <div class="baton-band-text">
-      <div class="baton-pass-pill">portfolio → service</div>
-      <strong>The portfolio has the thinking. ASMC has the execution.</strong>
-      <span>This site shows the work. When you're ready to act on it — that's what ASMC is for. Free 30-min ops audit, no pitch, no deck.</span>
-    </div>
+    <div class="baton-band-text"><div class="baton-pass-pill">portfolio → service</div><strong>The portfolio has the thinking. ASMC has the execution.</strong><span>This site shows the work. When you're ready to act on it — that's what ASMC is for. Free 30-min ops audit, no pitch, no deck.</span></div>
     <a class="btn-secondary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
   </div>
 </section>
@@ -354,44 +347,14 @@ a{color:inherit;text-decoration:none}
 <section class="nav-cards-section shell" aria-label="Site navigation">
   <div class="section-eyebrow">Navigate</div>
   <h2>Everything lives somewhere now.</h2>
-  <p class="section-sub">The single-scroll era is over. Each section is its own page — better SEO, better reading, better everything.</p>
+  <p class="section-sub">The single‑scroll era is over. Each section is its own page — better SEO, better reading, better everything.</p>
   <div class="nav-cards-grid">
-    <a href="/about.html" class="nav-card" style="--card-accent:var(--accent)">
-      <div class="nav-card-icon">👤</div>
-      <h3>About</h3>
-      <p>Where this thinking comes from. Background, timeline, and what makes the work worth reading.</p>
-      <div class="nav-card-arrow">Read about → <span>↗</span></div>
-    </a>
-    <a href="/projects.html" class="nav-card" style="--card-accent:var(--teal)">
-      <div class="nav-card-icon">📚</div>
-      <h3>Projects &amp; Grimoires</h3>
-      <p>Proof-of-work. Live system documentation. Full CRM engines, marketing systems, and field-built references.</p>
-      <div class="nav-card-arrow">View grimoires → <span>↗</span></div>
-    </a>
-    <a href="/notes.html" class="nav-card" style="--card-accent:#7c3aed">
-      <div class="nav-card-icon">📔</div>
-      <h3>Notes</h3>
-      <p>Field observations from real operations. How breakdowns happen, why they repeat, what the fix requires.</p>
-      <div class="nav-card-arrow">Open notebook → <span>↗</span></div>
-    </a>
-    <a href="/articles.html" class="nav-card" style="--card-accent:var(--blue)">
-      <div class="nav-card-icon">✍️</div>
-      <h3>Articles</h3>
-      <p>Longer-form writing on operational systems, CRM architecture, and the patterns worth documenting.</p>
-      <div class="nav-card-arrow">Read articles → <span>↗</span></div>
-    </a>
-    <a href="/theme.html" class="nav-card" style="--card-accent:var(--amber)">
-      <div class="nav-card-icon">🎨</div>
-      <h3>Theme</h3>
-      <p>Customize the visual experience. Light/dark and beyond.</p>
-      <div class="nav-card-arrow">Customize → <span>↗</span></div>
-    </a>
-    <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-card" style="--card-accent:var(--green)">
-      <div class="nav-card-icon">🔧</div>
-      <h3>Fix My Systems</h3>
-      <p>ASMC — where the portfolio thinking gets implemented. Free 30-min ops audit, no pitch, no deck.</p>
-      <div class="nav-card-arrow">Go to ASMC → <span>↗</span></div>
-    </a>
+    <a href="/about.html" class="nav-card" style="--card-accent:var(--accent)"><div class="nav-card-icon">👤</div><h3>About</h3><p>Where this thinking comes from. Background, hybrid capability, and the progression from task execution to business continuity.</p><div class="nav-card-arrow">Read about → <span>↗</span></div></a>
+    <a href="/projects.html" class="nav-card" style="--card-accent:var(--teal)"><div class="nav-card-icon">📚</div><h3>Projects &amp; Grimoires</h3><p>Proof-of-work. Live system documentation. Full CRM engines, marketing systems, field-built references, and AI automation guides.</p><div class="nav-card-arrow">View grimoires → <span>↗</span></div></a>
+    <a href="/notes.html" class="nav-card" style="--card-accent:#7c3aed"><div class="nav-card-icon">📔</div><h3>Notes</h3><p>Field observations from real operations. How breakdowns happen, why they repeat, what the fix requires. Short, sharp, useful.</p><div class="nav-card-arrow">Open notebook → <span>↗</span></div></a>
+    <a href="/articles.html" class="nav-card" style="--card-accent:var(--blue)"><div class="nav-card-icon">✍️</div><h3>Articles</h3><p>Longer-form writing on operational systems, CRM architecture, system design patterns, and business continuity.</p><div class="nav-card-arrow">Read articles → <span>↗</span></div></a>
+    <a href="/theme.html" class="nav-card" style="--card-accent:var(--amber)"><div class="nav-card-icon">🎨</div><h3>Theme</h3><p>Customize the visual experience. Light/dark and beyond.</p><div class="nav-card-arrow">Customize → <span>↗</span></div></a>
+    <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-card" style="--card-accent:var(--green)"><div class="nav-card-icon">🔧</div><h3>Fix My Systems</h3><p>ASMC — where the portfolio thinking gets implemented. Free 30-min ops audit, no pitch, no deck.</p><div class="nav-card-arrow">Go to ASMC → <span>↗</span></div></a>
   </div>
 </section>
 
@@ -408,71 +371,46 @@ a{color:inherit;text-decoration:none}
         <div class="grimoire-badge purple">001 · CRM System · Apr 2026 · v8.1</div>
         <h3>ASMC Full Stack CRM Engine</h3>
         <p>Full CRM automation for a construction business. Lead capture → scoring → proposal → contract → payment → delivery. QA-verified, 13 documented corrections from v8.0.</p>
-        <div class="grimoire-card-meta">
-          <span class="grimoire-meta-pill">GoHighLevel</span>
-          <span class="grimoire-meta-pill">Zapier</span>
-          <span class="grimoire-meta-pill">Bland AI</span>
-          <span class="grimoire-meta-pill">PandaDoc</span>
-          <span class="grimoire-meta-pill">Stripe</span>
-          <span class="grimoire-meta-pill">76 fields · 24 Zaps</span>
-        </div>
+        <div class="grimoire-card-meta"><span class="grimoire-meta-pill">GoHighLevel</span><span class="grimoire-meta-pill">Zapier</span><span class="grimoire-meta-pill">Bland AI</span><span class="grimoire-meta-pill">PandaDoc</span><span class="grimoire-meta-pill">Stripe</span><span class="grimoire-meta-pill">76 fields · 24 Zaps</span></div>
       </div>
-      <div class="grimoire-card-bottom">
-        <span class="grimoire-open-btn">Open Grimoire 001 →</span>
-        <span class="grimoire-status">✓ Live · QA-Verified</span>
-      </div>
+      <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 001 →</span><span class="grimoire-status">✓ Live · QA-Verified</span></div>
     </a>
     <a href="/grimoires/002-dual-wing-rental.html" class="grimoire-card" aria-label="Grimoire 002">
       <div class="grimoire-card-top">
         <div class="grimoire-badge teal">002 · Marketing Engine · Apr 2026 · v4</div>
         <h3>Dual Wing Rental Marketing Engine</h3>
         <p>Full marketing + CRM for a dual-sided rental business (UK + US). One flywheel. Landlord supply and renter demand feeding each other. 34.2% avg open rate, 18 consultations from 340 contacts.</p>
-        <div class="grimoire-card-meta">
-          <span class="grimoire-meta-pill">GoHighLevel</span>
-          <span class="grimoire-meta-pill">n8n</span>
-          <span class="grimoire-meta-pill">Claude API</span>
-          <span class="grimoire-meta-pill">15 modules</span>
-          <span class="grimoire-meta-pill">UK + US</span>
-        </div>
+        <div class="grimoire-card-meta"><span class="grimoire-meta-pill">GoHighLevel</span><span class="grimoire-meta-pill">n8n</span><span class="grimoire-meta-pill">Claude API</span><span class="grimoire-meta-pill">15 modules</span><span class="grimoire-meta-pill">UK + US</span></div>
       </div>
-      <div class="grimoire-card-bottom">
-        <span class="grimoire-open-btn">Open Grimoire 002 →</span>
-        <span class="grimoire-status">✓ Live · Apr 2026</span>
-      </div>
+      <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 002 →</span><span class="grimoire-status">✓ Live · Apr 2026</span></div>
     </a>
   </div>
 
+  <!-- GHL 101 card — now consistent with others -->
   <a href="/grimoires/003-ghl-101.html" class="grimoire-card" style="margin-top:1rem" aria-label="Grimoire 003">
-    <div class="grimoire-card-top" style="display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:center">
-      <div>
-        <div class="grimoire-badge blue">003 · Knowledge System · Mar 2026</div>
-        <h3>GHL 101: Speedrun Training Manual — 2026 Edition</h3>
-        <p style="margin-bottom:.6rem">Over a year of GoHighLevel field notes compiled into one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated to 2026: Voice AI, Agent Studio, WhatsApp native, AI Employee pricing.</p>
-        <div class="grimoire-card-meta">
-          <span class="grimoire-meta-pill">18 modules</span>
-          <span class="grimoire-meta-pill">29 official sources</span>
-          <span class="grimoire-meta-pill">50+ power tips</span>
-          <span class="grimoire-meta-pill">2026 update</span>
-          <span class="grimoire-meta-pill">free · no gate</span>
-        </div>
-      </div>
-      <div style="text-align:center;flex-shrink:0">
-        <div style="font-family:var(--mono);font-size:2.4rem;font-weight:500;color:var(--blue);line-height:1">18</div>
-        <div style="font-family:var(--mono);font-size:.6rem;color:var(--ink4);margin-bottom:.5rem">modules</div>
-        <div style="font-family:var(--mono);font-size:2.4rem;font-weight:500;color:var(--green);line-height:1">29</div>
-        <div style="font-family:var(--mono);font-size:.6rem;color:var(--ink4)">sources</div>
-      </div>
+    <div class="grimoire-card-top">
+      <div class="grimoire-badge blue">003 · Knowledge System · Mar 2026</div>
+      <h3>GHL 101: Speedrun Training Manual — 2026 Edition</h3>
+      <p>Over a year of GoHighLevel field notes compiled into one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated to 2026: Voice AI, Agent Studio, WhatsApp native, AI Employee pricing. Free, no gate.</p>
+      <div class="grimoire-card-meta"><span class="grimoire-meta-pill">18 modules</span><span class="grimoire-meta-pill">29 sources</span><span class="grimoire-meta-pill">50+ tips</span><span class="grimoire-meta-pill">2026 update</span><span class="grimoire-meta-pill">free</span></div>
     </div>
-    <div class="grimoire-card-bottom">
-      <span class="grimoire-open-btn">Open Grimoire 003 →</span>
-      <span class="grimoire-status">✓ Live · Free · No gate</span>
+    <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 003 →</span><span class="grimoire-status">✓ Live · Free · No gate</span></div>
+  </a>
+
+  <!-- n8n 101 card — consistent style -->
+  <a href="/grimoires/004-n8n-101.html" class="grimoire-card" style="margin-top:1rem" aria-label="Grimoire 004">
+    <div class="grimoire-card-top">
+      <div class="grimoire-badge orange">004 · AI Automation · May 2026</div>
+      <h3>n8n 101: AI Workflow Automation</h3>
+      <p>12 modules covering AI agents, RAG, WhatsApp Business, self‑hosting security, and production patterns. Built from real field failures — including the $800 Zapier bill that forced the switch.</p>
+      <div class="grimoire-card-meta"><span class="grimoire-meta-pill">12 modules</span><span class="grimoire-meta-pill">AI agent</span><span class="grimoire-meta-pill">RAG</span><span class="grimoire-meta-pill">WhatsApp API</span><span class="grimoire-meta-pill">self-host</span></div>
     </div>
+    <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 004 →</span><span class="grimoire-status">✓ Live · May 2026</span></div>
   </a>
 
   <div style="margin-top:1.4rem">
     <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;padding-left:.5rem;border-left:2px solid var(--border)">More grimoires in progress</div>
     <div class="grimoire-placeholder-row">
-      <div class="grimoire-placeholder"><div class="gp-num">004</div><div class="gp-name">N8N 101</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">005</div><div class="gp-name">Zapier 101</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">006</div><div class="gp-name">Automations 101</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">007</div><div class="gp-name">Agentic AI 101</div><span class="gp-soon">Soon</span></div>
@@ -481,10 +419,7 @@ a{color:inherit;text-decoration:none}
       <div class="grimoire-placeholder"><div class="gp-num">010</div><div class="gp-name">Claude + OpenClaw 101 — The Viral Combo</div><span class="gp-soon">Soon</span></div>
     </div>
   </div>
-
-  <div style="text-align:center;margin-top:1.8rem">
-    <a href="/projects.html" class="btn-secondary">View all projects →</a>
-  </div>
+  <div style="text-align:center;margin-top:1.8rem"><a href="/projects.html" class="btn-secondary">View all projects →</a></div>
 </section>
 
 </main>
@@ -492,15 +427,9 @@ a{color:inherit;text-decoration:none}
 <footer class="footer shell">
   <div class="footer-line">
     <div>© <span id="yr"></span> Aaron Suarez · operational systems builder</div>
-    <div class="footer-links">
-      <span>Valencia City, PH · remote-first</span>
-      <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
-      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="footer-link" style="font-weight:500">ASMC ↗</a>
-    </div>
+    <div class="footer-links"><span>Valencia City, PH · remote-first</span><a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a><a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a><a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="footer-link" style="font-weight:500">ASMC ↗</a></div>
   </div>
 </footer>
-
 <a class="quick-anchor" href="#top" aria-label="Back to top">↑ top</a>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
