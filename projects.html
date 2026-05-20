@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Projects & Grimoires — Aaron Suarez</title>
-<meta name="description" content="Live system documentation for CRM architecture, marketing engines, and operational tools. Real systems, real results — open and ungated."/>
+<meta name="description" content="Live system documentation for CRM architecture, marketing engines, automation patterns, and operational tools. Real systems, real results — open and ungated."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://suarezaaronroy-sys.github.io/projects.html"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
@@ -80,10 +80,8 @@ a{color:inherit;text-decoration:none}
 }
 .live-grimoire:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(28,25,23,.1)}
 
-/* Two-column inner — stat block locked to right, never collapses */
 .lg-inner{
   display:grid;
-  /* left col: fluid. right col: fixed 120px so all 3 cards are identical */
   grid-template-columns:1fr 120px;
   gap:1.5rem;padding:1.6rem 1.8rem;align-items:start;
 }
@@ -108,7 +106,6 @@ a{color:inherit;text-decoration:none}
 .lg-meta-pill{font-family:var(--mono);font-size:.6rem;padding:.16rem .44rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
 .lg-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
 
-/* ── STAT BLOCK — right column, consistent across all cards ── */
 .lg-stat-block{
   display:flex;flex-direction:column;gap:.7rem;
   align-items:center;
@@ -243,7 +240,7 @@ a{color:inherit;text-decoration:none}
   <section class="grimoire-section" aria-label="Live grimoires">
     <div class="section-label">
       <span class="section-label-dot"></span>
-      Live grimoires · 4 published
+      Live grimoires · 5 published
     </div>
 
     <!-- Grimoire 001 -->
@@ -388,7 +385,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
-    <!-- Grimoire 004: N8N 101 - LIVE (NEW) -->
+    <!-- Grimoire 004 -->
     <div class="live-grimoire" style="cursor:default">
       <div class="lg-inner">
         <div>
@@ -436,11 +433,57 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
+    <!-- Grimoire 006 -->
+    <div class="live-grimoire" style="cursor:default">
+      <div class="lg-inner">
+        <div>
+          <div class="lg-badge orange">006 · Automation Patterns · May 2026</div>
+          <h2>Automations 101: The Absolute Guide</h2>
+          <p class="lg-desc">A pipeline-driven reference for straightforward vs production-grade business automations across industries. Built from the complete Markdown source corpus: foundation chapters, 25 automation patterns, cross-cutting controls, appendices, runbooks, and a symptom index.</p>
+          <ul class="lg-bullets">
+            <li>25 production-grade patterns across capture, scheduling, documents, approvals, payments, delivery, fulfillment, retention, and reactivation</li>
+            <li>37 Markdown source files represented with a source-corpus ledger</li>
+            <li>35 Mermaid flow diagrams preserved for production-grade workflow mapping</li>
+            <li>Idempotency, retries, dead-letter queues, observability, testing, compliance wrappers, and runbooks included</li>
+            <li>Human handoff taxonomy, override behavior, decision guides, and failure symptom index</li>
+          </ul>
+          <div class="lg-meta">
+            <span class="lg-meta-pill">Automation patterns</span>
+            <span class="lg-meta-pill">25 patterns</span>
+            <span class="lg-meta-pill">37 sources</span>
+            <span class="lg-meta-pill">35 diagrams</span>
+            <span class="lg-meta-pill">runbooks</span>
+            <span class="lg-meta-pill">source-complete</span>
+          </div>
+          <div class="lg-actions">
+            <a href="/grimoires/006-automations-101.html" class="btn-open accent">Open Grimoire 006 →</a>
+          </div>
+        </div>
+        <div class="lg-stat-block">
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--accent)">25</span>
+            <span class="lg-stat-label">patterns</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--blue)">37</span>
+            <span class="lg-stat-label">sources</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--teal)">35</span>
+            <span class="lg-stat-label">diagrams</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg-status">
+        <span class="lg-status-left">✓ Live · May 2026 · Source-complete · Free · No gate</span>
+        <span class="lg-status-right">Grimoire 006 / 010</span>
+      </div>
+    </div>
+
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- Placeholders for upcoming grimoires -->
   <section class="placeholders-section" aria-label="Upcoming grimoires">
     <div class="placeholder-heading">Coming next — grimoires in progress</div>
     <p style="font-size:.84rem;color:var(--ink3);line-height:1.7;max-width:58ch;margin-bottom:1.4rem">These are planned. Not vaporware — each one is a real body of notes waiting to be compiled. The series keeps going.</p>
@@ -448,11 +491,6 @@ a{color:inherit;text-decoration:none}
       <div class="placeholder-card">
         <div class="pc-num">005</div>
         <div class="pc-name">Zapier 101</div>
-        <span class="pc-soon">Soon</span>
-      </div>
-      <div class="placeholder-card">
-        <div class="pc-num">006</div>
-        <div class="pc-name">Automations 101</div>
         <span class="pc-soon">Soon</span>
       </div>
       <div class="placeholder-card">
