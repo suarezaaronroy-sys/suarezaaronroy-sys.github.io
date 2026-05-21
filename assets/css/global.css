@@ -1,36 +1,192 @@
-/* --- [KEEP YOUR ORIGINAL GLOBAL.CSS CONTENT HERE] --- */
-/* (The content you just pasted goes here) */
+/* ========== NEW COMPONENTS (modular pages) ========== */
 
-/* ── ADDITIONAL STRUCTURAL COMPONENTS (Required for layout) ── */
+/* Hero section */
+.hero {
+  padding: 4rem 0 2rem;
+  text-align: center;
+}
+.hero-greeting {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  color: var(--ink);
+}
+.accent-text {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent2);
+}
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--ink3);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-/* 1. Animations */
-@keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.animate-fade-in { animation: fade 0.8s ease-out forwards; }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
+/* Grids */
+.capabilities-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+.capability-item,
+.project-card {
+  background: var(--bg2);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border);
+}
+.capability-item:hover,
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(28, 25, 23, 0.08);
+  border-color: var(--accent);
+}
+.capability-item h3 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+.project-card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.project-card p {
+  color: var(--ink3);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.project-tags span {
+  background: rgba(194, 65, 12, 0.1);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  color: var(--accent);
+  border: 1px solid rgba(194, 65, 12, 0.2);
+}
+.card-image {
+  background: var(--bg3);
+  border-radius: 0.75rem;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 1.8rem;
+  color: var(--ink4);
+  margin-bottom: 1rem;
+}
 
-/* 2. Page Specific Layouts (About, etc.) */
-.page-header { margin-bottom: 3rem; padding-top: 2rem; }
+/* Timeline (About page) */
+.timeline {
+  margin: 3rem 0;
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--accent2);
+}
+.timeline-item {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.4rem;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+.timeline-date {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+.timeline-content h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+.timeline-content p {
+  color: var(--ink3);
+  font-size: 0.9rem;
+}
 
-/* Capabilities Grid */
-.capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-.cap-card { background: var(--bg2); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
-.cap-num { font-family: var(--mono); font-size: 0.6rem; color: var(--ink3); display: block; margin-bottom: 0.5rem; }
+/* Page header (shared) */
+.page-header {
+  text-align: center;
+  margin: 2rem 0 2rem;
+}
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.subhead {
+  color: var(--ink3);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
 
-/* Bio & Content Grid */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
-.bio-card, .avail-card { background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 2rem; }
-
-/* Timeline Column */
-.timeline-col { border-left: 1px solid var(--border); padding-left: 2rem; }
-.timeline-item { margin-bottom: 3rem; position: relative; }
-.tl-badge { font-size: 1.5rem; margin-bottom: 0.5rem; }
-.tl-date { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); margin-bottom: 0.25rem; }
-.tl-tags { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
-.tl-tag { font-size: 0.7rem; background: var(--bg2); padding: 2px 8px; border-radius: 4px; color: var(--ink3); }
+/* Animation */
+.animate-fade-in {
+  animation: fadeUp 0.5s ease forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Responsive adjustments */
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; }
-  .timeline-col { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 2rem; }
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .capabilities-grid,
+  .projects-grid {
+    gap: 1rem;
+  }
+  .timeline {
+    padding-left: 1rem;
+  }
+  .timeline-item::before {
+    left: -1.4rem;
+  }
 }
