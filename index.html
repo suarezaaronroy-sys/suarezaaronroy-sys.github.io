@@ -75,14 +75,16 @@ a{color:inherit;text-decoration:none}
 .nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
 .nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* HERO */
 .hero{padding:4rem 0 3rem}
 .win-chrome{display:inline-flex;align-items:center;gap:.4rem;padding:.34rem .68rem;border-radius:999px;background:var(--bg2);border:1px solid var(--border);font-family:var(--mono);font-size:.62rem;color:var(--ink4);margin-bottom:1.5rem;letter-spacing:.02em}
 .wdot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
 .wdot.r{background:#ff5f57}.wdot.y{background:#febc2e}.wdot.g{background:#28c840}
-.hero-grid{display:grid;grid-template-columns:1.3fr .72fr;gap:1.4rem;align-items:start}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
 .hero-main{background:linear-gradient(150deg,#fff 0%,var(--bg2) 100%);border:1px solid var(--border);border-radius:20px;padding:2.4rem 2.6rem 2.2rem;position:relative;overflow:hidden}
 .hero-main::before{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(194,65,12,.05),transparent 65%);pointer-events:none}
-.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,4.2vw,3.4rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;color:var(--ink)}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,3.4vw,2.9rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;color:var(--ink)}
 .hero h1 em{font-style:italic;font-weight:300;color:var(--accent)}
 .hero p.lead{font-size:1rem;color:var(--ink2);max-width:52ch;margin-bottom:.8rem;line-height:1.8}
 .hero p.sublead{font-size:.86rem;color:var(--ink3);max-width:54ch;margin-bottom:1.6rem;line-height:1.78}
@@ -96,55 +98,20 @@ a{color:inherit;text-decoration:none}
 .pattern-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.46rem}
 .pattern-item strong{display:block;font-size:.8rem;color:var(--ink);margin-bottom:.08rem;line-height:1.4}
 .pattern-item span{font-size:.74rem;color:var(--ink3);line-height:1.58}
+
+/* HERO SIDEBAR */
 .hero-side{display:grid;gap:.9rem}
 .panel{background:linear-gradient(150deg,#fff,var(--bg2));border:1px solid var(--border);border-radius:18px;overflow:hidden}
 .panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 1rem;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.6rem;color:var(--ink4);background:rgba(255,255,255,.3);letter-spacing:.04em;text-transform:uppercase}
 .panel-body{padding:.85rem}
-.gc{padding:.9rem;border-radius:10px;margin-bottom:.65rem;cursor:pointer;transition:.15s ease;position:relative;overflow:hidden;border:1px solid;display:block;text-decoration:none}
-.gc::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05),transparent);pointer-events:none}
-.gc:hover{transform:translateY(-2px)}
-.gc.purple{background:linear-gradient(135deg,#1c0a3a08,#2d1060 0%,#1a0a2e);border-color:#3a1f6e44}
-.gc.purple:hover{box-shadow:0 8px 28px rgba(50,10,100,.28)}
-.gc.purple .gc-eyebrow{color:#b89af0}
-.gc.purple .gc-dot{background:#b89af0;animation:pulse 2s infinite}
-.gc.purple strong{color:#e8d8ff;font-family:var(--serif);font-size:.94rem}
-.gc.purple p{color:#b89af0bb;font-size:.73rem;margin-bottom:.55rem;line-height:1.58}
-.gc.purple .gc-pill{color:#b89af0;border-color:#b89af044;background:rgba(184,154,240,.08)}
-.gc.purple .gc-open{color:#e8d8ff;background:rgba(184,154,240,.15);border-color:#b89af055}
-.gc.purple .gc-open:hover{background:rgba(184,154,240,.25)}
-.gc.teal{background:linear-gradient(135deg,#071f1c08,#0d3d36 0%,#071f1c);border-color:#0d948844}
-.gc.teal:hover{box-shadow:0 8px 28px rgba(10,80,70,.28)}
-.gc.teal .gc-eyebrow{color:#4dc9a7}
-.gc.teal .gc-dot{background:#4dc9a7;animation:pulse 2s infinite}
-.gc.teal strong{color:#c8f5ed;font-family:var(--serif);font-size:.94rem}
-.gc.teal p{color:#4dc9a7bb;font-size:.73rem;margin-bottom:.55rem;line-height:1.58}
-.gc.teal .gc-pill{color:#4dc9a7;border-color:#4dc9a744;background:rgba(77,201,167,.08)}
-.gc.teal .gc-open{color:#c8f5ed;background:rgba(77,201,167,.15);border-color:#4dc9a755}
-.gc.teal .gc-open:hover{background:rgba(77,201,167,.25)}
-.gc.blue{background:linear-gradient(135deg,#081c2f08,#0d3d6e 0%,#081c2f);border-color:#1d4ed844}
-.gc.blue:hover{box-shadow:0 8px 28px rgba(20,80,150,.28)}
-.gc.blue .gc-eyebrow{color:#8fb5f0}
-.gc.blue .gc-dot{background:#8fb5f0;animation:pulse 2s infinite}
-.gc.blue strong{color:#e0ecff;font-family:var(--serif);font-size:.94rem}
-.gc.blue p{color:#8fb5f0bb;font-size:.73rem;margin-bottom:.55rem}
-.gc.blue .gc-pill{color:#8fb5f0;border-color:#8fb5f044;background:rgba(143,181,240,.08)}
-.gc.blue .gc-open{color:#e0ecff;background:rgba(143,181,240,.15);border-color:#8fb5f055}
-.gc.orange{background:linear-gradient(135deg,#1c0a0008,#4a2a0f 0%,#1c0a00);border-color:#c2410c44}
-.gc.orange:hover{box-shadow:0 8px 28px rgba(200,80,20,.28)}
-.gc.orange .gc-eyebrow{color:#f5b88c}
-.gc.orange .gc-dot{background:#f5b88c;animation:pulse 2s infinite}
-.gc.orange strong{color:#ffe2cc;font-family:var(--serif);font-size:.94rem}
-.gc.orange p{color:#f5b88cbb;font-size:.73rem;margin-bottom:.55rem}
-.gc.orange .gc-pill{color:#f5b88c;border-color:#f5b88c44;background:rgba(245,184,140,.08)}
-.gc.orange .gc-open{color:#ffe2cc;background:rgba(245,184,140,.15);border-color:#f5b88c55}
-.gc-label{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin-bottom:.5rem;padding-left:.5rem;border-left:2px solid var(--border)}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.gc-eyebrow{display:flex;align-items:center;gap:.32rem;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.35rem}
-.gc-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.gc-meta{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.55rem}
-.gc-pill{font-family:var(--mono);font-size:.56rem;padding:.16rem .44rem;border-radius:999px;border:1px solid}
-.gc-open{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.62rem;padding:.28rem .66rem;border-radius:999px;border:1px solid;transition:.14s}
 .lu-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.58rem;color:var(--teal);padding:.18rem .52rem;border-radius:999px;border:1px solid rgba(13,148,136,.25);background:var(--teal-bg);letter-spacing:.03em}
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.85rem}
+.stat-cell{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.6rem .7rem;text-align:center}
+.stat-cell strong{display:block;font-family:var(--mono);font-size:1.1rem;color:var(--accent);line-height:1.1;margin-bottom:.15rem}
+.stat-cell span{font-size:.62rem;color:var(--ink4);font-family:var(--mono);line-height:1.3}
+
+/* mini grimoire cards in sidebar */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .nb-launch-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem .95rem;border-radius:10px;background:var(--bg);background-image:radial-gradient(circle,rgba(120,113,108,.15) 1px,transparent 1px);background-size:16px 16px;border:1.5px solid rgba(28,25,23,.2);font-family:var(--mono);font-size:.72rem;color:var(--ink2);cursor:pointer;box-shadow:0 2px 8px rgba(28,25,23,.06);transition:.15s ease;width:100%;text-decoration:none;position:relative;overflow:hidden}
 .nb-launch-btn::before{content:"";position:absolute;inset:0;background:rgba(245,242,236,.85)}
 .nb-launch-inner{position:relative;display:flex;align-items:center;gap:.5rem;width:100%}
@@ -153,73 +120,167 @@ a{color:inherit;text-decoration:none}
 .nb-launch-text strong{display:block;font-size:.76rem;color:var(--ink)}
 .nb-launch-text span{display:block;font-size:.6rem;color:var(--ink4);margin-top:.05rem}
 .nb-launch-arrow{margin-left:auto;font-size:.68rem;color:var(--ink4)}
+
 .btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:.42rem;border-radius:999px;font-family:var(--mono);font-size:.74rem;cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em;padding:.72rem 1.25rem}
 .btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent);font-weight:500;box-shadow:0 4px 14px rgba(194,65,12,.25)}
 .btn-primary:hover{background:#b83b0b;border-color:#b83b0b;transform:translateY(-2px)}
 .btn-secondary{background:#fff;color:var(--ink2);border:1px solid var(--border);box-shadow:0 1px 4px rgba(28,25,23,.06)}
 .btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-.baton-band{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-top:1.3rem;padding:1.2rem 1.6rem;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,#fff,var(--bg2));box-shadow:0 1px 6px rgba(28,25,23,.06)}
-.baton-band-text strong{display:block;font-size:.86rem;color:var(--ink);font-family:var(--mono);margin-bottom:.22rem}
-.baton-band-text span{font-size:.8rem;color:var(--ink3);line-height:1.65;max-width:50ch}
-.baton-pass-pill{display:inline-flex;align-items:center;gap:.36rem;font-family:var(--mono);font-size:.62rem;color:var(--ink3);margin-bottom:.48rem;padding:.18rem .52rem;border:1px solid var(--border);border-radius:999px;background:var(--bg2)}
-.nav-cards-section{padding:3rem 0}
+
+/* BATON BAND CONSOLIDATED CTA */
+.baton-band{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-top:1.3rem;padding:1.6rem 2rem;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,#fff,var(--bg2));box-shadow:0 4px 12px rgba(28,25,23,.04)}
+.baton-band-text strong{display:block;font-size:.95rem;color:var(--ink);font-family:var(--mono);margin-bottom:.3rem}
+.baton-band-text span{display:block;font-size:.85rem;color:var(--ink3);line-height:1.65;max-width:60ch}
+.baton-pass-pill{display:inline-flex;align-items:center;gap:.36rem;font-family:var(--mono);font-size:.62rem;color:var(--accent);margin-bottom:.6rem;padding:.2rem .6rem;border:1px solid var(--border);border-radius:999px;background:rgba(194,65,12,.05);font-weight:500;}
+
+/* NAV CARDS */
 .section-eyebrow{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.52rem;font-family:var(--mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--accent)}
-.nav-cards-section h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:.4rem;color:var(--ink)}
-.nav-cards-section p.section-sub{font-size:.88rem;color:var(--ink3);line-height:1.7;max-width:60ch;margin-bottom:2rem}
-.nav-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.nav-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.35rem 1.4rem;transition:.18s ease;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
-.nav-card::before{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:0;transition:.18s}
-.nav-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(28,25,23,.1);border-color:rgba(28,25,23,.18)}
-.nav-card:hover::before{opacity:1}
-.nav-card-icon{font-size:1.4rem;margin-bottom:.7rem}
-.nav-card h3{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.25}
-.nav-card p{font-size:.8rem;color:var(--ink3);line-height:1.6;margin-bottom:.75rem}
-.nav-card-arrow{font-family:var(--mono);font-size:.64rem;color:var(--ink4);display:flex;align-items:center;gap:.25rem}
 .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);margin:0}
-.grimoires-preview{padding:3rem 0}
-.grimoires-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1rem}
-.grimoire-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:.18s ease;text-decoration:none;color:inherit;display:block}
-.grimoire-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,25,23,.1)}
-.grimoire-card-top{padding:1.2rem 1.4rem 1rem;border-bottom:1px solid var(--border2)}
-.grimoire-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;padding:.18rem .48rem;border-radius:4px;margin-bottom:.65rem;border:1px solid}
-.grimoire-badge.purple{color:#7c3aed;background:#f5f3ff;border-color:#ddd6fe}
-.grimoire-badge.teal{color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)}
-.grimoire-badge.blue{color:var(--blue);background:var(--blue-bg);border-color:rgba(29,78,216,.2)}
-.grimoire-badge.orange{color:var(--accent);background:#FFF7ED;border-color:rgba(194,65,12,.2)}
-.grimoire-card h3{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.25}
-.grimoire-card p{font-size:.8rem;color:var(--ink3);line-height:1.6;margin-bottom:.65rem}
-.grimoire-card-meta{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.65rem}
-.grimoire-meta-pill{font-family:var(--mono);font-size:.58rem;padding:.14rem .42rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
-.grimoire-card-bottom{padding:.8rem 1.4rem;display:flex;align-items:center;justify-content:space-between}
-.grimoire-open-btn{font-family:var(--mono);font-size:.62rem;color:var(--accent);display:flex;align-items:center;gap:.25rem;transition:.14s}
-.grimoire-card:hover .grimoire-open-btn{gap:.4rem}
-.grimoire-status{font-family:var(--mono);font-size:.58rem;color:var(--ink4)}
-.grimoire-placeholder-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:.65rem}
-.grimoire-placeholder{background:var(--bg2);border:1px dashed var(--border);border-radius:12px;padding:.9rem 1rem;text-decoration:none;color:inherit;transition:.14s}
+
+/* ── SIDEBAR MINI STACK ── */
+.stack-panel .panel-body{padding:.7rem}
+.stack-panel-body{display:flex;flex-direction:column;gap:.65rem}
+.sp-stage{position:relative;height:230px;cursor:pointer}
+.sp-card{position:absolute;inset:0;border-radius:14px;border:1px solid;padding:1rem 1.1rem;transition:transform .38s cubic-bezier(.22,.68,0,1.15),opacity .32s ease;will-change:transform,opacity;display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden}
+.sp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);pointer-events:none}
+.sp-card[data-theme="purple"]{background:linear-gradient(145deg,#2d1060,#1a0a2e);border-color:#5b3a9a44}
+.sp-card[data-theme="teal"]{background:linear-gradient(145deg,#0d3d36,#071f1c);border-color:#0d948844}
+.sp-card[data-theme="blue"]{background:linear-gradient(145deg,#0d3d6e,#081c2f);border-color:#1d4ed844}
+.sp-card[data-theme="orange"]{background:linear-gradient(145deg,#4a2a0f,#1c0a00);border-color:#c2410c44}
+.sp-card[data-pos="0"]{transform:translateY(0) scale(1) rotate(0deg);z-index:10;opacity:1;pointer-events:auto}
+.sp-card[data-pos="1"]{transform:translateY(11px) scale(0.955) rotate(1.4deg);z-index:9;opacity:1;pointer-events:none}
+.sp-card[data-pos="2"]{transform:translateY(20px) scale(0.91) rotate(2.6deg);z-index:8;opacity:1;pointer-events:none}
+.sp-card[data-pos="3"]{transform:translateY(28px) scale(0.865) rotate(3.5deg);z-index:7;opacity:.6;pointer-events:none}
+.sp-card[data-pos="4"]{transform:translateY(34px) scale(0.82) rotate(4deg);z-index:6;opacity:0;pointer-events:none}
+.sp-card[data-pos="0"]:hover{transform:translateY(-4px) scale(1.01) rotate(0deg);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.sp-eyebrow{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.sp-dot-pulse{width:5px;height:5px;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.sp-card[data-theme="purple"] .sp-eyebrow{color:#b89af0} .sp-card[data-theme="purple"] .sp-dot-pulse{background:#b89af0}
+.sp-card[data-theme="purple"] .sp-num{color:#e8d8ff} .sp-card[data-theme="purple"] .sp-title{color:#e8d8ff} .sp-card[data-theme="purple"] .sp-desc{color:#b89af099} .sp-card[data-theme="purple"] .sp-pill{color:#b89af0;border-color:#b89af033;background:rgba(184,154,240,.08)} .sp-card[data-theme="purple"] .sp-open{color:#e8d8ff;border-color:#b89af044;background:rgba(184,154,240,.1)} .sp-card[data-theme="purple"] .sp-status{color:#b89af066} .sp-card[data-theme="purple"] .sp-hr{border-color:#b89af022}
+.sp-card[data-theme="teal"] .sp-eyebrow{color:#4dc9a7} .sp-card[data-theme="teal"] .sp-dot-pulse{background:#4dc9a7}
+.sp-card[data-theme="teal"] .sp-num{color:#ccfbf1} .sp-card[data-theme="teal"] .sp-title{color:#ccfbf1} .sp-card[data-theme="teal"] .sp-desc{color:#4dc9a799} .sp-card[data-theme="teal"] .sp-pill{color:#4dc9a7;border-color:#4dc9a733;background:rgba(77,201,167,.08)} .sp-card[data-theme="teal"] .sp-open{color:#ccfbf1;border-color:#4dc9a744;background:rgba(77,201,167,.1)} .sc-card[data-theme="teal"] .sc-status{color:#4dc9a766} .sp-card[data-theme="teal"] .sp-hr{border-color:#4dc9a722}
+.sp-card[data-theme="blue"] .sp-eyebrow{color:#93c5fd} .sp-card[data-theme="blue"] .sp-dot-pulse{background:#93c5fd}
+.sp-card[data-theme="blue"] .sp-num{color:#dbeafe} .sp-card[data-theme="blue"] .sp-title{color:#dbeafe} .sp-card[data-theme="blue"] .sp-desc{color:#93c5fd99} .sp-card[data-theme="blue"] .sp-pill{color:#93c5fd;border-color:#93c5fd33;background:rgba(147,197,253,.08)} .sp-card[data-theme="blue"] .sp-open{color:#dbeafe;border-color:#93c5fd44;background:rgba(147,197,253,.1)} .sp-card[data-theme="blue"] .sp-status{color:#93c5fd66} .sp-card[data-theme="blue"] .sp-hr{border-color:#93c5fd22}
+.sp-card[data-theme="orange"] .sp-eyebrow{color:#fb923c} .sp-card[data-theme="orange"] .sp-dot-pulse{background:#fb923c}
+.sp-card[data-theme="orange"] .sp-num{color:#ffedd5} .sp-card[data-theme="orange"] .sp-title{color:#ffedd5} .sp-card[data-theme="orange"] .sp-desc{color:#fb923c99} .sp-card[data-theme="orange"] .sp-pill{color:#fb923c;border-color:#fb923c33;background:rgba(251,146,60,.08)} .sp-card[data-theme="orange"] .sp-open{color:#ffedd5;border-color:#fb923c44;background:rgba(251,146,60,.1)} .sp-card[data-theme="orange"] .sp-status{color:#fb923c66} .sp-card[data-theme="orange"] .sp-hr{border-color:#fb923c22}
+.sp-num{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1;margin-bottom:3px;letter-spacing:-.02em}
+.sp-title{font-family:var(--serif);font-size:.82rem;font-weight:600;line-height:1.25;margin-bottom:5px}
+.sp-desc{font-size:.68rem;line-height:1.55;margin-bottom:8px;flex:1}
+.sp-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.sp-pill{font-family:var(--mono);font-size:.54rem;padding:2px 7px;border-radius:999px;border:1px solid}
+.sp-hr{border:none;border-top:1px solid;margin-bottom:8px}
+.sp-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.sp-open{font-family:var(--mono);font-size:.58rem;padding:4px 10px;border-radius:999px;border:1px solid}
+.sp-status{font-family:var(--mono);font-size:.54rem}
+.sp-controls{display:flex;align-items:center;justify-content:space-between}
+.sp-dots{display:flex;gap:5px;align-items:center}
+.sp-dot{width:6px;height:6px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:transform .2s,background .2s}
+.sp-dot.on{background:var(--accent);transform:scale(1.4)}
+.sp-nav{display:flex;gap:5px}
+.sp-btn{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}
+.sp-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sp-view-all{display:flex;align-items:center;justify-content:space-between;padding:.55rem .8rem;border-radius:10px;border:1px solid var(--border);background:var(--bg2);text-decoration:none;color:inherit;transition:.14s;gap:.5rem}
+.sp-view-all:hover{border-color:var(--accent)}
+.sp-va-chips{display:flex;gap:3px}
+.sp-chip{width:20px;height:20px;border-radius:5px;font-size:.54rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.sp-va-text{font-family:var(--mono);font-size:.62rem;color:var(--accent);font-weight:500;margin-left:auto}
+
+/* ── FULL-WIDTH SHOWCASE CAROUSEL ── */
+.grimoires-showcase{padding:3rem 0}
+.showcase-h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:.4rem;color:var(--ink)}
+.showcase-h2 em{font-style:italic;font-weight:300;color:var(--accent)}
+.showcase-sub{font-size:.9rem;color:var(--ink3);line-height:1.7;max-width:56ch;margin-bottom:2rem}
+
+/* HIGH-VISIBILITY SCROLLING LOGIC ARTIFACTS */
+.sc-progress-bar{width:100%;height:3px;background:var(--border2);border-radius:999px;margin-bottom:1.5rem;overflow:hidden;position:relative}
+.sc-progress-fill{height:100%;width:0%;background:var(--accent);border-radius:999px;transition:width 0.15s cubic-bezier(0.1, 0.8, 0.2, 1)}
+
+.showcase-stage-wrapper{position:relative;width:100%}
+.showcase-stage{display:flex;gap:1.5rem;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:0.5rem 0 1.8rem;margin-bottom:.5rem;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg3)}
+.showcase-stage::-webkit-scrollbar{height:7px;display:block}
+.showcase-stage::-webkit-scrollbar-track{background:var(--bg3);border-radius:999px}
+.showcase-stage::-webkit-scrollbar-thumb{background:var(--accent);border-radius:999px;border:1px solid var(--bg3)}
+
+.sc-card{position:relative;flex:0 0 calc(50% - 0.75rem);scroll-snap-align:start;height:340px;border-radius:20px;border:1px solid;padding:1.6rem 1.8rem 1.4rem;transition:transform .2s ease, box-shadow .2s ease;display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.sc-card:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(0,0,0,.15)}
+
+.sc-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);pointer-events:none}
+.sc-card[data-theme="purple"]{background:linear-gradient(145deg,#2d1060,#1a0a2e);border-color:#5b3a9a44}
+.sc-card[data-theme="teal"]{background:linear-gradient(145deg,#0d3d36,#071f1c);border-color:#0d948844}
+.sc-card[data-theme="blue"]{background:linear-gradient(145deg,#0d3d6e,#081c2f);border-color:#1d4ed844}
+.sc-card[data-theme="orange"]{background:linear-gradient(145deg,#4a2a0f,#1c0a00);border-color:#c2410c44}
+
+.sc-eyebrow{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.sc-dot-pulse{width:6px;height:6px;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.sc-card[data-theme="purple"] .sc-eyebrow{color:#b89af0} .sc-card[data-theme="purple"] .sc-dot-pulse{background:#b89af0} .sc-card[data-theme="purple"] .sc-num{color:#e8d8ff} .sc-card[data-theme="purple"] .sc-title{color:#e8d8ff} .sc-card[data-theme="purple"] .sc-desc{color:#b89af099} .sc-card[data-theme="purple"] .sc-pill{color:#b89af0;border-color:#b89af033;background:rgba(184,154,240,.08)} .sc-card[data-theme="purple"] .sc-open{color:#e8d8ff;border-color:#b89af044;background:rgba(184,154,240,.1)} .sc-card[data-theme="purple"] .sc-status{color:#b89af066} .sc-card[data-theme="purple"] .sc-hr{border-color:#b89af022}
+.sc-card[data-theme="teal"] .sc-eyebrow{color:#4dc9a7} .sc-card[data-theme="teal"] .sc-dot-pulse{background:#4dc9a7} .sc-card[data-theme="teal"] .sc-num{color:#ccfbf1} .sc-card[data-theme="teal"] .sc-title{color:#ccfbf1} .sc-card[data-theme="teal"] .sc-desc{color:#4dc9a799} .sc-card[data-theme="teal"] .sc-pill{color:#4dc9a7;border-color:#4dc9a733;background:rgba(77,201,167,.08)} .sc-card[data-theme="teal"] .sc-open{color:#ccfbf1;border-color:#4dc9a744;background:rgba(77,201,167,.1)} .sc-card[data-theme="teal"] .sc-status{color:#4dc9a766} .sc-card[data-theme="teal"] .sc-hr{border-color:#4dc9a722}
+.sc-card[data-theme="blue"] .sc-eyebrow{color:#93c5fd} .sc-card[data-theme="blue"] .sc-dot-pulse{background:#93c5fd} .sc-card[data-theme="blue"] .sc-num{color:#dbeafe} .sc-card[data-theme="blue"] .sc-title{color:#dbeafe} .sc-card[data-theme="blue"] .sc-desc{color:#93c5fd99} .sc-card[data-theme="blue"] .sc-pill{color:#93c5fd;border-color:#93c5fd33;background:rgba(147,197,253,.08)} .sc-card[data-theme="blue"] .sc-open{color:#dbeafe;border-color:#93c5fd44;background:rgba(147,197,253,.1)} .sc-card[data-theme="blue"] .sc-status{color:#93c5fd66} .sc-card[data-theme="blue"] .sc-hr{border-color:#93c5fd22}
+.sc-card[data-theme="orange"] .sc-eyebrow{color:#fb923c} .sc-card[data-theme="orange"] .sc-dot-pulse{background:#fb923c} .sc-card[data-theme="orange"] .sc-num{color:#ffedd5} .sc-card[data-theme="orange"] .sc-title{color:#ffedd5} .sc-card[data-theme="orange"] .sc-desc{color:#fb923c99} .sc-card[data-theme="orange"] .sc-pill{color:#fb923c;border-color:#fb923c33;background:rgba(251,146,60,.08)} .sc-card[data-theme="orange"] .sc-open{color:#ffedd5;border-color:#fb923c44;background:rgba(251,146,60,.1)} .sc-card[data-theme="orange"] .sc-status{color:#fb923c66} .sc-card[data-theme="orange"] .sc-hr{border-color:#fb923c22}
+.sc-num{font-family:var(--serif);font-size:2.8rem;font-weight:600;line-height:1;margin-bottom:4px;letter-spacing:-.025em}
+.sc-title{font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+.sc-desc{font-size:.84rem;line-height:1.62;margin-bottom:14px;flex:1;max-width:70ch}
+.sc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.sc-pill{font-family:var(--mono);font-size:.6rem;padding:3px 9px;border-radius:999px;border:1px solid}
+.sc-hr{border:none;border-top:1px solid;margin-bottom:12px}
+.sc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.sc-open{font-family:var(--mono);font-size:.68rem;padding:6px 14px;border-radius:999px;border:1px solid}
+.sc-status{font-family:var(--mono);font-size:.62rem}
+
+.showcase-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.showcase-hint{font-family:var(--mono);font-size:.66rem;color:var(--ink4);display:flex;align-items:center;gap:6px}
+.showcase-hint::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+.showcase-nav{display:flex;gap:6px}
+.showcase-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}
+.showcase-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+.showcase-view-all{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-radius:14px;border:1px solid var(--border);background:linear-gradient(135deg,#fff,var(--bg2));text-decoration:none;color:inherit;transition:.18s;margin-bottom:0;box-shadow:0 1px 4px rgba(28,25,23,.05)}
+.showcase-view-all:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 18px rgba(28,25,23,.1)}
+.sva-left{display:flex;flex-direction:column;gap:3px}
+.sva-title{font-size:.88rem;font-weight:500;color:var(--ink)}
+.sva-sub{font-family:var(--mono);font-size:.64rem;color:var(--ink4)}
+.sva-right{display:flex;align-items:center;gap:.7rem}
+.sva-chips{display:flex;gap:4px}
+.sva-chip{width:24px;height:24px;border-radius:6px;font-size:.58rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+
+/* placeholder row reused */
+.grimoire-placeholder-row{display:grid;grid-template-columns:repeat(5,1fr);gap:.65rem;margin-top:.65rem}
+.grimoire-placeholder{background:var(--bg2);border:1px dashed var(--border);border-radius:12px;padding:.9rem 1rem;transition:.14s;text-decoration:none;color:inherit;}
 .grimoire-placeholder:hover{border-color:var(--accent);background:rgba(194,65,12,.03)}
 .gp-num{font-family:var(--mono);font-size:.6rem;color:var(--ink4);margin-bottom:.25rem;letter-spacing:.06em}
 .gp-name{font-size:.82rem;color:var(--ink2);font-weight:400;line-height:1.35;margin-bottom:.35rem}
 .gp-soon{display:inline-block;font-family:var(--mono);font-size:.54rem;padding:.1rem .36rem;border-radius:3px;background:var(--bg3);color:var(--ink4);text-transform:uppercase;letter-spacing:.06em}
+
 .footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
 .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
 .footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
 .footer-links{display:flex;gap:1.2rem;align-items:center}
 .quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
 .quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
-@media(max-width:1080px){.hero-grid{grid-template-columns:1fr}.nav-cards-grid{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr}
+  .nav-cards-grid{grid-template-columns:repeat(2,1fr)}
+  .grimoires-grid-3{grid-template-columns:repeat(2,1fr)}
+  .grimoire-placeholder-row{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:800px){
+  .sc-card{flex:0 0 calc(100% - 2rem); scroll-snap-align:center;}
+}
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
   .nav{width:100%;justify-content:flex-start}
   .hero{padding-top:2rem}
   .hero-main{padding:1.4rem}
-  .nav-cards-grid,.grimoires-grid{grid-template-columns:1fr}
+  .nav-cards-grid,.grimoires-grid-3,.grimoires-grid-2{grid-template-columns:1fr}
   .grimoire-placeholder-row{grid-template-columns:1fr 1fr}
   .baton-band{flex-direction:column;align-items:flex-start}
   .quick-anchor{right:12px;bottom:12px}
 }
-@media(max-width:480px){.grimoire-placeholder-row{grid-template-columns:1fr}}
+@media(max-width:480px){
+  .grimoire-placeholder-row{grid-template-columns:1fr}
+}
 </style>
-<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/theme.js" defer></script>
 </head>
 <body id="top">
 
@@ -237,11 +298,9 @@ a{color:inherit;text-decoration:none}
     </a>
     <nav class="nav" aria-label="Main navigation">
       <a href="/about.html">About</a>
-      <a href="/articles.html">Articles</a>
       <a href="/projects.html">Projects</a>
+      <a href="/articles.html">Articles</a>
       <a href="/notes.html">Notes</a>
-      <a href="/theme.html">Theme</a>
-      <a href="/sound.html">Sound</a>
       <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-cta">Fix My Systems →</a>
     </nav>
   </div>
@@ -251,6 +310,7 @@ a{color:inherit;text-decoration:none}
 
 <section class="hero shell" id="hero" aria-label="Introduction">
   <div class="hero-grid">
+
     <div class="hero-main">
       <div class="win-chrome">
         <span class="wdot r"></span><span class="wdot y"></span><span class="wdot g"></span>
@@ -285,156 +345,107 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <aside class="hero-side" aria-label="Proof of work">
+
       <div class="panel">
-        <div class="panel-head"><span>proof of work · 5 live grimoires</span><span class="lu-badge">✓ May 2026</span></div>
+        <div class="panel-head"><span>documented impact</span><span class="lu-badge">✓ May 2026</span></div>
         <div class="panel-body">
-          <div class="gc-label">CRM &amp; Ops System</div>
-          <a href="/grimoires/001-asmc-crm-engine.html" class="gc purple" aria-label="Grimoire 001 — ASMC CRM Engine">
-            <div class="gc-eyebrow"><span class="gc-dot"></span>ASMC CRM Engine · v8.1 · QA-Verified</div>
-            <strong>Grimoire 001</strong>
-            <p>Full CRM automation. GHL · Zapier · Bland AI · PandaDoc · Stripe. 76 fields. 24 Zaps.</p>
-            <div class="gc-meta"><span class="gc-pill">76-field CRM</span><span class="gc-pill">24 Zaps</span><span class="gc-pill">Bland AI</span><span class="gc-pill">QA-verified</span></div>
-            <div class="gc-open">Open Grimoire →</div>
-          </a>
-          <div class="gc-label">Marketing Engine System</div>
-          <a href="/grimoires/002-dual-wing-rental.html" class="gc teal" aria-label="Grimoire 002 — Dual Wing Rental Engine">
-            <div class="gc-eyebrow"><span class="gc-dot"></span>Dual Wing Rental Engine · Grimoire v4 · Apr 2026</div>
-            <strong>Grimoire 002</strong>
-            <p>Full marketing + CRM for dual-sided rental. SEO · Email · GHL · n8n · Claude API. 34.2% open rate.</p>
-            <div class="gc-meta"><span class="gc-pill">15 modules</span><span class="gc-pill">2 pipelines</span><span class="gc-pill">UK + US</span><span class="gc-pill">v4</span></div>
-            <div class="gc-open">Open Grimoire →</div>
-          </a>
-          <div class="gc-label">Knowledge System (GHL)</div>
-          <a href="/grimoires/003-ghl-101.html" class="gc blue" aria-label="Grimoire 003 — GHL 101">
-            <div class="gc-eyebrow"><span class="gc-dot"></span>GHL 101 · 2026 Edition</div>
-            <strong>Grimoire 003</strong>
-            <p>18 modules, 29 official sources, 50+ power tips. Free, no gate.</p>
-            <div class="gc-meta"><span class="gc-pill">18 modules</span><span class="gc-pill">29 sources</span><span class="gc-pill">50+ tips</span><span class="gc-pill">free</span></div>
-            <div class="gc-open">Open Grimoire →</div>
-          </a>
-          <div class="gc-label">AI Workflow Automation</div>
-          <a href="/grimoires/004-n8n-101.html" class="gc orange" aria-label="Grimoire 004 — n8n 101">
-            <div class="gc-eyebrow"><span class="gc-dot"></span>n8n 101 · AI Workflow Automation</div>
-            <strong>Grimoire 004</strong>
-            <p>12 modules, AI agents, RAG, WhatsApp Business, self-hosting security.</p>
-            <div class="gc-meta"><span class="gc-pill">12 modules</span><span class="gc-pill">AI agent</span><span class="gc-pill">RAG</span><span class="gc-pill">self-host</span></div>
-            <div class="gc-open">Open Grimoire →</div>
-          </a>
-          <div class="gc-label">Automation Pattern Reference</div>
-          <a href="/grimoires/006-automations-101.html" class="gc orange" aria-label="Grimoire 006 — Automations 101">
-            <div class="gc-eyebrow"><span class="gc-dot"></span>Automations 101 · The Absolute Guide</div>
-            <strong>Grimoire 006</strong>
-            <p>25 production-grade automation patterns. Idempotency, retries, DLQs, compliance wrappers, human handoffs, runbooks, and symptom diagnosis.</p>
-            <div class="gc-meta"><span class="gc-pill">25 patterns</span><span class="gc-pill">37 sources</span><span class="gc-pill">35 diagrams</span><span class="gc-pill">source-complete</span></div>
-            <div class="gc-open">Open Grimoire →</div>
-          </a>
+          <div class="stat-strip">
+            <div class="stat-cell"><strong>34.2%</strong><span>email open rate</span></div>
+            <div class="stat-cell"><strong>98%</strong><span>compliance rate</span></div>
+            <div class="stat-cell"><strong>70%</strong><span>faster leads</span></div>
+          </div>
+          <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink4);margin-bottom:.75rem;line-height:1.82">→ 5 live grimoires — real system docs<br>→ 76-field CRM · 24 Zaps · Bland AI<br>→ UK + US dual-market marketing engine<br>→ 15 notes · field observations</div>
           <a href="/notes.html" class="nb-launch-btn" aria-label="Open notes">
             <div class="nb-launch-inner"><span class="nb-launch-icon">📔</span><div class="nb-launch-text"><strong>Open the notebook</strong><span>15 notes · field logs · operational thinking</span></div><span class="nb-launch-arrow">→</span></div>
           </a>
         </div>
       </div>
-      <div class="panel">
-        <div class="panel-head"><span>if you recognize the pattern</span><span>→</span></div>
-        <div class="panel-body">
-          <p style="font-size:.8rem;color:var(--ink3);line-height:1.72;margin-bottom:.7rem">The notebook has the diagnosis. If you're seeing these patterns in your operation — ASMC is where we fix them.</p>
-          <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink4);margin-bottom:.68rem;line-height:1.82">→ CRM that doesn't reflect reality<br>→ Workflows that break under pressure<br>→ Documentation nobody uses<br>→ Support that runs on memory</div>
-          <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.36rem;font-family:var(--mono);font-size:.66rem;color:var(--accent);border:1px solid var(--border);padding:.38rem .78rem;border-radius:999px;background:var(--bg2);transition:.14s;text-decoration:none">Fix My Systems → ASMC</a>
+
+      <div class="panel stack-panel">
+        <div class="panel-head"><span>proof of work · grimoires</span><span class="lu-badge">5 live ↓</span></div>
+        <div class="panel-body stack-panel-body">
+          <div class="sp-stage" id="spStage"></div>
+          <div class="sp-controls">
+            <div class="sp-dots" id="spDots"></div>
+            <div class="sp-nav">
+              <button class="sp-btn" id="spPrev" aria-label="Previous">‹</button>
+              <button class="sp-btn" id="spNext" aria-label="Next">›</button>
+            </div>
+          </div>
+          <a href="/projects.html" class="sp-view-all">
+            <div class="sp-va-chips">
+              <span class="sp-chip" style="background:#2d1060;color:#c4b5fd;">01</span>
+              <span class="sp-chip" style="background:#0d3d36;color:#5eead4;">02</span>
+              <span class="sp-chip" style="background:#0d3d6e;color:#93c5fd;">03</span>
+              <span class="sp-chip" style="background:#4a2a0f;color:#fb923c;">04</span>
+              <span class="sp-chip" style="background:#4a2a0f;color:#fb923c;">06</span>
+            </div>
+            <span class="sp-va-text">View all 5 grimoires →</span>
+          </a>
         </div>
       </div>
+
     </aside>
   </div>
 
   <div class="baton-band" aria-label="Portfolio to service">
-    <div class="baton-band-text"><div class="baton-pass-pill">portfolio → service</div><strong>The portfolio has the thinking. ASMC has the execution.</strong><span>This site shows the work. When you're ready to act on it — that's what ASMC is for. Free 30-min ops audit, no pitch, no deck.</span></div>
-    <a class="btn-secondary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
+    <div class="baton-band-text">
+      <div class="baton-pass-pill">ASMC · Systems Execution</div>
+      <strong>Recognize these patterns in your own operation?</strong>
+      <span>The portfolio has the diagnosis. ASMC has the execution. If your CRM doesn't reflect reality or your workflows break under pressure, let's fix it. Free 30-min ops audit, no pitch.</span>
+    </div>
+    <a class="btn-primary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<section class="nav-cards-section shell" aria-label="Site navigation">
-  <div class="section-eyebrow">Navigate</div>
-  <h2>Everything lives somewhere now.</h2>
-  <p class="section-sub">The single‑scroll era is over. Each section is its own page — better SEO, better reading, better everything.</p>
-  <div class="nav-cards-grid">
-    <a href="/about.html" class="nav-card" style="--card-accent:var(--accent)"><div class="nav-card-icon">👤</div><h3>About</h3><p>Where this thinking comes from. Background, hybrid capability, and the progression from task execution to business continuity.</p><div class="nav-card-arrow">Read about → <span>↗</span></div></a>
-    <a href="/projects.html" class="nav-card" style="--card-accent:var(--teal)"><div class="nav-card-icon">📚</div><h3>Projects &amp; Grimoires</h3><p>Proof-of-work. Live system documentation. Full CRM engines, marketing systems, field-built references, and AI automation guides.</p><div class="nav-card-arrow">View grimoires → <span>↗</span></div></a>
-    <a href="/notes.html" class="nav-card" style="--card-accent:#7c3aed"><div class="nav-card-icon">📔</div><h3>Notes</h3><p>Field observations from real operations. How breakdowns happen, why they repeat, what the fix requires. Short, sharp, useful.</p><div class="nav-card-arrow">Open notebook → <span>↗</span></div></a>
-    <a href="/articles.html" class="nav-card" style="--card-accent:var(--blue)"><div class="nav-card-icon">✍️</div><h3>Articles</h3><p>Longer-form writing on operational systems, CRM architecture, system design patterns, and business continuity.</p><div class="nav-card-arrow">Read articles → <span>↗</span></div></a>
-    <a href="/theme.html" class="nav-card" style="--card-accent:var(--amber)"><div class="nav-card-icon">🎨</div><h3>Theme</h3><p>Customize the visual experience. Light/dark and beyond.</p><div class="nav-card-arrow">Customize → <span>↗</span></div></a>
-    <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-card" style="--card-accent:var(--green)"><div class="nav-card-icon">🔧</div><h3>Fix My Systems</h3><p>ASMC — where the portfolio thinking gets implemented. Free 30-min ops audit, no pitch, no deck.</p><div class="nav-card-arrow">Go to ASMC → <span>↗</span></div></a>
-  </div>
-</section>
+<section class="grimoires-showcase shell" aria-label="Grimoires showcase">
+  <div class="section-eyebrow">Proof of work · 5 live grimoires</div>
+  <h2 class="showcase-h2">Real systems. <em>No gate.</em></h2>
+  <p class="showcase-sub">Each grimoire is fully documented, live system work — not a case study. The stack below scrolls automatically; hover over any item to freeze execution.</p>
 
-<div class="section-divider"></div>
+  <div class="sc-progress-bar"><div class="sc-progress-fill" id="scFill"></div></div>
 
-<section class="grimoires-preview shell" aria-label="Grimoires preview">
-  <div class="section-eyebrow">Grimoires</div>
-  <h2 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:.4rem;color:var(--ink)">Live documentation. Real systems. No gate.</h2>
-  <p style="font-size:.88rem;color:var(--ink3);line-height:1.7;max-width:60ch;margin-bottom:1.8rem">Reading them gives you a jump start on how each system works. That's why they're called Grimoires.</p>
-
-  <div class="grimoires-grid">
-    <a href="/grimoires/001-asmc-crm-engine.html" class="grimoire-card" aria-label="Grimoire 001">
-      <div class="grimoire-card-top">
-        <div class="grimoire-badge purple">001 · CRM System · Apr 2026 · v8.1</div>
-        <h3>ASMC Full Stack CRM Engine</h3>
-        <p>Full CRM automation for a construction business. Lead capture → scoring → proposal → contract → payment → delivery. QA-verified, 13 documented corrections from v8.0.</p>
-        <div class="grimoire-card-meta"><span class="grimoire-meta-pill">GoHighLevel</span><span class="grimoire-meta-pill">Zapier</span><span class="grimoire-meta-pill">Bland AI</span><span class="grimoire-meta-pill">PandaDoc</span><span class="grimoire-meta-pill">Stripe</span><span class="grimoire-meta-pill">76 fields · 24 Zaps</span></div>
-      </div>
-      <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 001 →</span><span class="grimoire-status">✓ Live · QA-Verified</span></div>
-    </a>
-    <a href="/grimoires/002-dual-wing-rental.html" class="grimoire-card" aria-label="Grimoire 002">
-      <div class="grimoire-card-top">
-        <div class="grimoire-badge teal">002 · Marketing Engine · Apr 2026 · v4</div>
-        <h3>Dual Wing Rental Marketing Engine</h3>
-        <p>Full marketing + CRM for a dual-sided rental business (UK + US). One flywheel. Landlord supply and renter demand feeding each other. 34.2% avg open rate, 18 consultations from 340 contacts.</p>
-        <div class="grimoire-card-meta"><span class="grimoire-meta-pill">GoHighLevel</span><span class="grimoire-meta-pill">n8n</span><span class="grimoire-meta-pill">Claude API</span><span class="grimoire-meta-pill">15 modules</span><span class="grimoire-meta-pill">UK + US</span></div>
-      </div>
-      <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 002 →</span><span class="grimoire-status">✓ Live · Apr 2026</span></div>
-    </a>
+  <div class="showcase-stage-wrapper">
+    <div class="showcase-stage" id="showcaseStage"></div>
   </div>
 
-  <a href="/grimoires/003-ghl-101.html" class="grimoire-card" style="margin-top:1rem" aria-label="Grimoire 003">
-    <div class="grimoire-card-top">
-      <div class="grimoire-badge blue">003 · Knowledge System · Mar 2026</div>
-      <h3>GHL 101: Speedrun Training Manual — 2026 Edition</h3>
-      <p>Over a year of GoHighLevel field notes compiled into one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated to 2026: Voice AI, Agent Studio, WhatsApp native, AI Employee pricing. Free, no gate.</p>
-      <div class="grimoire-card-meta"><span class="grimoire-meta-pill">18 modules</span><span class="grimoire-meta-pill">29 sources</span><span class="grimoire-meta-pill">50+ tips</span><span class="grimoire-meta-pill">2026 update</span><span class="grimoire-meta-pill">free</span></div>
+  <div class="showcase-controls">
+    <span class="showcase-hint">Auto-cycling enabled · swipe or use trackpad anytime</span>
+    <div class="showcase-nav">
+      <button class="showcase-btn" id="showcasePrev" aria-label="Previous">‹</button>
+      <button class="showcase-btn" id="showcaseNext" aria-label="Next">›</button>
     </div>
-    <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 003 →</span><span class="grimoire-status">✓ Live · Free · No gate</span></div>
+  </div>
+
+  <a href="/projects.html" class="showcase-view-all">
+    <div class="sva-left">
+      <div class="sva-title">View all 5 grimoires on the projects page</div>
+      <div class="sva-sub">CRM · marketing · GHL · n8n · automations</div>
+    </div>
+    <div class="sva-right">
+      <div class="sva-chips">
+        <span class="sva-chip" style="background:#2d1060;color:#c4b5fd;">01</span>
+        <span class="sva-chip" style="background:#0d3d36;color:#5eead4;">02</span>
+        <span class="sva-chip" style="background:#0d3d6e;color:#93c5fd;">03</span>
+        <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">04</span>
+        <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">06</span>
+      </div>
+      <span style="font-family:var(--mono);font-size:.7rem;color:var(--accent);font-weight:500">All grimoires →</span>
+    </div>
   </a>
 
-  <a href="/grimoires/004-n8n-101.html" class="grimoire-card" style="margin-top:1rem" aria-label="Grimoire 004">
-    <div class="grimoire-card-top">
-      <div class="grimoire-badge orange">004 · AI Automation · May 2026</div>
-      <h3>n8n 101: AI Workflow Automation</h3>
-      <p>12 modules covering AI agents, RAG, WhatsApp Business, self‑hosting security, and production patterns. Built from real field failures — including the $800 Zapier bill that forced the switch.</p>
-      <div class="grimoire-card-meta"><span class="grimoire-meta-pill">12 modules</span><span class="grimoire-meta-pill">AI agent</span><span class="grimoire-meta-pill">RAG</span><span class="grimoire-meta-pill">WhatsApp API</span><span class="grimoire-meta-pill">self-host</span></div>
-    </div>
-    <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 004 →</span><span class="grimoire-status">✓ Live · May 2026</span></div>
-  </a>
-
-  <a href="/grimoires/006-automations-101.html" class="grimoire-card" style="margin-top:1rem" aria-label="Grimoire 006">
-    <div class="grimoire-card-top">
-      <div class="grimoire-badge orange">006 · Automation Patterns · May 2026</div>
-      <h3>Automations 101: The Absolute Guide</h3>
-      <p>A pipeline-driven reference for straightforward vs production-grade business automations across industries. 25 patterns, 11 chapter sections, 6 appendices, 37 Markdown source files, and 35 Mermaid flow diagrams.</p>
-      <div class="grimoire-card-meta"><span class="grimoire-meta-pill">25 patterns</span><span class="grimoire-meta-pill">37 sources</span><span class="grimoire-meta-pill">35 diagrams</span><span class="grimoire-meta-pill">runbooks</span><span class="grimoire-meta-pill">source-complete</span></div>
-    </div>
-    <div class="grimoire-card-bottom"><span class="grimoire-open-btn">Open Grimoire 006 →</span><span class="grimoire-status">✓ Live · May 2026</span></div>
-  </a>
-
-  <div style="margin-top:1.4rem">
+  <div style="margin-top:1.8rem">
     <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;padding-left:.5rem;border-left:2px solid var(--border)">More grimoires in progress</div>
     <div class="grimoire-placeholder-row">
       <div class="grimoire-placeholder"><div class="gp-num">005</div><div class="gp-name">Zapier 101</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">007</div><div class="gp-name">Agentic AI 101</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">008</div><div class="gp-name">SEO 101</div><span class="gp-soon">Soon</span></div>
-      <div class="grimoire-placeholder"><div class="gp-num">009</div><div class="gp-name">Basic Payment Processing — Support Specialist POV</div><span class="gp-soon">Soon</span></div>
+      <div class="grimoire-placeholder"><div class="gp-num">009</div><div class="gp-name">Basic Payment Processing — Support POV</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">010</div><div class="gp-name">Claude + OpenClaw 101 — The Viral Combo</div><span class="gp-soon">Soon</span></div>
     </div>
   </div>
-  <div style="text-align:center;margin-top:1.8rem"><a href="/projects.html" class="btn-secondary">View all projects →</a></div>
 </section>
 
 </main>
@@ -447,5 +458,161 @@ a{color:inherit;text-decoration:none}
 </footer>
 <a class="quick-anchor" href="#top" aria-label="Back to top">↑ top</a>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+
+<script>
+const grimoireData = [
+  { theme:'purple', num:'001', label:'CRM System · v8.1 · QA-Verified', title:'ASMC Full Stack CRM Engine', desc:'Full CRM automation for construction. Lead capture → scoring → proposal → contract → payment → delivery. 13 documented QA corrections.', pills:['76-field CRM','24 Zaps','Bland AI','PandaDoc','Stripe'], status:'✓ Live · Apr 2026', href:'/grimoires/001-asmc-crm-engine.html' },
+  { theme:'teal',   num:'002', label:'Marketing Engine · v4 · Apr 2026', title:'Dual Wing Rental Marketing Engine', desc:'Full marketing + CRM for dual-sided rental. Landlord supply and renter demand in one flywheel. 34.2% avg open rate, 18 consultations from 340 contacts.', pills:['15 modules','2 pipelines','Claude API','UK + US'], status:'✓ Live · Apr 2026', href:'/grimoires/002-dual-wing-rental.html' },
+  { theme:'blue',   num:'003', label:'Knowledge System · 2026 Edition', title:'GHL 101: Speedrun Training Manual', desc:'Over a year of GoHighLevel field notes in one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated for 2026.', pills:['18 modules','29 sources','50+ tips','free · no gate'], status:'✓ Live · Mar 2026', href:'/grimoires/003-ghl-101.html' },
+  { theme:'orange', num:'004', label:'AI Automation · May 2026', title:'n8n 101: AI Workflow Automation', desc:'12 modules covering AI agents, RAG, WhatsApp Business, self-hosting. Built from real field failures — including the $800 Zapier bill.', pills:['12 modules','AI agent','RAG','WhatsApp API'], status:'✓ Live · May 2026', href:'/grimoires/004-n8n-101.html' },
+  { theme:'orange', num:'006', label:'Automation Patterns · May 2026', title:'Automations 101: The Absolute Guide', desc:'25 production-grade automation patterns. Idempotency, retries, DLQs, compliance wrappers, human handoffs, runbooks, and symptom diagnosis.', pills:['25 patterns','37 sources','35 diagrams','runbooks'], status:'✓ Live · May 2026', href:'/grimoires/006-automations-101.html' }
+];
+
+// 1. Sidebar Z-Index Stack Initialization
+function initSidebarStack() {
+  const stage = document.getElementById('spStage');
+  const dotsEl = document.getElementById('spDots');
+  if (!stage || !dotsEl) return;
+
+  let active = 0;
+  const total = grimoireData.length;
+  let auto, paused = false;
+
+  const cards = grimoireData.map((g, i) => {
+    const el = document.createElement('a');
+    el.className = 'sp-card';
+    el.dataset.theme = g.theme;
+    el.href = g.href;
+    el.innerHTML = `
+      <div class="sp-eyebrow"><span class="sp-dot-pulse"></span><span>${g.label}</span></div>
+      <div class="sp-num">${g.num}</div>
+      <div class="sp-title">${g.title}</div>
+      <div class="sp-desc">${g.desc}</div>
+      <div class="sp-pills">${g.pills.map(p=>`<span class="sp-pill">${p}</span>`).join('')}</div>
+      <hr class="sp-hr"/>
+      <div class="sp-footer"><span class="sp-open">Open grimoire →</span><span class="sp-status">${g.status}</span></div>`;
+    el.addEventListener('click', e => { 
+      if(el.dataset.pos !== "0") { e.preventDefault(); advance(1); }
+    });
+    stage.appendChild(el);
+    return el;
+  });
+
+  const dots = grimoireData.map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'sp-dot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+    return d;
+  });
+
+  function pos(i) { return (i - active + total) % total; }
+
+  function render() {
+    cards.forEach((c, i) => { c.dataset.pos = pos(i); });
+    dots.forEach((d, i) => d.classList.toggle('on', i === active));
+  }
+
+  function goTo(i) { active = i; render(); }
+  function advance(d) { active = (active + d + total) % total; render(); }
+
+  document.getElementById('spPrev')?.addEventListener('click', () => advance(-1));
+  document.getElementById('spNext')?.addEventListener('click', () => advance(1));
+
+  function startAuto() {
+    clearInterval(auto);
+    auto = setInterval(() => { if (!paused) advance(1); }, 3500);
+  }
+  
+  stage.addEventListener('mouseenter', () => { paused = true; });
+  stage.addEventListener('mouseleave', () => { paused = false; });
+
+  render();
+  startAuto();
+}
+
+// 2. Showcase Horizontal Carousel Implementation with Auto-Scroll & High-Vis Indicators
+function initShowcaseCarousel() {
+  const stage = document.getElementById('showcaseStage');
+  const progressFill = document.getElementById('scFill');
+  if (!stage) return;
+  
+  grimoireData.forEach(g => {
+    const el = document.createElement('a');
+    el.className = 'sc-card';
+    el.dataset.theme = g.theme;
+    el.href = g.href;
+    el.innerHTML = `
+      <div class="sc-eyebrow"><span class="sc-dot-pulse"></span><span>${g.label}</span></div>
+      <div class="sc-num">${g.num}</div>
+      <div class="sc-title">${g.title}</div>
+      <div class="sc-desc">${g.desc}</div>
+      <div class="sc-pills">${g.pills.map(p=>`<span class="sc-pill">${p}</span>`).join('')}</div>
+      <hr class="sc-hr"/>
+      <div class="sc-footer">
+        <span class="sc-open">Open grimoire →</span>
+        <span class="sc-status">${g.status}</span>
+      </div>`;
+    stage.appendChild(el);
+  });
+
+  const prev = document.getElementById('showcasePrev');
+  const next = document.getElementById('showcaseNext');
+
+  function getScrollStep() {
+    return stage.offsetWidth > 760 ? stage.offsetWidth / 2 : stage.offsetWidth;
+  }
+
+  prev?.addEventListener('click', () => {
+    stage.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+  });
+  
+  next?.addEventListener('click', () => {
+    stage.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+  });
+
+  // Track Progress Fill Value via Native Scroll Vector coordinates
+  function updateProgressBar() {
+    const maxScroll = stage.scrollWidth - stage.clientWidth;
+    const scrollPct = maxScroll > 0 ? (stage.scrollLeft / maxScroll) * 100 : 0;
+    if (progressFill) progressFill.style.width = `${scrollPct}%`;
+  }
+  stage.addEventListener('scroll', updateProgressBar);
+
+  // Auto-scroll loop execution block
+  let autoScrollTimer;
+  let isPaused = false;
+
+  function startAutoCycle() {
+    clearInterval(autoScrollTimer);
+    autoScrollTimer = setInterval(() => {
+      if (!isPaused) {
+        const maxScroll = stage.scrollWidth - stage.clientWidth;
+        // Reset loop smoothly if near trailing end boundaries
+        if (stage.scrollLeft >= maxScroll - 15) {
+          stage.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          stage.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        }
+      }
+    }, 4000);
+  }
+
+  // Intercept listeners to freeze timeline upon active cursor targeting 
+  stage.addEventListener('mouseenter', () => { isPaused = true; });
+  stage.addEventListener('mouseleave', () => { isPaused = false; });
+  stage.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+  stage.addEventListener('touchend', () => { isPaused = false; });
+
+  // Initialize view layers
+  updateProgressBar();
+  startAutoCycle();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSidebarStack();
+  initShowcaseCarousel();
+});
+</script>
 </body>
 </html>
