@@ -1,4 +1,15 @@
-/* ── ABOUT PAGE SPECIFIC LAYOUTS ── */
+/* --- [KEEP YOUR ORIGINAL GLOBAL.CSS CONTENT HERE] --- */
+/* (The content you just pasted goes here) */
+
+/* ── ADDITIONAL STRUCTURAL COMPONENTS (Required for layout) ── */
+
+/* 1. Animations */
+@keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-in { animation: fade 0.8s ease-out forwards; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+/* 2. Page Specific Layouts (About, etc.) */
 .page-header { margin-bottom: 3rem; padding-top: 2rem; }
 
 /* Capabilities Grid */
@@ -10,7 +21,7 @@
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
 .bio-card, .avail-card { background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 2rem; }
 
-/* Timeline Col */
+/* Timeline Column */
 .timeline-col { border-left: 1px solid var(--border); padding-left: 2rem; }
 .timeline-item { margin-bottom: 3rem; position: relative; }
 .tl-badge { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -18,7 +29,7 @@
 .tl-tags { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
 .tl-tag { font-size: 0.7rem; background: var(--bg2); padding: 2px 8px; border-radius: 4px; color: var(--ink3); }
 
-/* Responsive adjustments for About grid */
+/* Responsive adjustments */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; }
   .timeline-col { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 2rem; }
