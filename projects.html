@@ -1,236 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="icon" href="/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="/favicon.png">
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Projects & Grimoires — Aaron Suarez</title>
-<meta name="description" content="Live system documentation for CRM architecture, marketing engines, and operational tools. Real systems, real results — open and ungated."/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://suarezaaronroy-sys.github.io/projects.html"/>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03',{page_title:'Projects',page_path:'/projects.html'});</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#F5F2EC;--bg2:#EDE9E0;--bg3:#E5E0D5;
-  --ink:#1C1917;--ink2:#44403C;--ink3:#78716C;--ink4:#A8A29E;
-  --accent:#C2410C;--accent2:#EA580C;
-  --teal:#0D9488;--teal-bg:#CCFBF1;
-  --amber:#B45309;--amber-bg:#FEF3C7;
-  --blue:#1D4ED8;--blue-bg:#DBEAFE;
-  --green:#15803D;--green-bg:#DCFCE7;
-  --purple:#7C3AED;--purple-bg:#F5F3FF;
-  --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
-  --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--sans);background:var(--bg);color:var(--ink);
-  font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse at 5% 0%,rgba(194,65,12,.04),transparent 38%),
-    radial-gradient(ellipse at 95% 10%,rgba(13,148,136,.03),transparent 35%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
-}
-a{color:inherit;text-decoration:none}
-.shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
-
-/* ── TOP BAR ── */
-.topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
-.brand-icon{width:36px;height:36px;border-radius:8px;background:#1C1917;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
-.brand-icon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-.brand-icon-fallback{font-family:var(--mono);font-size:.78rem;font-weight:500;color:#F5F2EC;display:none}
-.brand-copy strong{display:block;font-family:var(--mono);font-size:.82rem;line-height:1.2;color:var(--ink)}
-.brand-copy span{display:block;font-size:.64rem;color:var(--ink4);font-family:var(--mono);margin-top:.1rem}
-.nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
-.nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em}
-.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
-.nav .nav-active{color:var(--accent);border-color:rgba(194,65,12,.3);background:rgba(194,65,12,.06)}
-.nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
-.nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-
-/* ── PAGE HEADER ── */
-.page-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border)}
-.page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--accent);margin-bottom:.7rem}
-.page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.8rem;color:var(--ink)}
-.page-header h1 em{font-style:italic;font-weight:300;color:var(--accent)}
-.page-header p{font-size:.95rem;color:var(--ink2);max-width:58ch;line-height:1.75}
-
-/* ── GRIMOIRE LAYOUT ── */
-.grimoire-section{padding:2.8rem 0}
-.section-label{
-  display:flex;align-items:center;gap:.5rem;
-  font-family:var(--mono);font-size:.62rem;color:var(--ink4);
-  text-transform:uppercase;letter-spacing:.1em;
-  margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border2);
-}
-.section-label-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
-
-/* ── LIVE GRIMOIRE CARDS ── */
-.live-grimoire{
-  background:#fff;border:1px solid var(--border);border-radius:18px;
-  overflow:hidden;margin-bottom:1.2rem;transition:.18s ease;
-  text-decoration:none;color:inherit;display:block;
-}
-.live-grimoire:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(28,25,23,.1)}
-
-/* Two-column inner — stat block locked to right, never collapses */
-.lg-inner{
-  display:grid;
-  /* left col: fluid. right col: fixed 120px so all 3 cards are identical */
-  grid-template-columns:1fr 120px;
-  gap:1.5rem;padding:1.6rem 1.8rem;align-items:start;
-}
-
-.lg-badge{
-  display:inline-flex;align-items:center;gap:.3rem;
-  font-family:var(--mono);font-size:.58rem;text-transform:uppercase;
-  letter-spacing:.08em;padding:.18rem .5rem;border-radius:4px;
-  margin-bottom:.7rem;border:1px solid;
-}
-.lg-badge.purple{color:var(--purple);background:var(--purple-bg);border-color:rgba(124,58,237,.2)}
-.lg-badge.teal{color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)}
-.lg-badge.blue{color:var(--blue);background:var(--blue-bg);border-color:rgba(29,78,216,.2)}
-.lg-badge.orange{color:var(--accent);background:#FFF7ED;border-color:rgba(194,65,12,.2)}
-
-.live-grimoire h2{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2}
-.live-grimoire .lg-desc{font-size:.88rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:60ch}
-.lg-bullets{list-style:none;display:grid;gap:.3rem;margin-bottom:.9rem}
-.lg-bullets li{display:flex;align-items:flex-start;gap:.5rem;font-size:.8rem;color:var(--ink3);line-height:1.55}
-.lg-bullets li::before{content:"→";color:var(--accent);font-family:var(--mono);font-size:.72rem;flex-shrink:0;margin-top:.06rem}
-.lg-meta{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:1rem}
-.lg-meta-pill{font-family:var(--mono);font-size:.6rem;padding:.16rem .44rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink4)}
-.lg-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
-
-/* ── STAT BLOCK — right column, consistent across all cards ── */
-.lg-stat-block{
-  display:flex;flex-direction:column;gap:.7rem;
-  align-items:center;
-  width:120px;flex-shrink:0;
-  padding-top:.2rem;
-}
-.lg-stat{
-  text-align:center;width:100%;
-  background:var(--bg2);border:1px solid var(--border2);
-  border-radius:10px;padding:.55rem .4rem;
-}
-.lg-stat-num{
-  font-family:var(--mono);
-  font-size:1.65rem;
-  font-weight:500;
-  line-height:1;
-  white-space:nowrap;
-  display:block;
-}
-.lg-stat-label{
-  font-family:var(--mono);font-size:.56rem;color:var(--ink4);
-  margin-top:.25rem;display:block;
-}
-
-.lg-status{
-  padding:.6rem 1rem;border-top:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--bg2);
-}
-.lg-status-left{font-family:var(--mono);font-size:.6rem;color:var(--teal)}
-.lg-status-right{font-family:var(--mono);font-size:.6rem;color:var(--ink4)}
-
-/* ── BUTTONS ── */
-.btn-open{
-  display:inline-flex;align-items:center;gap:.4rem;
-  font-family:var(--mono);font-size:.72rem;padding:.68rem 1.15rem;
-  border-radius:999px;border:1px solid;cursor:pointer;
-  transition:.15s ease;text-decoration:none;
-}
-.btn-open.accent{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:500;box-shadow:0 4px 12px rgba(194,65,12,.2)}
-.btn-open.accent:hover{background:#b83b0b;transform:translateY(-1px)}
-.btn-open.teal{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:500;box-shadow:0 4px 12px rgba(13,148,136,.2)}
-.btn-open.teal:hover{background:#0c7a70;transform:translateY(-1px)}
-.btn-open.blue{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:500;box-shadow:0 4px 12px rgba(29,78,216,.2)}
-.btn-open.blue:hover{background:#1741ba;transform:translateY(-1px)}
-.btn-open.purple{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500;box-shadow:0 4px 12px rgba(124,58,237,.2)}
-.btn-open.purple:hover{background:#6d28d9;transform:translateY(-1px)}
-.btn-open.ghost{background:transparent;color:var(--ink3);border-color:var(--border)}
-.btn-open.ghost:hover{color:var(--accent);border-color:var(--accent)}
-
-/* placeholder grimoires */
-.section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
-.placeholders-section{padding:2rem 0 3rem}
-.placeholder-heading{
-  font-family:var(--mono);font-size:.62rem;color:var(--ink4);
-  text-transform:uppercase;letter-spacing:.1em;
-  margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--border);
-}
-.placeholder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.7rem}
-.placeholder-card{
-  background:var(--bg2);border:1px dashed var(--border);border-radius:12px;
-  padding:.95rem 1.1rem;position:relative;overflow:hidden;
-}
-.placeholder-card::before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(135deg,transparent 60%,rgba(28,25,23,.02));
-  pointer-events:none;
-}
-.pc-num{font-family:var(--mono);font-size:.58rem;color:var(--ink4);letter-spacing:.06em;margin-bottom:.35rem}
-.pc-name{font-size:.85rem;color:var(--ink2);font-weight:400;line-height:1.35;margin-bottom:.5rem}
-.pc-soon{
-  display:inline-block;font-family:var(--mono);font-size:.54rem;
-  padding:.1rem .38rem;border-radius:3px;
-  background:var(--bg3);color:var(--ink4);
-  text-transform:uppercase;letter-spacing:.06em;
-}
-
-/* footer */
-.footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
-.footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
-.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
-.footer-links{display:flex;gap:1.2rem;align-items:center}
-.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
-.quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
-
-@media(max-width:760px){
-  .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
-  .nav{width:100%;justify-content:flex-start}
-  .lg-inner{grid-template-columns:1fr}
-  .lg-stat-block{flex-direction:row;justify-content:flex-start;width:100%;padding-top:0}
-  .lg-stat{width:auto;min-width:80px}
-  .placeholder-grid{grid-template-columns:1fr 1fr}
-  .quick-anchor{right:12px;bottom:12px}
-}
-</style>
-</head>
-<body id="top">
-
-<div class="topbar-wrap">
-  <div class="topbar shell">
-    <a href="/" class="brand">
-      <div class="brand-icon">
-        <img src="/favicon.png" alt="AS" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <span class="brand-icon-fallback">AS</span>
-      </div>
-      <div class="brand-copy">
-        <strong>Aaron Suarez</strong>
-        <span>Valencia City, PH · systems builder · remote-first</span>
-      </div>
-    </a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="/about.html">About</a>
-      <a href="/articles.html">Articles</a>
-      <a href="/projects.html" class="nav-active">Projects</a>
-      <a href="/notes.html">Notes</a>
-      <a href="/theme.html">Theme</a>
-      <a href="/sound.html">Sound</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="nav-cta">Fix My Systems →</a>
-    </nav>
-  </div>
-</div>
-
+---
+layout: default
+title: "Projects & Grimoires — Aaron Suarez"
+description: "Live system documentation for CRM architecture, marketing engines, automation patterns, and operational tools. Real systems, real results — open and ungated."
+canonical: "https://suarezaaronroy-sys.github.io/projects.html"
+head_extra: |
+  <style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#F5F2EC;--bg2:#EDE9E0;--bg3:#E5E0D5;
+    --ink:#1C1917;--ink2:#44403C;--ink3:#78716C;--ink4:#A8A29E;
+    --accent:#C2410C;--accent2:#EA580C;
+    --teal:#0D9488;--teal-bg:#CCFBF1;
+    --amber:#B45309;--amber-bg:#FEF3C7;
+    --blue:#1D4ED8;--blue-bg:#DBEAFE;
+    --green:#15803D;--green-bg:#DCFCE7;
+    --purple:#7C3AED;--purple-bg:#F5F3FF;
+    --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
+    --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--ink);
+    font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
+    background-image:
+      radial-gradient(ellipse at 5% 0%,rgba(194,65,12,.04),transparent 38%),
+      radial-gradient(ellipse at 95% 10%,rgba(13,148,136,.03),transparent 35%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none}
+  .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
+  
+  /* ── TOP BAR ── */
+  .topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
+  .brand-icon{width:36px;height:36px;border-radius:8px;background:#1C1917;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
+  .brand-icon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+  .brand-copy strong{display:block;font-family:var(--mono);font-size:.82rem;line-height:1.2;color:var(--ink)}
+  .brand-copy span{display:block;font-size:.64rem;color:var(--ink4);font-family:var(--mono);margin-top:.1rem}
+  .nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
+  .nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em}
+  .nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
+  .nav .nav-active{color:var(--accent);border-color:rgba(194,65,12,.3);background:rgba(194,65,12,.06)}
+  .nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
+  .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  
+  /* ── PAGE HEADER ── */
+  .page-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border)}
+  .page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--accent);margin-bottom:.7rem}
+  .page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.8rem;color:var(--ink)}
+  .page-header h1 em{font-style:italic;font-weight:300;color:var(--accent)}
+  .page-header p{font-size:.95rem;color:var(--ink2);max-width:58ch;line-height:1.75}
+  
+  /* ── GRIMOIRE LAYOUT ── */
+  .grimoire-section{padding:2.8rem 0}
+  .section-label{
+    display:flex;align-items:center;gap:.5rem;
+    font-family:var(--mono);font-size:.62rem;color:var(--ink3);
+    text-transform:uppercase;letter-spacing:.1em;
+    margin-bottom:1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)
+  }
+  .section-label-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  
+  /* ── LIVE GRIMOIRE CARDS ── */
+  .live-grimoire{
+    background:#fff;border:1px solid var(--border);border-radius:12px;
+    overflow:hidden;margin-bottom:1.2rem;transition:all .15s ease;
+    text-decoration:none;color:inherit;display:block;
+  }
+  .live-grimoire:hover{transform:translateY(-2px);border-color:var(--ink);box-shadow:0 6px 20px rgba(28,25,23,.05)}
+  
+  .lg-inner{
+    display:grid;
+    grid-template-columns:1fr 140px;
+    gap:2rem;padding:1.8rem 2rem;align-items:start;
+  }
+  
+  .lg-badge{
+    display:inline-flex;align-items:center;gap:.3rem;
+    font-family:var(--mono);font-size:.58rem;text-transform:uppercase;
+    letter-spacing:.08em;padding:.18rem .5rem;border-radius:4px;
+    margin-bottom:.7rem;border:1px solid;
+  }
+  .lg-badge.purple{color:var(--purple);background:var(--purple-bg);border-color:rgba(124,58,237,.2)}
+  .lg-badge.teal{color:var(--teal);background:var(--teal-bg);border-color:rgba(13,148,136,.2)}
+  .lg-badge.blue{color:var(--blue);background:var(--blue-bg);border-color:rgba(29,78,216,.2)}
+  .lg-badge.orange{color:var(--accent);background:#FFF7ED;border-color:rgba(194,65,12,.2)}
+  
+  .live-grimoire h2{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2;letter-spacing:-.01em}
+  .live-grimoire .lg-desc{font-size:.88rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:62ch}
+  .lg-bullets{list-style:none;display:grid;gap:.35rem;margin-bottom:.9rem}
+  .lg-bullets li{display:flex;align-items:flex-start;gap:.5rem;font-size:.82rem;color:var(--ink3);line-height:1.6}
+  .lg-bullets li::before{content:"→";color:var(--accent);font-family:var(--mono);font-size:.72rem;flex-shrink:0;margin-top:.08rem}
+  .lg-meta{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:1rem}
+  .lg-meta-pill{font-family:var(--mono);font-size:.6rem;padding:.16rem .44rem;border-radius:4px;border:1px solid var(--border);background:var(--bg2);color:var(--ink2)}
+  .lg-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
+  
+  .lg-stat-block{
+    display:flex;flex-direction:column;gap:.5rem;
+    align-items:stretch;
+    width:140px;flex-shrink:0;
+  }
+  .lg-stat{
+    text-align:center;width:100%;
+    background:var(--bg2);border:1px solid var(--border2);
+    border-radius:6px;padding:.5rem .4rem;
+  }
+  .lg-stat-num{
+    font-family:var(--mono);
+    font-size:1.4rem;
+    font-weight:500;
+    line-height:1;
+    white-space:nowrap;
+    display:block;
+  }
+  .lg-stat-label{
+    font-family:var(--mono);font-size:.54rem;color:var(--ink3);
+    margin-top:.25rem;display:block;text-transform:uppercase;letter-spacing:.02em
+  }
+  
+  .lg-status{
+    padding:.65rem 2rem;border-top:1px solid var(--border2);
+    display:flex;align-items:center;justify-content:space-between;
+    background:var(--bg2);
+  }
+  .lg-status-left{font-family:var(--mono);font-size:.6rem;color:var(--teal);font-weight:500}
+  .lg-status-right{font-family:var(--mono);font-size:.6rem;color:var(--ink3)}
+  
+  /* ── BUTTONS ── */
+  .btn-open{
+    display:inline-flex;align-items:center;gap:.4rem;
+    font-family:var(--mono);font-size:.7rem;padding:.5rem 1.1rem;
+    border-radius:4px;border:1px solid;cursor:pointer;
+    transition:.12s ease;text-decoration:none;
+  }
+  .btn-open.accent{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:500}
+  .btn-open.accent:hover{background:#b83b0b;transform:translateY(-1px)}
+  .btn-open.teal{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:500}
+  .btn-open.teal:hover{background:#0c7a70;transform:translateY(-1px)}
+  .btn-open.blue{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:500}
+  .btn-open.blue:hover{background:#1741ba;transform:translateY(-1px)}
+  .btn-open.purple{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500}
+  .btn-open.purple:hover{background:#6d28d9;transform:translateY(-1px)}
+  .btn-open.ghost{background:transparent;color:var(--ink2);border-color:var(--border)}
+  .btn-open.ghost:hover{color:var(--accent);border-color:var(--accent)}
+  
+  /* placeholder grimoires */
+  .section-divider{width:100%;height:1px;background:var(--border)}
+  .placeholders-section{padding:3rem 0 4rem}
+  .placeholder-heading{
+    font-family:var(--mono);font-size:.62rem;color:var(--ink);
+    text-transform:uppercase;letter-spacing:.1em;
+    margin-bottom:1rem;padding-left:.5rem;border-left:2px solid var(--ink);
+    font-weight:500;
+  }
+  .placeholder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.75rem}
+  .placeholder-card{
+    background:#fff;border:1px solid var(--border);border-radius:8px;
+    padding:1.1rem;position:relative;overflow:hidden;
+  }
+  .pc-num{font-family:var(--mono);font-size:.58rem;color:var(--ink3);letter-spacing:.06em;margin-bottom:.35rem}
+  .pc-name{font-size:.85rem;color:var(--ink);font-weight:400;line-height:1.35;margin-bottom:.5rem}
+  .pc-soon{
+    display:inline-block;font-family:var(--mono);font-size:.52rem;
+    padding:.15rem .35rem;border-radius:3px;
+    background:var(--bg2);color:var(--ink3);
+    text-transform:uppercase;letter-spacing:.06em;font-weight:500;
+  }
+  
+  /* footer */
+  .footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
+  .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
+  .footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
+  .footer-links{display:flex;gap:1.2rem;align-items:center}
+  .quick-anchor{position:fixed;right:24px;bottom:24px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.5rem .8rem;border-radius:6px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.06);transition:.14s;text-decoration:none}
+  .quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
+  
+  @media(max-width:900px) {
+    .lg-inner{grid-template-columns:1fr;gap:1.25rem;padding:1.4rem}
+    .lg-stat-block{flex-direction:row;justify-content:flex-start;width:100%}
+    .lg-stat{width:auto;flex:1;min-width:0}
+    .lg-status{padding:.65rem 1.4rem}
+  }
+  @media(max-width:600px){
+    .topbar{flex-direction:column;align-items:flex-start;padding:.75rem 0}
+    .nav{width:100%;justify-content:flex-start}
+    .placeholder-grid{grid-template-columns:1fr 1fr}
+  }
+  </style>
+---
 <main>
 <div class="shell">
 
@@ -243,10 +201,9 @@ a{color:inherit;text-decoration:none}
   <section class="grimoire-section" aria-label="Live grimoires">
     <div class="section-label">
       <span class="section-label-dot"></span>
-      Live grimoires · 4 published
+      Live grimoires · 5 published
     </div>
 
-    <!-- Grimoire 001 -->
     <a href="/grimoires/001-asmc-crm-engine.html" class="live-grimoire" aria-label="Open Grimoire 001">
       <div class="lg-inner">
         <div>
@@ -293,7 +250,6 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <!-- Grimoire 002 -->
     <a href="/grimoires/002-dual-wing-rental.html" class="live-grimoire" aria-label="Open Grimoire 002">
       <div class="lg-inner">
         <div>
@@ -340,7 +296,6 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <!-- Grimoire 003 -->
     <div class="live-grimoire" style="cursor:default">
       <div class="lg-inner">
         <div>
@@ -364,7 +319,7 @@ a{color:inherit;text-decoration:none}
           </div>
           <div class="lg-actions">
             <a href="/grimoires/003-ghl-101.html" class="btn-open blue">Open Grimoire 003 →</a>
-            <a href="https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing" target="_blank" rel="noopener" class="btn-open ghost">Open in Google Docs ↗</a>
+            <a href="https://docs.google.com/document/d/121QODw4qxHsE7T3cuMUoDfsWPA9qlF1_/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-open ghost">Open in Google Docs ↗</a>
           </div>
         </div>
         <div class="lg-stat-block">
@@ -388,7 +343,6 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
-    <!-- Grimoire 004: N8N 101 - LIVE (NEW) -->
     <div class="live-grimoire" style="cursor:default">
       <div class="lg-inner">
         <div>
@@ -436,11 +390,56 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
+    <div class="live-grimoire" style="cursor:default">
+      <div class="lg-inner">
+        <div>
+          <div class="lg-badge orange">006 · Automation Patterns · May 2026</div>
+          <h2>Automations 101: The Absolute Guide</h2>
+          <p class="lg-desc">A pipeline-driven reference for straightforward vs production-grade business automations across industries. Built from the complete Markdown source corpus: foundation chapters, 25 automation patterns, cross-cutting controls, appendices, runbooks, and a symptom index.</p>
+          <ul class="lg-bullets">
+            <li>25 production-grade patterns across capture, scheduling, documents, approvals, payments, delivery, fulfillment, retention, and reactivation</li>
+            <li>37 Markdown source files represented with a source-corpus ledger</li>
+            <li>35 Mermaid flow diagrams preserved for production-grade workflow mapping</li>
+            <li>Idempotency, retries, dead-letter queues, observability, testing, compliance wrappers, and runbooks included</li>
+            <li>Human handoff taxonomy, override behavior, decision guides, and failure symptom index</li>
+          </ul>
+          <div class="lg-meta">
+            <span class="lg-meta-pill">Automation patterns</span>
+            <span class="lg-meta-pill">25 patterns</span>
+            <span class="lg-meta-pill">37 sources</span>
+            <span class="lg-meta-pill">35 diagrams</span>
+            <span class="lg-meta-pill">runbooks</span>
+            <span class="lg-meta-pill">source-complete</span>
+          </div>
+          <div class="lg-actions">
+            <a href="/grimoires/006-automations-101.html" class="btn-open accent">Open Grimoire 006 →</a>
+          </div>
+        </div>
+        <div class="lg-stat-block">
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--accent)">25</span>
+            <span class="lg-stat-label">patterns</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--blue)">37</span>
+            <span class="lg-stat-label">sources</span>
+          </div>
+          <div class="lg-stat">
+            <span class="lg-stat-num" style="color:var(--teal)">35</span>
+            <span class="lg-stat-label">diagrams</span>
+          </div>
+        </div>
+      </div>
+      <div class="lg-status">
+        <span class="lg-status-left">✓ Live · May 2026 · Source-complete · Free · No gate</span>
+        <span class="lg-status-right">Grimoire 006 / 010</span>
+      </div>
+    </div>
+
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- Placeholders for upcoming grimoires -->
   <section class="placeholders-section" aria-label="Upcoming grimoires">
     <div class="placeholder-heading">Coming next — grimoires in progress</div>
     <p style="font-size:.84rem;color:var(--ink3);line-height:1.7;max-width:58ch;margin-bottom:1.4rem">These are planned. Not vaporware — each one is a real body of notes waiting to be compiled. The series keeps going.</p>
@@ -448,11 +447,6 @@ a{color:inherit;text-decoration:none}
       <div class="placeholder-card">
         <div class="pc-num">005</div>
         <div class="pc-name">Zapier 101</div>
-        <span class="pc-soon">Soon</span>
-      </div>
-      <div class="placeholder-card">
-        <div class="pc-num">006</div>
-        <div class="pc-name">Automations 101</div>
         <span class="pc-soon">Soon</span>
       </div>
       <div class="placeholder-card">
@@ -480,20 +474,3 @@ a{color:inherit;text-decoration:none}
 
 </div>
 </main>
-
-<footer class="footer shell">
-  <div class="footer-line">
-    <div>© <span id="yr"></span> Aaron Suarez · operational systems builder</div>
-    <div class="footer-links">
-      <span>Valencia City, PH · remote-first</span>
-      <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
-      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener" class="footer-link" style="font-weight:500">ASMC ↗</a>
-    </div>
-  </div>
-</footer>
-
-<a class="quick-anchor" href="#top">↑ top</a>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
-</body>
-</html>

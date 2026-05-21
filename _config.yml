@@ -1,0 +1,26 @@
+title: Aaron Suarez
+description: Hybrid systems operator — CRM architecture, workflow automation, APIs, and business continuity.
+url: "https://suarezaaronroy-sys.github.io"
+baseurl: ""
+lang: en
+author: "Aaron Suarez"
+twitter_username: ""
+permalink: /:path/:basename.html
+exclude:
+  - "grimoires"
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+      robots: index, follow
+      twitter_card: summary_large_image
+      og_type: website
+  - scope:
+      path: "articles"
+      type: "pages"
+    values:
+      layout: default
+      twitter_card: summary_large_image
+      og_type: article

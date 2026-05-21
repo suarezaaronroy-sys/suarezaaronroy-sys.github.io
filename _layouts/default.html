@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  
+  {% assign meta_title = page.og_title | default: page.title | default: site.title %}
+  {% assign meta_description = page.og_description | default: page.description | default: site.description %}
+  {% assign meta_url = page.canonical | default: site.url | append: page.url %}
+  {% assign meta_type = page.og_type | default: 'website' %}
+  {% assign twitter_card = page.twitter_card | default: site.twitter_card | default: 'summary_large_image' %}
+  {% assign twitter_title = page.twitter_title | default: meta_title %}
+  {% assign twitter_description = page.twitter_description | default: meta_description %}
+  {% assign twitter_site = page.twitter_site | default: site.twitter_username | default: '' %}
+
+  <title>{{ meta_title }}</title>
+  <meta name="description" content="{{ meta_description }}">
+  <meta name="keywords" content="{{ page.keywords | default: '' }}">
+  <meta name="author" content="{{ site.author }}">
+  <meta name="robots" content="{{ page.robots | default: 'index, follow' }}">
+  <link rel="canonical" href="{{ meta_url }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="{{ meta_type }}">
+  <meta property="og:title" content="{{ meta_title }}">
+  <meta property="og:description" content="{{ meta_description }}">
+  <meta property="og:url" content="{{ meta_url }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="{{ twitter_card }}">
+  <meta name="twitter:title" content="{{ twitter_title }}">
+  <meta name="twitter:description" content="{{ twitter_description }}">
+  {% if twitter_site != '' %}<meta name="twitter:site" content="@{{ twitter_site }}">{% endif %}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Global CSS (single source of truth) -->
+  <link rel="stylesheet" href="{{ "/assets/css/global.css" | relative_url }}">
+  {% if page.head_extra %}{{ page.head_extra | safe }}{% endif %}
+  
+  <!-- Google Analytics (site‑wide) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GYPEWZXH03', { page_title: '{{ page.title }}', page_path: '{{ page.url }}' });
+  </script>
+  
+  <!-- Page‑specific JSON‑LD can be added via front matter or directly in the page -->
+  {% if page.jsonld %}
+  <script type="application/ld+json">{{ page.jsonld | jsonify }}</script>
+  {% endif %}
+</head>
+<body id="top">
+  {% include header.html %}
+  <main id="main-content">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+  <a class="quick-anchor" href="#top" aria-label="Back to top">↑ top</a>
+  <script>document.getElementById('yr') && (document.getElementById('yr').textContent = new Date().getFullYear());</script>
+  <script src="{{ "/assets/js/ui.js" | relative_url }}" defer></script>
+  {% if page.body_footer %}{{ page.body_footer | safe }}{% endif %}
+</body>
+</html>

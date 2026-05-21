@@ -1,8 +1,8 @@
 /**
  * ui.js — Aaron Suarez Portfolio
- * Shared UI behaviors: theme persistence, prefers-color-scheme,
- * nav active state, collapsible sections, back-to-top anchor,
- * favicon fallback, GDPR consent banner, skip-to-content.
+ * Shared UI behaviors: prefers-color-scheme, nav active state,
+ * collapsible sections, back-to-top anchor, favicon fallback,
+ * GDPR consent banner, skip-to-content.
  *
  * Usage: <script src="/assets/js/ui.js" defer></script>
  */
@@ -10,69 +10,23 @@
 (function () {
   'use strict';
 
-  // ── DARK MODE CSS APPLICATION ─────────────────────────────
-  // Applies full dark mode via CSS custom property overrides on :root
-  // Works for both manual toggle (theme.html) and prefers-color-scheme
-  function applyDarkModeCSS() {
-    document.documentElement.style.setProperty('--bg',    '#1C1917');
-    document.documentElement.style.setProperty('--bg2',   '#292524');
-    document.documentElement.style.setProperty('--bg3',   '#3C3835');
-    document.documentElement.style.setProperty('--ink',   '#F5F2EC');
-    document.documentElement.style.setProperty('--ink2',  '#D6D3D1');
-    document.documentElement.style.setProperty('--ink3',  '#A8A29E');
-    document.documentElement.style.setProperty('--ink4',  '#78716C');
-    document.documentElement.style.setProperty('--border',  'rgba(245,242,236,0.1)');
-    document.documentElement.style.setProperty('--border2', 'rgba(245,242,236,0.05)');
-    document.body.style.background = '#1C1917';
-    document.body.style.color      = '#F5F2EC';
-    const topbar = document.querySelector('.topbar-wrap');
-    if (topbar) topbar.style.background = 'rgba(28,25,23,.95)';
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
-
-  function applyLightModeCSS() {
-    document.documentElement.style.removeProperty('--bg');
-    document.documentElement.style.removeProperty('--bg2');
-    document.documentElement.style.removeProperty('--bg3');
-    document.documentElement.style.removeProperty('--ink');
-    document.documentElement.style.removeProperty('--ink2');
-    document.documentElement.style.removeProperty('--ink3');
-    document.documentElement.style.removeProperty('--ink4');
-    document.documentElement.style.removeProperty('--border');
-    document.documentElement.style.removeProperty('--border2');
-    document.body.style.background = '';
-    document.body.style.color      = '';
-    const topbar = document.querySelector('.topbar-wrap');
-    if (topbar) topbar.style.background = '';
-    document.documentElement.removeAttribute('data-theme');
-  }
-
-  // ── THEME PERSISTENCE ─────────────────────────────────────
-  function applyTheme() {
-    const savedAccent = localStorage.getItem('accent');
-    if (savedAccent) {
-      document.documentElement.style.setProperty('--accent', savedAccent);
-    }
-
-    const savedMode = localStorage.getItem('theme');
-
-    if (savedMode === 'dark') {
-      applyDarkModeCSS();
-    } else if (savedMode === 'light') {
-      applyLightModeCSS();
+  // ── DARK MODE ─────────────────────────────────────────────
+  // Uses CSS dark mode tokens in global.css and applies the
+  // system preference via the document root attribute.
+  function setDarkMode(enabled) {
+    if (enabled) {
+      document.documentElement.setAttribute('data-theme', 'dark');
     } else {
-      // No saved preference — respect OS setting
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        applyDarkModeCSS();
-      }
+      document.documentElement.removeAttribute('data-theme');
     }
+  }
 
-    // Listen for OS theme changes in real time (when no manual override saved)
+  function initTheme() {
     if (window.matchMedia) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(prefersDark);
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-        if (!localStorage.getItem('theme')) {
-          e.matches ? applyDarkModeCSS() : applyLightModeCSS();
-        }
+        setDarkMode(e.matches);
       });
     }
   }
@@ -347,7 +301,7 @@
 
   // ── INIT ──────────────────────────────────────────────────
   function init() {
-    applyTheme();
+    initTheme();
     injectSkipLink();
     initConsent();
     setNavActive();

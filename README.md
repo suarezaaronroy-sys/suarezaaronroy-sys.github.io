@@ -14,8 +14,6 @@ Live at: `https://suarezaaronroy-sys.github.io/`
 ├── articles.html                 # Placeholder — planned pieces listed
 ├── projects.html                 # Grimoire list → direct links (no middle page)
 ├── notes.html                    # Full notes page, sidebar nav, no floating window
-├── theme.html                    # Visual preference settings (noindex)
-├── sound.html                    # Ambient sound player (noindex)
 ├── fix-my-systems.html           # Instant redirect → asmultitaskcollective
 │
 ├── grimoires/
@@ -198,6 +196,12 @@ Import on every page. Self-initializing. Sets up GA4 and all event tracking.
 Import on every page with `defer`. Handles:
 - Theme persistence from localStorage
 - Nav active state (fallback)
+
+---
+
+## Development Status
+- `README.md` updated to reflect that implementation work has started.
+- This repo is currently ready for edits and authoring improvements in the site files.
 - Collapsible sections (data-collapsible attributes)
 - Back-to-top anchor visibility
 - Favicon fallback
