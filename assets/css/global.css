@@ -1,45 +1,38 @@
-/* ── SHARED TOKENS & RESET ── */
+/* ── RESET & TOKENS ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: #F5F2EC; color: #1C1917; font-size: 15px; line-height: 1.7; }
+body { font-family: 'DM Sans', system-ui, sans-serif; background: #F5F2EC; color: #1C1917; font-size: 15px; line-height: 1.7; }
 
-/* ── KEYFRAME ANIMATIONS ── */
+/* ── KEYFRAME ANIMATIONS (The missing engine) ── */
 @keyframes fade {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* ── ANIMATION UTILITIES ── */
 .animate-fade-in { animation: fade 0.8s ease-out forwards; }
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 
-/* ── ABOUT PAGE SPECIFIC COMPONENTS ── */
-.page-header { margin-bottom: 3rem; }
+/* ── ABOUT PAGE LAYOUT RULES ── */
+.shell { width: min(1060px, calc(100% - 2.5rem)); margin: 0 auto; }
+.page-header { margin-bottom: 3rem; padding-top: 2rem; }
 .page-eyebrow { 
-    font-family: 'DM Mono', monospace; 
-    font-size: .62rem; 
-    text-transform: uppercase; 
-    letter-spacing: .12em; 
-    padding-left: .5rem; 
-    border-left: 2px solid #C2410C; 
-    margin-bottom: .7rem; 
-    color: #C2410C; 
+    font-family: 'DM Mono', monospace; font-size: .62rem; text-transform: uppercase; 
+    letter-spacing: .12em; padding-left: .5rem; border-left: 2px solid #C2410C; 
+    margin-bottom: .7rem; color: #C2410C; 
 }
 
-.capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+.capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
 .cap-card { background: #EDE9E0; padding: 1.5rem; border-radius: 8px; }
-.cap-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #78716C; }
+.cap-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #78716C; display: block; margin-bottom: 0.5rem; }
 
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
-.bio-card { background: #fff; padding: 2rem; border-radius: 12px; }
+.bio-card, .avail-card { background: #fff; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
 .timeline-col { border-left: 1px solid #E5E0D5; padding-left: 2rem; }
-.timeline-item { margin-bottom: 2.5rem; position: relative; }
+.timeline-item { margin-bottom: 3rem; position: relative; }
+.tl-badge { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.tl-tags { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
+.tl-tag { font-size: 0.7rem; background: #E5E0D5; padding: 2px 8px; border-radius: 4px; }
 
-/* ── ADD THE REST OF YOUR GLOBAL STYLES HERE ── */
-/* (Keep all your existing :root, .topbar, .footer, etc., code below this line) */
+/* ── ADD YOUR REMAINING GLOBAL STYLES BELOW ── */
+/* (Keep all your existing button, nav, and footer code here) */
