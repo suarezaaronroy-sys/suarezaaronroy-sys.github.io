@@ -22,720 +22,1139 @@
   --bg:#F5F2EC;--bg2:#EDE9E0;--bg3:#E5E0D5;
   --ink:#1C1917;--ink2:#44403C;--ink3:#78716C;--ink4:#A8A29E;
   --accent:#C2410C;--accent2:#EA580C;
-  --teal:#0D9488;--teal-bg:#CCFBF1;--teal-bd:rgba(13,148,136,.2);
-  --amber:#B45309;--amber-bg:#FEF3C7;--amber-bd:rgba(180,83,9,.2);
-  --blue:#1D4ED8;--blue-bg:#DBEAFE;--blue-bd:rgba(29,78,216,.2);
-  --green:#15803D;--green-bg:#DCFCE7;--green-bd:rgba(21,128,61,.2);
-  --purple:#7C3AED;--purple-bg:#F5F3FF;--purple-bd:rgba(124,58,237,.2);
   --border:rgba(28,25,23,0.12);--border2:rgba(28,25,23,0.06);
-  --dark:#1C1917;--dark-fg:#F5F2EC;--dark-muted:#A8A29E;
+  --dark:#1C1917;--dark-fg:#F5F2EC;
   --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
+  
+  /* Topic Color Codes */
+  --c-systems:#7C3AED;
+  --c-crm:#0D9488;
+  --c-operations:#EA580C;
+  --c-technical:#1D4ED8;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:radial-gradient(ellipse at 5% 0%,rgba(124,58,237,.03),transparent 40%),radial-gradient(ellipse at 95% 10%,rgba(194,65,12,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
+  background-image:radial-gradient(ellipse at 5% 0%,rgba(124,58,237,.02),transparent 40%),radial-gradient(ellipse at 95% 10%,rgba(194,65,12,.02),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");}
 a{color:inherit;text-decoration:none}
-::selection{background:rgba(194,65,12,.13)}
 .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
 
 /* ── TOPBAR ── */
 .topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
-.brand-icon{width:36px;height:36px;border-radius:8px;background:#1C1917;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
-.brand-icon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-.brand-icon-fallback{font-family:var(--mono);font-size:.78rem;font-weight:500;color:#F5F2EC;display:none}
+.brand{display:flex;align-items:center;gap:.75rem}
+.brand-icon{width:36px;height:36px;border-radius:8px;background:#1C1917;display:grid;place-items:center;overflow:hidden}
+.brand-icon img{width:100%;height:100%;object-fit:cover}
 .brand-copy strong{display:block;font-family:var(--mono);font-size:.82rem;line-height:1.2;color:var(--ink)}
 .brand-copy span{display:block;font-size:.64rem;color:var(--ink4);font-family:var(--mono);margin-top:.1rem}
-.nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
-.nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em}
-.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
-.nav .nav-active{color:var(--purple);border-color:var(--purple-bd);background:var(--purple-bg)}
+.nav{display:flex;align-items:center;gap:.28rem}
+.nav a{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);transition:.15s ease}
+.nav a:hover{border-color:var(--accent);color:var(--accent)}
+.nav .nav-active{color:#7C3AED;border-color:rgba(124,58,237,.2);background:#F5F3FF}
 .nav .nav-cta{background:var(--dark);color:var(--dark-fg);border-color:var(--dark);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* ── LAYOUT ── */
-.notes-layout{display:grid;grid-template-columns:230px 1fr;gap:0;min-height:calc(100vh - 56px)}
-
-/* ── SIDEBAR ── */
-.notes-sidebar{position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;border-right:1px solid var(--border);padding:1.6rem 0;scrollbar-width:thin;scrollbar-color:var(--border) transparent;background:rgba(255,255,255,.4)}
-.sb-section{margin-bottom:1.6rem;padding:0 1rem}
-.sb-section-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:.5rem;padding:0 8px}
-.sb-link{display:flex;align-items:center;padding:5px 8px;font-size:.76rem;color:var(--ink3);text-decoration:none;border-radius:5px;line-height:1.45;transition:.14s;gap:.35rem}
-.sb-link:hover{background:var(--bg2);color:var(--ink)}
-.sb-link.active{background:var(--bg3);color:var(--accent)}
-.sb-link.sub{padding-left:16px;font-size:.71rem}
-.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.sb-div{height:1px;background:var(--border);margin:.8rem 1rem}
-.sb-note{padding:0 1rem;font-size:.71rem;color:var(--ink4);line-height:1.65}
-.sb-note a{color:var(--accent);font-family:var(--mono);font-size:.65rem}
-
-/* ── MAIN ── */
-.notes-main{padding:2.8rem 2.8rem 5rem}
-
-/* Header */
-.notes-header{margin-bottom:2.4rem;padding-bottom:1.8rem;border-bottom:1px solid var(--border)}
-.page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--purple);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--purple);margin-bottom:.7rem}
-.notes-header h1{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.6rem;color:var(--ink)}
+/* ── MAIN LAYOUT ── */
+.notes-container{padding:2.5rem 0 5rem}
+.notes-header{margin-bottom:2rem}
+.notes-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;line-height:1.15;letter-spacing:-.02em}
 .notes-header h1 em{font-style:italic;font-weight:300;color:var(--accent)}
-.notes-header p{font-size:.9rem;color:var(--ink2);max-width:58ch;line-height:1.75}
+.notes-header p{font-size:.92rem;color:var(--ink2);max-width:60ch;margin-top:.5rem}
 
-/* Search */
-.search-row{display:flex;align-items:center;gap:.9rem;margin-bottom:1.8rem;flex-wrap:wrap}
-.notes-search{padding:.64rem 1rem;background:#fff;border:1px solid var(--border);border-radius:999px;font-family:var(--mono);font-size:.76rem;color:var(--ink);outline:none;transition:.15s;width:280px}
-.notes-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(194,65,12,.07)}
-.notes-search::placeholder{color:var(--ink4)}
-.filter-chips{display:flex;gap:.3rem;flex-wrap:wrap}
-.chip{font-family:var(--mono);font-size:.62rem;padding:.24rem .62rem;border-radius:999px;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);cursor:pointer;transition:.13s}
-.chip:hover{border-color:var(--accent);color:var(--accent)}
-.chip.active{background:rgba(194,65,12,.08);border-color:rgba(194,65,12,.25);color:var(--accent)}
-.active-filter{display:none;align-items:center;gap:.4rem;margin-bottom:1.2rem}
-.active-filter.show{display:flex}
-.af-pill{font-family:var(--mono);font-size:.62rem;padding:.2rem .6rem;border-radius:999px;background:rgba(194,65,12,.08);color:var(--accent);border:1px solid rgba(194,65,12,.2)}
-.af-clear{font-family:var(--mono);font-size:.62rem;color:var(--ink4);cursor:pointer;border:none;background:transparent;padding:0}
-.af-clear:hover{color:var(--accent)}
-
-/* Featured */
-.featured-note{background:#fff;border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:14px;padding:1.6rem 1.7rem;margin-bottom:2rem;transition:.18s ease;display:block;position:relative;overflow:hidden;color:inherit;text-decoration:none}
-.featured-note::before{content:"";position:absolute;right:0;top:0;width:180px;height:180px;background:radial-gradient(circle,rgba(124,58,237,.04),transparent 65%);pointer-events:none}
-.featured-note:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,25,23,.1)}
-.featured-eyebrow{display:flex;align-items:center;gap:.5rem;margin-bottom:.65rem}
-.featured-badge{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);padding:.14rem .44rem;border-radius:4px;background:var(--purple-bg);border:1px solid var(--purple-bd)}
-.featured-date{font-family:var(--mono);font-size:.58rem;color:var(--ink4)}
-.featured-note h2{font-family:var(--serif);font-size:1.28rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.2;letter-spacing:-.015em}
-.featured-note .featured-lead{font-size:.86rem;color:var(--ink2);line-height:1.72;margin-bottom:.7rem;max-width:62ch}
-.featured-meta{font-family:var(--mono);font-size:.6rem;color:var(--ink4)}
-.featured-arrow{position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:1.2rem;color:var(--purple);opacity:.3}
-
-/* Patterns */
-.patterns-section{margin:0 0 2.4rem;padding:1.8rem 2rem;background:#fff;border:1px solid var(--border);border-radius:14px;border-left:3px solid var(--amber)}
-.patterns-eyebrow{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:.6rem}
-.patterns-section h2{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.38rem;line-height:1.2}
-.patterns-section p{font-size:.84rem;color:var(--ink2);line-height:1.7;margin-bottom:1.1rem}
-.patterns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
-.pat{padding:.85rem .95rem;border:1px solid var(--border);border-radius:10px;background:var(--bg2);cursor:pointer;transition:.13s;text-decoration:none;color:inherit;display:block}
-.pat:hover{border-color:var(--amber);background:var(--amber-bg)}
-.pat-label{font-family:var(--mono);font-size:.57rem;color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.32rem}
-.pat h3{font-size:.81rem;font-weight:500;color:var(--ink);margin-bottom:.28rem;line-height:1.3}
-.pat p{font-size:.73rem;color:var(--ink3);line-height:1.56}
-
-/* Category sections */
-.cat-section{margin-bottom:2.6rem}
-.cat-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.1rem}
-.cat-badge{display:inline-flex;align-items:center;gap:.28rem;font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .52rem;border-radius:4px;border:1px solid}
-.cat-count{font-family:var(--mono);font-size:.62rem;color:var(--ink4)}
-
-/* Note cards (index) */
-.notes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem}
-.nc-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;transition:.17s ease;display:block;color:inherit;text-decoration:none;cursor:pointer}
-.nc-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(28,25,23,.09);border-color:rgba(28,25,23,.18)}
-.nc-cat{display:inline-flex;align-items:center;gap:.28rem;font-family:var(--mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;padding:.14rem .4rem;border-radius:4px;border:1px solid}
-.nc-card h3{font-family:var(--serif);font-size:.93rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;line-height:1.27}
-.nc-card p{font-size:.77rem;color:var(--ink3);line-height:1.6;margin-bottom:.55rem}
-.nc-meta{font-family:var(--mono);font-size:.57rem;color:var(--ink4)}
-
-/* ── FULL NOTE BODY ── */
-.note-full{border-top:2px solid var(--border);margin-top:.5rem;padding-top:1.5rem}
-.note-full-inner{max-width:640px}
-.note-body-text{font-size:.91rem;color:var(--ink2);line-height:1.82}
-.note-body-text p{margin-bottom:.9rem}
-.note-body-text p:last-child{margin-bottom:0}
-.note-body-text strong{color:var(--ink);font-weight:500}
-.note-body-text em{font-style:italic;color:var(--ink3)}
-.note-body-text blockquote{border-left:3px solid var(--accent);padding:.55rem 1rem;margin:.9rem 0;background:rgba(194,65,12,.04);border-radius:0 8px 8px 0;font-size:.87rem;color:var(--ink2);line-height:1.7;font-family:var(--serif);font-style:italic}
-.note-body-text blockquote strong{color:var(--ink);font-style:normal}
-.note-body-text table{width:100%;border-collapse:collapse;margin:.9rem 0;font-size:.81rem}
-.note-body-text th{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);text-align:left;padding:.5rem .72rem;border-bottom:1px solid var(--border);background:var(--bg2)}
-.note-body-text td{padding:.56rem .72rem;border-bottom:1px solid var(--border2);color:var(--ink2);line-height:1.5;vertical-align:top}
-.note-body-text td:first-child{color:var(--ink);font-weight:400}
-.note-body-text tr:last-child td{border-bottom:none}
-.note-body-text tr:hover td{background:var(--bg2)}
-.note-body-text h2{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--ink);margin:1.2rem 0 .48rem;line-height:1.2;letter-spacing:-.01em}
-.note-body-text h2::before{content:"— ";color:var(--accent);font-style:normal;font-weight:300}
-.nb-callout{display:flex;align-items:flex-start;gap:.52rem;padding:.62rem .85rem;margin:.85rem 0;border-radius:8px;font-size:.82rem;line-height:1.62;border:1px solid}
-.nb-callout.warn{background:rgba(194,65,12,.05);border-color:rgba(194,65,12,.17);color:#7C2D12}
-.nb-callout.rule{background:rgba(180,83,9,.05);border-color:rgba(180,83,9,.18);color:#78350F}
-.nb-callout.tip{background:rgba(13,148,136,.05);border-color:rgba(13,148,136,.18);color:#134E4A}
-.nb-i{flex-shrink:0;font-size:12px;margin-top:2px}
-.note-tkwy{display:flex;align-items:flex-start;gap:.48rem;margin-top:1rem;padding:.68rem .92rem;background:var(--bg2);border-radius:8px;border:1px solid var(--border);font-size:.8rem;color:var(--ink2);line-height:1.6;border-left:3px solid var(--accent)}
-.note-tkwy::before{content:"→";font-family:var(--mono);font-size:.74rem;color:var(--accent);flex-shrink:0;margin-top:1px}
-.read-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.64rem;color:var(--accent);background:rgba(194,65,12,.06);border:1px solid rgba(194,65,12,.18);padding:.28rem .65rem;border-radius:999px;cursor:pointer;margin-top:.9rem;transition:.13s;user-select:none}
-.read-toggle:hover{background:rgba(194,65,12,.12)}
-
-/* Bottom CTA */
-.bottom-cta{margin-top:2.4rem;padding:1.6rem 1.8rem;background:#fff;border:1px solid var(--border);border-radius:14px;border-left:3px solid var(--accent)}
-.bottom-cta-eye{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.5rem}
-.bottom-cta p{font-size:.87rem;color:var(--ink2);line-height:1.72;margin-bottom:.9rem;max-width:56ch}
-.btn-cta{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;color:#fff;background:var(--accent);border:1px solid var(--accent);padding:.62rem 1.1rem;border-radius:999px;font-weight:500;transition:.14s;text-decoration:none}
-.btn-cta:hover{background:#b83b0b;border-color:#b83b0b;transform:translateY(-1px)}
-
-/* Empty state */
-.empty-state{padding:2.5rem 0;font-family:var(--mono);font-size:.78rem;color:var(--ink4);display:none}
-.empty-state.show{display:block}
-
-/* Footer */
-.footer{padding:2.2rem 0 3rem;border-top:1px solid var(--border)}
-.footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
-.footer-links{display:flex;gap:1.2rem;align-items:center}
-.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
-.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.56rem .76rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
-.quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
-
-/* Responsive */
-@media(max-width:900px){
-  .notes-layout{grid-template-columns:1fr}
-  .notes-sidebar{display:none}
-  .notes-main{padding:2rem 1.2rem 4rem}
-  .notes-grid{grid-template-columns:1fr}
-  .patterns-grid{grid-template-columns:1fr}
-  .search-row{flex-direction:column;align-items:flex-start}
-  .notes-search{width:100%}
+/* ── TOP DECK FILTERS ── */
+.notebook-filters-container {max-width:760px;margin:0 auto 1.5rem;display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;}
+.filter-tab {
+  font-family:var(--mono);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;
+  background:var(--bg2);border:1px solid var(--border);padding:.4rem .9rem;border-radius:6px;
+  cursor:pointer;transition:all .2s ease;color:var(--ink3);display:inline-flex;align-items:center;gap:6px;
 }
+.filter-tab::before {content:'';width:6px;height:6px;border-radius:50%;background:var(--ink4);transition:background .2s;}
+.filter-tab:hover {border-color:var(--ink2);color:var(--ink);}
+.filter-tab.active {background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:0 2px 8px rgba(28,25,23,0.05);}
+.filter-tab[data-filter="all"].active::before { background:var(--accent); }
+.filter-tab[data-filter="systems"].active::before { background:var(--c-systems); }
+.filter-tab[data-filter="crm"].active::before { background:var(--c-crm); }
+.filter-tab[data-filter="operations"].active::before { background:var(--c-operations); }
+.filter-tab[data-filter="technical"].active::before { background:var(--c-technical); }
+
+/* ── CAROUSEL INTERACTIVE DECK ── */
+.notebook-stage-wrapper {position:relative;width:100%;max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:.75rem;}
+.notebook-stage{position:relative;width:100%;max-width:760px;perspective:1600px;padding-top:10px}
+.notebook-track{position:relative;width:100%;height:340px;transform-style:preserve-3d}
+
+/* Carousel Manual Navigation Controls */
+.carousel-btn {
+  width:40px;height:40px;border-radius:50%;background:var(--bg2);
+  border:1px solid var(--border);color:var(--ink3);font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:all .2s cubic-bezier(0.16, 1, 0.3, 1);z-index:20;flex-shrink:0;
+}
+.carousel-btn:hover {background:#fff;border-color:var(--accent);color:var(--accent);transform:scale(1.05);box-shadow:0 4px 12px rgba(194,65,12,0.08);}
+
+/* Soft Paper Flipping Animation & Framework Architecture */
+.notebook-card{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:#fff;border:1px solid var(--border);border-radius:6px 16px 16px 6px;
+  box-shadow:2px 4px 16px rgba(28,25,23,0.05), 0 1px 2px rgba(28,25,23,0.03);
+  padding:2.2rem 2.5rem 2.2rem 4.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transform-origin:left center;
+  /* Complex cubic bezier + transforms create dynamic 'paper bend' physics */
+  transition:transform 0.95s cubic-bezier(0.25, 1, 0.35, 1), opacity 0.85s ease, box-shadow 0.95s ease;
+  opacity:0;pointer-events:none;z-index:1;
+  background-image:linear-gradient(90deg, rgba(28,25,23,0.03) 0%, transparent 2.5%, transparent 97.5%, rgba(28,25,23,0.015) 100%);
+}
+
+/* Notebook Spine/Spiral Indicator */
+.notebook-spine {
+  position:absolute;left:0;top:0;height:100%;width:42px;
+  border-right:1px solid rgba(28,25,23,0.07);
+  background:rgba(28,25,23,0.01);
+  background-image:
+    linear-gradient(to bottom, transparent 8px, #A8A29E 8px, #A8A29E 12px, transparent 12px),
+    radial-gradient(circle at 26px 10px, var(--bg) 4.5px, rgba(28,25,23,0.15) 5.5px, transparent 6px);
+  background-size: 100% 24px, 100% 24px;
+  background-repeat: repeat-y;
+  box-shadow: inset -4px 0 12px rgba(0,0,0,0.015);
+  border-radius: 5px 0 0 5px;
+}
+
+/* Soft Paper Stack Classes */
+.notebook-card.active {
+  opacity:1;pointer-events:auto;z-index:10;
+  transform:rotateY(0deg) skewY(0deg) scaleX(1) translateZ(0px);
+  box-shadow:4px 12px 32px rgba(28,25,23,0.08), 0 2px 4px rgba(28,25,23,0.04);
+}
+.notebook-card.prev {
+  opacity:0;pointer-events:none;z-index:5;
+  transform:rotateY(-125deg) skewY(-3.5deg) scaleX(0.95) translateZ(50px);
+}
+.notebook-card.next {
+  opacity:0.65;pointer-events:auto;z-index:4;
+  cursor:pointer;
+  transform:rotateY(4deg) skewY(0.6deg) scaleX(0.99) translateZ(-35px) translateX(10px);
+}
+.notebook-card.next:hover {
+  opacity:0.85;
+  transform:rotateY(2deg) skewY(0.3deg) scaleX(1) translateZ(-20px) translateX(14px);
+}
+.notebook-card.queue {
+  opacity:0;pointer-events:none;z-index:1;
+  transform:rotateY(8deg) skewY(1deg) translateZ(-70px) translateX(20px);
+}
+
+/* Card Decorative Topic Bookmark Tag */
+.notebook-bookmark{
+  position:absolute;top:18px;right:0;height:18px;padding:0 .5rem;
+  border-radius:3px 0 0 3px;font-family:var(--mono);font-size:.52rem;
+  font-weight:500;text-transform:uppercase;letter-spacing:.06em;
+  color:#fff;display:flex;align-items:center;
+}
+.notebook-card[data-topic="systems"] .notebook-bookmark { background:var(--c-systems); }
+.notebook-card[data-topic="crm"] .notebook-bookmark { background:var(--c-crm); }
+.notebook-card[data-topic="operations"] .notebook-bookmark { background:var(--c-operations); }
+.notebook-card[data-topic="technical"] .notebook-bookmark { background:var(--c-technical); }
+
+/* Card Content Topology */
+.nb-meta-row{display:flex;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.62rem;color:var(--ink4)}
+.nb-meta-row .dot-separator{width:4px;height:4px;border-radius:50%;background:var(--border)}
+.notebook-card h2{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.22;color:var(--ink);margin:.6rem 0 .4rem;max-width:32ch}
+.notebook-card .nb-summary{font-size:.82rem;color:var(--ink2);line-height:1.6;max-width:64ch;flex-grow:1}
+
+.nb-footer-row{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem;padding-top:.6rem;border-top:1px dashed var(--border2)}
+.nb-read-btn{
+  font-family:var(--mono);font-size:.68rem;color:var(--accent);
+  background:rgba(194,65,12,0.06);border:1px solid rgba(194,65,12,0.15);
+  padding:.35rem .85rem;border-radius:4px;cursor:pointer;transition:.15s ease;
+}
+.nb-read-btn:hover{background:rgba(194,65,12,0.12);border-color:var(--accent)}
+.carousel-nav-dots{display:flex;gap:.35rem}
+.carousel-dot{width:6px;height:6px;border-radius:50%;background:var(--bg3);cursor:pointer;transition:.2s}
+.carousel-dot.active{background:var(--ink);transform:scale(1.2)}
+
+/* ── FULL LENGTH DOCUMENT DISPLAY BLOCK ── */
+.full-span-document-wrapper{margin-top:3.5rem;border-top:1px solid var(--border);padding-top:3rem;background:transparent}
+.full-span-inner{max-width:720px;margin:0 auto}
+
+.doc-view-node{display:none;animation:fadeInDoc .4s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+.doc-view-node.active-document{display:block}
+
+@keyframes fadeInDoc{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Default Cover Styling */
+.notebook-cover-placeholder {
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:4rem 2rem;background:linear-gradient(145deg, #fff, var(--bg2));
+  border:1px dashed var(--border);border-radius:12px;box-shadow:inset 0 0 40px rgba(28,25,23,0.02);
+}
+.notebook-cover-placeholder .cover-icon {font-size:2.5rem;margin-bottom:1rem;opacity:0.8;}
+.notebook-cover-placeholder h2 {font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;}
+.notebook-cover-placeholder p {font-family:var(--mono);font-size:.75rem;color:var(--ink3);max-width:40ch;}
+
+/* Document Typography */
+.doc-header-block{margin-bottom:1.8rem}
+.doc-eyebrow-badge{display:inline-block;font-family:var(--mono);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:#fff;padding:.18rem .5rem;border-radius:3px;margin-bottom:.6rem}
+.badge-systems{background:var(--c-systems)}
+.badge-crm{background:var(--c-crm)}
+.badge-operations{background:var(--c-operations)}
+.badge-technical{background:var(--c-technical)}
+
+.doc-header-block h2{font-family:var(--serif);font-size:1.85rem;font-weight:600;line-height:1.2;color:var(--ink);letter-spacing:-.015em}
+.doc-header-block .doc-timestamp{font-family:var(--mono);font-size:.65rem;color:var(--ink4);margin-top:.4rem;display:block}
+
+.doc-body-content{font-size:.92rem;color:var(--ink2);line-height:1.8}
+.doc-body-content p{margin-bottom:1rem}
+.doc-body-content p:last-child{margin-bottom:0}
+.doc-body-content strong{color:var(--ink);font-weight:500}
+.doc-body-content h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--ink);margin:1.5rem 0 .5rem;letter-spacing:-.01em}
+.doc-body-content h3::before{content:"— ";color:var(--accent)}
+
+/* Embedded UI components */
+.doc-blockquote{border-left:3px solid var(--accent);padding:.6rem 1.1rem;margin:1.2rem 0;background:rgba(194,65,12,.03);border-radius:0 8px 8px 0;font-family:var(--serif);font-style:italic}
+.doc-table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.82rem}
+.doc-table th{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding Ram .75rem;border-bottom:1px solid var(--border);background:var(--bg2)}
+.doc-table td{padding:.6rem .75rem;border-bottom:1px solid var(--border2);color:var(--ink2);vertical-align:top}
+.doc-table td:first-child{color:var(--ink);font-weight:400}
+.doc-table tr:hover td{background:var(--bg2)}
+
+.doc-callout{display:flex;align-items:flex-start;gap:.6rem;padding:.75rem 1rem;margin:1.1rem 0;border-radius:8px;font-size:.84rem;line-height:1.65;border:1px solid}
+.doc-callout.warn{background:rgba(194,65,12,.04);border-color:rgba(194,65,12,.15);color:#7C2D12}
+.doc-callout.tip{background:rgba(13,148,136,.04);border-color:rgba(13,148,136,.15);color:#134E4A}
+.doc-callout-icon{flex-shrink:0;font-size:12px;margin-top:2px}
+
+.doc-takeaway{display:flex;align-items:flex-start;gap:.5rem;margin-top:1.4rem;padding:.8rem 1rem;background:var(--bg2);border-radius:8px;border:1px solid var(--border);border-left:3px solid var(--accent);font-size:.84rem}
+.doc-takeaway::before{content:"→";font-family:var(--mono);color:var(--accent);font-weight:500;margin-top:1px}
+
+/* Bottom Actions Box */
+.doc-cta-footer{margin-top:3.5rem;padding:2rem;background:#fff;border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--accent)}
+.doc-cta-footer h4{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.4rem}
+.doc-cta-footer p{font-size:.86rem;color:var(--ink2);line-height:1.7;margin-bottom:1rem;max-width:56ch}
+.btn-action{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.7rem;color:#fff;background:var(--accent);padding:.6rem 1.1rem;border-radius:999px;font-weight:500;transition:.15s ease}
+.btn-action:hover{background:#b83b0b;transform:translateY(-1px)}
+
+/* ── FOOTER LAYER ── */
+.footer{padding:2.5rem 0 3.5rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer-line{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4)}
+.footer-links{display:flex;gap:1.2rem}
+.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
+
+/* Mobile Responsive Matrix */
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
-  .nav{width:100%;justify-content:flex-start}
-  .quick-anchor{right:12px;bottom:12px}
+  .nav{width:100%;justify-content:flex-start;margin-top:.25rem}
+  .notes-container{padding:1.5rem 0 3.5rem}
+  
+  .notebook-stage-wrapper {flex-direction: column; gap:1.2rem;}
+  .carousel-btn {display:none;}
+  
+  .notebook-track{height:390px}
+  .notebook-card{padding:1.5rem 1.4rem 1.5rem 3.2rem;}
+  .notebook-spine {width: 28px; background-size: 100% 20px, 100% 20px;}
 }
 </style>
 </head>
-<body id="top">
+<body>
 
-<!-- TOPBAR -->
 <div class="topbar-wrap">
   <div class="topbar shell">
     <a href="/" class="brand">
       <div class="brand-icon">
-        <img src="/favicon.png" alt="AS" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <span class="brand-icon-fallback">AS</span>
+        <img src="/favicon.png" alt="Aaron Suarez" onerror="this.style.display='none'">
       </div>
       <div class="brand-copy">
         <strong>Aaron Suarez</strong>
-        <span>Valencia City, PH · systems builder · remote-first</span>
+        <span>Valencia City, PH · systems builder</span>
       </div>
     </a>
     <nav class="nav">
       <a href="/about.html">About</a>
-      <a href="/articles.html">Articles</a>
       <a href="/projects.html">Projects</a>
+      <a href="/articles.html">Articles</a>
       <a href="/notes.html" class="nav-active">Notes</a>
-      <a href="/theme.html">Theme</a>
-      <a href="/sound.html">Sound</a>
       <a href="/fix-my-systems.html" class="nav-cta">Fix My Systems &rarr;</a>
     </nav>
   </div>
 </div>
 
-<div class="notes-layout">
-
-<!-- SIDEBAR -->
-<aside class="notes-sidebar" id="sidebar">
-  <div class="sb-section">
-    <div class="sb-section-label">Jump to</div>
-    <a href="#featured" class="sb-link">&#9733; Featured note</a>
-    <a href="#patterns" class="sb-link">&#8635; Patterns</a>
-  </div>
-  <div class="sb-section">
-    <div class="sb-section-label">By category</div>
-    <a href="#cat-systems" class="sb-link"><span class="sb-dot" style="background:#7c3aed"></span>Systems</a>
-    <a href="#cat-crm" class="sb-link"><span class="sb-dot" style="background:var(--teal)"></span>CRM</a>
-    <a href="#cat-ops" class="sb-link"><span class="sb-dot" style="background:var(--accent)"></span>Operations</a>
-    <a href="#cat-technical" class="sb-link"><span class="sb-dot" style="background:var(--blue)"></span>Technical</a>
-    <a href="#cat-founder" class="sb-link"><span class="sb-dot" style="background:var(--green)"></span>Founder notes</a>
-  </div>
-  <div class="sb-div"></div>
-  <div class="sb-section">
-    <div class="sb-section-label">Recent</div>
-    <a href="#note-stop-training" class="sb-link sub">Stop Training People...</a>
-    <a href="#note-escalation" class="sb-link sub">The Escalation Tax</a>
-    <a href="#note-handoffs" class="sb-link sub">Handoffs Die Here</a>
-    <a href="#note-crm-os" class="sb-link sub">CRM as OS</a>
-    <a href="#note-ghl101" class="sb-link sub">Why I Published GHL 101</a>
-  </div>
-  <div class="sb-div"></div>
-  <div class="sb-note">Notes are shorter than articles. Specific enough to be useful. Not formatted for virality.<br><br><a href="/articles.html">Articles &rarr;</a></div>
-</aside>
-
-<!-- MAIN -->
-<main class="notes-main" id="main-content">
-
-  <!-- Header -->
+<div class="shell notes-container">
+  
   <header class="notes-header">
-    <div class="page-eyebrow">Notes &middot; Field Logs &middot; Operational Thinking</div>
     <h1>Operational thinking, <em>written down.</em></h1>
-    <p>Field observations from real operations. How breakdowns happen, why they repeat, and what the fix actually requires. Not theory &mdash; pattern recognition from working inside real systems.</p>
+    <p>Field observations from growth-stage operations. No theoretical fluff—just structural post-mortems on how pipelines rot, why handoffs break, and how to build deterministic workflows.</p>
   </header>
 
-  <!-- Search + Filter -->
-  <div class="search-row">
-    <input type="text" class="notes-search" id="noteSearch" placeholder="Search notes&hellip;" autocomplete="off"/>
-    <div class="filter-chips" id="filterChips">
-      <button class="chip active" data-cat="all">All</button>
-      <button class="chip" data-cat="systems">Systems</button>
-      <button class="chip" data-cat="crm">CRM</button>
-      <button class="chip" data-cat="operations">Operations</button>
-      <button class="chip" data-cat="technical">Technical</button>
-      <button class="chip" data-cat="founder">Founder</button>
-    </div>
-  </div>
-  <div class="active-filter" id="activeFilter">
-    <span class="af-pill" id="afPill"></span>
-    <button class="af-clear" id="clearFilter">Clear</button>
+  <div class="notebook-filters-container">
+    <button class="filter-tab active" data-filter="all">All</button>
+    <button class="filter-tab" data-filter="systems">Systems</button>
+    <button class="filter-tab" data-filter="crm">CRM</button>
+    <button class="filter-tab" data-filter="operations">Operations</button>
+    <button class="filter-tab" data-filter="technical">Technical</button>
   </div>
 
-  <!-- Featured -->
-  <section id="featured">
-    <div class="featured-note" id="note-stop-training" data-cat="systems">
-      <div class="featured-eyebrow">
-        <span class="featured-badge">&#9733; Featured &middot; Systems</span>
-        <span class="featured-date">Mar 2026</span>
-      </div>
-      <h2>Stop Training People. Start Building Systems That Set Them Free.</h2>
-      <p class="featured-lead">When teams keep asking the same questions, the issue is rarely memory &mdash; it's the environment around the work. And environments can be redesigned.</p>
-      <div class="featured-meta">4 min read &middot; Systems design</div>
-      <div class="note-full">
-        <div class="note-full-inner">
-          <div class="note-body-text">
-            <p>Learning is hard. Not because people aren't smart &mdash; but because we keep making it harder than it needs to be. I've spent years inside operations, CRM rollouts, and support environments. Across every one, I kept watching the same thing unfold: something breaks down, leadership responds by adding more training, and it rarely fixes the actual problem.</p>
-            <h2>The thing that kept bothering me</h2>
-            <p>Capable people were constantly getting stuck on simple things. Not because they didn't understand the work. Because the environment around the work gave them nowhere to turn except up. Every edge case, every exception, every "here's how we actually handle that" lived in someone's head &mdash; usually a senior person, usually already stretched thin. So the default became: <em>I need my supervisor to unblock this.</em></p>
-            <p>This wasn't a learning failure. It was a <strong>systems failure.</strong> We were asking people to navigate without a compass and then blaming them for getting lost.</p>
-            <h2>What over-training actually creates</h2>
-            <p>When we over-train, we don't build confidence &mdash; we build dependency. Endless documentation creates people who say "I'll just ask Sarah." Complex SOPs create people who say "Where do I even start?" More meetings create people who wait for confirmation. None of those responses are laziness. They're rational responses to an environment that never equipped people to decide independently.</p>
-            <blockquote>The gap between "what we trained on" and "what actually happens on Monday morning" tells you everything about your system.</blockquote>
-            <p>Think about handing someone a map of every back road in a city versus handing them a compass and teaching them to navigate. One creates someone who can follow instructions. The other creates someone who can get anywhere &mdash; including places you never mapped.</p>
-            <h2>What actually works</h2>
-            <p>The teams operating at the highest level didn't solve this by training harder. They built better systems around the work itself. Shorter, sharper onboarding &mdash; new people get the essentials, enough to start moving, not every edge case front-loaded into week one. Documentation and decision trees that surface answers at the moment of need instead of routing everything back up the chain. Frameworks over permission: someone who understands <em>why</em> a process exists can handle cases you never explicitly trained for. Autonomy built in from day one &mdash; not something earned after years of tenure.</p>
-            <p>The shift isn't from training to not training. It's from training as the primary fix to systems as the primary fix, with training playing a supporting role.</p>
-            <div class="note-tkwy">Look at your training and onboarding right now and ask: is this building navigators &mdash; or creating dependency? If people keep coming back with questions you've already answered, it's probably not their memory. It's the system. Systems can be redesigned.</div>
+  <div class="notebook-stage-wrapper">
+    <button class="carousel-btn" id="btnPrevCarousel" aria-label="Previous Note">&lsaquo;</button>
+    
+    <section class="notebook-stage" id="carouselStage">
+      <div class="notebook-track" id="carouselTrack">
+        
+        <div class="notebook-card" data-topic="systems" data-target="doc-systems-0">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Systems</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 01</span><span class="dot-separator"></span><span>Mar 2026</span></div>
+            <h2>Stop Training People. Start Building Systems That Set Them Free.</h2>
+            <p class="nb-summary">When teams keep repeating operating errors, the flaw isn't employee memory parameters—it's the architecture around the decision node itself.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Patterns -->
-  <section class="patterns-section" id="patterns">
-    <div class="patterns-eyebrow">&#8635; Recurring Patterns</div>
-    <h2>The operational failures that keep recurring.</h2>
-    <p>These aren't unique problems. They're patterns &mdash; and patterns can be fixed with the right structure.</p>
-    <div class="patterns-grid">
-      <a href="#note-crm-os" class="pat">
-        <div class="pat-label">Pattern &middot; CRM</div>
-        <h3>The CRM nobody trusts.</h3>
-        <p>Stages that don't match reality. Data that reflects what was entered, not what happened. Nobody updates what nobody trusts.</p>
-      </a>
-      <a href="#note-escalation" class="pat">
-        <div class="pat-label">Pattern &middot; Escalation</div>
-        <h3>The tax nobody measures.</h3>
-        <p>10 interruptions/day = 3+ hours of senior time. Every escalation costs not just 5 minutes &mdash; it costs the switching time too.</p>
-      </a>
-      <a href="#note-handoffs" class="pat">
-        <div class="pat-label">Pattern &middot; Handoffs</div>
-        <h3>Handoffs are where work dies.</h3>
-        <p>The work passes. The context doesn't. The next person starts over, makes wrong assumptions, or stalls.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- SYSTEMS CATEGORY -->
-  <section class="cat-section" id="cat-systems">
-    <div class="cat-header">
-      <span class="cat-badge" style="color:#7c3aed;background:var(--purple-bg);border-color:var(--purple-bd)">&#9881; Systems</span>
-      <span class="cat-count">2 notes</span>
-    </div>
-    <div class="notes-grid" id="grid-systems">
-
-      <div class="nc-card" data-cat="systems" id="note-process-system">
-        <div class="nc-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:var(--purple-bd)">&#9881; Systems</div>
-        <h3>The Difference Between a Process and a System</h3>
-        <p>People use these words interchangeably. They're not the same thing &mdash; and the distinction matters if you're trying to build something that runs without you.</p>
-        <div class="nc-meta">Jan 2026 &middot; 3 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <table>
-                <tr><th>Concept</th><th>Definition</th></tr>
-                <tr><td>Process</td><td>A sequence of steps</td></tr>
-                <tr><td>System</td><td>An environment where the process happens reliably, even when you're not watching</td></tr>
-              </table>
-              <h2>A process without a system</h2>
-              <p>You write an SOP. You train the team on it. Everyone nods. For a few weeks, things run the way you designed them. Then someone leaves, or a new person joins, or the workload spikes. The process quietly degrades &mdash; steps get skipped, shortcuts become the default, the SOP sits in a folder no one opens. The process existed. The <strong>system</strong> didn't. The process described what should happen. The system is what makes it happen regardless of conditions.</p>
-              <h2>What the difference looks like in practice</h2>
-              <p>A process tells people what to do. A system makes it harder to do it wrong. A process depends on memory. A system has built-in accountability. A process requires enforcement. A system is self-correcting. A process breaks under pressure. A system adapts. The difference isn't in the quality of the documentation &mdash; it's in whether the environment around the work reinforces the right behavior even when nobody is watching.</p>
-              <p>A CRM that requires a stage change before an invoice can be sent is a system. A CRM where people are <em>supposed to</em> change the stage before sending an invoice is a process. One enforces. The other relies on memory and discipline under pressure.</p>
-              <h2>The practical test</h2>
-              <blockquote>If you removed yourself from the operation for two weeks with no warning &mdash; what would break?</blockquote>
-              <p>If the answer is "a lot," the knowledge, judgment, and coordination are still sitting in your head instead of being encoded into the environment. The path forward isn't to build everything at once. Pick the one thing that breaks most often. Build it until it runs without you. Then move to the next one.</p>
-              <div class="note-tkwy">You don't need to systemize everything at once. Pick the single most common failure. Build until it stops failing. Then repeat.</div>
-            </div>
+        <div class="notebook-card" data-topic="crm" data-target="doc-crm-0">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">CRM</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 02</span><span class="dot-separator"></span><span>Jan 2026</span></div>
+            <h2>CRM as OS: Building Pipelines that Enforce the Next Human Move</h2>
+            <p class="nb-summary">Stop using CRM pipelines merely as basic filing cabinets. Re-engineer pipeline structures to actively orchestrate human steps on click triggers.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-      <div class="nc-card" data-cat="systems" id="note-stop-training-2">
-        <div class="nc-cat" style="color:#7c3aed;background:var(--purple-bg);border-color:var(--purple-bd)">&#9733; Featured &middot; Systems</div>
-        <h3>Stop Training People. Start Building Systems That Set Them Free.</h3>
-        <p>The environment gives people nowhere to turn except up. And environments can be redesigned.</p>
-        <div class="nc-meta">Mar 2026 &middot; 4 min read</div>
-        <a href="#note-stop-training" class="read-toggle" style="display:inline-flex">Read above &uarr;</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CRM CATEGORY -->
-  <section class="cat-section" id="cat-crm">
-    <div class="cat-header">
-      <span class="cat-badge" style="color:var(--teal);background:var(--teal-bg);border-color:var(--teal-bd)">&#128202; CRM</span>
-      <span class="cat-count">1 note</span>
-    </div>
-    <div class="notes-grid">
-
-      <div class="nc-card" data-cat="crm" id="note-crm-os">
-        <div class="nc-cat" style="color:var(--teal);background:var(--teal-bg);border-color:var(--teal-bd)">&#128202; CRM</div>
-        <h3>CRM Isn't Just a Database. It's an Operating System.</h3>
-        <p>Most teams use their CRM as a filing cabinet. A well-architected CRM is an operating system for how your team works.</p>
-        <div class="nc-meta">Jan 2026 &middot; 3 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>Most teams use their CRM as a filing cabinet. They put records in. They pull records out. They report on what's there. That's not what a CRM is for. A well-architected CRM is an <strong>operating system</strong> for how your team works &mdash; it tells people what to do next, tracks what's been done, surfaces what's slipping, and makes accountability visible without someone having to chase it.</p>
-              <h2>What a filing cabinet CRM looks like</h2>
-              <p>You know you're in filing cabinet territory when contacts have no clear stage, when status fields mean different things depending on who filled them in, when notes are written for the person who wrote them rather than the next person who opens the record, and when your reports tell you what happened but not why. The data exists but it doesn't do anything.</p>
-              <h2>What an operating system CRM looks like</h2>
-              <p>Every record has a clear status that maps to the actual state of the work. Stages trigger tasks: the right action surfaces at the right moment without someone having to remember. Field usage is consistent across the team so the data is trustworthy enough to act on. Next steps are visible to anyone who opens the record, not just the person managing it.</p>
-              <h2>The gap between the two</h2>
-              <p>Getting from filing cabinet to operating system requires someone to make decisions about how your team actually works and then <strong>encode those decisions into the CRM.</strong> That's not a software configuration problem. It's a workflow design problem that happens to be solved with software. Most teams skip this step. They install the platform, set up some default fields, push it out, and wonder why adoption is low six months later.</p>
-              <p>The structure has to come before the configuration. You can't configure your way to good pipeline design. You have to decide how the work moves first, then build the system around that decision.</p>
-              <div class="note-tkwy">If your CRM requires a conversation to understand where something stands, it's working as a filing cabinet. The operating system version answers that question the moment you open the record.</div>
-            </div>
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-0">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 03</span><span class="dot-separator"></span><span>Feb 2026</span></div>
+            <h2>The Escalation Tax: Managing the Margin Bleed of Vague Parameters</h2>
+            <p class="nb-summary">Every single time a junior team member opens slack to ask an unstructured exception question, your leadership tier pays a hefty context tax.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- OPERATIONS CATEGORY -->
-  <section class="cat-section" id="cat-ops">
-    <div class="cat-header">
-      <span class="cat-badge" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</span>
-      <span class="cat-count">3 notes</span>
-    </div>
-    <div class="notes-grid">
-
-      <div class="nc-card" data-cat="operations" id="note-escalation">
-        <div class="nc-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</div>
-        <h3>The Escalation Tax: What It's Costing You Every Day</h3>
-        <p>Senior staff interrupted constantly. 10 escalations/day might be costing you 3+ hours of focused work &mdash; not 50 minutes.</p>
-        <div class="nc-meta">Mar 2026 &middot; 3 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>There's a cost every team pays that almost no one measures. Not in dashboards. Not in reports. Not in any budget line. It shows up as a senior person constantly interrupted. A team member who can't decide without checking first. A founder still answering the same questions from six months ago. I call it the <strong>escalation tax.</strong></p>
-              <h2>What it looks like</h2>
-              <p>Someone hits a situation they haven't encountered before. Nothing in the documentation covers it. So they do the rational thing: they ask. The ask goes up the chain. The person at the top figures it out, gives an answer, moves on. But they don't write it down. Three weeks later, someone else hits the same situation and the cycle repeats. Multiply by ten people, fifty edge cases, and a year of operation &mdash; and you have an organization where senior people are spending the majority of their cognitive capacity re-answering questions that have already been answered.</p>
-              <h2>The hidden multiplier</h2>
-              <p>What most managers don't account for is the <strong>switching cost.</strong> Every interruption costs not just the 5 minutes of the conversation, but the time to re-enter context before and after.</p>
-              <table>
-                <tr><th>Interruptions/day</th><th>At 5 min each</th><th>With 15 min switching cost</th></tr>
-                <tr><td>5</td><td>25 minutes</td><td>1.6 hours</td></tr>
-                <tr><td>10</td><td>50 minutes</td><td>3.3 hours</td></tr>
-                <tr><td>20</td><td>1.6 hours</td><td>6.6 hours</td></tr>
-              </table>
-              <h2>How to cut it</h2>
-              <p>The fix isn't telling people to stop asking. People ask because asking is the most reliable path to an answer. The fix is building infrastructure that makes asking unnecessary for the common cases. Decision trees for your top twenty edge cases. A searchable, current knowledge base. Clear ownership so there's no guessing. Documented escalation paths so exceptions are structured, not ad hoc.</p>
-              <p>The goal isn't zero escalations &mdash; some things genuinely require judgment. The goal is that by the time something reaches a senior person, it <em>actually</em> requires their judgment, not just their memory.</p>
-              <div class="note-tkwy">Count how many questions your senior people answered today that they've answered before. That number is your escalation tax. It's also your clearest signal of where to build next.</div>
-            </div>
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-0b">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 04</span><span class="dot-separator"></span><span>Nov 2025</span></div>
+            <h2>Handoffs Die Here: The Danger of Inter-Departmental Silence</h2>
+            <p class="nb-summary">Work streams consistently freeze the exact second they step outside one division boundary. Enforceable verification checks guard metrics continuity.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-      <div class="nc-card" data-cat="operations" id="note-handoffs">
-        <div class="nc-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</div>
-        <h3>Handoffs Are Where Work Goes to Die</h3>
-        <p>The artifact passes. The reasoning doesn't. The next person starts over or stalls waiting for the context that should have been included.</p>
-        <div class="nc-meta">Feb 2026 &middot; 3 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>Most operational failures don't happen inside a task. They happen <strong>between tasks.</strong> The work is finished on one end. It moves to the next person. Something gets lost in the gap &mdash; context, status, an edge case that was handled but never communicated. The next person either starts from scratch, makes a wrong assumption, or pauses the whole thing to ask.</p>
-              <h2>Why this keeps happening</h2>
-              <p>The person passing the work knows everything about it. They lived it. So they hand over the artifact &mdash; the file, the record, the ticket update &mdash; <strong>without handing over the thinking that shaped it.</strong> The receiving person gets the output but not the reasoning. This isn't negligence. It's a natural result of proximity. The solution isn't to tell people to communicate better &mdash; it's to build a handoff structure that prompts the right information every time, automatically.</p>
-              <h2>What a useful handoff actually contains</h2>
-              <table>
-                <tr><th>Element</th><th>Example</th><th>What it prevents</th></tr>
-                <tr><td>Status at transfer</td><td>"Quote sent, awaiting response"</td><td>Status confusion</td></tr>
-                <tr><td>Key decisions made</td><td>"Offered 10% for annual commit"</td><td>Undocumented context</td></tr>
-                <tr><td>Open items with owner</td><td>"Legal review &mdash; Sarah owns"</td><td>Dropped threads</td></tr>
-                <tr><td>Non-obvious context</td><td>"Client mentioned competitor pricing"</td><td>Missing signal</td></tr>
-              </table>
-              <h2>Making it structural</h2>
-              <p>The best handoff systems don't rely on people remembering &mdash; they build the structure into the tool. A CRM with required fields before stage advancement. A ticket system that surfaces a handoff template on status change. The format matters less than the consistency. People fill out what's in front of them.</p>
-              <div class="note-tkwy">If the receiving person has to ask a question before they can start, the handoff wasn't finished. Design for continuity without a conversation.</div>
-            </div>
+        <div class="notebook-card" data-topic="technical" data-target="doc-tech-0">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Technical</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 05</span><span class="dot-separator"></span><span>Oct 2025</span></div>
+            <h2>Why I Hand-Coded a 300KB System Blueprint from Scratch</h2>
+            <p class="nb-summary">Behind the technical maps of complex GoHighLevel setups and how granular mapping preserves operational runtime when platform updates break webhooks.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-      <div class="nc-card" data-cat="operations" id="note-founders">
-        <div class="nc-cat" style="color:var(--accent);background:rgba(194,65,12,.06);border-color:rgba(194,65,12,.2)">&#128295; Operations</div>
-        <h3>What Founders Actually Need From an Ops Person</h3>
-        <p>Not a task executor. Someone who can take a vague direction and figure out what it actually means to implement it.</p>
-        <div class="nc-meta">Dec 2025 &middot; 3 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>I've worked with founders at different stages. The needs are surprisingly consistent regardless of company size. What founders need is not a task executor &mdash; anyone can execute tasks. What they need is someone who can take a vague direction and figure out what it actually means to implement it without being told every step.</p>
-              <blockquote><strong>"We need to be more organized"</strong> is not a task. Turning that into a system &mdash; figuring out where the friction is, what needs to be documented, what should be automated, what needs a human decision point &mdash; that's the actual work.</blockquote>
-              <h2>The translation problem</h2>
-              <p>Founders think in strategy, relationships, and product. That's the right level for them to operate at. But strategy has to become execution at some point, and the translation layer between the two is where most operational problems live. A good ops person holds that translation layer.</p>
-              <table>
-                <tr><th>Founder's role</th><th>Ops person's role</th></tr>
-                <tr><td>Strategy</td><td>Translate strategy into execution steps</td></tr>
-                <tr><td>Relationships</td><td>Build infrastructure that scales them</td></tr>
-                <tr><td>Product</td><td>Remove operational drag from the team</td></tr>
-                <tr><td>Vision</td><td>Make vision something the org can execute daily</td></tr>
-              </table>
-              <h2>What to look for</h2>
-              <p>An ops person who understands this doesn't wait to be assigned work. They're watching for drag. They're asking: Where is this slowing down? What's not captured anywhere? What would break if I wasn't here for two weeks? Process thinking is the actual skill. The tools are just how it gets applied.</p>
-              <div class="note-tkwy">Every hour a founder spends routing an operational question or re-explaining a process is an hour not spent on the thing only they can do. That's the cost the ops layer is supposed to absorb.</div>
-            </div>
+        <div class="notebook-card" data-topic="systems" data-target="doc-systems-1">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Systems</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 06</span><span class="dot-separator"></span><span>May 2026</span></div>
+            <h2>Your System Doesn’t Fail at Scale. It Fails at Ambiguity.</h2>
+            <p class="nb-summary">Systems break when inputs are undefined at boundary conditions—forcing humans to improvise during sudden scale spikes.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- TECHNICAL CATEGORY -->
-  <section class="cat-section" id="cat-technical">
-    <div class="cat-header">
-      <span class="cat-badge" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</span>
-      <span class="cat-count">3 notes</span>
-    </div>
-    <div class="notes-grid">
-
-      <div class="nc-card" data-cat="technical" id="note-ghl101">
-        <div class="nc-cat" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</div>
-        <h3>GHL 101: Why I Published Over a Year of Notes for Free</h3>
-        <p>Almost everything useful about GoHighLevel lives behind a paywall. That's an operational problem &mdash; and operational problems are what I fix.</p>
-        <div class="nc-meta">Mar 2026 &middot; 3 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>GoHighLevel has a problem most people in the ecosystem quietly know about. Almost everything useful lives behind a paywall. A paid course. A YouTube channel someone is monetizing. A Facebook group you had to beg to join. The platform itself is genuinely powerful. The knowledge around it is artificially scarce &mdash; not because the information doesn't exist, but because the incentive structure of the GHL community pushes everything toward monetization.</p>
-              <h2>The honest backstory</h2>
-              <p>I spent over a year learning GHL the hard way. Broken workflows. Busted automations. Late-night debugging on client accounts that had real consequences. I kept notes the whole time &mdash; not to publish, just because I think in systems and systems need documentation to survive. At some point the notes crossed a threshold. They stopped being personal reminders and started being a reference.</p>
-              <p>So I organized everything, updated it to 2026 &mdash; Voice AI, Agent Studio, WhatsApp native, the new CRM UI, AI Employee pricing &mdash; cross-referenced 29 official GHL support articles, and published the whole thing. No paywall. No email gate. No course upsell at the end.</p>
-              <blockquote>GHL learning is gate-kept. Almost everything useful is behind a paywall. This was my attempt to fix a small piece of that.</blockquote>
-              <h2>Why this matters beyond GHL</h2>
-              <p>Building this manual is a direct expression of how I work. I find operational chaos and build the structure that prevents it from recurring. I document systems so they survive without me in the room. The GHL 101 manual is a clean artifact of those skills &mdash; it wasn't assigned, nobody paid me to write it, and it exists because scattered, paywalled, outdated knowledge is an operational problem. Operational problems are what I fix.</p>
-              <div class="note-tkwy"><a href="/grimoires/003-ghl-101.html" style="color:var(--accent);font-family:var(--mono);font-size:.77rem">GHL 101: Speedrun Training Manual &mdash; 2026 Edition &rarr;</a></div>
-            </div>
+        <div class="notebook-card" data-topic="systems" data-target="doc-systems-2">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Systems</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 07</span><span class="dot-separator"></span><span>May 2026</span></div>
+            <h2>The Myth of the Self-Sufficient Employee</h2>
+            <p class="nb-summary">If a person operates completely without infrastructure, they are merely masking missing systems. That dependency is dangerous organizational debt.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-      <div class="nc-card" data-cat="technical" id="note-automation">
-        <div class="nc-cat" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</div>
-        <h3>How to Design a Workflow Automation That Actually Works</h3>
-        <p>Most automations fail because they're built around tools instead of process logic. Map the process first &mdash; then automate it.</p>
-        <div class="nc-meta">Mar 2026 &middot; 4 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>Most workflow automations fail because they're built around tools instead of process logic. The platform gets chosen first. The workflow gets designed around what the platform can do. The actual process &mdash; how work moves, where it stalls, what needs to happen when things go wrong &mdash; gets figured out later. Usually after something breaks in production with a real client record attached.</p>
-              <div class="nb-callout warn"><span class="nb-i">&#9888;</span><span>Automations do not fix broken processes. They make broken processes run faster and fail at scale.</span></div>
-              <h2>The mental model</h2>
-              <p>Think of automation like plumbing. You don't start by buying pipes. Every automation has three components: a trigger that starts the flow, a filter that routes it correctly, and an action that defines what happens next. The right order is: map the manual process first, identify the bottlenecks, design backward from the desired end state, then add filters as guardrails.</p>
-              <table>
-                <tr><th>Component</th><th>What it does</th><th>Example</th></tr>
-                <tr><td>Trigger</td><td>Starts the flow</td><td>Form submission, schedule, webhook</td></tr>
-                <tr><td>Filter</td><td>Routes it correctly</td><td>Only if priority = urgent</td></tr>
-                <tr><td>Action</td><td>Defines what happens next</td><td>Create record, send email, update sheet</td></tr>
-              </table>
-              <h2>Build in layers, not monoliths</h2>
-              <p>A monolith automation is one long chain where everything is connected. When it breaks, the failure can be anywhere and affects everything downstream. A layered system assigns each layer a single responsibility. Layer 1 handles intake and validation. Layer 2 handles CRM updates and logging. Layer 3 handles scheduled batch processes. Layer 4 handles follow-up sequences. Each layer is testable independently.</p>
-              <h2>The common gotchas</h2>
-              <p><strong>Silent failure</strong> is the worst outcome &mdash; a Zap that errors and notifies nobody. Add error notifications to anything that touches revenue or client-facing data. <strong>Data drift</strong> is slow and invisible: review critical automations quarterly, not just after something breaks. <strong>The one-more-step trap</strong> creates fragile monoliths that are hard to debug. <strong>Human bypass</strong> is a design problem: if team members work around the automation, the automation isn't modeling how work actually moves.</p>
-              <div class="note-tkwy">Map the manual process before you touch the tool. The automation should describe how the work moves &mdash; not how the platform happens to be configured.</div>
-            </div>
+        <div class="notebook-card" data-topic="systems" data-target="doc-systems-3">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Systems</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 08</span><span class="dot-separator"></span><span>Apr 2026</span></div>
+            <h2>Every SOP Becomes Obsolete the Moment It Requires Memory</h2>
+            <p class="nb-summary">If execution depends on human recall instead of contextual, automated system triggers, your operational logic is actively decaying.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
-      </div>
 
-      <div class="nc-card" data-cat="technical" id="note-kb">
-        <div class="nc-cat" style="color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bd)">&#128295; Technical</div>
-        <h3>How to Build a Knowledge Base People Actually Use</h3>
-        <p>A KB is valuable because at the exact moment someone is stuck, it helps them move. Most fail the second test even when they pass the first.</p>
-        <div class="nc-meta">Mar 2026 &middot; 4 min read</div>
-        <button class="read-toggle" onclick="toggleNote(this)">Read note &#9660;</button>
-        <div class="note-full" style="display:none">
-          <div class="note-full-inner">
-            <div class="note-body-text">
-              <p>A knowledge base is not valuable because it exists. It's valuable because at the exact moment someone is stuck, it helps them move. Most knowledge bases fail the second test even when they pass the first. They exist. But when someone hits a real edge case at 4pm on a Friday, they message a senior person instead of checking the KB &mdash; because they've learned the KB probably won't have what they need.</p>
-              <blockquote>If your team keeps asking experienced people instead of using the KB, the problem is usually design, not discipline.</blockquote>
-              <h2>The actual standard to hit</h2>
-              <p>A knowledge base earns consistent use when four things are true: the right person can find the right article fast, they can understand it without translation, they can act on it without guessing, and they know when to escalate. Most KBs fail on speed and clarity &mdash; articles exist but they're buried in vague categories or written for the person who wrote them.</p>
-              <h2>The taxonomy problem</h2>
-              <p>Weak knowledge bases use categories that reflect how the organization thinks about itself: General, Support, Admin, Misc. Strong ones use categories that mirror how work actually breaks. In a payments environment: Funding, Billing, Risk, Descriptor, Deployment, Underwriting, Escalations.</p>
-              <div class="nb-callout rule"><span class="nb-i">&rarr;</span><span>Good taxonomy follows operational friction, not org chart politeness.</span></div>
-              <h2>Why teams stop trusting it</h2>
-              <p>Trust breaks in one of three ways. Outdated guidance. Conflicting articles. Or the most damaging: senior staff bypassing the system. If experienced people keep answering repeat questions in Slack instead of pointing to the documented path, the team learns the real answer probably isn't in the KB. Once that signal is established, the KB becomes a museum. Maintenance is <strong>operational architecture</strong> &mdash; someone has to own it, audit it on a schedule, and kill articles that no longer reflect reality.</p>
-              <div class="note-tkwy">If senior people are answering the same question more than twice, it belongs in the knowledge base. The third time it comes up, the answer should be a link &mdash; not a conversation.</div>
-            </div>
+        <div class="notebook-card" data-topic="crm" data-target="doc-crm-1">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">CRM</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 09</span><span class="dot-separator"></span><span>Apr 2026</span></div>
+            <h2>Pipeline Stages Are Not Labels. They Are Behavioral Contracts.</h2>
+            <p class="nb-summary">A pipeline stage must enforce explicit down-funnel mechanics. If updating a status doesn't mandate a behavior shift, it's useless decoration.</p>
           </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
         </div>
+
+        <div class="notebook-card" data-topic="crm" data-target="doc-crm-2">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">CRM</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 10</span><span class="dot-separator"></span><span>Mar 2026</span></div>
+            <h2>Why Most CRMs Become Graveyards of Good Intentions</h2>
+            <p class="nb-summary">CRMs rot when configured to look backward as historical ledgers rather than operating forward to dynamically trigger execution tracks.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="crm" data-target="doc-crm-3">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">CRM</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 11</span><span class="dot-separator"></span><span>Feb 2026</span></div>
+            <h2>The Hidden Cost of “Manual Follow-Up” Culture</h2>
+            <p class="nb-summary">Relying on an operator's internal clock to run deal cadences scales horribly. Execution must be system-enforced and programmatically driven.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="crm" data-target="doc-crm-4">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">CRM</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 12</span><span class="dot-separator"></span><span>Jan 2026</span></div>
+            <h2>A Lead That Isn’t Routed Is Already Lost</h2>
+            <p class="nb-summary">Routing latency directly breaks conversion percentages. High-speed, atomic data handoffs are core revenue preservation engineering.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-1">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 13</span><span class="dot-separator"></span><span>May 2026</span></div>
+            <h2>The 3-Second Decision That Costs You 30 Minutes</h2>
+            <p class="nb-summary">Vague instructions dropped into a workflow spawn massive downstream clarification loops, heavily bleeding leadership leverage.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-2">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 14</span><span class="dot-separator"></span><span>May 2026</span></div>
+            <h2>Slack Is Not a Workflow Tool. It Is a Failure Indicator.</h2>
+            <p class="nb-summary">When strategic choices consistently happen inside messy chat feeds instead of structured systems, your workflow architecture is broken.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-3">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 15</span><span class="dot-separator"></span><span>Apr 2026</span></div>
+            <h2>The Hidden Queue No One Measures</h2>
+            <p class="nb-summary">Work doesn't vanish just because it's untracked. It sits as cognitive backlog inside human brains, causing silent, untraceable drops in throughput.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-4">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 16</span><span class="dot-separator"></span><span>Mar 2026</span></div>
+            <h2>Why Teams Don’t Scale: They Scale Conversation, Not Decisions</h2>
+            <p class="nb-summary">Most scaling bottlenecks are caused by multiplying internal communication channels instead of condensing decision mechanics into clean code parameters.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="operations" data-target="doc-ops-5">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 17</span><span class="dot-separator"></span><span>Feb 2026</span></div>
+            <h2>Handoffs Don’t Fail at Transfer. They Fail at Verification.</h2>
+            <p class="nb-summary">Process pipelines break due to missing deterministic recipient acknowledgments. Implementing enforceable programmatic acceptance logic saves metrics.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="technical" data-target="doc-tech-1">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Technical</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 18</span><span class="dot-separator"></span><span>May 2026</span></div>
+            <h2>Webhook Systems Don’t Break Randomly. They Drift.</h2>
+            <p class="nb-summary">Automation failures inside Make/Zapier/GHL infrastructure are rarely catastrophic drops—they are gradual mismatches between app data schemas.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="technical" data-target="doc-tech-2">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Technical</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 19</span><span class="dot-separator"></span><span>Apr 2026</span></div>
+            <h2>Field Mapping Is the Real Source of Technical Debt</h2>
+            <p class="nb-summary">System instability almost always links back to chaotic, un-mapped naming schemas distributed across API nodes, not database engine failure.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="technical" data-target="doc-tech-3">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Technical</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 20</span><span class="dot-separator"></span><span>Mar 2026</span></div>
+            <h2>Why “No-Code” Systems Still Require Engineering Thinking</h2>
+            <p class="nb-summary">Visual drag-and-drop tools abstract language syntax, not systemic logic. Careless layout choices cause catastrophic logic loops at scale.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="technical" data-target="doc-tech-4">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Technical</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 21</span><span class="dot-separator"></span><span>Feb 2026</span></div>
+            <h2>The 300KB Problem: Documentation as Runtime Insurance</h2>
+            <p class="nb-summary">Granular infrastructure blueprints are not overhead manuals—they serve as high-speed mitigation layers to accelerate recovery velocity during outages.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="technical" data-target="doc-tech-5">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Technical</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 22</span><span class="dot-separator"></span><span>Jan 2026</span></div>
+            <h2>Automation Isn’t About Speed. It’s About Error Removal</h2>
+            <p class="nb-summary">The primary advantage of programmatic loops is not raw operational tempo—it is the merciless elimination of variance from your production metrics.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="systems" data-target="doc-hybrid-1">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Systems</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 23</span><span class="dot-separator"></span><span>May 2026</span></div>
+            <h2>Training Is Expensive. System Design Is Permanent.</h2>
+            <p class="nb-summary">Onboarding memory retention costs repeat endlessly. Designing hard structural constraints front-loads costs but permanently deletes ticket load.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="systems" data-target="doc-hybrid-2">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Systems</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 24</span><span class="dot-separator"></span><span>Apr 2026</span></div>
+            <h2>If You Can’t Diagram It, You Can’t Scale It</h2>
+            <p class="nb-summary">Processes that escape visual architecture maps run on tribal understanding. They will predictably fracture when volume demands distribution.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
+        <div class="notebook-card" data-topic="operations" data-target="doc-hybrid-3">
+          <div class="notebook-spine"></div>
+          <div class="notebook-bookmark">Operations</div>
+          <div class="card-interior">
+            <div class="nb-meta-row"><span>Node Log 25</span><span class="dot-separator"></span><span>Mar 2026</span></div>
+            <h2>Operations Always Collapse at the Edge Cases You Didn’t Define</h2>
+            <p class="nb-summary">90% of business strain lives in unmodeled operational exceptions. Scaling demands mapping error pathways beforehand, not on the fly.</p>
+          </div>
+          <div class="nb-footer-row"><button class="nb-read-btn">Open Entry &rarr;</button><div class="carousel-nav-dots"></div></div>
+        </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- FOUNDER CATEGORY -->
-  <section class="cat-section" id="cat-founder">
-    <div class="cat-header">
-      <span class="cat-badge" style="color:var(--green);background:var(--green-bg);border-color:var(--green-bd)">&#128203; Founder notes</span>
-      <span class="cat-count">1 note</span>
-    </div>
-    <div class="notes-grid">
-      <div class="nc-card" data-cat="founder" id="note-founders-2">
-        <div class="nc-cat" style="color:var(--green);background:var(--green-bg);border-color:var(--green-bd)">&#128203; Founder notes</div>
-        <h3>What Founders Actually Need From an Ops Person</h3>
-        <p>Not a task executor. Someone who can take "we need to be more organized" and turn it into a system.</p>
-        <div class="nc-meta">Dec 2025 &middot; 3 min read</div>
-        <a href="#note-founders" class="read-toggle" style="display:inline-flex">Read above &uarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <div class="bottom-cta">
-    <div class="bottom-cta-eye">If you recognize the pattern</div>
-    <p>The notes have the diagnosis. If you're seeing these patterns in your operation &mdash; ASMC is where we fix them. Free 30-min ops audit, no pitch, no deck.</p>
-    <a href="/fix-my-systems.html" class="btn-cta">Fix My Systems &rarr; ASMC</a>
+    <button class="carousel-btn" id="btnNextCarousel" aria-label="Next Note">&rsaquo;</button>
   </div>
 
-  <div class="empty-state" id="emptyState">No notes match that search. Try a different keyword.</div>
+  <section class="full-span-document-wrapper" id="documentDisplayAnchorage">
+    <div class="full-span-inner">
 
-</main>
-</div><!-- /notes-layout -->
+      <article class="doc-view-node active-document" id="doc-cover">
+        <div class="notebook-cover-placeholder">
+          <div class="cover-icon">📔</div>
+          <h2>The Operator's Notebook</h2>
+          <p>Select a field note from the stack above and click "Open Entry" to read the full log.</p>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-systems-0">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-systems">Systems design</span>
+          <h2>Stop Training People. Start Building Systems That Set Them Free.</h2>
+          <time class="doc-timestamp">Published: March 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>Learning is hard because we make it harder than it needs to be. Across every operation I handle, leadership responds to breakdowns by adding more training, and it rarely fixes the core failure mode.</p>
+          <h3>The Core Friction</h3>
+          <p>Capable people get stuck when the environment around the work gives them nowhere to turn except up. Every edge case lives in someone's head—usually a senior person, usually already stretched thin. This isn't a learning failure. It's a <strong>systems failure.</strong> We ask people to navigate without a compass and then blame them for getting lost.</p>
+          <div class="doc-blockquote">The gap between what we trained on and what actually happens on Monday morning tells you everything about your system.</div>
+          <div class="doc-takeaway">Look at your onboarding right now: is it building independent navigators—or creating a heavy dependency? If questions repeat, fix the architecture.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-crm-0">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-crm">CRM Pipeline Strategy</span>
+          <h2>CRM as OS: Building Pipelines that Enforce the Next Human Move</h2>
+          <time class="doc-timestamp">Published: January 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>A fatal mistake in workflow architecture is treating your CRM as an expensive filing cabinet. If your team only uses a pipeline to log what happened yesterday, you aren’t running an automated operation; you're maintaining a static database.</p>
+          <div class="doc-callout tip">
+            <span class="doc-callout-icon">&#128161;</span>
+            <div><strong>Design Rule:</strong> Every single column shift inside a workflow pipeline must either trigger an automated webhook or surface a mandatory human check step. Zero passive landing zones.</div>
+          </div>
+          <p>When you restrict pipeline steps to clear, binary parameters, human data input errors drop drastically. The system forces the user's focus precisely on what data is missing to push the operational sequence forward.</p>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-0">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operations Optimization</span>
+          <h2>The Escalation Tax: Managing the Margin Bleed of Vague Parameters</h2>
+          <time class="doc-timestamp">Published: February 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>Operational speed is determined by decision architecture. When an operator fails to deliver explicit, binary boundaries for exception management, a hidden margin leak occurs. I call this the <strong>Escalation Tax</strong>.</p>
+          <p>Consider a standard workflow step: a customer ticket drops or an inbound file has mismatched metadata. If a frontline operator has to open Slack and ping a manager to ask "how do we handle this?", you haven't just lost the 3 minutes it took to type that message. You have split the manager’s attention and built systemic dependency.</p>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-0b">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operational Guardrails</span>
+          <h2>Handoffs Die Here: The Danger of Inter-Departmental Silence</h2>
+          <time class="doc-timestamp">Published: November 2025 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>Work slows down when it moves between teams. In multi-app and cross-functional operations, the point where team A claims their work is done and team B picks up is usually a black hole. Without a systemized trigger, handoffs sit until friction surfaces.</p>
+          <p>A true system doesn’t let a user exit a node until the recipient node is verified. If an administrative task is ready for fulfillment, the status move inside your workflow manager must require mandatory data inputs and instantly spin up an assignment ticket with a strict SLA clock running.</p>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-tech-0">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-technical">Technical Infrastructure</span>
+          <h2>Why I Hand-Coded a 300KB System Blueprint from Scratch</h2>
+          <time class="doc-timestamp">Published: October 2025 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When I built the technical documentation system I called <em>The Grimoire</em>, it exceeded 300KB of raw text. Some peers told me it was complete overkill. Why write a book on custom webhooks, sub-account pipelines, and custom field logic when platforms change every quarter?</p>
+          <p>I didn't document to build a simple training manual; I documented to map a complex system dependency chart. When an operation relies on multi-app stacks running custom filters across dozens of variables, a single field name mismatch will break the runtime engine silently. Granular mapping preserves your operational runtime.</p>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-systems-1">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-systems">Systems Design</span>
+          <h2>Your System Doesn’t Fail at Scale. It Fails at Ambiguity.</h2>
+          <time class="doc-timestamp">Published: May 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When volume spikes by 3x or 5x, operators love to blame their tooling or scale limitations for the resulting structural collapse. This analysis is incorrect. Your workflow didn't buckle under volume; it ruptured because your data boundary conditions allowed for human interpretation.</p>
+          <h3>The Anatomy of Ambiguity Friction</h3>
+          <p>Under baseline conditions, small amounts of operational ambiguity act like hidden tax line items. If a webhook payload drops an unexpected empty string into a field, or an inbound document arrives with a missing tax ID, an employee manually messages a colleague, logs into another dashboard, patches the value, and continues. The process is inefficient, but stable.</p>
+          <p>However, when the stack handles hundreds of simultaneous records, these unmodeled exceptions pile up exponentially. Humans immediately exhaust their cognitive bandwidth and revert to improvisational shortcuts. Data fields get guessed, manual logs get abandoned, and the database architecture corrupts completely.</p>
+          <div class="doc-blockquote">Scale does not generate new problems; it acts as a high-fidelity amplifier for the unresolved logical gaps present in your workflow blueprints.</div>
+          <h3>The Fix: Hard Decision Boundary Constraints</h3>
+          <p>To scale a sequence cleanly, every single data node must be engineered like a deterministic compiler. If an incoming record fails to strictly present all mandatory field requirements, the system must prevent human data manipulation entirely. It should automatically route the broken entry into an isolated error containment sandbox, dispatching an API call back to the source for automatic remediation.</p>
+          <div class="doc-takeaway">Stop searching for software infrastructure upgrades to handle your company's growth. Audit your process maps and brutally eliminate any step that contains the phrase "use your best judgment."</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-systems-2">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-systems">Systems Design</span>
+          <h2>The Myth of the Self-Sufficient Employee</h2>
+          <time class="doc-timestamp">Published: May 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>In growth companies, leadership often praises the "superstar employee"—the operator who steps in, navigates a chaotic work environment, cleans up broken customer accounts, and manually patches internal processing errors without asking for structural help. This is a severe architectural vulnerability.</p>
+          <h3>The Illusion of Performance</h3>
+          <p>When an individual operates with zero reliance on software infrastructure or process documentation, they aren't helping your business scale; they are masking systemic rot. They are using their personal working hours, focus, and memory to compensate for completely missing organizational rails.</p>
+          <p>This creates a massive liability known as <strong>invisible structural debt</strong>. The day that person burns out, takes vacation, or resigns, your operation instantly drops back to its true architectural capacity: zero. You haven't built a company process; you've rented an individual's personal energy.</p>
+          <div class="doc-callout warn">
+            <span class="doc-callout-icon">&#9888;</span>
+            <div><strong>The Risk Equation:</strong> Core System Vulnerability = (Total Revenue Dependent on Process Node X) / (Number of Humans Who Memorized Node X's Rules).</div>
+          </div>
+          <div class="doc-takeaway">True execution efficiency does not mean hiring smarter people to handle bad environments. It means embedding your best team member's tactical decisions directly into automation scripts and API logic so the baseline workflow runs consistently.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-systems-3">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-systems">Systems Design</span>
+          <h2>Every SOP Becomes Obsolete the Moment It Requires Memory</h2>
+          <time class="doc-timestamp">Published: April 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>The standard corporate response to a process error is writing a 14-page Standard Operating Procedure (SOP) document, dropping the link into Slack, and demanding that the team read it. This is lazy operational design. It shifts the burden of execution consistency off the system architect and entirely onto human recall.</p>
+          <h3>The Core Decay Rate of Documentation</h3>
+          <p>Static documents begin decaying the absolute second they are saved. If an operator's execution accuracy depends on them remembering to open a Notion link, locate step 4b, and verify a rule while working inside a fast-moving CRM pipeline, the process will fail. Human cognitive load under stress guarantees that steps will be skipped.</p>
+          <p>The goal should never be building a comprehensive library of rules for people to memorize. The goal is to build **contextually embedded decision systems** that surface constraints directly inside the active interface at the exact moment of execution.</p>
+          <table class="doc-table">
+            <thead>
+              <tr><th>SOP Type</th><th>Human Action Required</th><th>System Safeguard</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Passive Text Doc</td><td>Must manually check link</td><td>None (Guaranteed Failure at Volume)</td></tr>
+              <tr><td>Interactive Checklist</td><td>Must check checkboxes</td><td>Interface blocker blocks move</td></tr>
+              <tr><td>API Field Constraints</td><td>None (System validates data)</td><td>Hard conditional validation rule</td></tr>
+            </tbody>
+          </table>
+          <div class="doc-takeaway">If your processes are failing, stop rewriting your text documents. Build validation logic directly into your app stack fields so the user physically cannot execute the wrong step.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-crm-1">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-crm">CRM Pipeline Strategy</span>
+          <h2>Pipeline Stages Are Not Labels. They Are Behavioral Contracts.</h2>
+          <time class="doc-timestamp">Published: April 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When I audit a messy CRM setup, the first warning sign is a pipeline filled with descriptive stage tags like "In Discussion," "Follow-up Sent," or "Warm Lead." These are passive labels, not action gates. They tell you what a deal is, but they fail to enforce what an operator must do next.</p>
+          <h3>The Concept of a Behavioral Contract</h3>
+          <p>Every column inside an active sales or fulfillment pipeline must be re-engineered to act as a strict operational contract. Moving a deal card into a column shouldn't just change its categorization in your database; it must instantly reconfigure the team's operational obligations.</p>
+          <p>For example, shifting a card to "Proposal Stage" must systematically trigger three events: lock the user from moving the card forward until a file link is attached, spin up a strict 48-hour SLA countdown alert, and programmatically generate a custom onboarding task framework in the operations board.</p>
+          <div class="doc-blockquote">If an operator can drag a card across three columns without being forced to log specific data or trigger automated webhooks, your pipeline is decorative overhead.</div>
+          <div class="doc-takeaway">Rebuild your CRM funnels. Every stage change must be a programmatic gate that demands validation inputs and enforces downstream execution steps.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-crm-2">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-crm">CRM Pipeline Strategy</span>
+          <h2>Why Most CRMs Become Graveyards of Good Intentions</h2>
+          <time class="doc-timestamp">Published: March 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>Companies spend tens of thousands of dollars deploying platforms like Salesforce, HubSpot, or GoHighLevel, only to watch their teams completely abandon them within six months. The software didn't fail. The system failed because it was built as a historical ledger instead of an active operations engine.</p>
+          <h3>Passive Logging vs. Active Execution</h3>
+          <p>If your team's primary interaction with your CRM is manually typing long call logs and notes *after* actions occur, your system is dead weight. It serves only as a lagging data warehouse for executive reports, adding friction to your reps' day while offering them zero tactical leverage.</p>
+          <p>An elite CRM configuration reverses this flow. It acts as an execution engine. Instead of a rep deciding who to call and logging it afterward, the system analyzes data fields, dynamically surfaces the exact account to target, populates the dialer, and displays the contextual script on screen. The rep doesn't manage the CRM; the CRM coordinates the rep's next action.</p>
+          <div class="doc-takeaway">If data entry feels like tedious homework for your staff, your architecture is broken. Redesign your workspace so data inputs automatically automate tasks and directly clear the rep's active work stack.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-crm-3">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-crm">CRM Pipeline Strategy</span>
+          <h2>The Hidden Cost of “Manual Follow-Up” Culture</h2>
+          <time class="doc-timestamp">Published: February 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>"Our account managers are highly diligent—they manually track their deals and follow up when appropriate." This sentence should terrify any operational architect. Relying on an individual's personal discipline to run client touchpoints is an expensive, un-scalable risk profile.</p>
+          <h3>The Decay of Human Memory Networks</h3>
+          <p>When your sales or renewal cadences rely on people remembering to check tasks, calendar reminders, or old email threads, your retention metrics are sitting on a knife's edge. The moment a rep’s pipeline passes 40 active opportunities, their mental bandwidth fragments. High-value accounts begin slipping through the cracks simply due to cognitive fatigue.</p>
+          <div class="doc-callout tip">
+            <span class="doc-callout-icon">&#128161;</span>
+            <div><strong>The Solution Strategy:</strong> Completely remove manual calendar setting. Build automation tracks inside Make or Zapier that monitor deal age parameters and programmatically push tasks or automated messages based on strict field timelines.</div>
+          </div>
+          <div class="doc-takeaway">Manual follow-up culture is a bottleneck masquerading as personal dedication. Replace human memory dependencies with systematic, webhook-driven follow-up paths.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-crm-4">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-crm">CRM Pipeline Strategy</span>
+          <h2>A Lead That Isn’t Routed Is Already Lost</h2>
+          <time class="doc-timestamp">Published: January 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>In modern customer acquisition pipelines, conversion probability decays exponentially with every minute of delay. If an inbound marketing query lands in your database but waits for an administrative manager to manually check an inbox, assign it to a rep, and send an introductory message, you are actively burning capital.</p>
+          <h3>The Math Behind Routing Latency</h3>
+          <p>Data shows that contacting an inbound lead within 5 minutes versus 30 minutes decreases conversion performance by over 300%. Speed is not a luxury or a customer service perk—it is core revenue preservation engineering.</p>
+          <p>Your routing infrastructure must be fully automated and atomic. The millisecond an API webhook payload registers an inbound lead string, it must pass through an automated round-robin routing script, assign ownership to an active agent, lock the record, and execute an immediate SMS/email contact loop.</p>
+          <div class="doc-takeaway">Eliminate all manual filtering steps at the top of your funnel. If lead routing requires a human decision to determine assignment, your lead response time is losing you conversions.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-1">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operations Optimization</span>
+          <h2>The 3-Second Decision That Costs You 30 Minutes</h2>
+          <time class="doc-timestamp">Published: May 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When a project manager or team leader drops a brief, unstructured instruction into a project card—like "hey, review this client account and update the file"—they think they are being fast and efficient. In reality, they are triggering a massive, costly downstream clarification loop.</p>
+          <h3>The Ripple Effect of Bad Delegation</h3>
+          <p>Because the prompt lacks explicit parameters (Which file? What metrics are we updating? Where is the source link?), the recipient is forced to improvise. They spend 10 minutes digging through historical emails, open a Slack message to clarify, wait 15 minutes for a response, and pull another colleague into the loop. A task that should have taken 2 minutes turns into 30 minutes of fragmented focus across the department.</p>
+          <div class="doc-blockquote">Vague management input is the primary driver of operational drag inside distributed scaling teams.</div>
+          <div class="doc-takeaway">Every instruction injected into a workflow tracking system must explicitly define three parameters: the single data source URL, the exact evaluation metric, and the binary definition of done. If you can't provide all three, do not pass the task.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-2">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operations Optimization</span>
+          <h2>Slack Is Not a Workflow Tool. It Is a Failure Indicator.</h2>
+          <time class="doc-timestamp">Published: May 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>If your management team spends their day jumping across 45 different Slack channels, tracking deal exceptions via chat pings, and screaming for status updates on active client work, your operational architecture is fundamentally broken. Slack is a chat app, not a workflow engine.</p>
+          <h3>The Chaos of Feed-Driven Processes</h3>
+          <p>Relying on chat rooms to manage complex projects creates an unstructured environment. Information is sorted purely by chronology, not by project logic. Important account updates get buried under emojis, critical bugs get missed because an engineer was offline, and work states become completely invisible to the company unless someone explicitly asks for a status report.</p>
+          <p>High-volume execution requires a deterministic, state-driven system. If a project status changes, that update should occur inside a dedicated database node where its historical record is retained, dependencies are automatically managed, and downstream alerts are triggered programmatically.</p>
+          <div class="doc-takeaway">Every time a process requires an unstructured Slack message to move to the next stage, it reveals a gap in your system logic. Move the conversation out of chat and embed it directly into your database schema.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-3">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operations Optimization</span>
+          <h2>The Hidden Queue No One Measures</h2>
+          <time class="doc-timestamp">Published: April 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>Traditional operations managers look at visible bottlenecks: un-built webhooks, open support tickets, or un-shipped inventory packages. But the most dangerous bottleneck inside growth businesses is completely invisible on standard dashboards: the <strong>cognitive backlog queue</strong>.</p>
+          <h3>The Weight of Untracked Process Steps</h3>
+          <p>Work doesn't magically vanish just because it isn't tracked in a software layout. When a process step is poorly defined, it builds up inside your operators' heads. They carry a running mental list of accounts that "feel weird," manually keep tabs on client follow-ups via personal notebooks, and mentally track tasks that don't have clear software tickets.</p>
+          <p>This invisible backlog drains your team's processing capacity. Operators spend more focus trying to remember *what* to do next than actually doing the work, causing operational throughput to fall off a cliff for no obvious reason.</p>
+          <div class="doc-takeaway">If your team looks exhausted but your official dashboards show low task volume, you are mismanaging your cognitive load metrics. Audit the team to uncover untracked steps and build them explicitly into your project boards.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-4">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operations Optimization</span>
+          <h2>Why Teams Don’t Scale: They Scale Conversation, Not Decisions</h2>
+          <time class="doc-timestamp">Published: March 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When a business expands from 5 to 25 staff members, internal communication volume increases exponentially. If your operations map remains unchanged, the company will quickly stall out. You'll find yourself trapped in back-to-back sync meetings just trying to keep everyone aligned.</p>
+          <h3>The Strategy of Decision Compression</h3>
+          <p>Scaling failures rarely stem from a lack of communication; they happen because you are scaling the *need* for conversation. Every time you hire a new team member, you introduce another node that requires coordination meetings, updates, and alignments to make basic choices.</p>
+          <p>To scale smoothly, your system architecture must compress decisions into clean, automated rules. Define clear, logic-based criteria so frontline software can instantly resolve standard cases without human intervention. Your goal is to insulate the team from communication overload, freeing them to focus purely on complex edge-case strategy.</p>
+          <div class="doc-takeaway">Stop creating new Slack channels or setting up weekly status meetings to fix process friction. Isolate the underlying decisions, map their core variables, and code those rules directly into your platform triggers.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-ops-5">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operations Optimization</span>
+          <h2>Handoffs Don’t Fail at Transfer. They Fail at Verification.</h2>
+          <time class="doc-timestamp">Published: February 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>Most workflow friction happens during team handoffs. The standard approach relies on passive handoffs: Team A finishes a document, hits "Complete" on their internal board, and assumes Team B will naturally spot it and pick it up. This is a fragile process loop.</p>
+          <h3>Implementing Enforceable Acceptance Logic</h3>
+          <p>A process handoff shouldn't be treated like a passive toss over a wall; it must function as an explicit, two-way cryptographic verification handshake. Team A cannot simply mark a task as sent and walk away. The workflow system must maintain ownership of that task until Team B actively reviews the inbound data assets, clicks "Accept Responsibility," and pulls it onto their active queue.</p>
+          <p>If Team B spots missing variable values or broken links, they hit "Reject," which instantly returns the card to Team A's board with a high-priority flag. This prevents broken data records from sliding down-funnel and corrupting production steps downstream.</p>
+          <div class="doc-takeaway">Build hard verification steps directly into your cross-department transitions. Never let an asset shift teams without a clear system gate that forces the recipient to formally accept ownership.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-tech-1">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-technical">Technical Infrastructure</span>
+          <h2>Webhook Systems Don’t Break Randomly. They Drift.</h2>
+          <time class="doc-timestamp">Published: May 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>A common frustration for technical operators is an automation workflow that has run perfectly inside Make or Zapier for six months suddenly failing at 2 AM with a data type error. Non-technical managers call these "random software bugs." They aren't random at all; they are the result of **data schema drift**.</p>
+          <h3>The Dynamics of Platform Schema Drift</h3>
+          <p>Modern cloud architectures run on nested API frameworks that are constantly updating. Even if you don't alter a single block of code inside your integrations, the third-party platforms you connect with (like Stripe, Close, or Typeform) regularly deploy minor updates to their backend payloads.</p>
+          <p>A field that used to return a flat string value might start returning an array object. An optional metadata key might suddenly become a null value. These subtle transformations don't trigger immediate error notifications; instead, they quietly move through your data fields until they hit a strict downstream conditional filter that can't handle the new format, breaking the automation loop entirely.</p>
+          <div class="doc-blockquote">Automation stacks require active version monitoring and strict schema validation blocks to guard against third-party API evolution.</div>
+          <div class="doc-takeaway">Stop assuming your live integrations are permanent. Build type-checking steps at the very front of your inbound webhook nodes to explicitly catch altered payload structures before they process.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-tech-2">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-technical">Technical Infrastructure</span>
+          <h2>Field Mapping Is the Real Source of Technical Debt</h2>
+          <time class="doc-timestamp">Published: April 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When multi-app architectures turn into unstable, buggy tangles, teams assume the issue is a limitation of the platform's core code. But after dissecting dozens of broken systems, I've found the true culprit is almost always chaotic, un-mapped naming schemas distributed across API nodes.</p>
+          <h3>The Cost of Naming Inconsistency</h3>
+          <p>If an app registers a user identifier as `lead_id`, your webhook transformer updates it to `contactID`, and your CRM database saves it as `ghl_customer_key`, you are generating high-risk technical debt. This inconsistent field naming makes debugging an absolute nightmare. A single developer mistake during an integration update will completely break your data flow, hiding the error until metrics start dropping.</p>
+          <p>Stable scale requires a unified, non-negotiable **Data Variable Matrix**. Every data asset across your entire software ecosystem—from frontend form fields to backend data warehouses—must match exact naming parameters, value types, and formatting logic.</p>
+          <div class="doc-takeaway">Before building another automation step, map out your data dictionary. Enforce strict, unified field naming rules across every app in your stack.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-tech-3">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-technical">Technical Infrastructure</span>
+          <h2>Why “No-Code” Systems Still Require Engineering Thinking</h2>
+          <time class="doc-timestamp">Published: March 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>The rise of no-code integration tools like Make, Zapier, and GoHighLevel workflow builders has led founders to believe that anyone can build complex operational systems. This is a dangerous misconception. Visual drag-and-drop tools abstract language syntax, but they don't abstract logical architecture.</p>
+          <h3>The Risk of the Visual Builder</h3>
+          <p>When an amateur uses a visual builder, they drag modules together without considering fundamental software concepts like race conditions, recursive loops, error-handling routines, or database connection pools. They create fragile processes that function under test runs but collapse spectacularly the second they handle real volume.</p>
+          <p>A visual system requires the same rigorous design thinking as a custom code stack. You must map out execution paths, handle null values safely, build clear exception catch blocks, and plan for data rollbacks if a step fails halfway through a run.</p>
+          <div class="doc-takeaway">No-code tools let you build systems faster, but they don't save you from bad logic. If you don't apply strict software engineering principles to your visual workflows, you are just building technical debt at a faster rate.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-tech-4">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-technical">Technical Infrastructure</span>
+          <h2>The 300KB Problem: Documentation as Runtime Insurance</h2>
+          <time class="doc-timestamp">Published: February 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When I map out system blueprints, the resulting documentation routinely exceeds hundreds of kilobytes of raw text. People ask why I invest days writing such deep, granular manuals on custom webhook paths, payload filters, and custom field logic when user interfaces change constantly.</p>
+          <h3>Documentation as System Fault Recovery</h3>
+          <p>Deep documentation isn't written to serve as a basic training manual for new hires. It is built to serve as an **active fault recovery acceleration layer** during a critical infrastructure outage.</p>
+          <p>When a core webhook path breaks at 2 AM, your company is losing money every minute. You cannot afford to spend hours clicking through visual automation modules trying to guess which variable mapping failed. A comprehensive, variable-level blueprint allows an engineer to immediately pinpoint the failure node, run a targeted patch, and restore operations within minutes.</p>
+          <div class="doc-takeaway">Granular documentation is your system's runtime insurance policy. Build deep, exact blueprints of your data flows so that an outage turns into a quick, stress-free fix instead of a multi-day company emergency.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-tech-5">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-technical">Technical Infrastructure</span>
+          <h2>Automation Isn’t About Speed. It’s About Error Removal</h2>
+          <time class="doc-timestamp">Published: January 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When companies pitch automation upgrades, they focus almost entirely on speed metrics: "This script will save our team 15 hours a week and execute data tasks 10 times faster." While speed is an advantage, it misses the true, transformative value of programmatic workflows.</p>
+          <h3>The Merciless Elimination of Execution Variance</h3>
+          <p>The real power of automation lies in the **complete elimination of human variance** from your core business metrics. A human operator, no matter how skilled, will occasionally experience fatigue, distraction, or simple mistakes. They might forget a tag, mistype a customer email string, or miss an optimization checkbox 2% of the time.</p>
+          <p>An automation script never experiences fatigue. It evaluates logical criteria and processes payloads with perfect consistency every single time. It brings absolute certainty to your metrics, turning your operations into a predictable engine where inputs produce expected outputs with zero variance.</p>
+          <div class="doc-takeaway">Stop measuring the ROI of your automation projects purely by hours saved. Measure them by the drop in data errors, compliance issues, and downstream failures. Automation delivers stability, not just speed.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-hybrid-1">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-systems">Systems / Ops Strategy</span>
+          <h2>Training Is Expensive. System Design Is Permanent.</h2>
+          <time class="doc-timestamp">Published: May 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When process errors spike, companies throw money at the problem by launching intensive retraining programs, setting up team syncs, and recording endless video tutorials. This is an expensive mistake. Training expenses repeat indefinitely, while intelligent system design is a permanent fix.</p>
+          <h3>The Financial Drain of Knowledge Maintenance</h3>
+          <p>Relying on constant retraining creates a continuous financial drain on your operations. As your team experiences natural turnover, that knowledge fades, forcing you to repeat the entire costly onboarding cycle all over again to keep execution stable.</p>
+          <p>Smart operations shift that investment upstream into structural design. Instead of training people to remember complex data combinations, you code those rules directly into your platform's validation triggers. By building clear, automated guardrails into the workspace interface, you permanently eliminate the risk of human error.</p>
+          <div class="doc-takeaway">Stop treating human training as a fix for bad process design. Invest your resources into building automated rails that make errors physically impossible to commit.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-hybrid-2">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-systems">Systems Architecture</span>
+          <h2>If You Can’t Diagram It, You Can’t Scale It</h2>
+          <time class="doc-timestamp">Published: April 2026 &middot; 3 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>If your company's core workflows only live as abstract descriptions in text documents or informal understandings between senior staff, you are running an un-scalable operation. Any process that cannot be completely mapped out visually will eventually buckle under real volume.</p>
+          <h3>The Power of Visual Architecture Maps</h3>
+          <p>A text description can easily hide logical contradictions, broken handoffs, and loops. But the moment you force a process onto a strict visual flowchart, every single logical gap is exposed. You immediately see unassigned task states, missing error paths, and steps that rely on un-mapped data assets.</p>
+          <p>A comprehensive visual diagram serves as the engineering blueprint for your entire business operation. It ensures that every developer, manager, and team member shares an identical understanding of your workflows, enabling you to replicate and scale sequences cleanly across departments.</p>
+          <div class="doc-takeaway">Take your most critical business sequence and try to map it out visually down to every webhook and database change. If the diagram gets stuck or confusing, your system is broken. Fix the map before you try to scale.</div>
+        </div>
+      </article>
+
+      <article class="doc-view-node" id="doc-hybrid-3">
+        <header class="doc-header-block">
+          <span class="doc-eyebrow-badge badge-operations">Operational Guardrails</span>
+          <h2>Operations Always Collapse at the Edge Cases You Didn’t Define</h2>
+          <time class="doc-timestamp">Published: March 2026 &middot; 4 min read</time>
+        </header>
+        <div class="doc-body-content">
+          <p>When workflows break down, managers love to point out that 90% of transactions move through the system without any issues. They use this stat to argue that the underlying process is solid. But this analysis completely misses how operational systems actually fail.</p>
+          <h3>The Danger of Unmodeled Exceptions</h3>
+          <p>Processes don't fail on standard, perfect transactions; they collapse under the weight of **unmodeled exceptions**. The true test of a system is how it handles the messy 10% of cases: an order arriving with a flagged address, an API returning a random timeout error, or a client requesting an unusual billing adjustment.</p>
+          <p>If your system design ignores these edge cases, your team will have to handle them manually via frantic chat messages and improvisations. As volume grows, these manual patches quickly pile up, overwhelming your staff and bringing your entire core pipeline to a halt.</p>
+          <div class="doc-takeaway">Scale demands that you stop designing just for perfect scenarios. Spend your time mapping out explicit error-handling pathways for every single exception up front so your workflows hold strong under stress.</div>
+        </div>
+      </article>
+
+      <div class="doc-cta-footer">
+        <h4>System Analysis &middot; Remediation Engineering</h4>
+        <p>Are your core operational sequences running inside a structural black box? Let's isolate your workflows, build airtight automated pipelines, and document your ecosystem so it holds strong under scale metrics.</p>
+        <a href="/fix-my-systems.html" class="btn-action">Isolate Your System Bottlenecks &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+</div>
 
 <footer class="footer shell">
   <div class="footer-line">
-    <div>&copy; <span id="yr"></span> Aaron Suarez &middot; operational systems builder</div>
+    <span>&copy; 2026 Aaron Suarez. All systems operational.</span>
     <div class="footer-links">
-      <span>Valencia City, PH &middot; remote-first</span>
-      <a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a>
-      <a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-      <a href="/fix-my-systems.html" class="footer-link" style="font-weight:500">ASMC &rarr;</a>
+      <a href="/about.html" class="footer-link">About</a>
+      <a href="/projects.html" class="footer-link">Projects</a>
+      <a href="/articles.html" class="footer-link">Articles</a>
+      <a href="/notes.html" class="footer-link" style="color:var(--accent)">Notes</a>
     </div>
   </div>
 </footer>
 
-<a class="quick-anchor" href="#top">&uarr; top</a>
-
 <script>
-document.getElementById('yr').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+  const allCards = Array.from(document.querySelectorAll('.notebook-card'));
+  const docNodes = Array.from(document.querySelectorAll('.doc-view-node'));
+  const stage = document.getElementById('carouselStage');
+  const filterTabs = Array.from(document.querySelectorAll('.filter-tab'));
+  
+  const btnNext = document.getElementById('btnNextCarousel');
+  const btnPrev = document.getElementById('btnPrevCarousel');
+  
+  let currentIndex = 0;
+  let currentFilter = 'all';
+  let carouselInterval = null;
+  let isHovered = false;
 
-// ── EXPAND/COLLAPSE NOTES ────────────────────────────────────
-function toggleNote(btn) {
-  const card = btn.closest('.nc-card') || btn.closest('.featured-note');
-  const body = btn.nextElementSibling;
-  const open = body.style.display !== 'none';
-  body.style.display = open ? 'none' : 'block';
-  btn.innerHTML = open ? 'Read note &#9660;' : 'Collapse &#9650;';
-  if (!open && typeof gtag === 'function') {
-    const title = card?.querySelector('h3')?.textContent?.trim().slice(0,50);
-    gtag('event','note_expand',{event_category:'engagement',event_label:title});
+  function getActiveDeck() {
+    if (currentFilter === 'all') return allCards;
+    return allCards.filter(card => card.getAttribute('data-topic') === currentFilter);
   }
-}
 
-// ── SEARCH ───────────────────────────────────────────────────
-const searchInput = document.getElementById('noteSearch');
-const allCards = document.querySelectorAll('.nc-card, .featured-note[data-cat]');
-const emptyState = document.getElementById('emptyState');
+  function updateCarouselState() {
+    const activeDeck = getActiveDeck();
+    const totalVisible = activeDeck.length;
 
-function runFilter() {
-  const q = searchInput.value.toLowerCase();
-  const cat = document.querySelector('.chip.active')?.dataset.cat || 'all';
-  let vis = 0;
-  allCards.forEach(card => {
-    const catMatch = cat === 'all' || card.dataset.cat === cat;
-    const textMatch = !q || card.textContent.toLowerCase().includes(q);
-    const show = catMatch && textMatch;
-    card.style.display = show ? '' : 'none';
-    if (show) vis++;
-  });
-  document.querySelectorAll('.cat-section').forEach(sec => {
-    const hasVis = [...sec.querySelectorAll('.nc-card')].some(c => c.style.display !== 'none');
-    sec.style.display = hasVis ? '' : 'none';
-  });
-  emptyState.classList.toggle('show', vis === 0);
-}
-
-searchInput.addEventListener('input', runFilter);
-
-// ── CHIPS ────────────────────────────────────────────────────
-const chips = document.querySelectorAll('.chip');
-const activeFilterEl = document.getElementById('activeFilter');
-const afPill = document.getElementById('afPill');
-const catLabels = {all:'All',systems:'Systems',crm:'CRM',operations:'Operations',technical:'Technical',founder:'Founder notes'};
-
-chips.forEach(chip => {
-  chip.addEventListener('click', () => {
-    chips.forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    const cat = chip.dataset.cat;
-    if (cat !== 'all') {
-      afPill.textContent = catLabels[cat] || cat;
-      activeFilterEl.classList.add('show');
-    } else {
-      activeFilterEl.classList.remove('show');
+    if (currentIndex >= totalVisible) {
+      currentIndex = 0;
     }
-    runFilter();
+
+    allCards.forEach(card => {
+      card.style.display = 'none';
+      card.classList.remove('active', 'prev', 'next', 'queue');
+    });
+
+    activeDeck.forEach((card, i) => {
+      card.style.display = 'flex';
+      
+      if (i === currentIndex) {
+        card.classList.add('active');
+      } else if (totalVisible > 1 && i === (currentIndex - 1 + totalVisible) % totalVisible) {
+        card.classList.add('prev');
+      } else if (totalVisible > 1 && i === (currentIndex + 1) % totalVisible) {
+        card.classList.add('next');
+      } else {
+        card.classList.add('queue');
+      }
+
+      const dotContainer = card.querySelector('.carousel-nav-dots');
+      if (dotContainer) {
+        dotContainer.innerHTML = '';
+        for (let d = 0; d < totalVisible; d++) {
+          const dot = document.createElement('span');
+          dot.className = `carousel-dot ${d === currentIndex ? 'active' : ''}`;
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navigateTo(d);
+          });
+          dotContainer.appendChild(dot);
+        }
+      }
+    });
+  }
+
+  function openDocument(cardElement) {
+    const targetedDocId = cardElement.getAttribute('data-target');
+    
+    docNodes.forEach(node => {
+      if (node.id === targetedDocId) {
+        node.classList.add('active-document');
+      } else {
+        node.classList.remove('active-document');
+      }
+    });
+    
+    document.getElementById('documentDisplayAnchorage').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function advanceCarousel(direction = 1) {
+    const activeDeck = getActiveDeck();
+    const totalVisible = activeDeck.length;
+    if (totalVisible <= 1) return;
+    
+    currentIndex = (currentIndex + direction + totalVisible) % totalVisible;
+    updateCarouselState();
+  }
+
+  function navigateTo(index) {
+    currentIndex = index;
+    updateCarouselState();
+    resetInterval();
+  }
+
+  function startInterval() {
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(() => {
+      if (!isHovered) {
+        advanceCarousel(1);
+      }
+    }, 5000); 
+  }
+
+  function resetInterval() {
+    startInterval();
+  }
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      currentFilter = tab.getAttribute('data-filter');
+      currentIndex = 0; 
+      
+      updateCarouselState();
+      resetInterval();
+    });
   });
+
+  btnNext.addEventListener('click', () => { advanceCarousel(1); resetInterval(); });
+  btnPrev.addEventListener('click', () => { advanceCarousel(-1); resetInterval(); });
+
+  allCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      const activeDeck = getActiveDeck();
+      const targetIndex = activeDeck.indexOf(card);
+      if (targetIndex !== -1 && targetIndex !== currentIndex) {
+        navigateTo(targetIndex);
+      }
+    });
+
+    const readBtn = card.querySelector('.nb-read-btn');
+    if(readBtn) {
+      readBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const activeDeck = getActiveDeck();
+        const targetIndex = activeDeck.indexOf(card);
+        
+        if (targetIndex === currentIndex) {
+          openDocument(card);
+        } else if (targetIndex !== -1) {
+          navigateTo(targetIndex);
+        }
+      });
+    }
+  });
+
+  stage.addEventListener('mouseenter', () => { isHovered = true; });
+  stage.addEventListener('mouseleave', () => { isHovered = false; });
+  btnNext.addEventListener('mouseenter', () => { isHovered = true; });
+  btnPrev.addEventListener('mouseenter', () => { isHovered = true; });
+
+  updateCarouselState();
+  startInterval();
 });
-
-document.getElementById('clearFilter').addEventListener('click', () => {
-  chips.forEach(c => c.classList.remove('active'));
-  document.querySelector('[data-cat="all"]').classList.add('active');
-  activeFilterEl.classList.remove('show');
-  runFilter();
-});
-
-// ── SIDEBAR SCROLL HIGHLIGHT ──────────────────────────────────
-const sbLinks = document.querySelectorAll('.sb-link[href^="#"]');
-const sections = document.querySelectorAll('[id]');
-const obsOpts = {rootMargin:'-15% 0px -75% 0px'};
-const secObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      sbLinks.forEach(l => l.classList.remove('active'));
-      const active = document.querySelector(`.sb-link[href="#${e.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, obsOpts);
-sections.forEach(s => secObs.observe(s));
-
-// ── GA TRACKING ───────────────────────────────────────────────
-const secObs2 = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting && typeof gtag === 'function') {
-      gtag('event','section_view',{event_category:'engagement',event_label:e.target.id,non_interaction:true});
-    }
-  });
-}, {threshold:.3});
-document.querySelectorAll('.cat-section, #featured, #patterns').forEach(s => secObs2.observe(s));
 </script>
 </body>
 </html>
