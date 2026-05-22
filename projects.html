@@ -5,13 +5,14 @@
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Projects & Grimoires — Aaron Suarez</title>
+<title>Projects &amp; Grimoires — Aaron Suarez</title>
 <meta name="description" content="Live system documentation for CRM architecture, marketing engines, automation patterns, and operational tools. Real systems, real results — open and ungated."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://suarezaaronroy-sys.github.io/projects.html"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPEWZXH03"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GYPEWZXH03',{page_title:'Projects',page_path:'/projects.html'});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -28,41 +29,49 @@
   --mono:'DM Mono',monospace;--serif:'Fraunces',serif;--sans:'DM Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--sans);background:var(--bg);color:var(--ink);
-  font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse at 5% 0%,rgba(194,65,12,.04),transparent 38%),
-    radial-gradient(ellipse at 95% 10%,rgba(13,148,136,.03),transparent 35%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
-}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 10% 0%,rgba(13,148,136,.04),transparent 40%),radial-gradient(ellipse at 90% 8%,rgba(194,65,12,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
 a{color:inherit;text-decoration:none}
 .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
 
-/* ── TOP BAR ── */
+/* Layout Core Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+
+/* Sticky Top Nav Engine */
 .topbar-wrap{position:sticky;top:0;z-index:200;background:rgba(245,242,236,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .topbar{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit}
 .brand-icon{width:36px;height:36px;border-radius:8px;background:#1C1917;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
 .brand-icon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-.brand-icon-fallback">ASAS</span>
+.brand-icon-fallback{font-family:var(--mono);font-size:.78rem;font-weight:500;color:#F5F2EC;display:none}
 .brand-copy strong{display:block;font-family:var(--mono);font-size:.82rem;line-height:1.2;color:var(--ink)}
 .brand-copy span{display:block;font-size:.64rem;color:var(--ink4);font-family:var(--mono);margin-top:.1rem}
+
 .nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
-.nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em}
-.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
-.nav .nav-active{color:var(--accent);border-color:rgba(194,65,12,.3);background:rgba(194,65,12,.06)}
+.nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:all .2s ease;text-decoration:none;letter-spacing:.01em}
+.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.nav .nav-active{color:var(--teal);border-color:rgba(13,148,136,.3);background:rgba(13,148,136,.06);font-weight:500}
 .nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* ── PAGE HEADER ── */
-.page-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border)}
-.page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--accent);margin-bottom:.7rem}
-.page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.8rem;color:var(--ink)}
+/* Page Header */
+.page-header{padding:3rem 0 2rem;border-bottom:1px solid var(--border)}
+.page-eyebrow{font-family:var(--mono);font-size:.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--teal);margin-bottom:.7rem}
+.page-header h1{font-family:var(--serif);font-size:clamp(2.1rem,4.5vw,3.2rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;margin-bottom:.6rem;color:var(--ink)}
 .page-header h1 em{font-style:italic;font-weight:300;color:var(--accent)}
-.page-header p{font-size:.95rem;color:var(--ink2);max-width:58ch;line-height:1.75}
+.page-header p{font-size:.92rem;color:var(--ink2);max-width:62ch;line-height:1.75}
 
-/* ── GRIMOIRE LAYOUT ── */
+/* Grimoire Layout */
 .grimoire-section{padding:2.8rem 0}
 .section-label{
   display:flex;align-items:center;gap:.5rem;
@@ -72,7 +81,7 @@ a{color:inherit;text-decoration:none}
 }
 .section-label-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 
-/* ── LIVE GRIMOIRE CARDS ── */
+/* Live Grimoire Cards */
 .live-grimoire{
   background:#fff;border:1px solid var(--border);border-radius:12px;
   overflow:hidden;margin-bottom:1.2rem;transition:all .15s ease;
@@ -137,7 +146,7 @@ a{color:inherit;text-decoration:none}
 .lg-status-left{font-family:var(--mono);font-size:.6rem;color:var(--teal);font-weight:500}
 .lg-status-right{font-family:var(--mono);font-size:.6rem;color:var(--ink3)}
 
-/* ── BUTTONS ── */
+/* Buttons */
 .btn-open{
   display:inline-flex;align-items:center;gap:.4rem;
   font-family:var(--mono);font-size:.7rem;padding:.5rem 1.1rem;
@@ -155,8 +164,8 @@ a{color:inherit;text-decoration:none}
 .btn-open.ghost{background:transparent;color:var(--ink2);border-color:var(--border)}
 .btn-open.ghost:hover{color:var(--accent);border-color:var(--accent)}
 
-/* placeholder grimoires */
-.section-divider{width:100%;height:1px;background:var(--border)}
+/* Placeholder grimoires */
+.section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);margin:1.5rem 0}
 .placeholders-section{padding:3rem 0 4rem}
 .placeholder-heading{
   font-family:var(--mono);font-size:.62rem;color:var(--ink);
@@ -178,24 +187,28 @@ a{color:inherit;text-decoration:none}
   text-transform:uppercase;letter-spacing:.06em;font-weight:500;
 }
 
-/* footer */
-.footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
-.footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
+/* Footer */
+.footer{padding:2rem 0;border-top:1px solid var(--border)}
+.footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);align-items:center}
 .footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
 .footer-links{display:flex;gap:1.2rem;align-items:center}
-.quick-anchor{position:fixed;right:24px;bottom:24px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.5rem .8rem;border-radius:6px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.06);transition:.14s;text-decoration:none}
-.quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
+.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.5rem .7rem;border-radius:999px;font-family:var(--mono);font-size:.65rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:all .2s ease}
+.quick-anchor:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
-@media(max-width:900px) {
+@media(max-width:900px){
   .lg-inner{grid-template-columns:1fr;gap:1.25rem;padding:1.4rem}
   .lg-stat-block{flex-direction:row;justify-content:flex-start;width:100%}
   .lg-stat{width:auto;flex:1;min-width:0}
   .lg-status{padding:.65rem 1.4rem}
 }
-@media(max-width:600px){
-  .topbar{flex-direction:column;align-items:flex-start;padding:.75rem 0}
-  .nav{width:100%;justify-content:flex-start}
+@media(max-width:760px){
+  .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
+  .nav{width:100%;justify-content:flex-start;margin-top:0.5rem}
   .placeholder-grid{grid-template-columns:1fr 1fr}
+  .quick-anchor{right:12px;bottom:12px}
+}
+@media(max-width:480px){
+  .placeholder-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -223,16 +236,16 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<main>
+<main id="main-content">
 <div class="shell">
 
-  <header class="page-header">
+  <header class="page-header animate-fade-in">
     <div class="page-eyebrow">Projects &amp; Grimoires</div>
     <h1>Systems built. Documented. <em>Shipped.</em></h1>
     <p>Not concepts. Working systems with real results — versioned, QA-checked, and published as proof-of-work artifacts. Reading them gives you a jump start on how each system works. That's why they're called Grimoires.</p>
   </header>
 
-  <section class="grimoire-section" aria-label="Live grimoires">
+  <section class="grimoire-section animate-fade-in delay-1" aria-label="Live grimoires">
     <div class="section-label">
       <span class="section-label-dot"></span>
       Live grimoires · 5 published
@@ -474,7 +487,7 @@ a{color:inherit;text-decoration:none}
 
   <div class="section-divider"></div>
 
-  <section class="placeholders-section" aria-label="Upcoming grimoires">
+  <section class="placeholders-section animate-fade-in delay-2" aria-label="Upcoming grimoires">
     <div class="placeholder-heading">Coming next — grimoires in progress</div>
     <p style="font-size:.84rem;color:var(--ink3);line-height:1.7;max-width:58ch;margin-bottom:1.4rem">These are planned. Not vaporware — each one is a real body of notes waiting to be compiled. The series keeps going.</p>
     <div class="placeholder-grid">
