@@ -48,7 +48,7 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300;overflow-x:hidden;
-  background-image:radial-gradient(ellipse at 8% 0%,rgba(29,78,216,.04),transparent 40%),radial-gradient(ellipse at 92% 10%,rgba(124,58,237,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
+  background-image:radial-gradient(ellipse at 10% 0%,rgba(13,148,136,.04),transparent 40%),radial-gradient(ellipse at 90% 8%,rgba(194,65,12,.03),transparent 35%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");}
 a{color:inherit;text-decoration:none}
 .shell{width:min(1060px,calc(100% - 2.5rem));margin:0 auto}
 
@@ -89,9 +89,9 @@ a{color:inherit;text-decoration:none}
 .brand-copy strong{display:block;font-family:var(--mono);font-size:.82rem;line-height:1.2;color:var(--ink)}
 .brand-copy span{display:block;font-size:.64rem;color:var(--ink4);font-family:var(--mono);margin-top:.1rem}
 .nav{display:flex;align-items:center;gap:.28rem;flex-wrap:wrap;justify-content:flex-end}
-.nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em}
-.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
-.nav .nav-active{color:var(--blue);border-color:rgba(29,78,216,.3);background:rgba(29,78,216,.06)}
+.nav a,.nav button{border:1px solid var(--border);background:var(--bg2);color:var(--ink3);padding:.36rem .78rem;border-radius:999px;font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:all .2s ease;text-decoration:none;letter-spacing:.01em}
+.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.nav .nav-active{color:var(--teal);border-color:rgba(13,148,136,.3);background:rgba(13,148,136,.06);font-weight:500}
 .nav .nav-cta{background:var(--ink);color:#F5F2EC;border-color:var(--ink);font-weight:500}
 .nav .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
@@ -140,12 +140,12 @@ a{color:inherit;text-decoration:none}
 .cta-btn-secondary{display:inline-flex;align-items:center;gap:.38rem;font-family:var(--mono);font-size:.68rem;padding:.58rem 1.1rem;border-radius:999px;background:transparent;color:#A8A29E;border:1px solid rgba(245,242,236,.15);transition:.14s;text-decoration:none}
 .cta-btn-secondary:hover{color:#F5F2EC;border-color:rgba(245,242,236,.35)}
 
-.footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
+.footer{padding:2rem 0;border-top:1px solid var(--border)}
 .footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
 .footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
 .footer-links{display:flex;gap:1.2rem;align-items:center}
-.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
-.quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
+.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:all .2s ease;text-decoration:none}
+.quick-anchor:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
 @media(max-width:760px){
   .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
@@ -178,8 +178,6 @@ a{color:inherit;text-decoration:none}
       <a href="/articles.html" class="nav-active">Articles</a>
       <a href="/projects.html">Projects</a>
       <a href="/notes.html">Notes</a>
-      <a href="/theme.html">Theme</a>
-      <a href="/sound.html">Sound</a>
       <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-cta">Fix My Systems →</a>
     </nav>
   </div>
