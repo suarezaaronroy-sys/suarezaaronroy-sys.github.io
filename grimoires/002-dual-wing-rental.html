@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dual Wing Rental Marketing Engine — Grimoire v3.0</title>
+<title>Dual Wing Rental Marketing Engine — Grimoire 002 · v4 · April 2026</title>
 <meta name="description" content="Full system documentation for a dual-sided rental marketing engine. Landlord acquisition + renter demand, connected into one flywheel. GHL · n8n · Claude API · Make.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -250,7 +250,7 @@
   .seq-perf-rate { font-family: var(--mono); font-size: 16px; font-weight: 500; color: #F5F2EC; margin-bottom: 2px; }
   .seq-perf-note { font-size: 11px; color: #78716C; line-height: 1.4; }
 
-  /* ── CAMPAIGN ENGINE (v3 additions) ── */
+  /* ── CAMPAIGN ENGINE (v4 layer) ── */
   .campaign-engine-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(245,242,236,0.1); }
   .campaign-engine-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
   .campaign-types-grid {
@@ -774,7 +774,7 @@
     <div class="header-divider"></div>
     <span class="header-title">Dual Wing Rental Marketing Engine</span>
   </div>
-  <span class="header-badge">Grimoire v3.0 · April 2026</span>
+  <span class="header-badge">Grimoire 002 · v4 · April 2026</span>
 </header>
 
 <!-- LAYOUT -->
@@ -917,7 +917,7 @@
 
     <!-- HERO -->
     <section class="hero" id="overview">
-      <div class="hero-eyebrow">Grimoire v3.0 · Built for UK / US markets · April 2026</div>
+      <div class="hero-eyebrow">Grimoire 002 · v4 · Built for UK / US markets · April 2026</div>
       <h1>Dual Wing Rental<br><em>Marketing Engine</em></h1>
       <p class="hero-sub">A complete marketing and CRM system for rental businesses that need to generate both landlord supply and renter demand — simultaneously. Not two campaigns. One flywheel.</p>
 
@@ -934,7 +934,7 @@
         <div class="stat-pill"><strong>2</strong> CRM pipelines</div>
         <div class="stat-pill"><strong>13</strong> tool stack</div>
         <div class="stat-pill"><strong>UK + US</strong> compliance</div>
-        <div class="stat-pill"><strong>~$168/mo</strong> bootstrapped</div>
+        <div class="stat-pill"><strong>~$148/mo</strong> base stack</div>
         <div class="stat-pill"><strong>6-week</strong> build sequence</div>
         <div class="stat-pill"><strong>Claude API</strong> content engine</div>
       </div>
@@ -1122,7 +1122,7 @@
       </div>
 
       <div class="campaign-showcase" style="margin-top:2.5rem;" id="ec-types">
-        <div class="campaign-engine-label">Campaign Engine — v3 Layer</div>
+        <div class="campaign-engine-label">Campaign Engine — v4 Layer</div>
         <h3 style="font-family:var(--serif);font-size:1.15rem;font-weight:600;margin-bottom:0.5rem;color:#F5F2EC;">Email Campaign Engine — Landlord Wing</h3>
         <p>The sections below document the operational layer behind the campaign results above: how campaigns are typed, sequenced, executed, measured, tested, and connected back to the CRM. This is the execution architecture, not just the outcome.</p>
 
@@ -1395,7 +1395,7 @@
             </div>
           </div>
         </div>
-      </div><!-- /campaign-showcase v3 -->
+      </div><!-- /campaign-showcase v4 -->
 
     </section>
 
@@ -1498,7 +1498,7 @@
       <h3 class="sub-heading">Bootstrapped Budget — First 90 Days</h3>
       <pre><span class="c">// Get to first conversion. Everything else deferred.</span>
 GHL             <span class="v">$97/mo</span>   (Starter)
-Make            <span class="v">$9/mo</span>
+Make            <span class="v">$9/mo</span>    (Core baseline)
 n8n VPS         <span class="v">$6/mo</span>    (Hetzner CX11)
 Claude API      <span class="v">~$15/mo</span>  (weekly content cadence)
 Canva Pro       <span class="v">$15/mo</span>
@@ -1506,7 +1506,8 @@ Buffer          <span class="v">$6/mo</span>
 GA4 + Looker    <span class="v">Free</span>
 UptimeRobot     <span class="v">Free</span>
 ──────────────────────────────
-TOTAL           <span class="w">~$168–183/mo</span>
+BASE TOTAL      <span class="w">~$148/mo</span>
+RANGE           <span class="w">~$143–204/mo</span> depending on Make tier + Claude API usage
 
 <span class="c">// Defer until Month 3+:</span>
 <span class="h">Semrush, Surfer, OpusClip, Submagic, Repurpose.io, CallRail</span></pre>
@@ -2834,7 +2835,7 @@ MONITORING:
 <!-- FOOTER -->
 <footer class="page-footer">
   <div>
-    <span>Dual Wing Rental Marketing Engine — Grimoire v3.0</span>
+    <span>Dual Wing Rental Marketing Engine — Grimoire 002 · v4</span>
     <span style="margin: 0 12px; opacity: 0.3">·</span>
     <span>April 2026 — Built for UK / US markets</span>
     <span style="margin: 0 12px; opacity: 0.3">·</span>
@@ -2865,9 +2866,21 @@ MONITORING:
     }
   }
 
+  function showPath(type) {
+    const pathOrder = ['hiring', 'technical', 'client'];
+    document.querySelectorAll('.reader-path').forEach((el, index) => {
+      el.classList.toggle('selected', pathOrder[index] === type);
+    });
+    document.querySelectorAll('.reader-guidance').forEach(el => {
+      el.classList.toggle('visible', el.id === `path-${type}`);
+    });
+  }
+
   // Active nav link on scroll
-  const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const sections = Array.from(document.querySelectorAll('[id]')).filter(section =>
+    document.querySelector(`.nav-link[href="#${section.id}"]`)
+  );
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
