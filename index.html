@@ -421,8 +421,8 @@ a{color:inherit;text-decoration:none}
 
   <a href="/projects.html" class="showcase-view-all">
     <div class="sva-left">
-      <div class="sva-title">View all 5 grimoires on the projects page</div>
-      <div class="sva-sub">CRM · marketing · GHL · n8n · automations</div>
+      <div class="sva-title">View all 7 grimoires on the projects page</div>
+      <div class="sva-sub">CRM · marketing · GHL · n8n · Zapier · agentic AI · automations</div>
     </div>
     <div class="sva-right">
       <div class="sva-chips">
@@ -430,17 +430,19 @@ a{color:inherit;text-decoration:none}
         <span class="sva-chip" style="background:#0d3d36;color:#5eead4;">02</span>
         <span class="sva-chip" style="background:#0d3d6e;color:#93c5fd;">03</span>
         <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">04</span>
+        <span class="sva-chip" style="background:#0d3d36;color:#5eead4;">05</span>
         <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">06</span>
+        <span class="sva-chip" style="background:#2d1060;color:#c4b5fd;">07</span>
       </div>
       <span style="font-family:var(--mono);font-size:.7rem;color:var(--accent);font-weight:500">All grimoires →</span>
     </div>
   </a>
 
   <div style="margin-top:1.8rem">
-    <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;padding-left:.5rem;border-left:2px solid var(--border)">More grimoires in progress</div>
+    <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;padding-left:.5rem;border-left:2px solid var(--border)">More grimoires</div>
     <div class="grimoire-placeholder-row">
-      <div class="grimoire-placeholder"><div class="gp-num">005</div><div class="gp-name">Zapier 101</div><span class="gp-soon">Soon</span></div>
-      <div class="grimoire-placeholder"><div class="gp-num">007</div><div class="gp-name">Agentic AI 101</div><span class="gp-soon">Soon</span></div>
+      <a class="grimoire-placeholder" href="/grimoires/005-zapier-101.html"><div class="gp-num">005</div><div class="gp-name">Zapier 101</div><span class="gp-soon">Live</span></a>
+      <a class="grimoire-placeholder" href="/grimoires/007-agentic-ai-101.html"><div class="gp-num">007</div><div class="gp-name">Agentic AI 101</div><span class="gp-soon">Live</span></a>
       <div class="grimoire-placeholder"><div class="gp-num">008</div><div class="gp-name">SEO 101</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">009</div><div class="gp-name">Basic Payment Processing — Support POV</div><span class="gp-soon">Soon</span></div>
       <div class="grimoire-placeholder"><div class="gp-num">010</div><div class="gp-name">Claude + OpenClaw 101 — The Viral Combo</div><span class="gp-soon">Soon</span></div>
@@ -465,7 +467,9 @@ const grimoireData = [
   { theme:'teal',   num:'002', label:'Marketing Engine · v4 · Apr 2026', title:'Dual Wing Rental Marketing Engine', desc:'Full marketing + CRM for dual-sided rental. Landlord supply and renter demand in one flywheel. 34.2% avg open rate, 18 consultations from 340 contacts.', pills:['15 modules','2 pipelines','Claude API','UK + US'], status:'✓ Live · Apr 2026', href:'/grimoires/002-dual-wing-rental.html' },
   { theme:'blue',   num:'003', label:'Knowledge System · 2026 Edition', title:'GHL 101: Speedrun Training Manual', desc:'Over a year of GoHighLevel field notes in one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated for 2026.', pills:['18 modules','29 sources','50+ tips','free · no gate'], status:'✓ Live · Mar 2026', href:'/grimoires/003-ghl-101.html' },
   { theme:'orange', num:'004', label:'AI Automation · May 2026', title:'n8n 101: AI Workflow Automation', desc:'12 modules covering AI agents, RAG, WhatsApp Business, self-hosting. Built from real field failures — including the $800 Zapier bill.', pills:['12 modules','AI agent','RAG','WhatsApp API'], status:'✓ Live · May 2026', href:'/grimoires/004-n8n-101.html' },
-  { theme:'orange', num:'006', label:'Automation Patterns · May 2026', title:'Automations 101: The Absolute Guide', desc:'25 production-grade automation patterns. Idempotency, retries, DLQs, compliance wrappers, human handoffs, runbooks, and symptom diagnosis.', pills:['25 patterns','37 sources','35 diagrams','runbooks'], status:'✓ Live · May 2026', href:'/grimoires/006-automations-101.html' }
+  { theme:'teal',   num:'005', label:'Automation Ops · Jun 2026', title:'Zapier 101: Business Automation Basics', desc:'A practical Zapier reference for reliable no-code automations: triggers, actions, filters, paths, webhooks, error handling, and handoff-ready workflows.', pills:['Zaps','paths','webhooks','ops basics'], status:'✓ Live · Jun 2026', href:'/grimoires/005-zapier-101.html' },
+  { theme:'orange', num:'006', label:'Automation Patterns · May 2026', title:'Automations 101: The Absolute Guide', desc:'25 production-grade automation patterns. Idempotency, retries, DLQs, compliance wrappers, human handoffs, runbooks, and symptom diagnosis.', pills:['25 patterns','37 sources','35 diagrams','runbooks'], status:'✓ Live · May 2026', href:'/grimoires/006-automations-101.html' },
+  { theme:'purple', num:'007', label:'Agentic Systems · Jun 2026', title:'Agentic AI 101: Practical AI Workflows', desc:'A field guide to agentic AI systems: tool use, memory, planning loops, human approvals, evaluation, guardrails, and production-ready operating patterns.', pills:['agents','tools','guardrails','evals'], status:'✓ Live · Jun 2026', href:'/grimoires/007-agentic-ai-101.html' }
 ];
 
 // 1. Sidebar Z-Index Stack Initialization
