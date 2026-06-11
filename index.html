@@ -98,3 +98,540 @@ a{color:inherit;text-decoration:none}
 .pattern-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.46rem}
 .pattern-item strong{display:block;font-size:.8rem;color:var(--ink);margin-bottom:.08rem;line-height:1.4}
 .pattern-item span{font-size:.74rem;color:var(--ink3);line-height:1.58}
+
+/* HERO SIDEBAR */
+.hero-side{display:grid;gap:.9rem}
+.panel{background:linear-gradient(150deg,#fff,var(--bg2));border:1px solid var(--border);border-radius:18px;overflow:hidden}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 1rem;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.6rem;color:var(--ink4);background:rgba(255,255,255,.3);letter-spacing:.04em;text-transform:uppercase}
+.panel-body{padding:.85rem}
+.lu-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.58rem;color:var(--teal);padding:.18rem .52rem;border-radius:999px;border:1px solid rgba(13,148,136,.25);background:var(--teal-bg);letter-spacing:.03em}
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.85rem}
+.stat-cell{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.6rem .7rem;text-align:center}
+.stat-cell strong{display:block;font-family:var(--mono);font-size:1.1rem;color:var(--accent);line-height:1.1;margin-bottom:.15rem}
+.stat-cell span{font-size:.62rem;color:var(--ink4);font-family:var(--mono);line-height:1.3}
+
+/* mini grimoire cards in sidebar */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.nb-launch-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem .95rem;border-radius:10px;background:var(--bg);background-image:radial-gradient(circle,rgba(120,113,108,.15) 1px,transparent 1px);background-size:16px 16px;border:1.5px solid rgba(28,25,23,.2);font-family:var(--mono);font-size:.72rem;color:var(--ink2);cursor:pointer;box-shadow:0 2px 8px rgba(28,25,23,.06);transition:.15s ease;width:100%;text-decoration:none;position:relative;overflow:hidden}
+.nb-launch-btn::before{content:"";position:absolute;inset:0;background:rgba(245,242,236,.85)}
+.nb-launch-inner{position:relative;display:flex;align-items:center;gap:.5rem;width:100%}
+.nb-launch-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(28,25,23,.1)}
+.nb-launch-icon{font-size:1.2rem;flex-shrink:0}
+.nb-launch-text strong{display:block;font-size:.76rem;color:var(--ink)}
+.nb-launch-text span{display:block;font-size:.6rem;color:var(--ink4);margin-top:.05rem}
+.nb-launch-arrow{margin-left:auto;font-size:.68rem;color:var(--ink4)}
+
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;gap:.42rem;border-radius:999px;font-family:var(--mono);font-size:.74rem;cursor:pointer;transition:.15s ease;text-decoration:none;letter-spacing:.01em;padding:.72rem 1.25rem}
+.btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent);font-weight:500;box-shadow:0 4px 14px rgba(194,65,12,.25)}
+.btn-primary:hover{background:#b83b0b;border-color:#b83b0b;transform:translateY(-2px)}
+.btn-secondary{background:#fff;color:var(--ink2);border:1px solid var(--border);box-shadow:0 1px 4px rgba(28,25,23,.06)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* BATON BAND CONSOLIDATED CTA */
+.baton-band{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;margin-top:1.3rem;padding:1.6rem 2rem;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,#fff,var(--bg2));box-shadow:0 4px 12px rgba(28,25,23,.04)}
+.baton-band-text strong{display:block;font-size:.95rem;color:var(--ink);font-family:var(--mono);margin-bottom:.3rem}
+.baton-band-text span{display:block;font-size:.85rem;color:var(--ink3);line-height:1.65;max-width:60ch}
+.baton-pass-pill{display:inline-flex;align-items:center;gap:.36rem;font-family:var(--mono);font-size:.62rem;color:var(--accent);margin-bottom:.6rem;padding:.2rem .6rem;border:1px solid var(--border);border-radius:999px;background:rgba(194,65,12,.05);font-weight:500;}
+
+/* NAV CARDS */
+.section-eyebrow{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.52rem;font-family:var(--mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;padding-left:.5rem;border-left:2px solid var(--accent)}
+.section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);margin:0}
+
+/* ── SIDEBAR MINI STACK ── */
+.stack-panel .panel-body{padding:.7rem}
+.stack-panel-body{display:flex;flex-direction:column;gap:.65rem}
+.sp-stage{position:relative;height:230px;cursor:pointer}
+.sp-card{position:absolute;inset:0;border-radius:14px;border:1px solid;padding:1rem 1.1rem;transition:transform .38s cubic-bezier(.22,.68,0,1.15),opacity .32s ease;will-change:transform,opacity;display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden}
+.sp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);pointer-events:none}
+.sp-card[data-theme="purple"]{background:linear-gradient(145deg,#2d1060,#1a0a2e);border-color:#5b3a9a44}
+.sp-card[data-theme="teal"]{background:linear-gradient(145deg,#0d3d36,#071f1c);border-color:#0d948844}
+.sp-card[data-theme="blue"]{background:linear-gradient(145deg,#0d3d6e,#081c2f);border-color:#1d4ed844}
+.sp-card[data-theme="orange"]{background:linear-gradient(145deg,#4a2a0f,#1c0a00);border-color:#c2410c44}
+.sp-card[data-pos="0"]{transform:translateY(0) scale(1) rotate(0deg);z-index:10;opacity:1;pointer-events:auto}
+.sp-card[data-pos="1"]{transform:translateY(11px) scale(0.955) rotate(1.4deg);z-index:9;opacity:1;pointer-events:none}
+.sp-card[data-pos="2"]{transform:translateY(20px) scale(0.91) rotate(2.6deg);z-index:8;opacity:1;pointer-events:none}
+.sp-card[data-pos="3"]{transform:translateY(28px) scale(0.865) rotate(3.5deg);z-index:7;opacity:.6;pointer-events:none}
+.sp-card[data-pos="4"]{transform:translateY(34px) scale(0.82) rotate(4deg);z-index:6;opacity:0;pointer-events:none}
+.sp-card[data-pos="0"]:hover{transform:translateY(-4px) scale(1.01) rotate(0deg);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.sp-eyebrow{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.sp-dot-pulse{width:5px;height:5px;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.sp-card[data-theme="purple"] .sp-eyebrow{color:#b89af0} .sp-card[data-theme="purple"] .sp-dot-pulse{background:#b89af0}
+.sp-card[data-theme="purple"] .sp-num{color:#e8d8ff} .sp-card[data-theme="purple"] .sp-title{color:#e8d8ff} .sp-card[data-theme="purple"] .sp-desc{color:#b89af099} .sp-card[data-theme="purple"] .sp-pill{color:#b89af0;border-color:#b89af033;background:rgba(184,154,240,.08)} .sp-card[data-theme="purple"] .sp-open{color:#e8d8ff;border-color:#b89af044;background:rgba(184,154,240,.1)} .sp-card[data-theme="purple"] .sp-status{color:#b89af066} .sp-card[data-theme="purple"] .sp-hr{border-color:#b89af022}
+.sp-card[data-theme="teal"] .sp-eyebrow{color:#4dc9a7} .sp-card[data-theme="teal"] .sp-dot-pulse{background:#4dc9a7}
+.sp-card[data-theme="teal"] .sp-num{color:#ccfbf1} .sp-card[data-theme="teal"] .sp-title{color:#ccfbf1} .sp-card[data-theme="teal"] .sp-desc{color:#4dc9a799} .sp-card[data-theme="teal"] .sp-pill{color:#4dc9a7;border-color:#4dc9a733;background:rgba(77,201,167,.08)} .sp-card[data-theme="teal"] .sp-open{color:#ccfbf1;border-color:#4dc9a744;background:rgba(77,201,167,.1)} .sc-card[data-theme="teal"] .sc-status{color:#4dc9a766} .sp-card[data-theme="teal"] .sp-hr{border-color:#4dc9a722}
+.sp-card[data-theme="blue"] .sp-eyebrow{color:#93c5fd} .sp-card[data-theme="blue"] .sp-dot-pulse{background:#93c5fd}
+.sp-card[data-theme="blue"] .sp-num{color:#dbeafe} .sp-card[data-theme="blue"] .sp-title{color:#dbeafe} .sp-card[data-theme="blue"] .sp-desc{color:#93c5fd99} .sp-card[data-theme="blue"] .sp-pill{color:#93c5fd;border-color:#93c5fd33;background:rgba(147,197,253,.08)} .sp-card[data-theme="blue"] .sp-open{color:#dbeafe;border-color:#93c5fd44;background:rgba(147,197,253,.1)} .sp-card[data-theme="blue"] .sp-status{color:#93c5fd66} .sp-card[data-theme="blue"] .sp-hr{border-color:#93c5fd22}
+.sp-card[data-theme="orange"] .sp-eyebrow{color:#fb923c} .sp-card[data-theme="orange"] .sp-dot-pulse{background:#fb923c}
+.sp-card[data-theme="orange"] .sp-num{color:#ffedd5} .sp-card[data-theme="orange"] .sp-title{color:#ffedd5} .sp-card[data-theme="orange"] .sp-desc{color:#fb923c99} .sp-card[data-theme="orange"] .sp-pill{color:#fb923c;border-color:#fb923c33;background:rgba(251,146,60,.08)} .sp-card[data-theme="orange"] .sp-open{color:#ffedd5;border-color:#fb923c44;background:rgba(251,146,60,.1)} .sp-card[data-theme="orange"] .sp-status{color:#fb923c66} .sp-card[data-theme="orange"] .sp-hr{border-color:#fb923c22}
+.sp-num{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1;margin-bottom:3px;letter-spacing:-.02em}
+.sp-title{font-family:var(--serif);font-size:.82rem;font-weight:600;line-height:1.25;margin-bottom:5px}
+.sp-desc{font-size:.68rem;line-height:1.55;margin-bottom:8px;flex:1}
+.sp-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.sp-pill{font-family:var(--mono);font-size:.54rem;padding:2px 7px;border-radius:999px;border:1px solid}
+.sp-hr{border:none;border-top:1px solid;margin-bottom:8px}
+.sp-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.sp-open{font-family:var(--mono);font-size:.58rem;padding:4px 10px;border-radius:999px;border:1px solid}
+.sp-status{font-family:var(--mono);font-size:.54rem}
+.sp-controls{display:flex;align-items:center;justify-content:space-between}
+.sp-dots{display:flex;gap:5px;align-items:center}
+.sp-dot{width:6px;height:6px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:transform .2s,background .2s}
+.sp-dot.on{background:var(--accent);transform:scale(1.4)}
+.sp-nav{display:flex;gap:5px}
+.sp-btn{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}
+.sp-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sp-view-all{display:flex;align-items:center;justify-content:space-between;padding:.55rem .8rem;border-radius:10px;border:1px solid var(--border);background:var(--bg2);text-decoration:none;color:inherit;transition:.14s;gap:.5rem}
+.sp-view-all:hover{border-color:var(--accent)}
+.sp-va-chips{display:flex;gap:3px}
+.sp-chip{width:20px;height:20px;border-radius:5px;font-size:.54rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.sp-va-text{font-family:var(--mono);font-size:.62rem;color:var(--accent);font-weight:500;margin-left:auto}
+
+/* ── FULL-WIDTH SHOWCASE CAROUSEL ── */
+.grimoires-showcase{padding:3rem 0}
+.showcase-h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:.4rem;color:var(--ink)}
+.showcase-h2 em{font-style:italic;font-weight:300;color:var(--accent)}
+.showcase-sub{font-size:.9rem;color:var(--ink3);line-height:1.7;max-width:56ch;margin-bottom:2rem}
+
+/* HIGH-VISIBILITY SCROLLING LOGIC ARTIFACTS */
+.sc-progress-bar{width:100%;height:3px;background:var(--border2);border-radius:999px;margin-bottom:1.5rem;overflow:hidden;position:relative}
+.sc-progress-fill{height:100%;width:0%;background:var(--accent);border-radius:999px;transition:width 0.15s cubic-bezier(0.1, 0.8, 0.2, 1)}
+
+.showcase-stage-wrapper{position:relative;width:100%}
+.showcase-stage{display:flex;gap:1.5rem;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:0.5rem 0 1.8rem;margin-bottom:.5rem;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg3)}
+.showcase-stage::-webkit-scrollbar{height:7px;display:block}
+.showcase-stage::-webkit-scrollbar-track{background:var(--bg3);border-radius:999px}
+.showcase-stage::-webkit-scrollbar-thumb{background:var(--accent);border-radius:999px;border:1px solid var(--bg3)}
+
+.sc-card{position:relative;flex:0 0 calc(50% - 0.75rem);scroll-snap-align:start;height:340px;border-radius:20px;border:1px solid;padding:1.6rem 1.8rem 1.4rem;transition:transform .2s ease, box-shadow .2s ease;display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.sc-card:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(0,0,0,.15)}
+
+.sc-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);pointer-events:none}
+.sc-card[data-theme="purple"]{background:linear-gradient(145deg,#2d1060,#1a0a2e);border-color:#5b3a9a44}
+.sc-card[data-theme="teal"]{background:linear-gradient(145deg,#0d3d36,#071f1c);border-color:#0d948844}
+.sc-card[data-theme="blue"]{background:linear-gradient(145deg,#0d3d6e,#081c2f);border-color:#1d4ed844}
+.sc-card[data-theme="orange"]{background:linear-gradient(145deg,#4a2a0f,#1c0a00);border-color:#c2410c44}
+
+.sc-eyebrow{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.sc-dot-pulse{width:6px;height:6px;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.sc-card[data-theme="purple"] .sc-eyebrow{color:#b89af0} .sc-card[data-theme="purple"] .sc-dot-pulse{background:#b89af0} .sc-card[data-theme="purple"] .sc-num{color:#e8d8ff} .sc-card[data-theme="purple"] .sc-title{color:#e8d8ff} .sc-card[data-theme="purple"] .sc-desc{color:#b89af099} .sc-card[data-theme="purple"] .sc-pill{color:#b89af0;border-color:#b89af033;background:rgba(184,154,240,.08)} .sc-card[data-theme="purple"] .sc-open{color:#e8d8ff;border-color:#b89af044;background:rgba(184,154,240,.1)} .sc-card[data-theme="purple"] .sc-status{color:#b89af066} .sc-card[data-theme="purple"] .sc-hr{border-color:#b89af022}
+.sc-card[data-theme="teal"] .sc-eyebrow{color:#4dc9a7} .sc-card[data-theme="teal"] .sc-dot-pulse{background:#4dc9a7} .sc-card[data-theme="teal"] .sc-num{color:#ccfbf1} .sc-card[data-theme="teal"] .sc-title{color:#ccfbf1} .sc-card[data-theme="teal"] .sc-desc{color:#4dc9a799} .sc-card[data-theme="teal"] .sc-pill{color:#4dc9a7;border-color:#4dc9a733;background:rgba(77,201,167,.08)} .sc-card[data-theme="teal"] .sc-open{color:#ccfbf1;border-color:#4dc9a744;background:rgba(77,201,167,.1)} .sc-card[data-theme="teal"] .sc-status{color:#4dc9a766} .sc-card[data-theme="teal"] .sc-hr{border-color:#4dc9a722}
+.sc-card[data-theme="blue"] .sc-eyebrow{color:#93c5fd} .sc-card[data-theme="blue"] .sc-dot-pulse{background:#93c5fd} .sc-card[data-theme="blue"] .sc-num{color:#dbeafe} .sc-card[data-theme="blue"] .sc-title{color:#dbeafe} .sc-card[data-theme="blue"] .sc-desc{color:#93c5fd99} .sc-card[data-theme="blue"] .sc-pill{color:#93c5fd;border-color:#93c5fd33;background:rgba(147,197,253,.08)} .sc-card[data-theme="blue"] .sc-open{color:#dbeafe;border-color:#93c5fd44;background:rgba(147,197,253,.1)} .sc-card[data-theme="blue"] .sc-status{color:#93c5fd66} .sc-card[data-theme="blue"] .sc-hr{border-color:#93c5fd22}
+.sc-card[data-theme="orange"] .sc-eyebrow{color:#fb923c} .sc-card[data-theme="orange"] .sc-dot-pulse{background:#fb923c} .sc-card[data-theme="orange"] .sc-num{color:#ffedd5} .sc-card[data-theme="orange"] .sc-title{color:#ffedd5} .sc-card[data-theme="orange"] .sc-desc{color:#fb923c99} .sc-card[data-theme="orange"] .sc-pill{color:#fb923c;border-color:#fb923c33;background:rgba(251,146,60,.08)} .sc-card[data-theme="orange"] .sc-open{color:#ffedd5;border-color:#fb923c44;background:rgba(251,146,60,.1)} .sc-card[data-theme="orange"] .sc-status{color:#fb923c66} .sc-card[data-theme="orange"] .sc-hr{border-color:#fb923c22}
+.sc-num{font-family:var(--serif);font-size:2.8rem;font-weight:600;line-height:1;margin-bottom:4px;letter-spacing:-.025em}
+.sc-title{font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+.sc-desc{font-size:.84rem;line-height:1.62;margin-bottom:14px;flex:1;max-width:70ch}
+.sc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.sc-pill{font-family:var(--mono);font-size:.6rem;padding:3px 9px;border-radius:999px;border:1px solid}
+.sc-hr{border:none;border-top:1px solid;margin-bottom:12px}
+.sc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.sc-open{font-family:var(--mono);font-size:.68rem;padding:6px 14px;border-radius:999px;border:1px solid}
+.sc-status{font-family:var(--mono);font-size:.62rem}
+
+.showcase-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.showcase-hint{font-family:var(--mono);font-size:.66rem;color:var(--ink4);display:flex;align-items:center;gap:6px}
+.showcase-hint::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+.showcase-nav{display:flex;gap:6px}
+.showcase-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);color:var(--ink3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}
+.showcase-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+.showcase-view-all{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-radius:14px;border:1px solid var(--border);background:linear-gradient(135deg,#fff,var(--bg2));text-decoration:none;color:inherit;transition:.18s;margin-bottom:0;box-shadow:0 1px 4px rgba(28,25,23,.05)}
+.showcase-view-all:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 18px rgba(28,25,23,.1)}
+.sva-left{display:flex;flex-direction:column;gap:3px}
+.sva-title{font-size:.88rem;font-weight:500;color:var(--ink)}
+.sva-sub{font-family:var(--mono);font-size:.64rem;color:var(--ink4)}
+.sva-right{display:flex;align-items:center;gap:.7rem}
+.sva-chips{display:flex;gap:4px}
+.sva-chip{width:24px;height:24px;border-radius:6px;font-size:.58rem;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+
+/* compact live grimoire row */
+.grimoire-mini-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.65rem;margin-top:.65rem}
+.grimoire-mini-card{background:var(--bg2);border:1px dashed var(--border);border-radius:12px;padding:.9rem 1rem;transition:.14s;text-decoration:none;color:inherit;}
+.grimoire-mini-card:hover{border-color:var(--accent);background:rgba(194,65,12,.03)}
+.gp-num{font-family:var(--mono);font-size:.6rem;color:var(--ink4);margin-bottom:.25rem;letter-spacing:.06em}
+.gp-name{font-size:.82rem;color:var(--ink2);font-weight:400;line-height:1.35;margin-bottom:.35rem}
+.gp-status{display:inline-block;font-family:var(--mono);font-size:.54rem;padding:.1rem .36rem;border-radius:3px;background:var(--bg3);color:var(--ink4);text-transform:uppercase;letter-spacing:.06em}
+
+.footer{padding:2.4rem 0 3rem;border-top:1px solid var(--border)}
+.footer-line{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--ink4);letter-spacing:.02em;align-items:center}
+.footer-link{color:var(--ink4);transition:color .14s}.footer-link:hover{color:var(--accent)}
+.footer-links{display:flex;gap:1.2rem;align-items:center}
+.quick-anchor{position:fixed;right:20px;bottom:20px;z-index:300;display:inline-flex;align-items:center;gap:.32rem;padding:.58rem .78rem;border-radius:999px;font-family:var(--mono);font-size:.66rem;background:#fff;color:var(--ink3);border:1px solid var(--border);box-shadow:0 2px 8px rgba(28,25,23,.1);transition:.14s;text-decoration:none}
+.quick-anchor:hover{color:var(--accent);border-color:var(--accent)}
+
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr}
+  .nav-cards-grid{grid-template-columns:repeat(2,1fr)}
+  .grimoires-grid-3{grid-template-columns:repeat(2,1fr)}
+  .grimoire-mini-row{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:800px){
+  .sc-card{flex:0 0 calc(100% - 2rem); scroll-snap-align:center;}
+}
+@media(max-width:760px){
+  .topbar{flex-direction:column;align-items:flex-start;padding:.65rem 0}
+  .nav{width:100%;justify-content:flex-start}
+  .hero{padding-top:2rem}
+  .hero-main{padding:1.4rem}
+  .nav-cards-grid,.grimoires-grid-3,.grimoires-grid-2{grid-template-columns:1fr}
+  .grimoire-mini-row{grid-template-columns:1fr 1fr}
+  .baton-band{flex-direction:column;align-items:flex-start}
+  .quick-anchor{right:12px;bottom:12px}
+}
+@media(max-width:480px){
+  .grimoire-mini-row{grid-template-columns:1fr}
+}
+</style>
+<script src="/assets/js/theme.js" defer></script>
+</head>
+<body id="top">
+
+<div class="topbar-wrap">
+  <div class="topbar shell">
+    <a href="/" class="brand" aria-label="Aaron Suarez — Home">
+      <div class="brand-icon">
+        <img src="/favicon.png" alt="AS" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <span class="brand-icon-fallback" style="display:none">AS</span>
+      </div>
+      <div class="brand-copy">
+        <strong>Aaron Suarez</strong>
+        <span>Valencia City, PH · systems builder · remote-first</span>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/about.html">About</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/notes.html">Notes</a>
+      <a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="nav-cta">Fix My Systems →</a>
+    </nav>
+  </div>
+</div>
+
+<main id="main-content">
+
+<section class="hero shell" id="hero" aria-label="Introduction">
+  <div class="hero-grid">
+
+    <div class="hero-main">
+      <div class="win-chrome">
+        <span class="wdot r"></span><span class="wdot y"></span><span class="wdot g"></span>
+        <span>aaron.suarez / hybrid systems operator</span>
+      </div>
+      <h1>I build systems <em>and I run operations.</em></h1>
+      <p class="lead">CRM architecture, workflow automation, APIs, admin continuity — whatever keeps the business moving. Most breakdowns aren't effort problems; they're structural. I find those structures and rebuild them.</p>
+      <p class="sublead">This is the portfolio. It shows how all of it connects — across domains, across tools, across the full operational stack. <strong>Progression:</strong> task execution → system design → operational ownership → business continuity.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="/notes.html">📔 Read the Notes</a>
+        <a class="btn-secondary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer">Fix My Systems →</a>
+      </div>
+      <div class="cap-strip" aria-label="Areas of work">
+        <span class="cap-pill">CRM architecture</span>
+        <span class="cap-pill">GoHighLevel</span>
+        <span class="cap-pill">workflow automation</span>
+        <span class="cap-pill">Zapier · Make · n8n</span>
+        <span class="cap-pill">Claude API</span>
+        <span class="cap-pill">SEO systems</span>
+        <span class="cap-pill">email campaigns</span>
+        <span class="cap-pill">marketing engines</span>
+        <span class="cap-pill">dual-sided systems</span>
+        <span class="cap-pill">operational docs</span>
+        <span class="cap-pill">lead scoring</span>
+        <span class="cap-pill">UK · US compliance</span>
+      </div>
+      <div class="pattern-list" aria-label="Common problems solved">
+        <div class="pattern-item"><div class="pattern-dot"></div><div><strong>Operations that depend on specific people</strong><span>When one person is out, work stops or breaks. Not a people problem — a system problem.</span></div></div>
+        <div class="pattern-item"><div class="pattern-dot"></div><div><strong>Tools that exist but don't connect</strong><span>CRM, docs, automations. The infrastructure is there. The logic tying it together isn't.</span></div></div>
+        <div class="pattern-item"><div class="pattern-dot"></div><div><strong>Knowledge that lives in heads, not systems</strong><span>Senior staff keep answering the same questions. The answers never get documented.</span></div></div>
+      </div>
+    </div>
+
+    <aside class="hero-side" aria-label="Proof of work">
+
+      <div class="panel">
+        <div class="panel-head"><span>documented impact</span><span class="lu-badge">✓ May 2026</span></div>
+        <div class="panel-body">
+          <div class="stat-strip">
+            <div class="stat-cell"><strong>34.2%</strong><span>email open rate</span></div>
+            <div class="stat-cell"><strong>98%</strong><span>compliance rate</span></div>
+            <div class="stat-cell"><strong>70%</strong><span>faster leads</span></div>
+          </div>
+          <div style="font-family:var(--mono);font-size:.66rem;color:var(--ink4);margin-bottom:.75rem;line-height:1.82">→ 11 live grimoires — real system docs<br>→ 76-field CRM · 24 Zaps · Bland AI<br>→ UK + US dual-market marketing engine<br>→ SEO, payments, automations, agentic AI<br>→ 15 notes · field observations</div>
+          <a href="/notes.html" class="nb-launch-btn" aria-label="Open notes">
+            <div class="nb-launch-inner"><span class="nb-launch-icon">📔</span><div class="nb-launch-text"><strong>Open the notebook</strong><span>15 notes · field logs · operational thinking</span></div><span class="nb-launch-arrow">→</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="panel stack-panel">
+        <div class="panel-head"><span>proof of work · grimoires</span><span class="lu-badge">11 live ↓</span></div>
+        <div class="panel-body stack-panel-body">
+          <div class="sp-stage" id="spStage"></div>
+          <div class="sp-controls">
+            <div class="sp-dots" id="spDots"></div>
+            <div class="sp-nav">
+              <button class="sp-btn" id="spPrev" aria-label="Previous">‹</button>
+              <button class="sp-btn" id="spNext" aria-label="Next">›</button>
+            </div>
+          </div>
+          <a href="/projects.html" class="sp-view-all">
+            <div class="sp-va-chips">
+              <span class="sp-chip" style="background:#2d1060;color:#c4b5fd;">01</span>
+              <span class="sp-chip" style="background:#0d3d36;color:#5eead4;">02</span>
+              <span class="sp-chip" style="background:#0d3d6e;color:#93c5fd;">03</span>
+              <span class="sp-chip" style="background:#4a2a0f;color:#fb923c;">04</span>
+              <span class="sp-chip" style="background:#0d3d36;color:#5eead4;">05</span>
+              <span class="sp-chip" style="background:#4a2a0f;color:#fb923c;">06</span>
+              <span class="sp-chip" style="background:#2d1060;color:#c4b5fd;">07</span>
+              <span class="sp-chip" style="background:#0d3d36;color:#5eead4;">08</span>
+              <span class="sp-chip" style="background:#4a2a0f;color:#fb923c;">09</span>
+              <span class="sp-chip" style="background:#0d3d6e;color:#93c5fd;">10</span>
+              <span class="sp-chip" style="background:#2d1060;color:#c4b5fd;">11</span>
+            </div>
+            <span class="sp-va-text">View all 11 grimoires →</span>
+          </a>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <div class="baton-band" aria-label="Portfolio to service">
+    <div class="baton-band-text">
+      <div class="baton-pass-pill">ASMC · Systems Execution</div>
+      <strong>Recognize these patterns in your own operation?</strong>
+      <span>The portfolio has the diagnosis. ASMC has the execution. If your CRM doesn't reflect reality or your workflows break under pressure, let's fix it. Free 30-min ops audit, no pitch.</span>
+    </div>
+    <a class="btn-primary" href="https://asmultitaskcollective-prog.github.io/aaron-systems/#contact" target="_blank" rel="noopener noreferrer" style="white-space:nowrap;flex-shrink:0">Fix My Systems →</a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="grimoires-showcase shell" aria-label="Grimoires showcase">
+  <div class="section-eyebrow">Proof of work · 11 live grimoires</div>
+  <h2 class="showcase-h2">Real systems. <em>No gate.</em></h2>
+  <p class="showcase-sub">Each grimoire is fully documented, live system work — not a case study. The stack below scrolls automatically; hover over any item to freeze execution.</p>
+
+  <div class="sc-progress-bar"><div class="sc-progress-fill" id="scFill"></div></div>
+
+  <div class="showcase-stage-wrapper">
+    <div class="showcase-stage" id="showcaseStage"></div>
+  </div>
+
+  <div class="showcase-controls">
+    <span class="showcase-hint">Auto-cycling enabled · swipe or use trackpad anytime</span>
+    <div class="showcase-nav">
+      <button class="showcase-btn" id="showcasePrev" aria-label="Previous">‹</button>
+      <button class="showcase-btn" id="showcaseNext" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <a href="/projects.html" class="showcase-view-all">
+    <div class="sva-left">
+      <div class="sva-title">View all 11 grimoires on the projects page</div>
+      <div class="sva-sub">CRM · marketing · GHL · n8n · Zapier · agentic AI · SEO · payment processing · organizational systems</div>
+    </div>
+    <div class="sva-right">
+      <div class="sva-chips">
+        <span class="sva-chip" style="background:#2d1060;color:#c4b5fd;">01</span>
+        <span class="sva-chip" style="background:#0d3d36;color:#5eead4;">02</span>
+        <span class="sva-chip" style="background:#0d3d6e;color:#93c5fd;">03</span>
+        <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">04</span>
+        <span class="sva-chip" style="background:#0d3d36;color:#5eead4;">05</span>
+        <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">06</span>
+        <span class="sva-chip" style="background:#2d1060;color:#c4b5fd;">07</span>
+        <span class="sva-chip" style="background:#0d3d36;color:#5eead4;">08</span>
+        <span class="sva-chip" style="background:#4a2a0f;color:#fb923c;">09</span>
+        <span class="sva-chip" style="background:#0d3d6e;color:#93c5fd;">10</span>
+        <span class="sva-chip" style="background:#2d1060;color:#c4b5fd;">11</span>
+      </div>
+      <span style="font-family:var(--mono);font-size:.7rem;color:var(--accent);font-weight:500">All grimoires →</span>
+    </div>
+  </a>
+
+  <div style="margin-top:1.8rem">
+    <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;padding-left:.5rem;border-left:2px solid var(--border)">More grimoires</div>
+    <div class="grimoire-mini-row">
+      <a class="grimoire-mini-card" href="/grimoires/005-zapier-101.html"><div class="gp-num">005</div><div class="gp-name">Zapier 101</div><span class="gp-status">Live</span></a>
+      <a class="grimoire-mini-card" href="/grimoires/007-agentic-ai-101.html"><div class="gp-num">007</div><div class="gp-name">Agentic AI 101</div><span class="gp-status">Live</span></a>
+      <a class="grimoire-mini-card" href="/grimoires/008-seo-101.html"><div class="gp-num">008</div><div class="gp-name">SEO 101</div><span class="gp-status">Live</span></a>
+      <a class="grimoire-mini-card" href="/grimoires/009-payment-processing.html"><div class="gp-num">009</div><div class="gp-name">Payment Processing — Career Field Manual</div><span class="gp-status">Live</span></a>
+      <a class="grimoire-mini-card" href="/grimoires/010-claude-openclaw-101.html"><div class="gp-num">010</div><div class="gp-name">Claude + OpenClaw 101 — The Viral Combo</div><span class="gp-status">Live</span></a>
+      <a class="grimoire-mini-card" href="/grimoires/011-organization-systems.html"><div class="gp-num">011</div><div class="gp-name">The Organization Is the Problem — Systems Case Files</div><span class="gp-status">Live</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer shell">
+  <div class="footer-line">
+    <div>© <span id="yr"></span> Aaron Suarez · operational systems builder</div>
+    <div class="footer-links"><span>Valencia City, PH · remote-first</span><a href="mailto:asmultitaskcollective@gmail.com" class="footer-link">Email</a><a href="https://www.linkedin.com/in/suarez-aaronroy/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a><a href="https://asmultitaskcollective-prog.github.io/aaron-systems/" target="_blank" rel="noopener noreferrer" class="footer-link" style="font-weight:500">ASMC ↗</a></div>
+  </div>
+</footer>
+<a class="quick-anchor" href="#top" aria-label="Back to top">↑ top</a>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+
+<script>
+const grimoireData = [
+  { theme:'purple', num:'001', label:'CRM System · v8.1 · QA-Verified', title:'ASMC Full Stack CRM Engine', desc:'Full CRM automation for construction. Lead capture → scoring → proposal → contract → payment → delivery. 13 documented QA corrections.', pills:['76-field CRM','24 Zaps','Bland AI','PandaDoc','Stripe'], status:'✓ Live · Apr 2026', href:'/grimoires/001-asmc-crm-engine.html' },
+  { theme:'teal',   num:'002', label:'Marketing Engine · v4 · Apr 2026', title:'Dual Wing Rental Marketing Engine', desc:'Full marketing + CRM for dual-sided rental. Landlord supply and renter demand in one flywheel. 34.2% avg open rate, 18 consultations from 340 contacts.', pills:['15 modules','2 pipelines','Claude API','UK + US'], status:'✓ Live · Apr 2026', href:'/grimoires/002-dual-wing-rental.html' },
+  { theme:'blue',   num:'003', label:'Knowledge System · 2026 Edition', title:'GHL 101: Speedrun Training Manual', desc:'Over a year of GoHighLevel field notes in one openly cited reference. 18 modules, 29 official sources, 50+ power tips. Updated for 2026.', pills:['18 modules','29 sources','50+ tips','free · no gate'], status:'✓ Live · Mar 2026', href:'/grimoires/003-ghl-101.html' },
+  { theme:'orange', num:'004', label:'AI Automation · May 2026', title:'n8n 101: AI Workflow Automation', desc:'12 modules covering AI agents, RAG, WhatsApp Business, self-hosting. Built from real field failures — including the $800 Zapier bill.', pills:['12 modules','AI agent','RAG','WhatsApp API'], status:'✓ Live · May 2026', href:'/grimoires/004-n8n-101.html' },
+  { theme:'teal',   num:'005', label:'Automation Ops · Jun 2026', title:'Zapier 101: Business Automation Basics', desc:'A practical Zapier reference for reliable no-code automations: triggers, actions, filters, paths, webhooks, error handling, and handoff-ready workflows.', pills:['Zaps','paths','webhooks','ops basics'], status:'✓ Live · Jun 2026', href:'/grimoires/005-zapier-101.html' },
+  { theme:'orange', num:'006', label:'Automation Patterns · May 2026', title:'Automations 101: The Absolute Guide', desc:'25 production-grade automation patterns. Idempotency, retries, DLQs, compliance wrappers, human handoffs, runbooks, and symptom diagnosis.', pills:['25 patterns','37 sources','35 diagrams','runbooks'], status:'✓ Live · May 2026', href:'/grimoires/006-automations-101.html' },
+  { theme:'purple', num:'007', label:'Agentic Systems - Jun 2026', title:'Agentic AI 101: Practical AI Workflows', desc:'A field guide to agentic AI systems: tool use, memory, planning loops, human approvals, evaluation, guardrails, and production-ready operating patterns.', pills:['agents','tools','guardrails','evals'], status:'Live - Jun 2026', href:'/grimoires/007-agentic-ai-101.html' },
+  { theme:'teal',   num:'008', label:'Search Systems - Jun 2026', title:'SEO 101: Old Search + AI Search', desc:'A practical SEO guide for the AI search era: old SEO fundamentals, AEO/GEO, structured data, local SEO, reporting, and VA-ready SOPs.', pills:['SEO','AEO/GEO','VA SOPs','AI search'], status:'Live - Jun 2026', href:'/grimoires/008-seo-101.html' },
+  { theme:'orange', num:'009', label:'Payment Systems - Career Field Manual', title:'Payment Processing: Support Career Map', desc:'The culmination of a payment processing career: merchant services, funding, risk, receipts, terminals, website integrations, and AI-support-ready playbooks.', pills:['payments','support','POS','webhooks'], status:'Live - Jun 2026', href:'/grimoires/009-payment-processing.html' },
+  { theme:'blue',   num:'010', label:'Claude + OpenClaw - Jun 2026', title:'Claude + OpenClaw 101: The Viral Combo', desc:'A practical guide to pairing Claude with OpenClaw for fast research, drafting, coding, content systems, and operator-grade AI workflows.', pills:['Claude','OpenClaw','AI workflow','content ops'], status:'Live - Jun 2026', href:'/grimoires/010-claude-openclaw-101.html' },
+  { theme:'purple', num:'011', label:'Organizational Systems - Jun 2026', title:'The Organization Is the Problem: Systems Case Files', desc:'A case-file book on work, ownership, incentives, capacity, power, information flow, decision-making, organizational memory, and how organizations behave.', pills:['systems','ownership','incentives','AI-native orgs'], status:'Live - Jun 2026', href:'/grimoires/011-organization-systems.html' }
+];
+
+// 1. Sidebar Z-Index Stack Initialization
+function initSidebarStack() {
+  const stage = document.getElementById('spStage');
+  const dotsEl = document.getElementById('spDots');
+  if (!stage || !dotsEl) return;
+
+  let active = 0;
+  const total = grimoireData.length;
+  let auto, paused = false;
+
+  const cards = grimoireData.map((g, i) => {
+    const el = document.createElement('a');
+    el.className = 'sp-card';
+    el.dataset.theme = g.theme;
+    el.href = g.href;
+    el.innerHTML = `
+      <div class="sp-eyebrow"><span class="sp-dot-pulse"></span><span>${g.label}</span></div>
+      <div class="sp-num">${g.num}</div>
+      <div class="sp-title">${g.title}</div>
+      <div class="sp-desc">${g.desc}</div>
+      <div class="sp-pills">${g.pills.map(p=>`<span class="sp-pill">${p}</span>`).join('')}</div>
+      <hr class="sp-hr"/>
+      <div class="sp-footer"><span class="sp-open">Open grimoire →</span><span class="sp-status">${g.status}</span></div>`;
+    el.addEventListener('click', e => { 
+      if(el.dataset.pos !== "0") { e.preventDefault(); advance(1); }
+    });
+    stage.appendChild(el);
+    return el;
+  });
+
+  const dots = grimoireData.map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'sp-dot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+    return d;
+  });
+
+  function pos(i) { return (i - active + total) % total; }
+
+  function render() {
+    cards.forEach((c, i) => { c.dataset.pos = pos(i); });
+    dots.forEach((d, i) => d.classList.toggle('on', i === active));
+  }
+
+  function goTo(i) { active = i; render(); }
+  function advance(d) { active = (active + d + total) % total; render(); }
+
+  document.getElementById('spPrev')?.addEventListener('click', () => advance(-1));
+  document.getElementById('spNext')?.addEventListener('click', () => advance(1));
+
+  function startAuto() {
+    clearInterval(auto);
+    auto = setInterval(() => { if (!paused) advance(1); }, 3500);
+  }
+  
+  stage.addEventListener('mouseenter', () => { paused = true; });
+  stage.addEventListener('mouseleave', () => { paused = false; });
+
+  render();
+  startAuto();
+}
+
+// 2. Showcase Horizontal Carousel Implementation with Auto-Scroll & High-Vis Indicators
+function initShowcaseCarousel() {
+  const stage = document.getElementById('showcaseStage');
+  const progressFill = document.getElementById('scFill');
+  if (!stage) return;
+  
+  grimoireData.forEach(g => {
+    const el = document.createElement('a');
+    el.className = 'sc-card';
+    el.dataset.theme = g.theme;
+    el.href = g.href;
+    el.innerHTML = `
+      <div class="sc-eyebrow"><span class="sc-dot-pulse"></span><span>${g.label}</span></div>
+      <div class="sc-num">${g.num}</div>
+      <div class="sc-title">${g.title}</div>
+      <div class="sc-desc">${g.desc}</div>
+      <div class="sc-pills">${g.pills.map(p=>`<span class="sc-pill">${p}</span>`).join('')}</div>
+      <hr class="sc-hr"/>
+      <div class="sc-footer">
+        <span class="sc-open">Open grimoire →</span>
+        <span class="sc-status">${g.status}</span>
+      </div>`;
+    stage.appendChild(el);
+  });
+
+  const prev = document.getElementById('showcasePrev');
+  const next = document.getElementById('showcaseNext');
+
+  function getScrollStep() {
+    return stage.offsetWidth > 760 ? stage.offsetWidth / 2 : stage.offsetWidth;
+  }
+
+  prev?.addEventListener('click', () => {
+    stage.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+  });
+  
+  next?.addEventListener('click', () => {
+    stage.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+  });
+
+  // Track Progress Fill Value via Native Scroll Vector coordinates
+  function updateProgressBar() {
+    const maxScroll = stage.scrollWidth - stage.clientWidth;
+    const scrollPct = maxScroll > 0 ? (stage.scrollLeft / maxScroll) * 100 : 0;
+    if (progressFill) progressFill.style.width = `${scrollPct}%`;
+  }
+  stage.addEventListener('scroll', updateProgressBar);
+
+  // Auto-scroll loop execution block
+  let autoScrollTimer;
+  let isPaused = false;
+
+  function startAutoCycle() {
+    clearInterval(autoScrollTimer);
+    autoScrollTimer = setInterval(() => {
+      if (!isPaused) {
+        const maxScroll = stage.scrollWidth - stage.clientWidth;
+        // Reset loop smoothly if near trailing end boundaries
+        if (stage.scrollLeft >= maxScroll - 15) {
+          stage.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          stage.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        }
+      }
+    }, 4000);
+  }
+
+  // Intercept listeners to freeze timeline upon active cursor targeting 
+  stage.addEventListener('mouseenter', () => { isPaused = true; });
+  stage.addEventListener('mouseleave', () => { isPaused = false; });
+  stage.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+  stage.addEventListener('touchend', () => { isPaused = false; });
+
+  // Initialize view layers
+  updateProgressBar();
+  startAutoCycle();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSidebarStack();
+  initShowcaseCarousel();
+});
+</script>
+</body>
+</html>
